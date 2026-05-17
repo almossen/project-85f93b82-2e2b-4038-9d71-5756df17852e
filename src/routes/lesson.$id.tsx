@@ -108,7 +108,20 @@ function LessonPage() {
           <div id="simplified"><SimplifiedVersion /></div>
 
           {/* 8. اختبار نهاية الدرس */}
-          <Quiz />
+          <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary-soft to-mint/30 p-6 sm:p-8 text-center space-y-4">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight">اختبر فهمك</h2>
+            <p className="text-muted-foreground leading-loose max-w-xl mx-auto">
+              ٥ أسئلة قصيرة — لا توجد علامات، فقط للتأكد أن المعلومة وصلت.
+            </p>
+            <Link
+              to="/lesson/$id/quiz"
+              params={{ id }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              ابدأ الاختبار
+            </Link>
+          </div>
 
           {/* 9. ملخص الدرس + 10. الدرس القادم */}
           <LessonSummary />
