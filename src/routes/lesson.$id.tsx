@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Clock, ShieldCheck, Play, Headphones } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Clock, ShieldCheck, Play, Headphones, ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
@@ -10,7 +10,6 @@ import { MythsSection } from "@/components/sama/MythsSection";
 import { WhatToLearnFirst } from "@/components/sama/WhatToLearnFirst";
 import { VideoScript } from "@/components/sama/VideoScript";
 import { SimplifiedVersion } from "@/components/sama/SimplifiedVersion";
-import { Quiz } from "@/components/sama/Quiz";
 import { LessonSummary } from "@/components/sama/LessonSummary";
 import { Sources } from "@/components/sama/Sources";
 import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
@@ -35,6 +34,7 @@ export const Route = createFileRoute("/lesson/$id")({
 });
 
 function LessonPage() {
+  const { id } = Route.useParams();
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <DisclaimerBanner />
@@ -108,7 +108,20 @@ function LessonPage() {
           <div id="simplified"><SimplifiedVersion /></div>
 
           {/* 8. اختبار نهاية الدرس */}
-          <Quiz />
+          <div className="rounded-2xl border border-primary/30 bg-gradient-to-br from-primary-soft to-mint/30 p-6 sm:p-8 text-center space-y-4">
+            <h2 className="text-xl sm:text-2xl font-bold tracking-tight">اختبر فهمك</h2>
+            <p className="text-muted-foreground leading-loose max-w-xl mx-auto">
+              ٥ أسئلة قصيرة — لا توجد علامات، فقط للتأكد أن المعلومة وصلت.
+            </p>
+            <Link
+              to="/lesson/$id/quiz"
+              params={{ id }}
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
+            >
+              <ArrowLeft className="h-4 w-4" />
+              ابدأ الاختبار
+            </Link>
+          </div>
 
           {/* 9. ملخص الدرس + 10. الدرس القادم */}
           <LessonSummary />
