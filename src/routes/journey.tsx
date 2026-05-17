@@ -119,7 +119,7 @@ const units: Unit[] = [
 const totalLessons = units.reduce((s, u) => s + u.lessons, 0);
 const completedLessons = 0; // POC: لا يوجد درس مكتمل بعد
 const progressPct = Math.round((completedLessons / totalLessons) * 100);
-const availableLessons = 11; // الدرس الأول + ١٠ دروس الوحدة الثانية
+const availableLessons = 2; // الدرس ١ + الدرس ٢ (الأيام الأولى بعد التشخيص)
 
 function StatusBadge({ s }: { s: UnitStatus }) {
   if (s === "in-progress")
