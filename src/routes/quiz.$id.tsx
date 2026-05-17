@@ -41,7 +41,7 @@ const questions: Q[] = [
   },
 ];
 
-export const Route = createFileRoute("/lesson/$id/quiz")({
+export const Route = createFileRoute("/quiz/$id")({
   head: () => ({
     meta: [
       { title: "اختبر فهمك — الدرس الأول — سما" },

@@ -12,8 +12,8 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as PathRouteImport } from './routes/path'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as QuizIdRouteImport } from './routes/quiz.$id'
 import { Route as LessonIdRouteImport } from './routes/lesson.$id'
-import { Route as LessonIdQuizRouteImport } from './routes/lesson.$id.quiz'
 
 const PathRoute = PathRouteImport.update({
   id: '/path',
@@ -30,58 +30,53 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const QuizIdRoute = QuizIdRouteImport.update({
+  id: '/quiz/$id',
+  path: '/quiz/$id',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LessonIdRoute = LessonIdRouteImport.update({
   id: '/lesson/$id',
   path: '/lesson/$id',
   getParentRoute: () => rootRouteImport,
-} as any)
-const LessonIdQuizRoute = LessonIdQuizRouteImport.update({
-  id: '/quiz',
-  path: '/quiz',
-  getParentRoute: () => LessonIdRoute,
 } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/path': typeof PathRoute
-  '/lesson/$id': typeof LessonIdRouteWithChildren
-  '/lesson/$id/quiz': typeof LessonIdQuizRoute
+  '/lesson/$id': typeof LessonIdRoute
+  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/path': typeof PathRoute
-  '/lesson/$id': typeof LessonIdRouteWithChildren
-  '/lesson/$id/quiz': typeof LessonIdQuizRoute
+  '/lesson/$id': typeof LessonIdRoute
+  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/path': typeof PathRoute
-  '/lesson/$id': typeof LessonIdRouteWithChildren
-  '/lesson/$id/quiz': typeof LessonIdQuizRoute
+  '/lesson/$id': typeof LessonIdRoute
+  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/journey' | '/path' | '/lesson/$id' | '/lesson/$id/quiz'
+  fullPaths: '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/journey' | '/path' | '/lesson/$id' | '/lesson/$id/quiz'
-  id:
-    | '__root__'
-    | '/'
-    | '/journey'
-    | '/path'
-    | '/lesson/$id'
-    | '/lesson/$id/quiz'
+  to: '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
+  id: '__root__' | '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   JourneyRoute: typeof JourneyRoute
   PathRoute: typeof PathRoute
-  LessonIdRoute: typeof LessonIdRouteWithChildren
+  LessonIdRoute: typeof LessonIdRoute
+  QuizIdRoute: typeof QuizIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -107,6 +102,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/quiz/$id': {
+      id: '/quiz/$id'
+      path: '/quiz/$id'
+      fullPath: '/quiz/$id'
+      preLoaderRoute: typeof QuizIdRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lesson/$id': {
       id: '/lesson/$id'
       path: '/lesson/$id'
@@ -114,34 +116,26 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof LessonIdRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/lesson/$id/quiz': {
-      id: '/lesson/$id/quiz'
-      path: '/quiz'
-      fullPath: '/lesson/$id/quiz'
-      preLoaderRoute: typeof LessonIdQuizRouteImport
-      parentRoute: typeof LessonIdRoute
-    }
   }
 }
-
-interface LessonIdRouteChildren {
-  LessonIdQuizRoute: typeof LessonIdQuizRoute
-}
-
-const LessonIdRouteChildren: LessonIdRouteChildren = {
-  LessonIdQuizRoute: LessonIdQuizRoute,
-}
-
-const LessonIdRouteWithChildren = LessonIdRoute._addFileChildren(
-  LessonIdRouteChildren,
-)
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   JourneyRoute: JourneyRoute,
   PathRoute: PathRoute,
-  LessonIdRoute: LessonIdRouteWithChildren,
+  LessonIdRoute: LessonIdRoute,
+  QuizIdRoute: QuizIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}

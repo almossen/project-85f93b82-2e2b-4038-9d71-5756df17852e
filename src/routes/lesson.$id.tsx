@@ -112,7 +112,7 @@ function LessonPage() {
               ٥ أسئلة قصيرة — لا توجد علامات، فقط للتأكد أن المعلومة وصلت.
             </p>
             <Link
-              to="/lesson/$id/quiz"
+              to="/quiz/$id"
               params={{ id }}
               className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
             >
