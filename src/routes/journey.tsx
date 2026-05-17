@@ -36,7 +36,7 @@ const units: Unit[] = [
   {
     num: "٠١",
     title: "البداية والطمأنة",
-    desc: "خمسة دروس لاحتواء صدمة التشخيص واستعادة التوازن النفسي للأسرة.",
+    desc: "البداية الإيمانية، ثم الأيام الأولى بعد التشخيص وما يحتاج ولي الأمر معرفته.",
     lessons: 5,
     days: "اليوم ١ – ٣",
     status: "in-progress",
@@ -44,12 +44,11 @@ const units: Unit[] = [
   },
   {
     num: "٠٢",
-    title: "الأيام الأولى بعد التشخيص",
-    desc: "ماذا يجب أن يعرف ولي الأمر؟ — الإنسولين، القياس، الحقن، الحفظ، وحقيبة السكري.",
-    lessons: 10,
+    title: "أهم ما يجب معرفته الآن",
+    desc: "أساسيات اليوم الأول، علامات الخطر، والتواصل مع الفريق الطبي.",
+    lessons: 5,
     days: "اليوم ٤ – ٦",
-    status: "available",
-    moduleRoute: "/module/first-days",
+    status: "locked",
   },
   {
     num: "٠٣",
@@ -120,7 +119,7 @@ const units: Unit[] = [
 const totalLessons = units.reduce((s, u) => s + u.lessons, 0);
 const completedLessons = 0; // POC: لا يوجد درس مكتمل بعد
 const progressPct = Math.round((completedLessons / totalLessons) * 100);
-const availableLessons = 11; // الدرس الأول + ١٠ دروس الوحدة الثانية
+const availableLessons = 2; // الدرس ١ + الدرس ٢ (الأيام الأولى بعد التشخيص)
 
 function StatusBadge({ s }: { s: UnitStatus }) {
   if (s === "in-progress")

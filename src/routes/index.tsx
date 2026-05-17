@@ -65,7 +65,7 @@ const audience = [
 
 const modules = [
   { num: "٠١", title: "البداية والطمأنة", desc: "خمسة دروس لاحتواء صدمة التشخيص.", count: "٥ دروس", open: true },
-  { num: "٠٢", title: "الأيام الأولى بعد التشخيص", desc: "ماذا يجب أن يعرف ولي الأمر؟ ١٠ دروس عملية.", count: "١٠ دروس", open: true },
+  { num: "٠٢", title: "أهم ما يجب معرفته الآن", desc: "أساسيات اليوم الأول والتواصل مع الطبيب.", count: "٥ دروس", open: false },
   { num: "٠٣", title: "الإنسولين ببساطة", desc: "ما هو، أنواعه، أين يُحقن، وكيف يُحفظ.", count: "٥ دروس", open: false },
   { num: "٠٤", title: "قياس السكر وفهم القراءات", desc: "متى نقيس، وماذا تعني القراءات.", count: "٥ دروس", open: false },
   { num: "٠٥", title: "انخفاض السكر", desc: "العلامات والتصرّف بهدوء وسرعة.", count: "٥ دروس", open: false },
@@ -77,9 +77,9 @@ const modules = [
 ];
 
 const upcomingLessons = [
-  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true },
-  { num: "٠٢", title: "ما هو الإنسولين؟", desc: "لماذا يحتاجه الطفل، وكيف يعمل في الجسم.", duration: "٦ د", open: false },
-  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false },
+  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true, to: "/lesson/$id" as const, params: { id: "1" } },
+  { num: "٠٢", title: "الأيام الأولى بعد التشخيص", desc: "ماذا يجب أن يعرف ولي الأمر؟ الإنسولين، القياس، الحقن، والحقيبة اليومية.", duration: "١٠ د", open: true, to: "/module/first-days" as const, params: undefined },
+  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false, to: "/lesson/$id" as const, params: { id: "3" } },
 ];
 
 function HomePage() {
@@ -272,13 +272,19 @@ function HomePage() {
                     <Clock className="h-3 w-3" /> {l.duration}
                   </span>
                   {l.open && (
-                    <Link
-                      to="/lesson/$id"
-                      params={{ id: "1" }}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      ابدأ ←
-                    </Link>
+                    l.to === "/module/first-days" ? (
+                      <Link to="/module/first-days" className="font-medium text-primary hover:underline">
+                        ابدأ ←
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/lesson/$id"
+                        params={l.params ?? { id: "1" }}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        ابدأ ←
+                      </Link>
+                    )
                   )}
                 </div>
               </article>
