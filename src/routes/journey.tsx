@@ -29,6 +29,7 @@ type Unit = {
   days: string;
   status: UnitStatus;
   firstLessonId?: string;
+  moduleRoute?: "/module/first-days";
 };
 
 const units: Unit[] = [
@@ -43,11 +44,12 @@ const units: Unit[] = [
   },
   {
     num: "٠٢",
-    title: "أهم ما يجب معرفته الآن",
-    desc: "أساسيات اليوم الأول، علامات الخطر، والتواصل مع الفريق الطبي.",
-    lessons: 5,
+    title: "الأيام الأولى بعد التشخيص",
+    desc: "ماذا يجب أن يعرف ولي الأمر؟ — الإنسولين، القياس، الحقن، الحفظ، وحقيبة السكري.",
+    lessons: 10,
     days: "اليوم ٤ – ٦",
-    status: "locked",
+    status: "available",
+    moduleRoute: "/module/first-days",
   },
   {
     num: "٠٣",
@@ -118,7 +120,7 @@ const units: Unit[] = [
 const totalLessons = units.reduce((s, u) => s + u.lessons, 0);
 const completedLessons = 0; // POC: لا يوجد درس مكتمل بعد
 const progressPct = Math.round((completedLessons / totalLessons) * 100);
-const availableLessons = 1; // الدرس الأول جاهز
+const availableLessons = 11; // الدرس الأول + ١٠ دروس الوحدة الثانية
 
 function StatusBadge({ s }: { s: UnitStatus }) {
   if (s === "in-progress")
@@ -177,7 +179,15 @@ function UnitCard({ u, idx }: { u: Unit; idx: number }) {
             </span>
             <span>{u.lessons} دروس</span>
           </div>
-          {isActive && u.firstLessonId ? (
+          {isActive && u.moduleRoute ? (
+            <Link
+              to={u.moduleRoute}
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              ابدأ الوحدة
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+          ) : isActive && u.firstLessonId ? (
             <Link
               to="/lesson/$id"
               params={{ id: u.firstLessonId }}
