@@ -3,18 +3,18 @@ import { HeartHandshake, Sprout, Users } from "lucide-react";
 const items = [
   {
     icon: HeartHandshake,
-    title: "لستم وحدكم",
-    text: "آلاف العائلات حول العالم تعيش هذه الرحلة، وأطفالهم يكبرون أصحاء، يدرسون، يلعبون، ويحققون أحلامهم.",
+    title: "الخوف طبيعي",
+    text: "من الطبيعي أن تشعر بالخوف أو الحزن أو الارتباك بعد التشخيص — هذه مشاعر إنسانية صادقة.",
   },
   {
     icon: Sprout,
-    title: "ابنك سيكبر بصحة",
-    text: "بإذن الله، مع المتابعة الصحيحة، يستطيع ابنك أن يعيش حياة طبيعية تماماً — رياضة، سفر، دراسة، وكل ما يحب.",
+    title: "التعلم تدريجي",
+    text: "لا تحتاج أن تفهم كل شيء من اليوم الأول. ابدأ بالأساسيات، والتزم بتعليمات الطبيب، وتعلّم خطوة بخطوة.",
   },
   {
     icon: Users,
-    title: "فريق كامل معكم",
-    text: "طبيب الغدد، أخصائي التغذية، الممرضة المثقفة، والمدرسة — جميعهم شركاء في هذه الرحلة، ولن تواجهوها وحدكم.",
+    title: "حياة طبيعية بإذن الله",
+    text: "طفلك يستطيع أن يدرس، يلعب، يسافر، ويعيش حياة طبيعية كاملة بإذن الله.",
   },
 ];
 
@@ -22,9 +22,9 @@ export function ReassuranceSection() {
   return (
     <section className="space-y-6">
       <header className="text-center max-w-2xl mx-auto space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">قبل أن نبدأ… خذوا نفساً عميقاً</h2>
-        <p className="text-muted-foreground">
-          نعلم أن الخبر صعب، ومشاعركم الآن مزيج من القلق والحزن وكثير من الأسئلة. هذا طبيعي جداً.
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">أنت لست وحدك</h2>
+        <p className="text-muted-foreground leading-loose">
+          المطلوب الآن أن تعرف الأساسيات، تلتزم بتعليمات الطبيب، وتتعلم خطوة بخطوة — ونحن معك في كل خطوة.
         </p>
       </header>
       <div className="grid md:grid-cols-3 gap-4">
@@ -34,7 +34,7 @@ export function ReassuranceSection() {
             className="rounded-2xl border border-border bg-card p-6 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] transition-shadow"
           >
             <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mint/40 text-mint-foreground mb-4">
-              <it.icon className="h-5.5 w-5.5" strokeWidth={2} />
+              <it.icon className="h-5 w-5" strokeWidth={2} />
             </div>
             <h3 className="font-semibold text-lg mb-2">{it.title}</h3>
             <p className="text-sm text-muted-foreground leading-loose">{it.text}</p>
