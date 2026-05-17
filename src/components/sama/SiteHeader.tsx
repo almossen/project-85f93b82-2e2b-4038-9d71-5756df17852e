@@ -24,8 +24,15 @@ export function SiteHeader() {
             الرئيسية
           </Link>
           <Link
-            to="/path"
+            to="/journey"
             className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
+          >
+            رحلة ٣٠ يوم
+          </Link>
+          <Link
+            to="/path"
+            className="hidden sm:inline-block rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
           >
             مسار التعلم
