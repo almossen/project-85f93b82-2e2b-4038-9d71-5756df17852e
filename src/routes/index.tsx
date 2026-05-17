@@ -108,7 +108,7 @@ function HomePage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/path"
+                  to="/journey"
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
                 >
                   ابدأ رحلة أول ٣٠ يوم
@@ -207,7 +207,7 @@ function HomePage() {
                 عشر وحدات تعليمية مرتّبة بحسب احتياج الأسرة في الأسابيع الأولى بعد التشخيص.
               </p>
             </div>
-            <Link to="/path" className="text-sm font-medium text-primary hover:underline">
+            <Link to="/journey" className="text-sm font-medium text-primary hover:underline">
               عرض الرحلة الكاملة ←
             </Link>
           </header>

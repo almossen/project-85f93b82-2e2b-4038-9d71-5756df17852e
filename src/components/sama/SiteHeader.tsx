@@ -31,13 +31,6 @@ export function SiteHeader() {
             رحلة ٣٠ يوم
           </Link>
           <Link
-            to="/path"
-            className="hidden sm:inline-block rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
-          >
-            مسار التعلم
-          </Link>
-          <Link
             to="/lesson/$id"
             params={{ id: "1" }}
             className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
