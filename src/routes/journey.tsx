@@ -29,6 +29,7 @@ type Unit = {
   days: string;
   status: UnitStatus;
   firstLessonId?: string;
+  moduleRoute?: "/module/first-days";
 };
 
 const units: Unit[] = [
