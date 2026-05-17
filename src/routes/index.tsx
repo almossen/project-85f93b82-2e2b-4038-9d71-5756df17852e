@@ -77,9 +77,9 @@ const modules = [
 ];
 
 const upcomingLessons = [
-  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true },
-  { num: "٠٢", title: "ما هو الإنسولين؟", desc: "لماذا يحتاجه الطفل، وكيف يعمل في الجسم.", duration: "٦ د", open: false },
-  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false },
+  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true, to: "/lesson/$id" as const, params: { id: "1" } },
+  { num: "٠٢", title: "الأيام الأولى بعد التشخيص", desc: "ماذا يجب أن يعرف ولي الأمر؟ الإنسولين، القياس، الحقن، والحقيبة اليومية.", duration: "١٠ د", open: true, to: "/module/first-days" as const, params: undefined },
+  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false, to: "/lesson/$id" as const, params: { id: "3" } },
 ];
 
 function HomePage() {
