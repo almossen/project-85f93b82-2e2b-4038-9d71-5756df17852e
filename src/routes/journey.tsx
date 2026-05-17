@@ -179,7 +179,15 @@ function UnitCard({ u, idx }: { u: Unit; idx: number }) {
             </span>
             <span>{u.lessons} دروس</span>
           </div>
-          {isActive && u.firstLessonId ? (
+          {isActive && u.moduleRoute ? (
+            <Link
+              to={u.moduleRoute}
+              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              ابدأ الوحدة
+              <ArrowLeft className="h-4 w-4" />
+            </Link>
+          ) : isActive && u.firstLessonId ? (
             <Link
               to="/lesson/$id"
               params={{ id: u.firstLessonId }}
