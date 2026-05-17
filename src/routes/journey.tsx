@@ -49,6 +49,7 @@ const units: Unit[] = [
     lessons: 10,
     days: "اليوم ٤ – ٦",
     status: "available",
+    moduleRoute: "/module/first-days",
   },
   {
     num: "٠٣",
