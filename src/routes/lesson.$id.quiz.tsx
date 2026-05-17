@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
+import { MythsSection } from "@/components/sama/MythsSection";
 
 type Q = { q: string; options: string[]; correct: number; why: string };
 
@@ -87,7 +88,8 @@ function QuizPage() {
           </div>
         </section>
 
-        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14 space-y-8">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6 py-10 sm:py-14 space-y-12">
+          <MythsSection />
           <div className="space-y-5">
             {questions.map((q, i) => (
               <div key={i} className="rounded-2xl border border-border bg-card p-5 sm:p-6 shadow-[var(--shadow-card)]">
