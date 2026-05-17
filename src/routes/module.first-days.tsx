@@ -302,7 +302,7 @@ function ModuleFirstDays() {
           <div className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16 text-right space-y-5">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
-                الوحدة ٠٢ — بعد الدرس الأول
+                الدرس ٠٢ — الوحدة الأولى
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-card/80 backdrop-blur border border-border px-3 py-1 text-xs font-medium">
                 <ShieldCheck className="h-3.5 w-3.5 text-primary" />
