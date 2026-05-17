@@ -5,24 +5,24 @@ type Myth = { claim: string; truth: boolean; explanation: string };
 
 const myths: Myth[] = [
   {
-    claim: "ابني أصيب بالسكري لأنه أكل حلوى كثيرة.",
+    claim: "سكري النوع الأول يحدث بسبب أكل الحلويات.",
     truth: false,
-    explanation: "سكري النوع الأول ليس سببه السكر أو الأكل، بل توقّف البنكرياس عن إنتاج الإنسولين لأسباب مناعية.",
+    explanation: "خطأ. سكري النوع الأول ليس بسبب أكل الحلويات؛ هو حالة مناعية يتوقّف فيها البنكرياس عن إنتاج الإنسولين.",
   },
   {
-    claim: "ابني لن يستطيع ممارسة الرياضة بعد اليوم.",
+    claim: "الأب أو الأم هم السبب في إصابة الطفل.",
     truth: false,
-    explanation: "الرياضة جزء مهم من حياته الصحية، وكثير من الرياضيين العالميين مصابون بالنوع الأول.",
+    explanation: "خطأ. المرض ليس بسبب تقصير الوالدين، ولا علاقة له بطريقة التربية أو الرعاية.",
   },
   {
-    claim: "سيحتاج ابني إلى الإنسولين طوال حياته.",
+    claim: "الطفل المصاب يحتاج إلى الإنسولين.",
     truth: true,
-    explanation: "نعم، لأن البنكرياس لا ينتج إنسولين، لكن مع التطور الطبي أصبح أسهل وأكثر دقة.",
+    explanation: "صحيح. الإنسولين علاج أساسي يحدده الطبيب، ولا يمكن للطفل الاستغناء عنه.",
   },
   {
-    claim: "السكري معدٍ، ويجب عزل ابني عن أصدقائه.",
-    truth: false,
-    explanation: "السكري ليس مرضاً معدياً مطلقاً، ولا يجب عزل الطفل اجتماعياً.",
+    claim: "يمكن للطفل المصاب أن يدرس ويلعب ويعيش حياته.",
+    truth: true,
+    explanation: "صحيح. مع المتابعة والتعلم يستطيع الطفل أن يعيش حياة نشطة وطبيعية بإذن الله.",
   },
 ];
 
@@ -38,22 +38,22 @@ function MythCard({ myth, idx }: { myth: Myth; idx: number }) {
       {!flipped ? (
         <>
           <div className="flex items-center justify-between mb-3">
-            <span className="text-xs font-medium text-muted-foreground">معتقد شائع #{idx + 1}</span>
+            <span className="text-xs font-medium text-muted-foreground">بطاقة #{idx + 1}</span>
             <RotateCcw className="h-4 w-4 text-muted-foreground group-hover:text-primary transition-colors" />
           </div>
           <p className="text-base leading-loose">«{myth.claim}»</p>
-          <p className="text-xs text-primary mt-3 font-medium">اضغط لمعرفة الإجابة ←</p>
+          <p className="text-xs text-primary mt-3 font-medium">صح أم خطأ؟ اضغط لكشف الإجابة ←</p>
         </>
       ) : (
         <>
           <div className="flex items-center gap-2 mb-3">
             {myth.truth ? (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-success/15 text-success px-2.5 py-1 text-xs font-semibold">
-                <Check className="h-3.5 w-3.5" /> صحيح
+                <Check className="h-3.5 w-3.5" /> صح
               </span>
             ) : (
               <span className="inline-flex items-center gap-1.5 rounded-full bg-destructive/15 text-destructive px-2.5 py-1 text-xs font-semibold">
-                <X className="h-3.5 w-3.5" /> غير صحيح
+                <X className="h-3.5 w-3.5" /> خطأ
               </span>
             )}
           </div>
@@ -69,7 +69,7 @@ export function MythsSection() {
   return (
     <section className="space-y-6">
       <header className="text-center max-w-2xl mx-auto space-y-2">
-        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">معتقدات شائعة — صح أم خطأ؟</h2>
+        <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">معلومة مهمة: أنتم لستم السبب</h2>
         <p className="text-muted-foreground">اضغط على البطاقة لكشف الإجابة العلمية.</p>
       </header>
       <div className="grid sm:grid-cols-2 gap-4">

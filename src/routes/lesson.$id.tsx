@@ -7,7 +7,7 @@ import { FaithSection } from "@/components/sama/FaithSection";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
 import { DiabetesExplanation } from "@/components/sama/DiabetesExplanation";
 import { MythsSection } from "@/components/sama/MythsSection";
-import { LearningPath } from "@/components/sama/LearningPath";
+import { WhatToLearnFirst } from "@/components/sama/WhatToLearnFirst";
 import { VideoScript } from "@/components/sama/VideoScript";
 import { SimplifiedVersion } from "@/components/sama/SimplifiedVersion";
 import { Quiz } from "@/components/sama/Quiz";
@@ -22,8 +22,12 @@ import { FamilyStory } from "@/components/sama/FamilyStory";
 export const Route = createFileRoute("/lesson/$id")({
   head: () => ({
     meta: [
-      { title: "الدرس الأول: فهم المرض — سما" },
-      { name: "description", content: "الدرس الأول من منصة سما — ما هو سكري النوع الأول، بلغة مبسّطة ومحتوى مراجَع طبياً." },
+      { title: "الدرس الأول: بداية الرحلة مع سكري النوع الأول — سما" },
+      {
+        name: "description",
+        content:
+          "الدرس الأول من منصة سما — بداية الرحلة مع سكري النوع الأول: افتتاح إيماني، شرح مبسّط، وتصحيح للمفاهيم الشائعة بمحتوى بانتظار الاعتماد الطبي.",
+      },
     ],
   }),
   component: LessonPage,
@@ -41,7 +45,7 @@ function LessonPage() {
           <div className="relative mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16 text-right space-y-5">
             <div className="flex items-center gap-2 flex-wrap">
               <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-semibold">
-                المحطة ٠١
+                الدرس ٠١ — الوحدة الأولى
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-card/80 backdrop-blur border border-border px-3 py-1 text-xs font-medium">
                 <ShieldCheck className="h-3.5 w-3.5 text-primary" />
@@ -53,14 +57,14 @@ function LessonPage() {
               </span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.2]">
-              فهم المرض: ما هو سكري النوع الأول؟
+              بداية الرحلة مع سكري النوع الأول
             </h1>
             <p className="text-base sm:text-lg text-muted-foreground leading-loose max-w-2xl">
-              درس مبسّط لأهالي الأطفال المُشخَّصين حديثاً. سنبدأ بوقفة هادئة، ثم نشرح ما يحدث داخل جسم ابنكم، ونكسر بعض المعتقدات الشائعة — كل ذلك في خمس دقائق فقط.
+              درس مبسّط لأهالي الأطفال المُشخَّصين حديثاً. نبدأ بوقفة إيمانية هادئة، ثم نشرح ما يحدث داخل جسم ابنكم، ونصحّح بعض المفاهيم الشائعة — كل ذلك في خمس دقائق فقط.
             </p>
             <div className="flex flex-wrap gap-3 pt-2">
               <a
-                href="#explanation"
+                href="#faith"
                 className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
               >
                 <Play className="h-4 w-4 fill-current" />
@@ -78,19 +82,38 @@ function LessonPage() {
         </section>
 
         <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16 space-y-16">
-          <FaithSection />
+          {/* 1. الافتتاح الإيماني */}
+          <div id="faith"><FaithSection /></div>
+
+          {/* 2. رسالة الطمأنة */}
           <ReassuranceSection />
+
+          {/* 3. الشرح الطبي المبسط */}
           <div id="explanation"><DiabetesExplanation /></div>
+
+          {/* 4. تصحيح المفاهيم */}
           <MythsSection />
+
+          {/* 5. ماذا نتعلم أولاً؟ */}
+          <WhatToLearnFirst />
+
+          {/* 6. نص الفيديو القصير */}
+          <VideoScript />
+
+          {/* 7. النسخة المبسطة */}
+          <div id="simplified"><SimplifiedVersion /></div>
+
+          {/* 8. اختبار نهاية الدرس */}
+          <Quiz />
+
+          {/* 9. ملخص الدرس + 10. الدرس القادم */}
+          <LessonSummary />
+
+          {/* أقسام داعمة إضافية */}
           <WarningSigns />
           <FamilyStory />
-          <LearningPath compact />
-          <VideoScript />
-          <div id="simplified"><SimplifiedVersion /></div>
           <Glossary />
           <Faq />
-          <Quiz />
-          <LessonSummary />
           <Sources />
           <AskDoctorReminder />
         </div>

@@ -8,15 +8,28 @@ export function FaithSection() {
           <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-sand-foreground">
             وقفة إيمانية
           </span>
-          <blockquote className="space-y-4">
-            <p className="font-quranic text-2xl sm:text-3xl leading-[2.1] text-sand-foreground">
-              ﴿ وَبَشِّرِ الصَّابِرِينَ ۝ الَّذِينَ إِذَا أَصَابَتْهُم مُّصِيبَةٌ قَالُوا إِنَّا لِلَّهِ وَإِنَّا إِلَيْهِ رَاجِعُونَ ﴾
+          <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-sand-foreground leading-snug">
+            أولاً: هذا ابتلاء… ومعه لطف الله
+          </h2>
+          <div className="space-y-3 text-sm sm:text-base text-sand-foreground/90 leading-loose">
+            <p>
+              قد يكون خبر إصابة طفلك بسكري النوع الأول صعباً على قلبك. وقد تسأل: لماذا طفلي؟ ولماذا نحن؟
             </p>
-            <footer className="text-sm text-sand-foreground/80">— سورة البقرة، الآيتان ١٥٥–١٥٦</footer>
+            <p>
+              في هذه اللحظة، تذكّر أن ما أصابنا لم يكن ليخطئنا، وأن أمر المؤمن كله خير إذا صبر واحتسب وأخذ بالأسباب.
+            </p>
+            <p>
+              والصبر لا يعني أن نبقى عاجزين أو خائفين، بل يعني أن نثبت، ونتعلم، ونسأل، ونعمل بما ينفع طفلنا.
+            </p>
+            <p>
+              الإيمان بالقضاء والقدر لا يلغي العلاج، بل يقوّي القلب على الالتزام به. سكري النوع الأول ليس عقوبة، وليس دليلاً على تقصير الوالدين.
+            </p>
+          </div>
+          <blockquote className="rounded-2xl bg-white/70 border border-sand p-5 mt-2">
+            <p className="font-quranic text-xl sm:text-2xl leading-[2] text-sand-foreground text-center">
+              «نؤمن بقضاء الله، ونأخذ بالأسباب، ونتعلم لنحمي أبناءنا.»
+            </p>
           </blockquote>
-          <p className="text-sm sm:text-base text-sand-foreground/90 leading-loose">
-            ما أصاب ابنك ليس عقوبة، بل ابتلاء يرفع الله به الدرجات ويكفّر به الخطايا. ثقوا أن الله اختار لكم رحلةً ستنبت فيها ثمارٌ من الصبر والوعي والقرب منه سبحانه.
-          </p>
         </div>
         <div className="relative">
           <img
