@@ -525,23 +525,13 @@ function ModuleFirstDays() {
                   </div>
                   <h3 className="font-bold text-lg leading-snug">إنسولين سريع المفعول</h3>
                   <p className="text-sm text-muted-foreground leading-loose">
-                    يُستخدم عند الوجبات بتوجيه الطبيب. من الأسماء التجارية الشائعة:
+                    يُستخدم عند الوجبات بتوجيه الطبيب. اضغط على الاسم لرؤية صورة القلم:
                   </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {[
-                      "Humalog — هيومالوج",
-                      "NovoRapid — نوفورابيد",
-                      "Apidra — أبيدرا",
-                      "Fiasp — فياسب",
-                    ].map((b) => (
-                      <li
-                        key={b}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
-                      >
-                        {b}
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {rapidBrands.map((b) => (
+                      <BrandChip key={b.name} brand={b} />
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </article>
 
@@ -566,23 +556,13 @@ function ModuleFirstDays() {
                   </div>
                   <h3 className="font-bold text-lg leading-snug">إنسولين طويل المفعول</h3>
                   <p className="text-sm text-muted-foreground leading-loose">
-                    يُعطى في وقت ثابت يومياً ليؤمّن حاجة الجسم الأساسية. من الأسماء التجارية الشائعة:
+                    يُعطى في وقت ثابت يومياً ليؤمّن حاجة الجسم الأساسية. اضغط على الاسم لرؤية صورة القلم:
                   </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {[
-                      "Lantus — لانتوس",
-                      "Toujeo — توجيو",
-                      "Levemir — ليفيمير",
-                      "Tresiba — تريسيبا",
-                    ].map((b) => (
-                      <li
-                        key={b}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
-                      >
-                        {b}
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {longBrands.map((b) => (
+                      <BrandChip key={b.name} brand={b} />
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </article>
             </div>
