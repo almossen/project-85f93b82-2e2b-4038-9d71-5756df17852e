@@ -18,6 +18,7 @@ import { WarningSigns } from "@/components/sama/WarningSigns";
 import { Glossary } from "@/components/sama/Glossary";
 import { Faq } from "@/components/sama/Faq";
 import { FamilyStory } from "@/components/sama/FamilyStory";
+import { AudioLesson } from "@/components/sama/AudioLesson";
 
 export const Route = createFileRoute("/lesson/$id")({
   head: () => ({
@@ -71,17 +72,20 @@ function LessonPage() {
                 ابدأ الدرس
               </a>
               <a
-                href="#simplified"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
+                href="#audio-lesson"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card px-6 py-3 text-base font-semibold text-primary hover:bg-primary/10 transition-colors"
               >
                 <Headphones className="h-4 w-4" />
-                استمع للنسخة المبسّطة
+                ابدأ الدرس صوتياً
               </a>
             </div>
           </div>
         </section>
 
         <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+          {/* 0. الدرس صوتياً */}
+          <AudioLesson />
+
           {/* 1. الافتتاح الإيماني */}
           <div id="faith"><FaithSection /></div>
 
