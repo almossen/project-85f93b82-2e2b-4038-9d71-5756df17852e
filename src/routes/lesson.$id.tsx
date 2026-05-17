@@ -72,11 +72,11 @@ function LessonPage() {
                 ابدأ الدرس
               </a>
               <a
-                href="#simplified"
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
+                href="#audio-lesson"
+                className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card px-6 py-3 text-base font-semibold text-primary hover:bg-primary/10 transition-colors"
               >
                 <Headphones className="h-4 w-4" />
-                استمع للنسخة المبسّطة
+                ابدأ الدرس صوتياً
               </a>
             </div>
           </div>
