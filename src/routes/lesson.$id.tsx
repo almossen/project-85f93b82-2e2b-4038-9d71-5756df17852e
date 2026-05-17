@@ -6,7 +6,7 @@ import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { FaithSection } from "@/components/sama/FaithSection";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
 import { DiabetesExplanation } from "@/components/sama/DiabetesExplanation";
-import { MythsSection } from "@/components/sama/MythsSection";
+
 import { WhatToLearnFirst } from "@/components/sama/WhatToLearnFirst";
 import { VideoScript } from "@/components/sama/VideoScript";
 import { SimplifiedVersion } from "@/components/sama/SimplifiedVersion";
@@ -95,8 +95,6 @@ function LessonPage() {
           {/* 3. الشرح الطبي المبسط */}
           <div id="explanation"><DiabetesExplanation /></div>
 
-          {/* 4. تصحيح المفاهيم */}
-          <MythsSection />
 
           {/* 5. ماذا نتعلم أولاً؟ */}
           <WhatToLearnFirst />

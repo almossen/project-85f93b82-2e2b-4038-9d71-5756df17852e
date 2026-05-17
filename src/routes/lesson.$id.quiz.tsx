@@ -4,6 +4,7 @@ import { useState } from "react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
+import { MythsSection } from "@/components/sama/MythsSection";
 
 type Q = { q: string; options: string[]; correct: number; why: string };
 
