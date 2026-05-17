@@ -1,4 +1,5 @@
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 const points = [
   "سكري النوع الأول يعني أن الجسم لا ينتج الإنسولين الكافي.",
@@ -27,19 +28,20 @@ export function LessonSummary() {
       <div className="rounded-3xl bg-card border border-border p-6 sm:p-8 space-y-3 flex flex-col justify-between shadow-[var(--shadow-card)]">
         <div className="space-y-2">
           <span className="inline-block text-xs font-medium text-muted-foreground">الدرس القادم</span>
-          <h3 className="text-lg font-bold">ما هو الإنسولين؟ ولماذا يحتاجه الطفل؟</h3>
+          <h3 className="text-lg font-bold">الأيام الأولى بعد التشخيص</h3>
           <p className="text-sm text-muted-foreground leading-loose">
-            نتعرّف على دور الإنسولين في الجسم، أنواعه السريع والطويل، وكيف يُحفظ ويُحقن بطريقة صحيحة.
+            ماذا يجب أن يعرف ولي الأمر؟ الإنسولين، القياس، الحقن، الحفظ، وحقيبة السكري — في درس عملي مبسّط.
           </p>
         </div>
-        <button
-          type="button"
+        <Link
+          to="/module/first-days"
           className="inline-flex items-center justify-center gap-2 rounded-full bg-foreground text-background px-5 py-2.5 text-sm font-semibold hover:opacity-90 transition-opacity"
         >
           انتقل للدرس الثاني
           <ArrowLeft className="h-4 w-4" />
-        </button>
+        </Link>
       </div>
     </section>
   );
 }
+
