@@ -36,11 +36,12 @@ const units: Unit[] = [
   {
     num: "٠١",
     title: "البداية والطمأنة",
-    desc: "البداية الإيمانية، ثم الأيام الأولى بعد التشخيص وما يحتاج ولي الأمر معرفته.",
+    desc: "البداية الإيمانية، ثم الأيام الأولى بعد التشخيص — الإنسولين وأنواعه التجارية، القياس، الحقن، والحقيبة اليومية.",
     lessons: 5,
     days: "اليوم ١ – ٣",
     status: "in-progress",
     firstLessonId: "1",
+    moduleRoute: "/module/first-days",
   },
   {
     num: "٠٢",
@@ -178,23 +179,28 @@ function UnitCard({ u, idx }: { u: Unit; idx: number }) {
             </span>
             <span>{u.lessons} دروس</span>
           </div>
-          {isActive && u.moduleRoute ? (
-            <Link
-              to={u.moduleRoute}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              ابدأ الوحدة
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
-          ) : isActive && u.firstLessonId ? (
-            <Link
-              to="/lesson/$id"
-              params={{ id: u.firstLessonId }}
-              className="mt-5 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-            >
-              ابدأ الوحدة
-              <ArrowLeft className="h-4 w-4" />
-            </Link>
+          {isActive && (u.firstLessonId || u.moduleRoute) ? (
+            <div className="mt-5 flex flex-wrap gap-2">
+              {u.firstLessonId ? (
+                <Link
+                  to="/lesson/$id"
+                  params={{ id: u.firstLessonId }}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  الدرس الأول
+                  <ArrowLeft className="h-4 w-4" />
+                </Link>
+              ) : null}
+              {u.moduleRoute ? (
+                <Link
+                  to={u.moduleRoute}
+                  className="inline-flex items-center gap-2 rounded-full border border-primary/40 bg-card px-5 py-2.5 text-sm font-semibold text-primary hover:bg-primary/10 transition-colors"
+                >
+                  الدرس الثاني — الإنسولين والأدوات
+                  <ArrowLeft className="h-4 w-4" />
+                </Link>
+              ) : null}
+            </div>
           ) : null}
         </div>
       </div>
