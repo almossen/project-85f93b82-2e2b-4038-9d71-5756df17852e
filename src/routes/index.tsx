@@ -272,13 +272,19 @@ function HomePage() {
                     <Clock className="h-3 w-3" /> {l.duration}
                   </span>
                   {l.open && (
-                    <Link
-                      to="/lesson/$id"
-                      params={{ id: "1" }}
-                      className="font-medium text-primary hover:underline"
-                    >
-                      ابدأ ←
-                    </Link>
+                    l.to === "/module/first-days" ? (
+                      <Link to="/module/first-days" className="font-medium text-primary hover:underline">
+                        ابدأ ←
+                      </Link>
+                    ) : (
+                      <Link
+                        to="/lesson/$id"
+                        params={l.params ?? { id: "1" }}
+                        className="font-medium text-primary hover:underline"
+                      >
+                        ابدأ ←
+                      </Link>
+                    )
                   )}
                 </div>
               </article>
