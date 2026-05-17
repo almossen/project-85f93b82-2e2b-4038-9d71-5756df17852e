@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuizIdRouteImport } from './routes/quiz.$id'
+import { Route as ModuleFirstDaysRouteImport } from './routes/module.first-days'
 import { Route as LessonIdRouteImport } from './routes/lesson.$id'
 
 const JourneyRoute = JourneyRouteImport.update({
@@ -29,6 +30,11 @@ const QuizIdRoute = QuizIdRouteImport.update({
   path: '/quiz/$id',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ModuleFirstDaysRoute = ModuleFirstDaysRouteImport.update({
+  id: '/module/first-days',
+  path: '/module/first-days',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const LessonIdRoute = LessonIdRouteImport.update({
   id: '/lesson/$id',
   path: '/lesson/$id',
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/lesson/$id': typeof LessonIdRoute
+  '/module/first-days': typeof ModuleFirstDaysRoute
   '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/lesson/$id': typeof LessonIdRoute
+  '/module/first-days': typeof ModuleFirstDaysRoute
   '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesById {
@@ -52,20 +60,33 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
   '/lesson/$id': typeof LessonIdRoute
+  '/module/first-days': typeof ModuleFirstDaysRoute
   '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
+  fullPaths:
+    | '/'
+    | '/journey'
+    | '/lesson/$id'
+    | '/module/first-days'
+    | '/quiz/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
-  id: '__root__' | '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
+  to: '/' | '/journey' | '/lesson/$id' | '/module/first-days' | '/quiz/$id'
+  id:
+    | '__root__'
+    | '/'
+    | '/journey'
+    | '/lesson/$id'
+    | '/module/first-days'
+    | '/quiz/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   JourneyRoute: typeof JourneyRoute
   LessonIdRoute: typeof LessonIdRoute
+  ModuleFirstDaysRoute: typeof ModuleFirstDaysRoute
   QuizIdRoute: typeof QuizIdRoute
 }
 
@@ -92,6 +113,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof QuizIdRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/module/first-days': {
+      id: '/module/first-days'
+      path: '/module/first-days'
+      fullPath: '/module/first-days'
+      preLoaderRoute: typeof ModuleFirstDaysRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/lesson/$id': {
       id: '/lesson/$id'
       path: '/lesson/$id'
@@ -106,6 +134,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   JourneyRoute: JourneyRoute,
   LessonIdRoute: LessonIdRoute,
+  ModuleFirstDaysRoute: ModuleFirstDaysRoute,
   QuizIdRoute: QuizIdRoute,
 }
 export const routeTree = rootRouteImport
