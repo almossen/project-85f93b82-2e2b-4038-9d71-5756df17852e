@@ -18,6 +18,7 @@ import { WarningSigns } from "@/components/sama/WarningSigns";
 import { Glossary } from "@/components/sama/Glossary";
 import { Faq } from "@/components/sama/Faq";
 import { FamilyStory } from "@/components/sama/FamilyStory";
+import { AudioLesson } from "@/components/sama/AudioLesson";
 
 export const Route = createFileRoute("/lesson/$id")({
   head: () => ({
