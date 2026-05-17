@@ -83,6 +83,9 @@ function LessonPage() {
         </section>
 
         <div className="mx-auto max-w-4xl px-4 sm:px-6 py-12 sm:py-16 space-y-16">
+          {/* 0. الدرس صوتياً */}
+          <AudioLesson />
+
           {/* 1. الافتتاح الإيماني */}
           <div id="faith"><FaithSection /></div>
 
