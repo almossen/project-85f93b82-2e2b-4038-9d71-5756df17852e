@@ -14,6 +14,10 @@ import { Quiz } from "@/components/sama/Quiz";
 import { LessonSummary } from "@/components/sama/LessonSummary";
 import { Sources } from "@/components/sama/Sources";
 import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
+import { WarningSigns } from "@/components/sama/WarningSigns";
+import { Glossary } from "@/components/sama/Glossary";
+import { Faq } from "@/components/sama/Faq";
+import { FamilyStory } from "@/components/sama/FamilyStory";
 
 export const Route = createFileRoute("/lesson/$id")({
   head: () => ({
@@ -78,9 +82,13 @@ function LessonPage() {
           <ReassuranceSection />
           <div id="explanation"><DiabetesExplanation /></div>
           <MythsSection />
+          <WarningSigns />
+          <FamilyStory />
           <LearningPath compact />
           <VideoScript />
           <div id="simplified"><SimplifiedVersion /></div>
+          <Glossary />
+          <Faq />
           <Quiz />
           <LessonSummary />
           <Sources />
