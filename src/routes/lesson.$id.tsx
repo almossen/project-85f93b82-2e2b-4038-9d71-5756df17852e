@@ -1,5 +1,5 @@
-import { createFileRoute } from "@tanstack/react-router";
-import { Clock, ShieldCheck, Play, Headphones } from "lucide-react";
+import { createFileRoute, Link } from "@tanstack/react-router";
+import { Clock, ShieldCheck, Play, Headphones, ArrowLeft } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
@@ -10,7 +10,6 @@ import { MythsSection } from "@/components/sama/MythsSection";
 import { WhatToLearnFirst } from "@/components/sama/WhatToLearnFirst";
 import { VideoScript } from "@/components/sama/VideoScript";
 import { SimplifiedVersion } from "@/components/sama/SimplifiedVersion";
-import { Quiz } from "@/components/sama/Quiz";
 import { LessonSummary } from "@/components/sama/LessonSummary";
 import { Sources } from "@/components/sama/Sources";
 import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
