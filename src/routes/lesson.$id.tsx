@@ -34,6 +34,7 @@ export const Route = createFileRoute("/lesson/$id")({
 });
 
 function LessonPage() {
+  const { id } = Route.useParams();
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <DisclaimerBanner />
