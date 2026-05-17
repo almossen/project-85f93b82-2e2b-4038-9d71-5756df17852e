@@ -33,6 +33,72 @@ import {
 } from "@/components/ui/accordion";
 import insulinRapidImg from "@/assets/insulin-rapid.jpg";
 import insulinLongImg from "@/assets/insulin-long.jpg";
+import penHumalog from "@/assets/pen-humalog.jpg";
+import penNovorapid from "@/assets/pen-novorapid.jpg";
+import penApidra from "@/assets/pen-apidra.jpg";
+import penFiasp from "@/assets/pen-fiasp.jpg";
+import penLantus from "@/assets/pen-lantus.jpg";
+import penToujeo from "@/assets/pen-toujeo.jpg";
+import penLevemir from "@/assets/pen-levemir.jpg";
+import penTresiba from "@/assets/pen-tresiba.jpg";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+
+type BrandInfo = { name: string; ar: string; img: string; note: string };
+
+const rapidBrands: BrandInfo[] = [
+  { name: "Humalog", ar: "هيومالوج", img: penHumalog, note: "إنسولين ليسبرو — سريع المفعول، يُعطى عند الوجبات بتوجيه الطبيب." },
+  { name: "NovoRapid", ar: "نوفورابيد", img: penNovorapid, note: "إنسولين أسبارت — سريع المفعول، شائع الاستخدام عند الوجبات." },
+  { name: "Apidra", ar: "أبيدرا", img: penApidra, note: "إنسولين جلوليزين — سريع المفعول." },
+  { name: "Fiasp", ar: "فياسب", img: penFiasp, note: "أسبارت فائق السرعة — يبدأ مفعوله أسرع من نوفورابيد." },
+];
+
+const longBrands: BrandInfo[] = [
+  { name: "Lantus", ar: "لانتوس", img: penLantus, note: "إنسولين جلارجين U-100 — طويل المفعول، مرة يومياً غالباً." },
+  { name: "Toujeo", ar: "توجيو", img: penToujeo, note: "إنسولين جلارجين U-300 — مركّز أكثر ومفعول أطول." },
+  { name: "Levemir", ar: "ليفيمير", img: penLevemir, note: "إنسولين ديتيمير — طويل المفعول، قد يُعطى مرة أو مرتين يومياً." },
+  { name: "Tresiba", ar: "تريسيبا", img: penTresiba, note: "إنسولين ديجلوديك — مفعول يمتد لأكثر من ٢٤ ساعة." },
+];
+
+function BrandChip({ brand }: { brand: BrandInfo }) {
+  return (
+    <Dialog>
+      <DialogTrigger asChild>
+        <button
+          type="button"
+          className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium hover:bg-primary-soft hover:border-primary/40 hover:text-primary transition-colors cursor-pointer"
+        >
+          {brand.name} — {brand.ar}
+        </button>
+      </DialogTrigger>
+      <DialogContent className="max-w-md">
+        <DialogHeader className="text-right">
+          <DialogTitle>{brand.name} — {brand.ar}</DialogTitle>
+          <DialogDescription className="leading-loose">{brand.note}</DialogDescription>
+        </DialogHeader>
+        <div className="rounded-2xl overflow-hidden border border-border bg-muted/30">
+          <img
+            src={brand.img}
+            alt={`رسم توضيحي لقلم ${brand.ar}`}
+            width={768}
+            height={512}
+            loading="lazy"
+            className="w-full h-auto object-contain"
+          />
+        </div>
+        <p className="text-[11px] text-muted-foreground text-right leading-loose">
+          الصورة توضيحية فقط ولا تمثّل تصميم العلامة التجارية الفعلي. اختيار النوع قرار طبي.
+        </p>
+      </DialogContent>
+    </Dialog>
+  );
+}
 
 export const Route = createFileRoute("/module/first-days")({
   head: () => ({
@@ -459,23 +525,13 @@ function ModuleFirstDays() {
                   </div>
                   <h3 className="font-bold text-lg leading-snug">إنسولين سريع المفعول</h3>
                   <p className="text-sm text-muted-foreground leading-loose">
-                    يُستخدم عند الوجبات بتوجيه الطبيب. من الأسماء التجارية الشائعة:
+                    يُستخدم عند الوجبات بتوجيه الطبيب. اضغط على الاسم لرؤية صورة القلم:
                   </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {[
-                      "Humalog — هيومالوج",
-                      "NovoRapid — نوفورابيد",
-                      "Apidra — أبيدرا",
-                      "Fiasp — فياسب",
-                    ].map((b) => (
-                      <li
-                        key={b}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
-                      >
-                        {b}
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {rapidBrands.map((b) => (
+                      <BrandChip key={b.name} brand={b} />
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </article>
 
@@ -500,23 +556,13 @@ function ModuleFirstDays() {
                   </div>
                   <h3 className="font-bold text-lg leading-snug">إنسولين طويل المفعول</h3>
                   <p className="text-sm text-muted-foreground leading-loose">
-                    يُعطى في وقت ثابت يومياً ليؤمّن حاجة الجسم الأساسية. من الأسماء التجارية الشائعة:
+                    يُعطى في وقت ثابت يومياً ليؤمّن حاجة الجسم الأساسية. اضغط على الاسم لرؤية صورة القلم:
                   </p>
-                  <ul className="flex flex-wrap gap-2">
-                    {[
-                      "Lantus — لانتوس",
-                      "Toujeo — توجيو",
-                      "Levemir — ليفيمير",
-                      "Tresiba — تريسيبا",
-                    ].map((b) => (
-                      <li
-                        key={b}
-                        className="rounded-full border border-border bg-background px-3 py-1 text-xs font-medium"
-                      >
-                        {b}
-                      </li>
+                  <div className="flex flex-wrap gap-2">
+                    {longBrands.map((b) => (
+                      <BrandChip key={b.name} brand={b} />
                     ))}
-                  </ul>
+                  </div>
                 </div>
               </article>
             </div>
