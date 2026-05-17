@@ -9,17 +9,11 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as PathRouteImport } from './routes/path'
 import { Route as JourneyRouteImport } from './routes/journey'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuizIdRouteImport } from './routes/quiz.$id'
 import { Route as LessonIdRouteImport } from './routes/lesson.$id'
 
-const PathRoute = PathRouteImport.update({
-  id: '/path',
-  path: '/path',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const JourneyRoute = JourneyRouteImport.update({
   id: '/journey',
   path: '/journey',
@@ -44,14 +38,12 @@ const LessonIdRoute = LessonIdRouteImport.update({
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
-  '/path': typeof PathRoute
   '/lesson/$id': typeof LessonIdRoute
   '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
-  '/path': typeof PathRoute
   '/lesson/$id': typeof LessonIdRoute
   '/quiz/$id': typeof QuizIdRoute
 }
@@ -59,35 +51,26 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/journey': typeof JourneyRoute
-  '/path': typeof PathRoute
   '/lesson/$id': typeof LessonIdRoute
   '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
+  fullPaths: '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
-  id: '__root__' | '/' | '/journey' | '/path' | '/lesson/$id' | '/quiz/$id'
+  to: '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
+  id: '__root__' | '/' | '/journey' | '/lesson/$id' | '/quiz/$id'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   JourneyRoute: typeof JourneyRoute
-  PathRoute: typeof PathRoute
   LessonIdRoute: typeof LessonIdRoute
   QuizIdRoute: typeof QuizIdRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/path': {
-      id: '/path'
-      path: '/path'
-      fullPath: '/path'
-      preLoaderRoute: typeof PathRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/journey': {
       id: '/journey'
       path: '/journey'
@@ -122,7 +105,6 @@ declare module '@tanstack/react-router' {
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   JourneyRoute: JourneyRoute,
-  PathRoute: PathRoute,
   LessonIdRoute: LessonIdRoute,
   QuizIdRoute: QuizIdRoute,
 }
