@@ -108,10 +108,11 @@ function HomePage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/journey"
+                  to="/lesson/$id"
+                  params={{ id: "1" }}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
                 >
-                  ابدأ رحلة أول ٣٠ يوم
+                  ابدأ من الدرس الأول
                   <ArrowLeft className="h-4 w-4" />
                 </Link>
                 <Link
