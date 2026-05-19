@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
+import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
 import {
   guideSections,
   guideSummary,
