@@ -117,3 +117,12 @@
     font-weight: 400;
   }
 }
+
+@media print {
+  nav, header.print\:hidden, .print\:hidden {
+    display: none !important;
+  }
+  body {
+    background: white !important;
+  }
+}
