@@ -102,6 +102,38 @@ export const guideSectionHeroes: Record<string, { image: string; alt: string }> 
     image: `${HERO_BASE}/ketones.png`,
     alt: "ما هي الكيتونات؟ – صورة تعليمية",
   },
+  "sick-day-plan": {
+    image: `${HERO_BASE}/sick-day-plan.png`,
+    alt: "خطة أيام المرض – صورة توضيحية",
+  },
+  "food-allowed": {
+    image: `${HERO_BASE}/food-allowed.png`,
+    alt: "هل الطفل ممنوع من الأكل؟ – صورة تعليمية",
+  },
+  "diabetes-bag": {
+    image: `${HERO_BASE}/diabetes-bag.png`,
+    alt: "حقيبة السكري – صورة إرشادية",
+  },
+  "play-sport": {
+    image: `${HERO_BASE}/play-sport.png`,
+    alt: "اللعب والرياضة – صورة توضيحية",
+  },
+  glucagon: {
+    image: `${HERO_BASE}/glucagon.png`,
+    alt: "ما هو الجلوكاجون؟ – صورة تعليمية",
+  },
+  confidence: {
+    image: `${HERO_BASE}/confidence.png`,
+    alt: "ثقة الطفل بنفسه – صورة ملهمة",
+  },
+  "family-role": {
+    image: `${HERO_BASE}/family-role.png`,
+    alt: "دور الأسرة – صورة توضيحية",
+  },
+  "final-message": {
+    image: `${HERO_BASE}/final-message.png`,
+    alt: "رسالة أخيرة – صورة ختامية",
+  },
 };
 
 export const guideSections: GuideSection[] = [
