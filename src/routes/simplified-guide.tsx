@@ -530,7 +530,7 @@ function SimplifiedGuidePage() {
           <ul className="space-y-2.5">
             {guideSources.map((s) => (
               <li key={s.url} className="flex items-start gap-2 text-sm sm:text-base">
-                <Info className="h-4 w-4 mt-1 text-muted-foreground shrink-0" />
+                <BookOpen className="h-4 w-4 mt-1 text-muted-foreground shrink-0" />
                 <a
                   href={s.url}
                   target="_blank"
