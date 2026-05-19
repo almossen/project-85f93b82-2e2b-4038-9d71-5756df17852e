@@ -4,7 +4,9 @@ import {
   AlertTriangle,
   BookOpen,
   CheckCircle2,
-  Headphones,
+  ChevronLeft,
+  ChevronRight,
+  
   Heart,
   Info,
   Phone,
@@ -21,6 +23,62 @@ import {
   guideSources,
   type GuideSection,
 } from "@/data/simplifiedGuideContent";
+
+type Chapter = {
+  id: string;
+  title: string;
+  subtitle: string;
+  sectionIds: string[];
+};
+
+const chapters: Chapter[] = [
+  {
+    id: "ch-1",
+    title: "الفصل الأول: البداية",
+    subtitle: "الأيام الأولى بعد التشخيص",
+    sectionIds: ["journey-start", "what-is-t1d", "first-week", "parents-feelings"],
+  },
+  {
+    id: "ch-2",
+    title: "الفصل الثاني: الإنسولين",
+    subtitle: "ما هو ولماذا وكيف",
+    sectionIds: ["what-is-insulin", "rapid-insulin", "long-insulin", "injection-basics"],
+  },
+  {
+    id: "ch-3",
+    title: "الفصل الثالث: قياس السكر",
+    subtitle: "الجهاز، الحساس، والأسهم",
+    sectionIds: ["why-measure", "fingerstick", "cgm-sensor", "sensor-arrows"],
+  },
+  {
+    id: "ch-4",
+    title: "الفصل الرابع: الانخفاض والارتفاع",
+    subtitle: "الهبوط، الارتفاع، والكيتونات",
+    sectionIds: ["low-sugar", "severe-low", "high-sugar", "ketones"],
+  },
+  {
+    id: "ch-5",
+    title: "الفصل الخامس: الحياة اليومية",
+    subtitle: "المرض، الأكل، المدرسة، واللعب",
+    sectionIds: [
+      "illness",
+      "sick-day-plan",
+      "food-allowed",
+      "carbs",
+      "school",
+      "diabetes-bag",
+      "play-sport",
+    ],
+  },
+  {
+    id: "ch-6",
+    title: "الفصل السادس: الطوارئ والدعم",
+    subtitle: "الجلوكاجون، الطوارئ، والثقة",
+    sectionIds: ["glucagon", "emergency", "confidence", "family-role", "final-message"],
+  },
+];
+
+const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
 export const Route = createFileRoute("/simplified-guide")({
   head: () => ({
@@ -151,10 +209,13 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
 
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
+  const [chapterIdx, setChapterIdx] = useState(0);
 
-  const filtered = useMemo(() => {
+  const isSearching = query.trim().length > 0;
+
+  const searchResults = useMemo(() => {
     const q = query.trim();
-    if (!q) return guideSections;
+    if (!q) return [];
     return guideSections.filter(
       (s) =>
         s.title.includes(q) ||
@@ -162,6 +223,16 @@ function SimplifiedGuidePage() {
         (s.bullets ?? []).some((b) => b.includes(q))
     );
   }, [query]);
+
+  const activeChapter = chapters[chapterIdx];
+  const chapterSections = activeChapter.sectionIds
+    .map((id) => sectionMap.get(id))
+    .filter(Boolean) as GuideSection[];
+
+  const goToChapter = (i: number) => {
+    setChapterIdx(i);
+    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+  };
 
   const handlePrint = () => {
     if (typeof window !== "undefined") window.print();
@@ -173,7 +244,6 @@ function SimplifiedGuidePage() {
         <SiteHeader />
       </div>
 
-      {/* internal note */}
       <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4 print:hidden">
         <p className="text-[11px] text-muted-foreground/80">
           ملاحظة داخلية: هذه صفحة تجريبية للمقارنة مع المحتوى الحالي.
@@ -181,7 +251,6 @@ function SimplifiedGuidePage() {
       </div>
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10">
-        {/* top disclaimer */}
         <MedicalDisclaimer />
 
         {/* Hero */}
@@ -203,18 +272,19 @@ function SimplifiedGuidePage() {
                   <Heart className="h-5 w-5" />
                 </div>
                 <p className="text-sm sm:text-base leading-loose text-foreground/90">
-                  <span className="font-bold">سما:</span> سأساعدك تفهم الأساسيات بهدوء. لا تحتاج أن
-                  تعرف كل شيء اليوم. المهم أن تبدأ بالأهم.
+                  <span className="font-bold">سما:</span> الدليل مقسّم إلى ستة فصول قصيرة. اقرأ
+                  فصلًا واحدًا في كل مرة، لا تستعجل.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2.5 print:hidden">
-                <a
-                  href="#journey-start"
+                <button
+                  type="button"
+                  onClick={() => goToChapter(0)}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
                 >
                   <BookOpen className="h-4 w-4" />
-                  ابدأ من هنا
-                </a>
+                  ابدأ من الفصل الأول
+                </button>
                 <Link
                   to="/what-to-do-now"
                   className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
@@ -222,13 +292,6 @@ function SimplifiedGuidePage() {
                   <Siren className="h-4 w-4" />
                   ماذا أفعل الآن؟
                 </Link>
-                <button
-                  type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
-                >
-                  <Headphones className="h-4 w-4" />
-                  استمع للمحتوى لاحقًا
-                </button>
               </div>
             </div>
             <div className="aspect-square rounded-3xl bg-gradient-to-br from-mint/40 via-primary-soft to-sand flex items-center justify-center">
@@ -237,38 +300,56 @@ function SimplifiedGuidePage() {
           </div>
         </section>
 
-        {/* How to use */}
-        <section className="space-y-5 print:hidden">
-          <div className="text-center space-y-2">
-            <h2 className="text-2xl sm:text-3xl font-bold">كيف تستخدم هذا الدليل؟</h2>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-loose">
-              هذا الدليل صمم ليكون بسيطًا ومباشرًا. اقرأه من البداية، أو اختر الموضوع الذي تحتاجه
-              الآن. إذا كنت في موقف عاجل، استخدم قسم "ماذا أفعل الآن"، وإذا كانت القراءة متعبة،
-              يمكنك لاحقًا الاستماع للمقاطع الصوتية.
-            </p>
+        {/* Table of Contents */}
+        <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 space-y-4 print:hidden">
+          <div className="flex items-center gap-2">
+            <BookOpen className="h-5 w-5 text-primary" />
+            <h2 className="text-xl sm:text-2xl font-bold">فهرس الفصول</h2>
           </div>
-          <div className="grid sm:grid-cols-3 gap-4">
-            {[
-              { icon: BookOpen, title: "اقرأ بهدوء", text: "لا داعي للاستعجال. خذ وقتك في فهم كل قسم." },
-              { icon: Info, title: "اختر ما تحتاجه", text: "استخدم البحث للوصول السريع للموضوع." },
-              { icon: Heart, title: "ارجع وقت الحاجة", text: "الدليل معك دائمًا، احفظه واستخدمه." },
-            ].map((c) => (
-              <div key={c.title} className="rounded-2xl border border-border bg-card p-5 space-y-2">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-primary-soft text-primary">
-                  <c.icon className="h-5 w-5" />
-                </div>
-                <h3 className="font-bold">{c.title}</h3>
-                <p className="text-sm text-muted-foreground leading-loose">{c.text}</p>
-              </div>
-            ))}
-          </div>
+          <ol className="grid sm:grid-cols-2 gap-2.5">
+            {chapters.map((c, i) => {
+              const active = i === chapterIdx && !isSearching;
+              return (
+                <li key={c.id}>
+                  <button
+                    type="button"
+                    onClick={() => goToChapter(i)}
+                    className={`w-full text-right rounded-2xl border p-4 transition-colors ${
+                      active
+                        ? "border-primary bg-primary-soft"
+                        : "border-border bg-background hover:bg-muted"
+                    }`}
+                  >
+                    <div className="flex items-start gap-3">
+                      <span
+                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-bold text-sm ${
+                          active
+                            ? "bg-primary text-primary-foreground"
+                            : "bg-muted text-foreground"
+                        }`}
+                      >
+                        {i + 1}
+                      </span>
+                      <div className="space-y-0.5">
+                        <div className="font-bold text-base">{c.title}</div>
+                        <div className="text-xs text-muted-foreground">{c.subtitle}</div>
+                        <div className="text-[11px] text-muted-foreground mt-1">
+                          {c.sectionIds.length} مواضيع
+                        </div>
+                      </div>
+                    </div>
+                  </button>
+                </li>
+              );
+            })}
+          </ol>
         </section>
 
         {/* Search */}
         <div className="sticky top-16 z-30 print:hidden">
           <input
             type="search"
-            placeholder="ابحث في الدليل…"
+            placeholder="ابحث في كامل الدليل…"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
             className="w-full rounded-full border border-border bg-card/95 backdrop-blur px-5 py-3 text-base shadow-[var(--shadow-soft)] focus:outline-none focus:ring-2 focus:ring-primary"
@@ -276,46 +357,93 @@ function SimplifiedGuidePage() {
           />
         </div>
 
+        {/* Chapter header / search header */}
+        {!isSearching ? (
+          <div className="flex items-center justify-between gap-4 flex-wrap print:hidden">
+            <div>
+              <p className="text-xs text-muted-foreground">
+                الفصل {chapterIdx + 1} من {chapters.length}
+              </p>
+              <h2 className="text-2xl sm:text-3xl font-bold">{activeChapter.title}</h2>
+              <p className="text-sm text-muted-foreground">{activeChapter.subtitle}</p>
+            </div>
+          </div>
+        ) : (
+          <div className="print:hidden">
+            <p className="text-sm text-muted-foreground">
+              نتائج البحث ({searchResults.length})
+            </p>
+          </div>
+        )}
+
         {/* Sections */}
         <div className="space-y-8">
-          {filtered.map((s, i) => (
+          {(isSearching ? searchResults : chapterSections).map((s, i) => (
             <SectionCard key={s.id} section={s} index={i} />
           ))}
-          {filtered.length === 0 && (
+          {isSearching && searchResults.length === 0 && (
             <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
           )}
         </div>
 
-        {/* Summary */}
-        <section
-          id="summary"
-          className="rounded-3xl border border-primary/20 bg-primary-soft p-6 sm:p-8 space-y-5 print:break-inside-avoid"
-        >
-          <div className="flex items-center justify-between flex-wrap gap-3">
-            <h2 className="text-2xl sm:text-3xl font-bold">أهم ما يجب تذكره</h2>
+        {/* Chapter nav (prev / next) */}
+        {!isSearching && (
+          <nav className="flex items-center justify-between gap-3 print:hidden">
             <button
               type="button"
-              onClick={handlePrint}
-              className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
+              onClick={() => goToChapter(Math.max(0, chapterIdx - 1))}
+              disabled={chapterIdx === 0}
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
-              <Printer className="h-4 w-4" />
-              طباعة الملخص
+              <ChevronRight className="h-4 w-4" />
+              الفصل السابق
             </button>
-          </div>
-          <ul className="grid sm:grid-cols-2 gap-2.5">
-            {guideSummary.map((line) => (
-              <li
-                key={line}
-                className="flex items-start gap-2.5 rounded-2xl bg-card px-4 py-3 text-sm sm:text-base leading-loose"
-              >
-                <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-1" />
-                <span>{line}</span>
-              </li>
-            ))}
-          </ul>
-        </section>
+            <span className="text-xs text-muted-foreground">
+              {chapterIdx + 1} / {chapters.length}
+            </span>
+            <button
+              type="button"
+              onClick={() => goToChapter(Math.min(chapters.length - 1, chapterIdx + 1))}
+              disabled={chapterIdx === chapters.length - 1}
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+            >
+              الفصل التالي
+              <ChevronLeft className="h-4 w-4" />
+            </button>
+          </nav>
+        )}
 
-        {/* Bottom disclaimer */}
+        {/* Summary - only show on last chapter or when searching is off and we're at end */}
+        {(!isSearching && chapterIdx === chapters.length - 1) && (
+          <section
+            id="summary"
+            className="rounded-3xl border border-primary/20 bg-primary-soft p-6 sm:p-8 space-y-5 print:break-inside-avoid"
+          >
+            <div className="flex items-center justify-between flex-wrap gap-3">
+              <h2 className="text-2xl sm:text-3xl font-bold">أهم ما يجب تذكره</h2>
+              <button
+                type="button"
+                onClick={handlePrint}
+                className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
+              >
+                <Printer className="h-4 w-4" />
+                طباعة الملخص
+              </button>
+            </div>
+            <ul className="grid sm:grid-cols-2 gap-2.5">
+              {guideSummary.map((line) => (
+                <li
+                  key={line}
+                  className="flex items-start gap-2.5 rounded-2xl bg-card px-4 py-3 text-sm sm:text-base leading-loose"
+                >
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-1" />
+                  <span>{line}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        )}
+
         <MedicalDisclaimer />
 
         {/* Sources */}
