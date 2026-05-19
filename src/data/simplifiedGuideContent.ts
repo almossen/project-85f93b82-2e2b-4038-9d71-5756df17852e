@@ -62,6 +62,26 @@ export const guideSectionHeroes: Record<string, { image: string; alt: string }> 
     image: `${HERO_BASE}/wide_clean_warmly_lit_promotional_educational_sc_10_batch_9.png`,
     alt: "الطوارئ والدعم الأسري – صورة إرشادية",
   },
+  "first-week": {
+    image: `${HERO_BASE}/first-week.png`,
+    alt: "ماذا أتعلم في الأسبوع الأول؟ – صورة توضيحية",
+  },
+  "parents-feelings": {
+    image: `${HERO_BASE}/parents-feelings.png`,
+    alt: "مشاعر الأب والأم بعد التشخيص – صورة توضيحية",
+  },
+  "rapid-insulin": {
+    image: `${HERO_BASE}/rapid-insulin.png`,
+    alt: "الإنسولين سريع المفعول – صورة تعليمية",
+  },
+  "long-insulin": {
+    image: `${HERO_BASE}/long-insulin.png`,
+    alt: "الإنسولين طويل المفعول – صورة تعليمية",
+  },
+  "injection-basics": {
+    image: `${HERO_BASE}/injection-basics.png`,
+    alt: "أساسيات حقن الإنسولين – صورة تعليمية",
+  },
 };
 
 export const guideSections: GuideSection[] = [
