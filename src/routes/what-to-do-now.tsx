@@ -137,17 +137,8 @@ function EmergencyGuidePage() {
     }
   };
 
-  const handleSpeak = (s: EmergencyScenario) => {
-    if (typeof window === "undefined" || !("speechSynthesis" in window)) {
-      alert("القراءة الصوتية غير مدعومة في هذا المتصفح.");
-      return;
-    }
-    window.speechSynthesis.cancel();
-    const text = `${s.title}. ${s.whatItMeans} ماذا أفعل الآن؟ ${s.whatToDo.join(" ")} ماذا لا أفعل؟ ${s.whatNotToDo.join(" ")}`;
-    const u = new SpeechSynthesisUtterance(text);
-    u.lang = "ar-SA";
-    u.rate = 0.95;
-    window.speechSynthesis.speak(u);
+  const handleSpeak = (_s: EmergencyScenario) => {
+    alert("سيتم إضافة الصوت الواقعي قريبًا بإذن الله.");
   };
 
   return (
