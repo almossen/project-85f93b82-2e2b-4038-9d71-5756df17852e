@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhatToDoNowRouteImport } from './routes/what-to-do-now'
+import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as QuizIdRouteImport } from './routes/quiz.$id'
 import { Route as ModuleFirstDaysRouteImport } from './routes/module.first-days'
@@ -18,6 +19,11 @@ import { Route as LessonIdRouteImport } from './routes/lesson.$id'
 const WhatToDoNowRoute = WhatToDoNowRouteImport.update({
   id: '/what-to-do-now',
   path: '/what-to-do-now',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimplifiedGuideRoute = SimplifiedGuideRouteImport.update({
+  id: '/simplified-guide',
+  path: '/simplified-guide',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +49,7 @@ const LessonIdRoute = LessonIdRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
   '/lesson/$id': typeof LessonIdRoute
   '/module/first-days': typeof ModuleFirstDaysRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
   '/lesson/$id': typeof LessonIdRoute
   '/module/first-days': typeof ModuleFirstDaysRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
   '/lesson/$id': typeof LessonIdRoute
   '/module/first-days': typeof ModuleFirstDaysRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/simplified-guide'
     | '/what-to-do-now'
     | '/lesson/$id'
     | '/module/first-days'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/simplified-guide'
     | '/what-to-do-now'
     | '/lesson/$id'
     | '/module/first-days'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/simplified-guide'
     | '/what-to-do-now'
     | '/lesson/$id'
     | '/module/first-days'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  SimplifiedGuideRoute: typeof SimplifiedGuideRoute
   WhatToDoNowRoute: typeof WhatToDoNowRoute
   LessonIdRoute: typeof LessonIdRoute
   ModuleFirstDaysRoute: typeof ModuleFirstDaysRoute
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/what-to-do-now'
       fullPath: '/what-to-do-now'
       preLoaderRoute: typeof WhatToDoNowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simplified-guide': {
+      id: '/simplified-guide'
+      path: '/simplified-guide'
+      fullPath: '/simplified-guide'
+      preLoaderRoute: typeof SimplifiedGuideRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  SimplifiedGuideRoute: SimplifiedGuideRoute,
   WhatToDoNowRoute: WhatToDoNowRoute,
   LessonIdRoute: LessonIdRoute,
   ModuleFirstDaysRoute: ModuleFirstDaysRoute,
@@ -145,3 +166,13 @@ const rootRouteChildren: RootRouteChildren = {
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
