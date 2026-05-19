@@ -1,0 +1,21 @@
+{
+  "name": "سما — رحلة التعايش",
+  "short_name": "سما",
+  "description": "منصة توعوية لأهالي الأطفال المصابين بسكري النوع الأول",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#fbfaf7",
+  "theme_color": "#3a8dc4",
+  "lang": "ar",
+  "dir": "rtl",
+  "icons": [
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
