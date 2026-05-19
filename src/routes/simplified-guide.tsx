@@ -4,6 +4,8 @@ import {
   AlertTriangle,
   BookOpen,
   CheckCircle2,
+  ChevronLeft,
+  ChevronRight,
   Headphones,
   Heart,
   Info,
@@ -21,6 +23,62 @@ import {
   guideSources,
   type GuideSection,
 } from "@/data/simplifiedGuideContent";
+
+type Chapter = {
+  id: string;
+  title: string;
+  subtitle: string;
+  sectionIds: string[];
+};
+
+const chapters: Chapter[] = [
+  {
+    id: "ch-1",
+    title: "الفصل الأول: البداية",
+    subtitle: "الأيام الأولى بعد التشخيص",
+    sectionIds: ["journey-start", "what-is-t1d", "first-week", "parents-feelings"],
+  },
+  {
+    id: "ch-2",
+    title: "الفصل الثاني: الإنسولين",
+    subtitle: "ما هو ولماذا وكيف",
+    sectionIds: ["what-is-insulin", "rapid-insulin", "long-insulin", "injection-basics"],
+  },
+  {
+    id: "ch-3",
+    title: "الفصل الثالث: قياس السكر",
+    subtitle: "الجهاز، الحساس، والأسهم",
+    sectionIds: ["why-measure", "fingerstick", "cgm-sensor", "sensor-arrows"],
+  },
+  {
+    id: "ch-4",
+    title: "الفصل الرابع: الانخفاض والارتفاع",
+    subtitle: "الهبوط، الارتفاع، والكيتونات",
+    sectionIds: ["low-sugar", "severe-low", "high-sugar", "ketones"],
+  },
+  {
+    id: "ch-5",
+    title: "الفصل الخامس: الحياة اليومية",
+    subtitle: "المرض، الأكل، المدرسة، واللعب",
+    sectionIds: [
+      "illness",
+      "sick-day-plan",
+      "food-allowed",
+      "carbs",
+      "school",
+      "diabetes-bag",
+      "play-sport",
+    ],
+  },
+  {
+    id: "ch-6",
+    title: "الفصل السادس: الطوارئ والدعم",
+    subtitle: "الجلوكاجون، الطوارئ، والثقة",
+    sectionIds: ["glucagon", "emergency", "confidence", "family-role", "final-message"],
+  },
+];
+
+const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
 export const Route = createFileRoute("/simplified-guide")({
   head: () => ({
