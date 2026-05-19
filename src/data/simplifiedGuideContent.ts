@@ -195,7 +195,7 @@ export const guideSections: GuideSection[] = [
     body: "عندما يمرض الطفل، قد يتغير السكر حتى لو لم يأكل كالمعتاد.\n\nالحرارة، الالتهاب، القيء، أو النزلة المعوية قد ترفع السكر أو تسبب كيتونات.\n\nلذلك أيام المرض تحتاج متابعة خاصة.\n\nافحصوا السكر حسب تعليمات الفريق الطبي.\n\nوافحصوا الكيتونات إذا كانت خطة الطبيب تطلب ذلك.\n\nلا توقفوا الإنسولين من أنفسكم، حتى لو كان الطفل يأكل قليلًا.\n\nالقرار في هذه الحالات يجب أن يكون حسب خطة المرض التي يعطيها الطبيب.\n\nإذا كان القيء مستمرًا أو ظهرت كيتونات أو خمول شديد، اطلبوا المساعدة الطبية.",
     imagePrompt: "Child resting at home with water glass and parent nearby, calm scene",
     imageAlt: "طفل في المنزل مع ولي أمر بشكل مطمئن",
-    relatedEmergencyScenario: "illness",
+    relatedEmergencyScenario: "vomiting",
     medicalSensitivity: "high",
     reviewStatus: "needs-medical-review",
   },
