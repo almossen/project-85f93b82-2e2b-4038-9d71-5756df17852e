@@ -123,22 +123,76 @@ function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
   );
 }
 
+// أسئلة عملية للطبيب حسب القسم
+const doctorQuestions: Record<string, string> = {
+  "what-is-insulin": "ما هي خطة الإنسولين الخاصة بطفلي مكتوبةً، ومتى تُراجع؟",
+  "rapid-insulin": "متى أعطي جرعة سريع المفعول بالضبط، وماذا أفعل إذا نسيت الجرعة؟",
+  "long-insulin": "ماذا أفعل إذا نسيت أو تأخرت في جرعة الإنسولين طويل المفعول؟",
+  "injection-basics": "هل تستطيعون مراجعة طريقة الحقن معي عمليًا، وأماكن التغيير المناسبة؟",
+  "low-sugar": "ما هو الرقم الذي يعتبر هبوطًا لطفلي بالضبط، وكم جرام سكر سريع أعطيه؟",
+  "severe-low": "متى أستخدم الجلوكاجون ومن يجب أن يتدرب عليه في الأسرة والمدرسة؟",
+  "high-sugar": "ما هي خطة التصحيح المكتوبة عند ارتفاع السكر، ومتى أتصل بكم؟",
+  "ketones": "متى أفحص الكيتونات بالضبط؟ ومتى أذهب للطوارئ؟",
+  "illness": "ما هي خطة أيام المرض لطفلي؟ هل أوقف الإنسولين إذا لم يأكل؟",
+  "sick-day-plan": "هل يمكنكم تزويدي بخطة أيام المرض مكتوبة وواضحة؟",
+  "school": "هل يمكن تزويدي بخطة مكتوبة للمدرسة تشرح حالة طفلي والإجراءات اللازمة؟",
+  "glucagon": "متى أستخدم الجلوكاجون بالضبط، ومن يجب أن يتدرب على استخدامه؟",
+  "emergency": "ما هي العلامات التي توجب الذهاب للطوارئ مباشرة دون انتظار؟",
+};
+
+function AskDoctorCard({ question }: { question: string }) {
+  return (
+    <div className="rounded-2xl border border-primary/30 bg-primary-soft/50 p-4 flex gap-3 items-start">
+      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+        <HelpCircle className="h-5 w-5" />
+      </div>
+      <div className="space-y-1">
+        <p className="text-xs font-bold text-primary">اسأل طبيب طفلك</p>
+        <p className="text-sm sm:text-base leading-loose text-foreground/90">{question}</p>
+      </div>
+    </div>
+  );
+}
+
+function SectionImage({ section }: { section: GuideSection }) {
+  return (
+    <div className="aspect-[16/7] w-full bg-gradient-to-br from-primary-soft via-mint/30 to-sand flex flex-col items-center justify-center relative gap-2 px-4 text-center">
+      <ImageIcon className="h-12 w-12 text-primary/40" strokeWidth={1.5} />
+      <p className="text-xs sm:text-sm text-foreground/70 font-medium max-w-md leading-relaxed">
+        {section.imageAlt}
+      </p>
+      <span className="text-[10px] text-muted-foreground/80">صورة توضيحية — قريبًا</span>
+    </div>
+  );
+}
+
 function SectionCard({ section, index }: { section: GuideSection; index: number }) {
   const paragraphs = section.body.split("\n\n");
+  const isHighSensitivity = section.medicalSensitivity === "high";
+  const doctorQ = doctorQuestions[section.id];
+  const printScopeId = `print-${section.id}`;
+
+  const handleSectionPrint = () => {
+    if (typeof window === "undefined") return;
+    const el = document.getElementById(printScopeId);
+    if (!el) return window.print();
+    const win = window.open("", "_blank", "width=800,height=900");
+    if (!win) return;
+    win.document.write(`<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>${section.title}</title><style>body{font-family:system-ui,Tahoma,Arial;padding:24px;line-height:1.9;color:#111}h1{font-size:22px;margin:0 0 12px}h2{font-size:16px;margin:16px 0 6px}ul{padding-inline-start:20px}li{margin:4px 0}.muted{color:#555;font-size:12px}</style></head><body>${el.innerHTML}<p class="muted">— من منصة سما — للاسترشاد فقط، لا تغني عن تعليمات الطبيب.</p></body></html>`);
+    win.document.close();
+    win.focus();
+    setTimeout(() => win.print(), 250);
+  };
 
   return (
     <article
       id={section.id}
       className="rounded-3xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden print:break-inside-avoid print:shadow-none"
     >
-      <div className="aspect-[16/7] w-full bg-gradient-to-br from-primary-soft via-mint/30 to-sand flex items-center justify-center relative">
-        <div className="absolute inset-0 flex items-center justify-center">
-          <BookOpen className="h-16 w-16 text-primary/40" strokeWidth={1.5} />
-        </div>
-        <span className="absolute top-3 start-3 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground">
-          {String(index + 1).padStart(2, "0")}
-        </span>
-      </div>
+      <SectionImage section={section} />
+      <span className="absolute mt-3 ms-3 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground -translate-y-[44px]">
+        {String(index + 1).padStart(2, "0")}
+      </span>
 
       <div className="p-6 sm:p-8 space-y-5">
         <header className="space-y-2">
@@ -151,27 +205,30 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
           )}
         </header>
 
-        <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90">
-          {paragraphs.map((p, i) => (
-            <p key={i} className="whitespace-pre-line">
-              {p}
-            </p>
-          ))}
-        </div>
-
-        {section.bullets && section.bullets.length > 0 && (
-          <ul className="grid sm:grid-cols-2 gap-2.5">
-            {section.bullets.map((b) => (
-              <li
-                key={b}
-                className="flex items-center gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-sm font-medium"
-              >
-                <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
-                {b}
-              </li>
+        <div id={printScopeId}>
+          <h1 className="hidden print:block">{section.title}</h1>
+          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90">
+            {paragraphs.map((p, i) => (
+              <p key={i} className="whitespace-pre-line">
+                {p}
+              </p>
             ))}
-          </ul>
-        )}
+          </div>
+
+          {section.bullets && section.bullets.length > 0 && (
+            <ul className="grid sm:grid-cols-2 gap-2.5 mt-4">
+              {section.bullets.map((b) => (
+                <li
+                  key={b}
+                  className="flex items-center gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-sm font-medium"
+                >
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                  {b}
+                </li>
+              ))}
+            </ul>
+          )}
+        </div>
 
         {section.alert && (
           <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 flex gap-3 items-start">
@@ -181,27 +238,46 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
             </p>
           </div>
         )}
+
         <GuideSectionEnrichment sectionId={section.id} />
 
+        {isHighSensitivity && doctorQ && <AskDoctorCard question={doctorQ} />}
 
         <div className="flex flex-wrap gap-2 pt-2 print:hidden">
-          <button
-            type="button"
-            className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
-            aria-label="استمع لهذا الجزء"
-          >
-            <Volume2 className="h-4 w-4" />
-            استمع لهذا الجزء
-            <span className="text-[11px] text-muted-foreground">(قريبًا)</span>
-          </button>
+          <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
+            🎧 سيتم إضافة الصوت الواقعي قريبًا
+          </span>
+
+          {section.id === "school" && (
+            <button
+              type="button"
+              onClick={handleSectionPrint}
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              <Printer className="h-4 w-4" />
+              طباعة خطة المدرسة
+            </button>
+          )}
+
+          {section.id === "diabetes-bag" && (
+            <button
+              type="button"
+              onClick={handleSectionPrint}
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              <Printer className="h-4 w-4" />
+              طباعة قائمة الحقيبة
+            </button>
+          )}
+
           {section.relatedEmergencyScenario && (
-            <Link
-              to="/what-to-do-now"
+            <a
+              href={`/what-to-do-now?scenario=${section.relatedEmergencyScenario}`}
               className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-4 py-2 text-sm font-medium hover:bg-destructive/15 transition-colors"
             >
               <Siren className="h-4 w-4" />
               ماذا أفعل الآن؟
-            </Link>
+            </a>
           )}
         </div>
       </div>
