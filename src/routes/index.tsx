@@ -116,11 +116,10 @@ function HomePage() {
                   <ArrowLeft className="h-4 w-4" />
                 </Link>
                 <Link
-                  to="/lesson/$id"
-                  params={{ id: "1" }}
+                  to="/module/first-days"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
                 >
-                  استعرض الدرس الأول
+                  استعرض الدرس الثاني
                 </Link>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
