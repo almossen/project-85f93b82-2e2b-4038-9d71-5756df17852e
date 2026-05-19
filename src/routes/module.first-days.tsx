@@ -479,14 +479,14 @@ function ModuleFirstDays() {
                       )}
                       {l.num === "٠٤" && (
                         <div className="space-y-3 rounded-2xl border border-border bg-sand/30 p-4">
-                          <div className="aspect-[16/10] rounded-xl overflow-hidden border border-border bg-card">
+                          <div className="aspect-[3/4] max-w-sm mx-auto rounded-xl overflow-hidden border border-border bg-card">
                             <img
                               src={insulinLongImg}
                               alt="رسم توضيحي لأقلام الإنسولين طويل المفعول"
-                              width={1024}
-                              height={640}
+                              width={1050}
+                              height={1400}
                               loading="lazy"
-                              className="w-full h-full object-cover"
+                              className="w-full h-full object-contain"
                             />
                           </div>
                           <div className="text-xs font-bold text-muted-foreground">
