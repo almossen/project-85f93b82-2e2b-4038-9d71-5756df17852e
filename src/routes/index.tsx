@@ -108,18 +108,18 @@ function HomePage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/journey"
+                  to="/lesson/$id"
+                  params={{ id: "1" }}
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
                 >
-                  ابدأ رحلة أول ٣٠ يوم
+                  ابدأ من الدرس الأول
                   <ArrowLeft className="h-4 w-4" />
                 </Link>
                 <Link
-                  to="/lesson/$id"
-                  params={{ id: "1" }}
+                  to="/module/first-days"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
                 >
-                  استعرض الدرس الأول
+                  استعرض الدرس الثاني
                 </Link>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
@@ -207,9 +207,6 @@ function HomePage() {
                 عشر وحدات تعليمية مرتّبة بحسب احتياج الأسرة في الأسابيع الأولى بعد التشخيص.
               </p>
             </div>
-            <Link to="/journey" className="text-sm font-medium text-primary hover:underline">
-              عرض الرحلة الكاملة ←
-            </Link>
           </header>
           <ol className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {modules.map((m) => (
