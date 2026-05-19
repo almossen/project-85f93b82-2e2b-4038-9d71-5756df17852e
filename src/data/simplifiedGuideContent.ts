@@ -164,7 +164,7 @@ export const guideSections: GuideSection[] = [
     alert: "حالة طارئة — اتصلوا بالإسعاف فورًا ولا تضعوا شيئًا في فم الطفل إذا فقد الوعي.",
     imagePrompt: "Calm emergency icon or gentle illustration, not scary",
     imageAlt: "أيقونة طوارئ هادئة",
-    relatedEmergencyScenario: "unconsciousness",
+    relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
     reviewStatus: "needs-medical-review",
   },
