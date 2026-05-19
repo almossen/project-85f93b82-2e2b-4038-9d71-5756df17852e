@@ -10,6 +10,7 @@ import {
 
 import appCss from "../styles.css?url";
 import { MobileBottomNav } from "@/components/sama/MobileBottomNav";
+import { EmergencyFloatingButton } from "@/components/sama/EmergencyFloatingButton";
 
 function NotFoundComponent() {
   return (
@@ -119,9 +120,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="pb-20 md:pb-0">
+      <div className="pb-32 md:pb-20">
         <Outlet />
       </div>
+      <EmergencyFloatingButton />
       <MobileBottomNav />
     </QueryClientProvider>
   );
