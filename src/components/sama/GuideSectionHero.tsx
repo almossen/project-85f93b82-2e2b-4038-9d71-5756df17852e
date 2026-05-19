@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { ImageIcon } from "lucide-react";
 
 interface GuideSectionHeroProps {
@@ -15,8 +15,19 @@ interface GuideSectionHeroProps {
  * - No text overlay (text is baked into the artwork).
  */
 export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSectionHeroProps) {
+  const imgRef = useRef<HTMLImageElement | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
+
+  // If the image was already cached and finished loading before React
+  // attached the onLoad handler, sync state from the DOM ref.
+  useEffect(() => {
+    if (!image) return;
+    const el = imgRef.current;
+    if (el && el.complete && el.naturalWidth > 0) {
+      setLoaded(true);
+    }
+  }, [image]);
 
   const showImage = image && !errored;
 
@@ -34,6 +45,7 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSect
 
           {showImage ? (
             <img
+              ref={imgRef}
               src={image}
               alt={alt}
               loading="lazy"
