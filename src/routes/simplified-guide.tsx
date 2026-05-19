@@ -8,7 +8,6 @@ import {
   ChevronRight,
   HelpCircle,
   Heart,
-  ImageIcon,
   Phone,
   Printer,
   Siren,
