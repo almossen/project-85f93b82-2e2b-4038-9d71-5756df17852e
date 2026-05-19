@@ -154,9 +154,12 @@ function AskDoctorCard({ question }: { question: string }) {
   );
 }
 
-function SectionImage({ section }: { section: GuideSection }) {
+function SectionImage({ section, index }: { section: GuideSection; index: number }) {
   return (
     <div className="aspect-[16/7] w-full bg-gradient-to-br from-primary-soft via-mint/30 to-sand flex flex-col items-center justify-center relative gap-2 px-4 text-center">
+      <span className="absolute top-3 start-3 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground">
+        {String(index + 1).padStart(2, "0")}
+      </span>
       <ImageIcon className="h-12 w-12 text-primary/40" strokeWidth={1.5} />
       <p className="text-xs sm:text-sm text-foreground/70 font-medium max-w-md leading-relaxed">
         {section.imageAlt}
@@ -189,10 +192,8 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
       id={section.id}
       className="rounded-3xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden print:break-inside-avoid print:shadow-none"
     >
-      <SectionImage section={section} />
-      <span className="absolute mt-3 ms-3 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground -translate-y-[44px]">
-        {String(index + 1).padStart(2, "0")}
-      </span>
+      <SectionImage section={section} index={index} />
+
 
       <div className="p-6 sm:p-8 space-y-5">
         <header className="space-y-2">
