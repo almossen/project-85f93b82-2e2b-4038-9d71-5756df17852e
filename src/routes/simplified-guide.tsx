@@ -17,10 +17,12 @@ import {
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
+import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
 import {
   guideSections,
   guideSummary,
   guideSources,
+  guideSectionHeroes,
   type GuideSection,
 } from "@/data/simplifiedGuideContent";
 
@@ -154,26 +156,12 @@ function AskDoctorCard({ question }: { question: string }) {
   );
 }
 
-function SectionImage({ section, index }: { section: GuideSection; index: number }) {
-  return (
-    <div className="aspect-[16/7] w-full bg-gradient-to-br from-primary-soft via-mint/30 to-sand flex flex-col items-center justify-center relative gap-2 px-4 text-center">
-      <span className="absolute top-3 start-3 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground">
-        {String(index + 1).padStart(2, "0")}
-      </span>
-      <ImageIcon className="h-12 w-12 text-primary/40" strokeWidth={1.5} />
-      <p className="text-xs sm:text-sm text-foreground/70 font-medium max-w-md leading-relaxed">
-        {section.imageAlt}
-      </p>
-      <span className="text-[10px] text-muted-foreground/80">صورة توضيحية — قريبًا</span>
-    </div>
-  );
-}
-
 function SectionCard({ section, index }: { section: GuideSection; index: number }) {
   const paragraphs = section.body.split("\n\n");
   const isHighSensitivity = section.medicalSensitivity === "high";
   const doctorQ = doctorQuestions[section.id];
   const printScopeId = `print-${section.id}`;
+  const hero = guideSectionHeroes[section.id];
 
   const handleSectionPrint = () => {
     if (typeof window === "undefined") return;
@@ -192,7 +180,13 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
       id={section.id}
       className="rounded-3xl border border-border bg-card shadow-[var(--shadow-card)] overflow-hidden print:break-inside-avoid print:shadow-none"
     >
-      <SectionImage section={section} index={index} />
+      <GuideSectionHero
+        image={hero?.image}
+        alt={hero?.alt ?? section.imageAlt}
+        index={index}
+        fallbackLabel={section.imageAlt}
+      />
+
 
 
       <div className="p-6 sm:p-8 space-y-5">
