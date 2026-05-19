@@ -118,7 +118,10 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <Outlet />
+      <div className="pb-20 md:pb-0">
+        <Outlet />
+      </div>
+      <MobileBottomNav />
     </QueryClientProvider>
   );
 }
