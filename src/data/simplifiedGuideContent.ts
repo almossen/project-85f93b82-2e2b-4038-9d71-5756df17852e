@@ -10,12 +10,59 @@ export interface GuideSection {
   alert?: string;
   imagePrompt: string;
   imageAlt: string;
+  heroImage?: string;
+  heroImageAlt?: string;
   relatedAudioId?: string;
   relatedEmergencyScenario?: string;
   printEnabled?: boolean;
   medicalSensitivity: MedicalSensitivity;
   reviewStatus: ReviewStatus;
 }
+
+const HERO_BASE = "/images/simplified-guide";
+
+export const guideSectionHeroes: Record<string, { image: string; alt: string }> = {
+  "journey-start": {
+    image: `${HERO_BASE}/a_clean_warm_modern_healthcare_parenting_informa_1.png`,
+    alt: "بداية الرحلة – الدليل المبسط لأهالي أطفال السكري النوع الأول",
+  },
+  "what-is-t1d": {
+    image: `${HERO_BASE}/wide_clean_modern_informational_medical_banner_s_2_batch_1.png`,
+    alt: "ما هو السكري النوع الأول – صورة توضيحية",
+  },
+  "what-is-insulin": {
+    image: `${HERO_BASE}/wide_clean_editorial_illustration_style_photo_bann_3_batch_2.png`,
+    alt: "الإنسولين – صورة تعليمية",
+  },
+  "why-measure": {
+    image: `${HERO_BASE}/a_clean_modern_educational_health_banner_layout_4_batch_3.png`,
+    alt: "قياس السكر والحساس – صورة توضيحية",
+  },
+  "low-sugar": {
+    image: `${HERO_BASE}/a_clean_modern_arabic_infographic_hero_banner_sce_5_batch_4.png`,
+    alt: "انخفاض السكر – صورة إرشادية",
+  },
+  "high-sugar": {
+    image: `${HERO_BASE}/wide_clean_promotional_educational_scene_with_a_s_6_batch_5.png`,
+    alt: "ارتفاع السكر والكيتونات – صورة إرشادية",
+  },
+  illness: {
+    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_infog_7_batch_6.png`,
+    alt: "المرض وأيام المرض – صورة توعوية",
+  },
+  carbs: {
+    image: `${HERO_BASE}/wide_bright_lifestyle_educational_banner_scene_a_8_batch_7.png`,
+    alt: "الأكل والكربوهيدرات – صورة تعليمية",
+  },
+  school: {
+    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_poster_9_batch_8.png`,
+    alt: "المدرسة والحياة اليومية – صورة توعوية",
+  },
+  emergency: {
+    image: `${HERO_BASE}/wide_clean_warmly_lit_promotional_educational_sc_10_batch_9.png`,
+    alt: "الطوارئ والدعم الأسري – صورة إرشادية",
+  },
+};
 
 export const guideSections: GuideSection[] = [
   {
