@@ -604,11 +604,11 @@ function ModuleFirstDays() {
           {/* Nav back */}
           <div className="flex flex-wrap items-center justify-between gap-3 pt-2">
             <Link
-              to="/journey"
+              to="/"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
             >
               <ArrowLeft className="h-4 w-4" />
-              العودة إلى رحلة ٣٠ يوم
+              العودة إلى الرئيسية
             </Link>
             <Link
               to="/lesson/$id"
