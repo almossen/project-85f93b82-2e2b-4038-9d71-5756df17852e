@@ -267,12 +267,6 @@ const myths: Myth[] = [
       "خطأ. تحسّن القراءة لا يعني أن الجسم بدأ يفرز الإنسولين من جديد. إيقاف الإنسولين قد يؤدي إلى ارتفاع شديد في السكر وحدوث حموضة (كيتونات). لا توقفوه إلا بتوجيه الطبيب.",
   },
   {
-    claim: "المنظّم يغني عن الإنسولين في سكري النوع الأول.",
-    truth: false,
-    explanation:
-      "خطأ. سكري النوع الأول نقص كامل في إنتاج الإنسولين، وحبوب المنظّم لا تكفي. الإنسولين هو العلاج الأساسي ولا يُستبدل.",
-  },
-  {
     claim: "كل أدوية السكري تناسب كل الأنواع.",
     truth: false,
     explanation:
@@ -365,7 +359,7 @@ function ModuleFirstDays() {
               </span>
               <span className="inline-flex items-center gap-1.5 rounded-full bg-card/80 backdrop-blur border border-border px-3 py-1 text-xs font-medium">
                 <Clock className="h-3.5 w-3.5" />
-                ١٠ دروس قصيرة
+                ٩ دروس قصيرة
               </span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-bold tracking-tight leading-[1.2]">
