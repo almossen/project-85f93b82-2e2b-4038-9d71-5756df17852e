@@ -455,6 +455,50 @@ function ModuleFirstDays() {
                           </li>
                         ))}
                       </ul>
+                      {l.num === "٠٣" && (
+                        <div className="space-y-3 rounded-2xl border border-border bg-mint/20 p-4">
+                          <div className="aspect-[16/10] rounded-xl overflow-hidden border border-border bg-card">
+                            <img
+                              src={insulinRapidImg}
+                              alt="رسم توضيحي لأقلام الإنسولين سريع المفعول"
+                              width={1024}
+                              height={640}
+                              loading="lazy"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-xs font-bold text-muted-foreground">
+                            أنواع تجارية شائعة — اضغط على الاسم لرؤية صورة القلم:
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {rapidBrands.map((b) => (
+                              <BrandChip key={b.name} brand={b} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
+                      {l.num === "٠٤" && (
+                        <div className="space-y-3 rounded-2xl border border-border bg-sand/30 p-4">
+                          <div className="aspect-[16/10] rounded-xl overflow-hidden border border-border bg-card">
+                            <img
+                              src={insulinLongImg}
+                              alt="رسم توضيحي لأقلام الإنسولين طويل المفعول"
+                              width={1024}
+                              height={640}
+                              loading="lazy"
+                              className="w-full h-full object-cover"
+                            />
+                          </div>
+                          <div className="text-xs font-bold text-muted-foreground">
+                            أنواع تجارية شائعة — اضغط على الاسم لرؤية صورة القلم:
+                          </div>
+                          <div className="flex flex-wrap gap-2">
+                            {longBrands.map((b) => (
+                              <BrandChip key={b.name} brand={b} />
+                            ))}
+                          </div>
+                        </div>
+                      )}
                       {l.num === "٠٥" && (
                         <div className="space-y-2">
                           <div className="text-xs font-bold text-muted-foreground">
@@ -493,90 +537,13 @@ function ModuleFirstDays() {
             </Accordion>
           </section>
 
-
-          {/* Insulin brands in the market */}
-          <section className="space-y-5">
-            <header className="text-center max-w-2xl mx-auto space-y-2">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
-                أنواع تجارية شائعة في السوق
-              </h2>
-              <p className="text-muted-foreground leading-loose">
-                صور توضيحية لأقلام الإنسولين، مع أشهر الأسماء التجارية المتوفرة في الصيدليات السعودية. الطبيب وحده هو من يحدّد النوع المناسب لطفلك.
-              </p>
-            </header>
-
-            <div className="grid md:grid-cols-2 gap-5">
-              {/* Rapid-acting */}
-              <article className="rounded-3xl border border-border bg-card overflow-hidden shadow-[var(--shadow-card)] flex flex-col">
-                <div className="aspect-[16/10] bg-mint/30 overflow-hidden">
-                  <img
-                    src={insulinRapidImg}
-                    alt="رسم توضيحي لأقلام الإنسولين سريع المفعول"
-                    width={1024}
-                    height={640}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5 sm:p-6 space-y-3 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-primary-soft text-primary px-2.5 py-1 text-xs font-bold">
-                      <Clock className="h-3.5 w-3.5" />
-                      سريع المفعول
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-lg leading-snug">إنسولين سريع المفعول</h3>
-                  <p className="text-sm text-muted-foreground leading-loose">
-                    يُستخدم عند الوجبات بتوجيه الطبيب. اضغط على الاسم لرؤية صورة القلم:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {rapidBrands.map((b) => (
-                      <BrandChip key={b.name} brand={b} />
-                    ))}
-                  </div>
-                </div>
-              </article>
-
-              {/* Long-acting */}
-              <article className="rounded-3xl border border-border bg-card overflow-hidden shadow-[var(--shadow-card)] flex flex-col">
-                <div className="aspect-[16/10] bg-sand/40 overflow-hidden">
-                  <img
-                    src={insulinLongImg}
-                    alt="رسم توضيحي لأقلام الإنسولين طويل المفعول"
-                    width={1024}
-                    height={640}
-                    loading="lazy"
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-5 sm:p-6 space-y-3 flex-1">
-                  <div className="flex items-center gap-2">
-                    <span className="inline-flex items-center gap-1.5 rounded-full bg-sand text-sand-foreground px-2.5 py-1 text-xs font-bold">
-                      <Thermometer className="h-3.5 w-3.5" />
-                      طويل المفعول
-                    </span>
-                  </div>
-                  <h3 className="font-bold text-lg leading-snug">إنسولين طويل المفعول</h3>
-                  <p className="text-sm text-muted-foreground leading-loose">
-                    يُعطى في وقت ثابت يومياً ليؤمّن حاجة الجسم الأساسية. اضغط على الاسم لرؤية صورة القلم:
-                  </p>
-                  <div className="flex flex-wrap gap-2">
-                    {longBrands.map((b) => (
-                      <BrandChip key={b.name} brand={b} />
-                    ))}
-                  </div>
-                </div>
-              </article>
-            </div>
-
-            <aside className="rounded-2xl border border-border bg-muted/40 p-4 flex items-start gap-3">
-              <ShieldAlert className="h-5 w-5 text-primary mt-0.5 shrink-0" />
-              <p className="text-sm leading-loose text-foreground/90">
-                الصور توضيحية فقط ولا تمثّل علامة تجارية بعينها. الأسماء مذكورة للتعريف،
-                واختيار النوع والجرعة قرار طبي بحت يتخذه فريق السكري المعالج لطفلك.
-              </p>
-            </aside>
-          </section>
+          <aside className="rounded-2xl border border-border bg-muted/40 p-4 flex items-start gap-3">
+            <ShieldAlert className="h-5 w-5 text-primary mt-0.5 shrink-0" />
+            <p className="text-sm leading-loose text-foreground/90">
+              الصور توضيحية فقط ولا تمثّل علامة تجارية بعينها. الأسماء مذكورة للتعريف،
+              واختيار النوع والجرعة قرار طبي بحت يتخذه فريق السكري المعالج لطفلك.
+            </p>
+          </aside>
 
           {/* Misconceptions */}
           <section className="space-y-5">
