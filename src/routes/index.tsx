@@ -207,9 +207,6 @@ function HomePage() {
                 عشر وحدات تعليمية مرتّبة بحسب احتياج الأسرة في الأسابيع الأولى بعد التشخيص.
               </p>
             </div>
-            <Link to="/journey" className="text-sm font-medium text-primary hover:underline">
-              عرض الرحلة الكاملة ←
-            </Link>
           </header>
           <ol className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
             {modules.map((m) => (
