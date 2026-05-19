@@ -82,6 +82,26 @@ export const guideSectionHeroes: Record<string, { image: string; alt: string }> 
     image: `${HERO_BASE}/injection-basics.png`,
     alt: "أساسيات حقن الإنسولين – صورة تعليمية",
   },
+  fingerstick: {
+    image: `${HERO_BASE}/fingerstick.png`,
+    alt: "قياس السكر بالوخز – صورة تعليمية",
+  },
+  "cgm-sensor": {
+    image: `${HERO_BASE}/cgm-sensor.png`,
+    alt: "ما هو حساس السكر؟ – صورة توضيحية",
+  },
+  "sensor-arrows": {
+    image: `${HERO_BASE}/sensor-arrows.png`,
+    alt: "فهم السهم في الحساس – صورة تعليمية",
+  },
+  "severe-low": {
+    image: `${HERO_BASE}/severe-low.png`,
+    alt: "الانخفاض الشديد – صورة إرشادية",
+  },
+  ketones: {
+    image: `${HERO_BASE}/ketones.png`,
+    alt: "ما هي الكيتونات؟ – صورة تعليمية",
+  },
 };
 
 export const guideSections: GuideSection[] = [
