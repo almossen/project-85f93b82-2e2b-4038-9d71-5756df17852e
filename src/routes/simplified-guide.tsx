@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
+import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
 import {
   guideSections,
   guideSummary,
@@ -181,6 +182,8 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
             </p>
           </div>
         )}
+        <GuideSectionEnrichment sectionId={section.id} />
+
 
         <div className="flex flex-wrap gap-2 pt-2 print:hidden">
           <button
