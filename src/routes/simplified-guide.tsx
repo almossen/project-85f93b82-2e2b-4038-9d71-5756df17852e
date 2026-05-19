@@ -6,14 +6,13 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  
+  HelpCircle,
   Heart,
-  Info,
+  ImageIcon,
   Phone,
   Printer,
   Siren,
   Sparkles,
-  Volume2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
