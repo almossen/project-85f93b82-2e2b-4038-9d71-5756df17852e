@@ -278,7 +278,7 @@ export const guideSections: GuideSection[] = [
     alert: "لا تنتظر حدوث الطوارئ لتتعلم استخدام الجلوكاجون. اطلب التدريب من فريق السكري.",
     imagePrompt: "Safe educational emergency kit illustration with glucagon, non-scary",
     imageAlt: "حقيبة طوارئ آمنة تحتوي الجلوكاجون",
-    relatedEmergencyScenario: "unconsciousness",
+    relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
     reviewStatus: "needs-medical-review",
   },
