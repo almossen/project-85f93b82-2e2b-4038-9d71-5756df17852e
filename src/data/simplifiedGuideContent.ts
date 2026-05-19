@@ -288,7 +288,7 @@ export const guideSections: GuideSection[] = [
     body: "في الطوارئ، الهدوء يساعدكم على التصرف بشكل أفضل.\n\nإذا فقد الطفل الوعي، أو حدثت تشنجات، أو لم يستطع البلع، لا تعطوه طعامًا أو شرابًا.\n\nاتصلوا بالإسعاف فورًا.\n\nضعوا الطفل على جانبه إذا كان ذلك آمنًا.\n\nلا تضعوا شيئًا في فمه.\n\nاستخدموا الجلوكاجون فقط إذا كان موصوفًا وكنتم مدربين على استخدامه.\n\nبعد انتهاء الحالة، يجب مراجعة الفريق الطبي لمعرفة السبب وتعديل الخطة إذا لزم الأمر.",
     imagePrompt: "Calm soft emergency support illustration",
     imageAlt: "صورة دعم طوارئ هادئة",
-    relatedEmergencyScenario: "unconsciousness",
+    relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
     reviewStatus: "needs-medical-review",
   },
