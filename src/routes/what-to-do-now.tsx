@@ -98,6 +98,15 @@ function EmergencyGuidePage() {
   const [query, setQuery] = useState("");
   const [active, setActive] = useState<EmergencyScenario | null>(null);
 
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const params = new URLSearchParams(window.location.search);
+    const id = params.get("scenario");
+    if (!id) return;
+    const found = emergencyScenarios.find((s) => s.id === id);
+    if (found) setActive(found);
+  }, []);
+
   const filtered = useMemo(() => {
     const q = query.trim();
     if (!q) return emergencyScenarios;
