@@ -9,6 +9,7 @@ import {
 } from "@tanstack/react-router";
 
 import appCss from "../styles.css?url";
+import { MobileBottomNav } from "@/components/sama/MobileBottomNav";
 
 function NotFoundComponent() {
   return (
