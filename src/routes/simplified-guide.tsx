@@ -6,7 +6,7 @@ import {
   CheckCircle2,
   ChevronLeft,
   ChevronRight,
-  Headphones,
+  
   Heart,
   Info,
   Phone,
