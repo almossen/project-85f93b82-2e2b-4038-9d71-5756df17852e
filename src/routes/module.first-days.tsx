@@ -492,6 +492,28 @@ function ModuleFirstDays() {
             </Accordion>
           </section>
 
+          {/* Insulin injection video */}
+          <section className="space-y-5">
+            <header className="text-center max-w-2xl mx-auto space-y-2">
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">
+                تعلّم طريقة حقن الإنسولين
+              </h2>
+              <p className="text-muted-foreground leading-loose">
+                فيديو توضيحي يشرح خطوات حقن الإنسولين بالطريقة الصحيحة. اطلب من فريقك الطبي جلسة تدريب عملية أيضاً.
+              </p>
+            </header>
+            <div className="aspect-video rounded-3xl overflow-hidden border border-border shadow-[var(--shadow-card)] bg-card">
+              <iframe
+                className="w-full h-full"
+                src="https://www.youtube.com/embed/7SLD3YQtNoE?si=4O2HTkD1Mb3EXwZU"
+                title="YouTube video player"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerPolicy="strict-origin-when-cross-origin"
+                allowFullScreen
+              />
+            </div>
+          </section>
+
           {/* Insulin brands in the market */}
           <section className="space-y-5">
             <header className="text-center max-w-2xl mx-auto space-y-2">
