@@ -4,7 +4,6 @@ import {
   Clock,
   ShieldCheck,
   BookOpen,
-  Lock,
   Sparkles,
   Users,
   GraduationCap,
@@ -55,25 +54,6 @@ const audience = [
   { icon: Users, title: "أولياء الأمور", text: "خاصة الأسر التي شُخّص طفلها حديثاً." },
   { icon: Baby, title: "الأجداد والمرافقون", text: "كل من يرعى الطفل في غياب الوالدين." },
   { icon: GraduationCap, title: "المعلمون والمرشدون الصحيون", text: "للتعامل الآمن مع الطفل في المدرسة." },
-];
-
-const modules = [
-  { num: "٠١", title: "البداية والطمأنة", desc: "خمسة دروس لاحتواء صدمة التشخيص.", count: "٥ دروس", open: true },
-  { num: "٠٢", title: "أهم ما يجب معرفته الآن", desc: "أساسيات اليوم الأول والتواصل مع الطبيب.", count: "٥ دروس", open: false },
-  { num: "٠٣", title: "الإنسولين ببساطة", desc: "ما هو، أنواعه، أين يُحقن، وكيف يُحفظ.", count: "٥ دروس", open: false },
-  { num: "٠٤", title: "قياس السكر وفهم القراءات", desc: "متى نقيس، وماذا تعني القراءات.", count: "٥ دروس", open: false },
-  { num: "٠٥", title: "انخفاض السكر", desc: "العلامات والتصرّف بهدوء وسرعة.", count: "٥ دروس", open: false },
-  { num: "٠٦", title: "ارتفاع السكر والكيتونات", desc: "الأسباب، الفحص، ومتى نذهب للطوارئ.", count: "٥ دروس", open: false },
-  { num: "٠٧", title: "الطعام والكربوهيدرات", desc: "الكربوهيدرات والأكل السعودي والمطاعم.", count: "٥ دروس", open: false },
-  { num: "٠٨", title: "المدرسة", desc: "خطة المدرسة وحقيبة السكري المدرسية.", count: "٥ دروس", open: false },
-  { num: "٠٩", title: "الطفل والأسرة نفسياً", desc: "الشرح للطفل، خوف الأهل، ودعم الإخوة.", count: "٥ دروس", open: false },
-  { num: "١٠", title: "الاستعداد للحياة اليومية", desc: "الخروج، النوم، اللعب، الزيارات، السفر.", count: "٦ دروس", open: false },
-];
-
-const upcomingLessons = [
-  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true, to: "/lesson/$id" as const, params: { id: "1" } },
-  { num: "٠٢", title: "الأيام الأولى بعد التشخيص", desc: "ماذا يجب أن يعرف ولي الأمر؟ الإنسولين، القياس، الحقن، والحقيبة اليومية.", duration: "١٠ د", open: true, to: "/module/first-days" as const, params: undefined },
-  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false, to: "/lesson/$id" as const, params: { id: "3" } },
 ];
 
 function HomePage() {
@@ -191,97 +171,6 @@ function HomePage() {
         <div className="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
           <ReassuranceSection />
         </div>
-
-        {/* 30 days modules */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-16 space-y-6">
-          <header className="flex items-end justify-between flex-wrap gap-3">
-            <div className="space-y-1">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">رحلة أول ٣٠ يوم</h2>
-              <p className="text-muted-foreground text-sm leading-loose">
-                عشر وحدات تعليمية مرتّبة بحسب احتياج الأسرة في الأسابيع الأولى بعد التشخيص.
-              </p>
-            </div>
-          </header>
-          <ol className="grid sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4">
-            {modules.map((m) => (
-              <li
-                key={m.num}
-                className={`rounded-2xl border p-5 text-right shadow-[var(--shadow-card)] transition-all ${
-                  m.open ? "border-primary/40 bg-card" : "border-border bg-muted/30"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-muted-foreground">{m.num}</span>
-                  {m.open ? (
-                    <span className="text-[10px] font-semibold rounded-full bg-success/15 text-success px-2 py-0.5">
-                      متاحة
-                    </span>
-                  ) : (
-                    <span className="inline-flex items-center gap-1 text-[10px] font-semibold rounded-full bg-muted text-muted-foreground px-2 py-0.5">
-                      <Lock className="h-3 w-3" /> قريباً
-                    </span>
-                  )}
-                </div>
-                <h3 className="font-semibold mb-1.5 text-sm">{m.title}</h3>
-                <p className="text-xs text-muted-foreground leading-loose mb-3">{m.desc}</p>
-                <span className="text-[11px] text-muted-foreground">{m.count}</span>
-              </li>
-            ))}
-          </ol>
-        </section>
-
-        {/* Lessons preview */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-16 space-y-6">
-          <header className="flex items-end justify-between flex-wrap gap-3">
-            <div className="space-y-1">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">ابدؤوا من هنا</h2>
-              <p className="text-muted-foreground text-sm">أوّل ثلاثة دروس من الوحدة الأولى — الدرس الأول جاهز للعرض.</p>
-            </div>
-          </header>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            {upcomingLessons.map((l) => (
-              <article
-                key={l.num}
-                className={`rounded-2xl border p-5 shadow-[var(--shadow-card)] transition-all ${
-                  l.open ? "border-primary/40 bg-card hover:shadow-[var(--shadow-soft)]" : "border-border bg-muted/30"
-                }`}
-              >
-                <div className="flex items-center justify-between mb-3">
-                  <span className="text-xs font-bold text-muted-foreground">{l.num}</span>
-                  {l.open ? (
-                    <span className="text-[10px] font-semibold rounded-full bg-success/15 text-success px-2 py-0.5">
-                      متاح
-                    </span>
-                  ) : (
-                    <Lock className="h-3.5 w-3.5 text-muted-foreground" />
-                  )}
-                </div>
-                <h3 className="font-semibold mb-1.5">{l.title}</h3>
-                <p className="text-xs text-muted-foreground leading-loose mb-4">{l.desc}</p>
-                <div className="flex items-center justify-between text-xs">
-                  <span className="text-muted-foreground inline-flex items-center gap-1">
-                    <Clock className="h-3 w-3" /> {l.duration}
-                  </span>
-                  {l.open && (
-                    l.to === "/module/first-days" ? (
-                      <Link to="/module/first-days" className="font-medium text-primary hover:underline">
-                        ابدأ ←
-                      </Link>
-                    ) : (
-                      <Link
-                        to="/lesson/$id"
-                        params={l.params ?? { id: "1" }}
-                        className="font-medium text-primary hover:underline"
-                      >
-                        ابدأ ←
-                      </Link>
-                    )
-                  )}
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
 
         {/* Closing */}
         <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
