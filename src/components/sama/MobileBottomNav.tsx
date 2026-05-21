@@ -37,10 +37,10 @@ export function MobileBottomNav() {
         <li>
           <Link
             to="/what-to-do-now"
-            className={linkBase}
-            activeProps={{ className: linkActive }}
+            className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold text-destructive transition-colors hover:text-destructive/80"
+            activeProps={{ className: "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold text-destructive-foreground bg-destructive" }}
           >
-            <AlertCircle className="h-5 w-5" strokeWidth={2.1} />
+            <AlertCircle className="h-5 w-5" strokeWidth={2.4} />
             <span>ماذا أفعل الآن</span>
           </Link>
         </li>
