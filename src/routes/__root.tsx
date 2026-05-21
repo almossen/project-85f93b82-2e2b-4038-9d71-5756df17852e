@@ -124,7 +124,7 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="pb-32 md:pb-20">
+      <div className="pt-[env(safe-area-inset-top)] md:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] md:pb-20">
         <Outlet />
       </div>
       <EmergencyFloatingButton />
