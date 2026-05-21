@@ -326,51 +326,44 @@ function SimplifiedGuidePage() {
         <MedicalDisclaimer />
 
         {/* Hero */}
-        <section className="rounded-3xl overflow-hidden border border-border bg-gradient-to-br from-primary-soft via-card to-mint/30 p-6 sm:p-10 print:break-inside-avoid">
-          <div className="grid md:grid-cols-[1.2fr_1fr] gap-8 items-center">
-            <div className="space-y-5">
-              <span className="inline-flex items-center gap-2 rounded-full bg-card/80 backdrop-blur px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
-                <Sparkles className="h-3.5 w-3.5" />
-                دليل مكتوب — مبسّط ومطمئن
-              </span>
-              <h1 className="text-3xl sm:text-5xl font-bold leading-tight text-foreground">
-                الدليل المبسّط لأهالي أطفال السكري النوع الأول
-              </h1>
-              <p className="text-lg text-muted-foreground leading-loose">
-                من اليوم الأول بعد التشخيص، نمشي معك خطوة بخطوة بلغة واضحة ومطمئنة.
+        <section className="rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] print:break-inside-avoid">
+          <img
+            src="/images/simplified-guide/hero-banner.png"
+            alt="الدليل المبسّط لأهالي أطفال السكري النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
+            loading="eager"
+            decoding="async"
+            className="w-full h-auto block"
+          />
+          <div className="p-5 sm:p-8 space-y-5">
+            <div className="rounded-2xl bg-primary-soft/50 p-4 border border-border/60 flex gap-3 items-start">
+              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
+                <Heart className="h-5 w-5" />
+              </div>
+              <p className="text-sm sm:text-base leading-loose text-foreground/90">
+                <span className="font-bold">سما:</span> الدليل مقسّم إلى ستة فصول قصيرة. اقرأ
+                فصلًا واحدًا في كل مرة، لا تستعجل.
               </p>
-              <div className="rounded-2xl bg-card/80 backdrop-blur p-4 border border-border/60 flex gap-3 items-start">
-                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                  <Heart className="h-5 w-5" />
-                </div>
-                <p className="text-sm sm:text-base leading-loose text-foreground/90">
-                  <span className="font-bold">سما:</span> الدليل مقسّم إلى ستة فصول قصيرة. اقرأ
-                  فصلًا واحدًا في كل مرة، لا تستعجل.
-                </p>
-              </div>
-              <div className="flex flex-wrap gap-2.5 print:hidden">
-                <button
-                  type="button"
-                  onClick={() => goToChapter(0)}
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-                >
-                  <BookOpen className="h-4 w-4" />
-                  ابدأ من الفصل الأول
-                </button>
-                <Link
-                  to="/what-to-do-now"
-                  className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
-                >
-                  <Siren className="h-4 w-4" />
-                  ماذا أفعل الآن؟
-                </Link>
-              </div>
             </div>
-            <div className="aspect-square rounded-3xl bg-gradient-to-br from-mint/40 via-primary-soft to-sand flex items-center justify-center">
-              <Heart className="h-32 w-32 text-primary/60" strokeWidth={1.2} />
+            <div className="flex flex-wrap gap-2.5 print:hidden">
+              <button
+                type="button"
+                onClick={() => goToChapter(0)}
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                ابدأ من الفصل الأول
+              </button>
+              <Link
+                to="/what-to-do-now"
+                className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
+              >
+                <Siren className="h-4 w-4" />
+                ماذا أفعل الآن؟
+              </Link>
             </div>
           </div>
         </section>
+
 
         {/* Philosophy / About the platform */}
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
