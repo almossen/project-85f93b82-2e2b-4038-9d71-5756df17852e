@@ -291,34 +291,6 @@ function WarningSignsList() {
   );
 }
 
-function MisconceptionsMini() {
-  const items = [
-    { wrong: "سكري النوع الأول بسبب أكل الحلويات.", right: "خطأ — هو حالة مناعية، ولا علاقة له بكمية الحلوى." },
-    { wrong: "إذا تحسّنت القراءة نوقف الإنسولين.", right: "خطأ — الإيقاف قد يسبب ارتفاعاً شديداً وكيتونات. لا تغيّر إلا بتوجيه الطبيب." },
-    { wrong: "كل أدوية السكري تناسب كل الأنواع.", right: "خطأ — أدوية النوع الثاني قد لا تناسب النوع الأول." },
-  ];
-  const [open, setOpen] = useState<number | null>(0);
-  return (
-    <div className="space-y-2">
-      <h4 className="font-semibold text-sm">صحّحوا هذه المفاهيم</h4>
-      {items.map((it, i) => (
-        <button
-          key={i}
-          type="button"
-          onClick={() => setOpen(open === i ? null : i)}
-          className="w-full text-right rounded-xl border border-border bg-background/60 p-3 hover:bg-muted transition-colors"
-        >
-          <p className="text-xs font-medium">«{it.wrong}»</p>
-          {open === i && (
-            <p className="text-xs text-muted-foreground leading-loose mt-2 pt-2 border-t border-border">
-              {it.right}
-            </p>
-          )}
-        </button>
-      ))}
-    </div>
-  );
-}
 
 export function GuideSectionEnrichment({ sectionId }: { sectionId: string }) {
   switch (sectionId) {
