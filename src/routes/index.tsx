@@ -304,11 +304,10 @@ function HomePage() {
                 كل ما تحتاجونه هو خطوة أولى. ابدؤوا الدرس الأول — ٥ دقائق فقط — وستجدون أن الطريق أقل وحشة مما يبدو.
               </p>
               <Link
-                to="/lesson/$id"
-                params={{ id: "1" }}
+                to="/simplified-guide"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                ابدؤوا الآن
+                ابدؤوا الدليل المبسّط
                 <ArrowLeft className="h-4 w-4" />
               </Link>
             </div>
