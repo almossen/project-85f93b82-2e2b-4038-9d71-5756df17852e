@@ -23,7 +23,7 @@ const HERO_BASE = "/images/simplified-guide";
 
 export const guideSectionHeroes: Record<string, { image: string; alt: string }> = {
   "journey-start": {
-    image: `${HERO_BASE}/a_clean_warm_modern_healthcare_parenting_informa_1.png`,
+    image: `${HERO_BASE}/journey-start.png`,
     alt: "بداية الرحلة – الدليل المبسط لأهالي أطفال السكري النوع الأول",
   },
   "what-is-t1d": {
