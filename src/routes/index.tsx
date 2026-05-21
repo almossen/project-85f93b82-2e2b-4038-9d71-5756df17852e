@@ -5,13 +5,11 @@ import {
   ShieldCheck,
   BookOpen,
   Lock,
-  HeartHandshake,
-  Languages,
-  Stethoscope,
   Sparkles,
   Users,
   GraduationCap,
   Baby,
+  Stethoscope,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
