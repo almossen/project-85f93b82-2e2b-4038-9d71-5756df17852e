@@ -10,6 +10,7 @@ import {
   GraduationCap,
   Baby,
   Stethoscope,
+  Languages,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
