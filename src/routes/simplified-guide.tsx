@@ -156,12 +156,45 @@ function AskDoctorCard({ question }: { question: string }) {
   );
 }
 
-function SectionCard({ section, index }: { section: GuideSection; index: number }) {
+const lessonOrdinals = [
+  "الدرس الأول",
+  "الدرس الثاني",
+  "الدرس الثالث",
+  "الدرس الرابع",
+  "الدرس الخامس",
+  "الدرس السادس",
+  "الدرس السابع",
+  "الدرس الثامن",
+  "الدرس التاسع",
+  "الدرس العاشر",
+];
+
+function SectionCard({
+  section,
+  index,
+  lessonNumber,
+  lessonTotal,
+}: {
+  section: GuideSection;
+  index: number;
+  lessonNumber?: number;
+  lessonTotal?: number;
+}) {
   const paragraphs = section.body.split("\n\n");
   const isHighSensitivity = section.medicalSensitivity === "high";
   const doctorQ = doctorQuestions[section.id];
   const printScopeId = `print-${section.id}`;
   const hero = guideSectionHeroes[section.id];
+  const lessonOrdinal =
+    lessonNumber && lessonNumber >= 1 && lessonNumber <= lessonOrdinals.length
+      ? lessonOrdinals[lessonNumber - 1]
+      : lessonNumber
+      ? `الدرس ${lessonNumber}`
+      : undefined;
+  const lessonLabel =
+    lessonOrdinal && lessonTotal
+      ? `${lessonOrdinal} من ${lessonTotal}`
+      : lessonOrdinal ?? "الدرس";
 
   const handleSectionPrint = () => {
     if (typeof window === "undefined") return;
@@ -191,6 +224,11 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
 
       <div className="p-6 sm:p-8 space-y-5">
         <header className="space-y-2">
+          {lessonNumber && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-bold print:bg-transparent print:text-foreground print:border print:border-border">
+              {lessonLabel}
+            </span>
+          )}
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">{section.title}</h2>
             <ReviewBadge status={section.reviewStatus} />
@@ -199,6 +237,9 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
             <p className="text-base text-muted-foreground">{section.subtitle}</p>
           )}
         </header>
+
+        <LessonAudioPlayer sectionId={section.id} lessonLabel={lessonLabel} />
+
 
         <div id={printScopeId}>
           <h1 className="hidden print:block">{section.title}</h1>
