@@ -641,19 +641,36 @@ function SimplifiedGuidePage() {
 
         {/* Sections */}
         <div className="space-y-8">
-          {(isSearching ? searchResults : chapterSections).map((s, i) => (
-            <SectionCard
-              key={s.id}
-              section={s}
-              index={i}
-              lessonNumber={isSearching ? undefined : i + 1}
-              lessonTotal={isSearching ? undefined : chapterSections.length}
-            />
-          ))}
+          {(isSearching ? searchResults : chapterSections).map((s, i) => {
+            const sectionList = isSearching ? searchResults : chapterSections;
+            const isLastInChapter = !isSearching && i === sectionList.length - 1;
+            return (
+              <div key={s.id} className="space-y-8">
+                <SectionCard
+                  section={s}
+                  index={i}
+                  lessonNumber={isSearching ? undefined : i + 1}
+                  lessonTotal={isSearching ? undefined : sectionList.length}
+                />
+                {!isSearching && s.id === "journey-start" && <ReassuringPause />}
+                {!isSearching && s.id === "injection-basics" && <InsulinStorageSection />}
+                {!isSearching && chapterIdx === 1 && isLastInChapter && <TrueFalseSection />}
+                {!isSearching && chapterIdx === 0 && isLastInChapter && (
+                  <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-[var(--shadow-card)] print:break-inside-avoid">
+                    <Quiz />
+                  </section>
+                )}
+              </div>
+            );
+          })}
           {isSearching && searchResults.length === 0 && (
             <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
           )}
         </div>
+
+        {/* "متى أطلب المساعدة فورًا؟" — يظهر دائمًا في الفصل الأخير */}
+        {!isSearching && chapterIdx === chapters.length - 1 && <GetHelpNowSection />}
+
 
         {/* Chapter nav (prev / next) */}
         {!isSearching && (
