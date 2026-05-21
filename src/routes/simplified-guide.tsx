@@ -334,34 +334,6 @@ function SimplifiedGuidePage() {
             decoding="async"
             className="w-full h-auto block"
           />
-          <div className="p-5 sm:p-8 space-y-5">
-            <div className="rounded-2xl bg-primary-soft/50 p-4 border border-border/60 flex gap-3 items-start">
-              <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-                <Heart className="h-5 w-5" />
-              </div>
-              <p className="text-sm sm:text-base leading-loose text-foreground/90">
-                <span className="font-bold">سما:</span> الدليل مقسّم إلى ستة فصول قصيرة. اقرأ
-                فصلًا واحدًا في كل مرة، لا تستعجل.
-              </p>
-            </div>
-            <div className="flex flex-wrap gap-2.5 print:hidden">
-              <button
-                type="button"
-                onClick={() => goToChapter(0)}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                <BookOpen className="h-4 w-4" />
-                ابدأ من الفصل الأول
-              </button>
-              <Link
-                to="/what-to-do-now"
-                className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
-              >
-                <Siren className="h-4 w-4" />
-                ماذا أفعل الآن؟
-              </Link>
-            </div>
-          </div>
         </section>
 
 
