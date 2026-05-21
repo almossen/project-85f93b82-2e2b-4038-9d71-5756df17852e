@@ -521,7 +521,13 @@ function SimplifiedGuidePage() {
         {/* Sections */}
         <div className="space-y-8">
           {(isSearching ? searchResults : chapterSections).map((s, i) => (
-            <SectionCard key={s.id} section={s} index={i} />
+            <SectionCard
+              key={s.id}
+              section={s}
+              index={i}
+              lessonNumber={isSearching ? undefined : i + 1}
+              lessonTotal={isSearching ? undefined : chapterSections.length}
+            />
           ))}
           {isSearching && searchResults.length === 0 && (
             <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
