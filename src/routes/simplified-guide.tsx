@@ -280,9 +280,7 @@ function SectionCard({
         {isHighSensitivity && doctorQ && <AskDoctorCard question={doctorQ} />}
 
         <div className="flex flex-wrap gap-2 pt-2 print:hidden">
-          <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
-            🎧 سيتم إضافة الصوت الواقعي قريبًا
-          </span>
+
 
           {section.id === "school" && (
             <button
