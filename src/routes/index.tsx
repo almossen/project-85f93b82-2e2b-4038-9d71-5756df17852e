@@ -108,18 +108,24 @@ function HomePage() {
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
-                  to="/lesson/$id"
-                  params={{ id: "1" }}
+                  to="/simplified-guide"
                   className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
                 >
-                  ابدأ من الدرس الأول
+                  ابدأ الدليل المبسّط
                   <ArrowLeft className="h-4 w-4" />
+                </Link>
+                <Link
+                  to="/lesson/$id"
+                  params={{ id: "1" }}
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
+                >
+                  الدرس الأول (النسخة القديمة)
                 </Link>
                 <Link
                   to="/module/first-days"
                   className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-6 py-3 text-base font-semibold hover:bg-muted transition-colors"
                 >
-                  استعرض الدرس الثاني
+                  الدرس الثاني
                 </Link>
               </div>
               <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
@@ -298,11 +304,10 @@ function HomePage() {
                 كل ما تحتاجونه هو خطوة أولى. ابدؤوا الدرس الأول — ٥ دقائق فقط — وستجدون أن الطريق أقل وحشة مما يبدو.
               </p>
               <Link
-                to="/lesson/$id"
-                params={{ id: "1" }}
+                to="/simplified-guide"
                 className="inline-flex items-center gap-2 rounded-full bg-foreground text-background px-6 py-3 text-sm font-semibold hover:opacity-90 transition-opacity"
               >
-                ابدؤوا الآن
+                ابدؤوا الدليل المبسّط
                 <ArrowLeft className="h-4 w-4" />
               </Link>
             </div>
