@@ -15,7 +15,7 @@ import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
-import heroFamily from "@/assets/hero-family.jpg";
+import heroFamily from "@/assets/sama-family.png";
 import happyChild from "@/assets/happy-child.jpg";
 
 export const Route = createFileRoute("/")({
