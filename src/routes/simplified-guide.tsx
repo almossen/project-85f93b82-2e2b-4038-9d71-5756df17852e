@@ -327,6 +327,128 @@ function SectionCard({
   );
 }
 
+function ReassuringPause() {
+  return (
+    <section className="rounded-3xl border border-primary/30 bg-primary-soft/60 p-6 sm:p-8 space-y-3 print:break-inside-avoid">
+      <div className="flex items-center gap-2">
+        <Heart className="h-5 w-5 text-primary" />
+        <h3 className="text-xl sm:text-2xl font-bold">وقفة مطمئنة</h3>
+      </div>
+      <p className="text-base sm:text-[17px] leading-loose text-foreground/90">
+        هذا ابتلاء ومعه لطف الله. الإيمان بالقضاء والقدر لا يلغي العلاج، بل يقوّي القلب على
+        الالتزام به. سكري النوع الأول ليس عقوبة وليس دليلًا على تقصير الوالدين.
+      </p>
+    </section>
+  );
+}
+
+function InsulinStorageSection() {
+  const items = [
+    "الإنسولين غير المستخدم يحفظ في الثلاجة حسب تعليمات النشرة والفريق الطبي.",
+    "لا يوضع في الفريزر.",
+    "القلم المستخدم يحفظ حسب تعليمات الشركة والفريق الطبي.",
+    "لا يستخدم إذا تغير لونه أو ظهرت شوائب.",
+    "أثناء السفر أو الحر، استخدم حقيبة تبريد مناسبة ولا تتركه في السيارة.",
+  ];
+  return (
+    <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
+      <header className="space-y-1">
+        <h3 className="text-2xl sm:text-3xl font-bold">كيف أحفظ الإنسولين؟</h3>
+        <p className="text-sm text-muted-foreground">حفظ صحيح للإنسولين يحمي مفعوله ويحمي طفلك.</p>
+      </header>
+      <ul className="space-y-2.5">
+        {items.map((t) => (
+          <li
+            key={t}
+            className="flex items-start gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-sm sm:text-base leading-loose"
+          >
+            <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-1" />
+            <span>{t}</span>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function TrueFalseSection() {
+  const items = [
+    { t: "إذا تحسنت القراءة أوقف الإنسولين", a: false, why: "خطأ — لا توقف الإنسولين من نفسك أبدًا، حتى لو تحسنت القراءات. أي تعديل يكون بتوجيه الطبيب." },
+    { t: "كل أدوية السكري تناسب كل الأنواع", a: false, why: "خطأ — أدوية السكري النوع الثاني لا تستخدم لطفل السكري النوع الأول. الإنسولين هو العلاج الأساسي." },
+    { t: "لا أغير الجرعة إلا بتوجيه الطبيب", a: true, why: "صح — تغيير الجرعة من تلقاء النفس قد يكون خطيرًا. التواصل مع الفريق الطبي هو الأساس." },
+  ];
+  return (
+    <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
+      <header className="space-y-1">
+        <h3 className="text-2xl sm:text-3xl font-bold">صح أم خطأ؟</h3>
+        <p className="text-sm text-muted-foreground">مفاهيم شائعة عن الإنسولين — نُصحّحها بهدوء.</p>
+      </header>
+      <ul className="space-y-3">
+        {items.map((it) => (
+          <li key={it.t} className="rounded-2xl border border-border bg-background p-4">
+            <div className="flex items-start gap-2.5">
+              {it.a ? (
+                <CheckCircle2 className="h-5 w-5 text-success shrink-0 mt-0.5" />
+              ) : (
+                <AlertTriangle className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
+              )}
+              <div className="space-y-1">
+                <p className="font-semibold text-sm sm:text-base">{it.t}</p>
+                <p className="text-sm text-muted-foreground leading-loose">{it.why}</p>
+              </div>
+            </div>
+          </li>
+        ))}
+      </ul>
+    </section>
+  );
+}
+
+function GetHelpNowSection() {
+  const items = [
+    "فقدان الوعي",
+    "التشنجات",
+    "القيء المتكرر",
+    "صعوبة التنفس",
+    "الخمول الشديد",
+    "علامات الجفاف",
+    "وجود كيتونات مع مرض أو قيء",
+    "انخفاض لا يتحسن حسب خطة الطبيب",
+    "أي قلق شديد لدى الأسرة",
+  ];
+  return (
+    <section className="rounded-3xl border border-destructive/40 bg-destructive/5 p-6 sm:p-8 space-y-4 print:break-inside-avoid">
+      <header className="flex items-center gap-2">
+        <Siren className="h-6 w-6 text-destructive" />
+        <h2 className="text-2xl sm:text-3xl font-bold text-destructive">متى أطلب المساعدة فورًا؟</h2>
+      </header>
+      <p className="text-sm sm:text-base text-foreground/85 leading-loose">
+        إذا ظهرت أي من العلامات التالية، لا تتأخر — اتصل بالإسعاف أو توجه لأقرب طوارئ:
+      </p>
+      <ul className="grid sm:grid-cols-2 gap-2.5">
+        {items.map((t) => (
+          <li
+            key={t}
+            className="flex items-start gap-2.5 rounded-2xl bg-card border border-border px-4 py-3 text-sm sm:text-base leading-loose"
+          >
+            <AlertTriangle className="h-4 w-4 text-destructive shrink-0 mt-1" />
+            <span>{t}</span>
+          </li>
+        ))}
+      </ul>
+      <div className="flex flex-wrap gap-2 pt-2 print:hidden">
+        <a
+          href="tel:937"
+          className="inline-flex items-center gap-2 rounded-full bg-destructive text-destructive-foreground px-5 py-2.5 text-sm font-semibold hover:bg-destructive/90 transition-colors"
+        >
+          <Phone className="h-4 w-4" />
+          اتصل بالإسعاف 937
+        </a>
+      </div>
+    </section>
+  );
+}
+
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
   const [chapterIdx, setChapterIdx] = useState(0);
