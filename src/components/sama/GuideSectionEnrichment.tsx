@@ -208,19 +208,40 @@ function DiabetesBagChecklist() {
 function FaithCallout() {
   return (
     <div className="rounded-2xl overflow-hidden border border-sand bg-[image:var(--gradient-sand)]">
-      <div className="grid sm:grid-cols-[1.3fr_1fr] gap-4 p-4 items-center">
-        <div className="space-y-2">
-          <span className="inline-block text-[11px] rounded-full bg-white/70 px-2 py-0.5 text-sand-foreground font-medium">
+      <div className="grid sm:grid-cols-[1.2fr_1fr] gap-6 p-5 sm:p-6 items-center">
+        <div className="space-y-3 text-right">
+          <span className="inline-flex items-center gap-2 rounded-full bg-white/70 px-3 py-1 text-xs font-medium text-sand-foreground">
             وقفة إيمانية
           </span>
-          <p className="font-quranic text-base sm:text-lg leading-loose text-sand-foreground">
-            «نؤمن بقضاء الله، ونأخذ بالأسباب، ونتعلم لنحمي أبناءنا.»
-          </p>
-          <p className="text-xs text-sand-foreground/80 leading-loose">
-            الإيمان بالقدر لا يلغي العلاج، بل يقوّي القلب على الالتزام به. سكري النوع الأول ليس عقوبة، ولا دليلاً على تقصير الوالدين.
-          </p>
+          <h3 className="text-lg sm:text-xl font-bold tracking-tight text-sand-foreground leading-snug">
+            أولاً: هذا ابتلاء… ومعه لطف الله
+          </h3>
+          <div className="space-y-2 text-sm text-sand-foreground/90 leading-loose">
+            <p>
+              قد يكون خبر إصابة طفلك بسكري النوع الأول صعباً على قلبك. وقد تسأل: لماذا طفلي؟ ولماذا نحن؟
+            </p>
+            <p>
+              في هذه اللحظة، تذكّر أن ما أصابنا لم يكن ليخطئنا، وأن أمر المؤمن كله خير إذا صبر واحتسب وأخذ بالأسباب.
+            </p>
+            <p>
+              والصبر لا يعني أن نبقى عاجزين أو خائفين، بل يعني أن نثبت، ونتعلم، ونسأل، ونعمل بما ينفع طفلنا.
+            </p>
+            <p>
+              الإيمان بالقضاء والقدر لا يلغي العلاج، بل يقوّي القلب على الالتزام به. سكري النوع الأول ليس عقوبة، وليس دليلاً على تقصير الوالدين.
+            </p>
+          </div>
+          <blockquote className="rounded-2xl bg-white/70 border border-sand p-4 mt-2">
+            <p className="font-quranic text-lg sm:text-xl leading-[2] text-sand-foreground text-center">
+              «نؤمن بقضاء الله، ونأخذ بالأسباب، ونتعلم لنحمي أبناءنا.»
+            </p>
+          </blockquote>
         </div>
-        <img src={faithImg} alt="أم تحتضن طفلها" loading="lazy" className="rounded-xl w-full h-auto object-cover" />
+        <img
+          src={faithImg}
+          alt="أم تحتضن طفلها عند نافذة مضاءة بنور الفجر"
+          loading="lazy"
+          className="rounded-2xl shadow-[var(--shadow-card)] w-full h-auto object-cover"
+        />
       </div>
     </div>
   );
