@@ -12,9 +12,6 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhatToDoNowRouteImport } from './routes/what-to-do-now'
 import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
 import { Route as IndexRouteImport } from './routes/index'
-import { Route as QuizIdRouteImport } from './routes/quiz.$id'
-import { Route as ModuleFirstDaysRouteImport } from './routes/module.first-days'
-import { Route as LessonIdRouteImport } from './routes/lesson.$id'
 
 const WhatToDoNowRoute = WhatToDoNowRouteImport.update({
   id: '/what-to-do-now',
@@ -31,81 +28,35 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
-const QuizIdRoute = QuizIdRouteImport.update({
-  id: '/quiz/$id',
-  path: '/quiz/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ModuleFirstDaysRoute = ModuleFirstDaysRouteImport.update({
-  id: '/module/first-days',
-  path: '/module/first-days',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const LessonIdRoute = LessonIdRouteImport.update({
-  id: '/lesson/$id',
-  path: '/lesson/$id',
-  getParentRoute: () => rootRouteImport,
-} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
-  '/lesson/$id': typeof LessonIdRoute
-  '/module/first-days': typeof ModuleFirstDaysRoute
-  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
-  '/lesson/$id': typeof LessonIdRoute
-  '/module/first-days': typeof ModuleFirstDaysRoute
-  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
-  '/lesson/$id': typeof LessonIdRoute
-  '/module/first-days': typeof ModuleFirstDaysRoute
-  '/quiz/$id': typeof QuizIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths:
-    | '/'
-    | '/simplified-guide'
-    | '/what-to-do-now'
-    | '/lesson/$id'
-    | '/module/first-days'
-    | '/quiz/$id'
+  fullPaths: '/' | '/simplified-guide' | '/what-to-do-now'
   fileRoutesByTo: FileRoutesByTo
-  to:
-    | '/'
-    | '/simplified-guide'
-    | '/what-to-do-now'
-    | '/lesson/$id'
-    | '/module/first-days'
-    | '/quiz/$id'
-  id:
-    | '__root__'
-    | '/'
-    | '/simplified-guide'
-    | '/what-to-do-now'
-    | '/lesson/$id'
-    | '/module/first-days'
-    | '/quiz/$id'
+  to: '/' | '/simplified-guide' | '/what-to-do-now'
+  id: '__root__' | '/' | '/simplified-guide' | '/what-to-do-now'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   SimplifiedGuideRoute: typeof SimplifiedGuideRoute
   WhatToDoNowRoute: typeof WhatToDoNowRoute
-  LessonIdRoute: typeof LessonIdRoute
-  ModuleFirstDaysRoute: typeof ModuleFirstDaysRoute
-  QuizIdRoute: typeof QuizIdRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -131,27 +82,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/quiz/$id': {
-      id: '/quiz/$id'
-      path: '/quiz/$id'
-      fullPath: '/quiz/$id'
-      preLoaderRoute: typeof QuizIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/module/first-days': {
-      id: '/module/first-days'
-      path: '/module/first-days'
-      fullPath: '/module/first-days'
-      preLoaderRoute: typeof ModuleFirstDaysRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/lesson/$id': {
-      id: '/lesson/$id'
-      path: '/lesson/$id'
-      fullPath: '/lesson/$id'
-      preLoaderRoute: typeof LessonIdRouteImport
-      parentRoute: typeof rootRouteImport
-    }
   }
 }
 
@@ -159,10 +89,17 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   SimplifiedGuideRoute: SimplifiedGuideRoute,
   WhatToDoNowRoute: WhatToDoNowRoute,
-  LessonIdRoute: LessonIdRoute,
-  ModuleFirstDaysRoute: ModuleFirstDaysRoute,
-  QuizIdRoute: QuizIdRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
+
+import type { getRouter } from './router.tsx'
+import type { startInstance } from './start.ts'
+declare module '@tanstack/react-start' {
+  interface Register {
+    ssr: true
+    router: Awaited<ReturnType<typeof getRouter>>
+    config: Awaited<ReturnType<typeof startInstance.getOptions>>
+  }
+}
