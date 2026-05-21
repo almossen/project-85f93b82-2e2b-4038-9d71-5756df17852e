@@ -73,19 +73,29 @@ function BrandChip({ brand }: { brand: Brand }) {
   );
 }
 
-function BrandPanel({ tone, image, alt, brands }: { tone: "mint" | "sand"; image: string; alt: string; brands: Brand[] }) {
+function BrandPanel({ tone, image, alt }: { tone: "mint" | "sand"; image: string; alt: string; brands?: Brand[] }) {
   return (
     <div className={`space-y-3 rounded-2xl border border-border p-4 ${tone === "mint" ? "bg-mint/20" : "bg-sand/30"}`}>
-      <div className="aspect-[3/4] max-w-xs mx-auto rounded-xl overflow-hidden border border-border bg-card">
-        <img src={image} alt={alt} loading="lazy" className="w-full h-full object-contain" />
-      </div>
-      <div className="text-xs font-bold text-muted-foreground">
-        أنواع تجارية شائعة — اضغط على الاسم لرؤية صورة القلم:
-      </div>
-      <div className="flex flex-wrap gap-2">
-        {brands.map((b) => <BrandChip key={b.name} brand={b} />)}
-      </div>
-      <p className="text-[11px] text-muted-foreground leading-loose">
+      <Dialog>
+        <DialogTrigger asChild>
+          <button
+            type="button"
+            className="block w-full aspect-square max-w-md mx-auto rounded-xl overflow-hidden border border-border bg-card cursor-zoom-in hover:opacity-95 transition"
+            aria-label={`عرض ${alt} بحجم أكبر`}
+          >
+            <img src={image} alt={alt} loading="lazy" className="w-full h-full object-contain" />
+          </button>
+        </DialogTrigger>
+        <DialogContent className="max-w-3xl">
+          <DialogHeader className="text-right">
+            <DialogTitle>{alt}</DialogTitle>
+          </DialogHeader>
+          <div className="rounded-2xl overflow-hidden border border-border bg-muted/30">
+            <img src={image} alt={alt} className="w-full h-auto object-contain" />
+          </div>
+        </DialogContent>
+      </Dialog>
+      <p className="text-[11px] text-muted-foreground leading-loose text-center">
         الأسماء للتعريف فقط. اختيار النوع والجرعة قرار طبي يتخذه فريق السكري المعالج لطفلك.
       </p>
     </div>
