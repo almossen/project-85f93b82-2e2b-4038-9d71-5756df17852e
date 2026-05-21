@@ -27,7 +27,7 @@ import penLantus from "@/assets/pen-lantus.jpg";
 import penToujeo from "@/assets/pen-toujeo.jpg";
 import penLevemir from "@/assets/pen-levemir.jpg";
 import penTresiba from "@/assets/pen-tresiba.jpg";
-import faithImg from "@/assets/faith-section.jpg";
+import faithImg from "@/assets/faith-section.png";
 import familyKitchen from "@/assets/family-kitchen.jpg";
 
 type Brand = { name: string; ar: string; img: string; note: string };
