@@ -4,7 +4,6 @@ import {
   Clock,
   ShieldCheck,
   BookOpen,
-  Lock,
   Sparkles,
   Users,
   GraduationCap,
