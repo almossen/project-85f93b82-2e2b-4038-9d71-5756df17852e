@@ -97,9 +97,16 @@ function HomePage() {
                   رحلة التعايش مع سكري النوع الأول
                 </span>
               </h1>
-              <p className="text-base sm:text-lg text-muted-foreground leading-loose max-w-xl">
-                أنا سما سكرية من النوع الأول سأنقل لكم تجربتي منذ تشخيصي بالمرض وحتى استطعت التكيف معه أنا وعائلتي
-              </p>
+              <div className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line">
+                أنا سما.
+                سكرية من النوع الأول، وسأخذكم في رحلة مبسطة تشبه رحلتي مع عائلتي منذ يوم التشخيص الأول.
+
+                في البداية قد تكون الأسئلة كثيرة والخوف حاضرًا، لكن مع التعلم والمتابعة يصبح التعامل مع السكري أوضح وأسهل.
+
+                هنا ستجدون شرحًا مبسطًا، خطوات عملية، وتنبيهات مهمة تساعدكم على رعاية طفلكم بثقة وطمأنينة.
+
+                لن نمشي الطريق كله في يوم واحد… سنمشيه خطوة بخطوة.
+              </div>
               <div className="flex flex-wrap gap-3">
                 <Link
                   to="/simplified-guide"
