@@ -1,4 +1,4 @@
-import faithImg from "@/assets/faith-section.jpg";
+import faithImg from "@/assets/faith-section.png";
 
 export function FaithSection() {
   return (
