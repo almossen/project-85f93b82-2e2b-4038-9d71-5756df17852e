@@ -56,25 +56,6 @@ const audience = [
   { icon: GraduationCap, title: "المعلمون والمرشدون الصحيون", text: "للتعامل الآمن مع الطفل في المدرسة." },
 ];
 
-const modules = [
-  { num: "٠١", title: "البداية والطمأنة", desc: "خمسة دروس لاحتواء صدمة التشخيص.", count: "٥ دروس", open: true },
-  { num: "٠٢", title: "أهم ما يجب معرفته الآن", desc: "أساسيات اليوم الأول والتواصل مع الطبيب.", count: "٥ دروس", open: false },
-  { num: "٠٣", title: "الإنسولين ببساطة", desc: "ما هو، أنواعه، أين يُحقن، وكيف يُحفظ.", count: "٥ دروس", open: false },
-  { num: "٠٤", title: "قياس السكر وفهم القراءات", desc: "متى نقيس، وماذا تعني القراءات.", count: "٥ دروس", open: false },
-  { num: "٠٥", title: "انخفاض السكر", desc: "العلامات والتصرّف بهدوء وسرعة.", count: "٥ دروس", open: false },
-  { num: "٠٦", title: "ارتفاع السكر والكيتونات", desc: "الأسباب، الفحص، ومتى نذهب للطوارئ.", count: "٥ دروس", open: false },
-  { num: "٠٧", title: "الطعام والكربوهيدرات", desc: "الكربوهيدرات والأكل السعودي والمطاعم.", count: "٥ دروس", open: false },
-  { num: "٠٨", title: "المدرسة", desc: "خطة المدرسة وحقيبة السكري المدرسية.", count: "٥ دروس", open: false },
-  { num: "٠٩", title: "الطفل والأسرة نفسياً", desc: "الشرح للطفل، خوف الأهل، ودعم الإخوة.", count: "٥ دروس", open: false },
-  { num: "١٠", title: "الاستعداد للحياة اليومية", desc: "الخروج، النوم، اللعب، الزيارات، السفر.", count: "٦ دروس", open: false },
-];
-
-const upcomingLessons = [
-  { num: "٠١", title: "بداية الرحلة", desc: "هذا ابتلاء ومعه لطف الله — وما هو سكري النوع الأول؟", duration: "٥ د", open: true, to: "/lesson/$id" as const, params: { id: "1" } },
-  { num: "٠٢", title: "الأيام الأولى بعد التشخيص", desc: "ماذا يجب أن يعرف ولي الأمر؟ الإنسولين، القياس، الحقن، والحقيبة اليومية.", duration: "١٠ د", open: true, to: "/module/first-days" as const, params: undefined },
-  { num: "٠٣", title: "قياس السكر", desc: "متى نقيس، وماذا تعني الأرقام.", duration: "٦ د", open: false, to: "/lesson/$id" as const, params: { id: "3" } },
-];
-
 function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
