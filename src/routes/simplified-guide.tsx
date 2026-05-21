@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
 import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
+import { LessonAudioPlayer } from "@/components/sama/LessonAudioPlayer";
 import {
   guideSections,
   guideSummary,
@@ -155,12 +156,45 @@ function AskDoctorCard({ question }: { question: string }) {
   );
 }
 
-function SectionCard({ section, index }: { section: GuideSection; index: number }) {
+const lessonOrdinals = [
+  "الدرس الأول",
+  "الدرس الثاني",
+  "الدرس الثالث",
+  "الدرس الرابع",
+  "الدرس الخامس",
+  "الدرس السادس",
+  "الدرس السابع",
+  "الدرس الثامن",
+  "الدرس التاسع",
+  "الدرس العاشر",
+];
+
+function SectionCard({
+  section,
+  index,
+  lessonNumber,
+  lessonTotal,
+}: {
+  section: GuideSection;
+  index: number;
+  lessonNumber?: number;
+  lessonTotal?: number;
+}) {
   const paragraphs = section.body.split("\n\n");
   const isHighSensitivity = section.medicalSensitivity === "high";
   const doctorQ = doctorQuestions[section.id];
   const printScopeId = `print-${section.id}`;
   const hero = guideSectionHeroes[section.id];
+  const lessonOrdinal =
+    lessonNumber && lessonNumber >= 1 && lessonNumber <= lessonOrdinals.length
+      ? lessonOrdinals[lessonNumber - 1]
+      : lessonNumber
+      ? `الدرس ${lessonNumber}`
+      : undefined;
+  const lessonLabel =
+    lessonOrdinal && lessonTotal
+      ? `${lessonOrdinal} من ${lessonTotal}`
+      : lessonOrdinal ?? "الدرس";
 
   const handleSectionPrint = () => {
     if (typeof window === "undefined") return;
@@ -190,6 +224,11 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
 
       <div className="p-6 sm:p-8 space-y-5">
         <header className="space-y-2">
+          {lessonNumber && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-primary text-primary-foreground px-3 py-1 text-xs font-bold print:bg-transparent print:text-foreground print:border print:border-border">
+              {lessonLabel}
+            </span>
+          )}
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">{section.title}</h2>
             <ReviewBadge status={section.reviewStatus} />
@@ -198,6 +237,9 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
             <p className="text-base text-muted-foreground">{section.subtitle}</p>
           )}
         </header>
+
+        <LessonAudioPlayer sectionId={section.id} lessonLabel={lessonLabel} />
+
 
         <div id={printScopeId}>
           <h1 className="hidden print:block">{section.title}</h1>
@@ -238,9 +280,7 @@ function SectionCard({ section, index }: { section: GuideSection; index: number 
         {isHighSensitivity && doctorQ && <AskDoctorCard question={doctorQ} />}
 
         <div className="flex flex-wrap gap-2 pt-2 print:hidden">
-          <span className="inline-flex items-center gap-2 rounded-full border border-dashed border-border bg-muted/40 px-4 py-2 text-xs text-muted-foreground">
-            🎧 سيتم إضافة الصوت الواقعي قريبًا
-          </span>
+
 
           {section.id === "school" && (
             <button
@@ -481,7 +521,13 @@ function SimplifiedGuidePage() {
         {/* Sections */}
         <div className="space-y-8">
           {(isSearching ? searchResults : chapterSections).map((s, i) => (
-            <SectionCard key={s.id} section={s} index={i} />
+            <SectionCard
+              key={s.id}
+              section={s}
+              index={i}
+              lessonNumber={isSearching ? undefined : i + 1}
+              lessonTotal={isSearching ? undefined : chapterSections.length}
+            />
           ))}
           {isSearching && searchResults.length === 0 && (
             <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
