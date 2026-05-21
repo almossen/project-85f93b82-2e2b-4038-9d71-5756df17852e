@@ -372,6 +372,71 @@ function SimplifiedGuidePage() {
           </div>
         </section>
 
+        {/* Philosophy / About the platform */}
+        <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
+          <div className="space-y-5 text-center">
+            <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
+              <Sparkles className="h-3.5 w-3.5" />
+              فلسفة المنصة
+            </span>
+            <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+              منصة تعليمية تمشي معك خطوة بخطوة
+            </h2>
+            <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground leading-loose">
+              هدفنا أن نُعلّمك ونطمئنك، لا أن نغرقك بالمعلومات. كل فصل مصمَّم ليُقرأ
+              بهدوء، بلغة بسيطة، مع أمثلة واقعية من حياة أهالي أطفال السكري النوع
+              الأول. ابدأ من الفصل الأول وتقدّم على راحتك، وإذا واجهت موقفًا طارئًا،
+              لديك زر مباشر للوصول إلى خطوات التصرف الفوري.
+            </p>
+            <div className="grid sm:grid-cols-3 gap-3 pt-2 text-right">
+              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                <BookOpen className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-sm">تعلّم متدرّج</div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    ستة فصول قصيرة، من البداية إلى الحياة اليومية.
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-sm">لغة مطمئنة</div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    شرح واضح بلا مصطلحات معقّدة، مع وقفات إيمانية.
+                  </p>
+                </div>
+              </div>
+              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                <Siren className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
+                <div>
+                  <div className="font-bold text-sm">جاهز للطوارئ</div>
+                  <p className="text-xs text-muted-foreground leading-relaxed">
+                    خطوات سريعة وواضحة عند أي موقف طارئ.
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div className="flex flex-wrap justify-center gap-2.5 pt-3">
+              <button
+                type="button"
+                onClick={() => goToChapter(0)}
+                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+              >
+                <BookOpen className="h-4 w-4" />
+                ابدأ الفصل الأول
+              </button>
+              <Link
+                to="/what-to-do-now"
+                className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
+              >
+                <Siren className="h-4 w-4" />
+                ماذا أفعل في حالة الطوارئ؟
+              </Link>
+            </div>
+          </div>
+        </section>
+
         {/* Table of Contents */}
         <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 space-y-4 print:hidden">
           <div className="flex items-center gap-2">
