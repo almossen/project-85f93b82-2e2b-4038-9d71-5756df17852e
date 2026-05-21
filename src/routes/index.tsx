@@ -5,13 +5,12 @@ import {
   ShieldCheck,
   BookOpen,
   Lock,
-  HeartHandshake,
-  Languages,
-  Stethoscope,
   Sparkles,
   Users,
   GraduationCap,
   Baby,
+  Stethoscope,
+  Languages,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
@@ -44,11 +43,6 @@ const whySama = [
     icon: Stethoscope,
     title: "بإشراف طبي",
     text: "كل درس يمرّ بمراجعة المشرف الطبي قبل النشر، ويتم تحديثه دورياً.",
-  },
-  {
-    icon: HeartHandshake,
-    title: "نبرة مطمئنة",
-    text: "لا تخويف، لا لوم، لا وعود. فقط معلومة واضحة وخطوة عملية.",
   },
   {
     icon: Sparkles,
