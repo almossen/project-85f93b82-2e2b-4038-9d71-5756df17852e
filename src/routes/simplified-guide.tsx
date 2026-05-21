@@ -17,6 +17,7 @@ import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
 import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
+import { LessonAudioPlayer } from "@/components/sama/LessonAudioPlayer";
 import {
   guideSections,
   guideSummary,
