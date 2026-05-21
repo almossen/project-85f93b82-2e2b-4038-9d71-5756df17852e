@@ -300,7 +300,6 @@ export function GuideSectionEnrichment({ sectionId }: { sectionId: string }) {
       return (
         <div className="space-y-4">
           <DiabetesFlow />
-          <MisconceptionsMini />
         </div>
       );
     case "parents-feelings":
