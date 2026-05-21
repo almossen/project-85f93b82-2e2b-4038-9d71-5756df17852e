@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   BookOpen,
   CheckCircle2,
+  ChevronDown,
   ChevronLeft,
   ChevronRight,
   HelpCircle,
@@ -13,6 +14,12 @@ import {
   Siren,
   Sparkles,
 } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
@@ -377,7 +384,8 @@ function SimplifiedGuidePage() {
         </section>
 
 
-        {/* Philosophy / About the platform */}
+        {/* Philosophy / About the platform — chapter 1 only */}
+        {chapterIdx === 0 && !isSearching && (
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
           <div className="space-y-5 text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
@@ -441,82 +449,72 @@ function SimplifiedGuidePage() {
             </div>
           </div>
         </section>
+        )}
 
-        {/* Table of Contents */}
-        <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 space-y-4 print:hidden">
-          <div className="flex items-center gap-2">
-            <BookOpen className="h-5 w-5 text-primary" />
-            <h2 className="text-xl sm:text-2xl font-bold">فهرس الفصول</h2>
-          </div>
-          <ol className="grid sm:grid-cols-2 gap-2.5">
-            {chapters.map((c, i) => {
-              const active = i === chapterIdx && !isSearching;
-              return (
-                <li key={c.id}>
-                  <button
-                    type="button"
-                    onClick={() => goToChapter(i)}
-                    className={`w-full text-right rounded-2xl border p-4 transition-colors ${
-                      active
-                        ? "border-primary bg-primary-soft"
-                        : "border-border bg-background hover:bg-muted"
-                    }`}
-                  >
-                    <div className="flex items-start gap-3">
+        {/* Sticky top bar: chapters dropdown + current chapter + search */}
+        <div className="sticky top-16 z-30 print:hidden space-y-2">
+          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex items-center gap-3 flex-wrap">
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  فهرس الفصول
+                  <ChevronDown className="h-4 w-4" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-80 max-w-[90vw]">
+                {chapters.map((c, i) => {
+                  const active = i === chapterIdx && !isSearching;
+                  return (
+                    <DropdownMenuItem
+                      key={c.id}
+                      onSelect={() => goToChapter(i)}
+                      className={`flex items-start gap-3 py-3 cursor-pointer ${active ? "bg-primary-soft" : ""}`}
+                    >
                       <span
-                        className={`flex h-9 w-9 shrink-0 items-center justify-center rounded-full font-bold text-sm ${
-                          active
-                            ? "bg-primary text-primary-foreground"
-                            : "bg-muted text-foreground"
+                        className={`flex h-7 w-7 shrink-0 items-center justify-center rounded-full text-xs font-bold ${
+                          active ? "bg-primary text-primary-foreground" : "bg-muted text-foreground"
                         }`}
                       >
                         {i + 1}
                       </span>
                       <div className="space-y-0.5">
-                        <div className="font-bold text-base">{c.title}</div>
-                        <div className="text-xs text-muted-foreground">{c.subtitle}</div>
-                        <div className="text-[11px] text-muted-foreground mt-1">
-                          {c.sectionIds.length} مواضيع
-                        </div>
+                        <div className="font-bold text-sm">{c.title}</div>
+                        <div className="text-[11px] text-muted-foreground">{c.subtitle}</div>
                       </div>
-                    </div>
-                  </button>
-                </li>
-              );
-            })}
-          </ol>
-        </section>
+                    </DropdownMenuItem>
+                  );
+                })}
+              </DropdownMenuContent>
+            </DropdownMenu>
 
-        {/* Search */}
-        <div className="sticky top-16 z-30 print:hidden">
-          <input
-            type="search"
-            placeholder="ابحث في كامل الدليل…"
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            className="w-full rounded-full border border-border bg-card/95 backdrop-blur px-5 py-3 text-base shadow-[var(--shadow-soft)] focus:outline-none focus:ring-2 focus:ring-primary"
-            aria-label="ابحث في الدليل"
-          />
+            {!isSearching ? (
+              <div className="flex-1 min-w-[180px]">
+                <p className="text-[11px] text-muted-foreground">
+                  الفصل {chapterIdx + 1} من {chapters.length}
+                </p>
+                <h2 className="text-base sm:text-lg font-bold leading-tight">{activeChapter.title}</h2>
+              </div>
+            ) : (
+              <p className="text-sm text-muted-foreground flex-1">
+                نتائج البحث ({searchResults.length})
+              </p>
+            )}
+
+            <input
+              type="search"
+              placeholder="ابحث في الدليل…"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              className="w-full sm:w-64 rounded-full border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              aria-label="ابحث في الدليل"
+            />
+          </div>
         </div>
 
-        {/* Chapter header / search header */}
-        {!isSearching ? (
-          <div className="flex items-center justify-between gap-4 flex-wrap print:hidden">
-            <div>
-              <p className="text-xs text-muted-foreground">
-                الفصل {chapterIdx + 1} من {chapters.length}
-              </p>
-              <h2 className="text-2xl sm:text-3xl font-bold">{activeChapter.title}</h2>
-              <p className="text-sm text-muted-foreground">{activeChapter.subtitle}</p>
-            </div>
-          </div>
-        ) : (
-          <div className="print:hidden">
-            <p className="text-sm text-muted-foreground">
-              نتائج البحث ({searchResults.length})
-            </p>
-          </div>
-        )}
 
         {/* Sections */}
         <div className="space-y-8">
