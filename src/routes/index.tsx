@@ -104,7 +104,7 @@ function HomePage() {
                 </span>
               </h1>
               <p className="text-base sm:text-lg text-muted-foreground leading-loose max-w-xl">
-                منصة عربية مبسّطة تأخذ بيد الأسرة من اليوم الأول للتشخيص حتى التمكّن من إدارة الحياة اليومية بثقة وطمأنينة — معلومة واضحة في كل مرة، مع طمأنة، ثم تطبيق عملي بسيط.
+                أنا سما سكرية من النوع الأول سأنقل لكم تجربتي منذ تشخيصي بالمرض وحتى استطعت التكيف معه أنا وعائلتي
               </p>
               <div className="flex flex-wrap gap-3">
                 <Link
