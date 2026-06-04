@@ -236,9 +236,7 @@ function FaithCallout() {
             <p>
               والصبر لا يعني أن نبقى عاجزين أو خائفين، بل يعني أن نثبت، ونتعلم، ونسأل، ونعمل بما ينفع طفلنا.
             </p>
-            <p>
-              الإيمان بالقضاء والقدر لا يلغي العلاج، بل يقوّي القلب على الالتزام به. سكري النوع الأول ليس عقوبة، وليس دليلاً على تقصير الوالدين.
-            </p>
+            <p>​</p>
           </div>
           <blockquote className="rounded-2xl bg-white/70 border border-sand p-4 mt-2">
             <p className="font-quranic text-lg sm:text-xl leading-[2] text-sand-foreground text-center">
