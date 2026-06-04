@@ -125,7 +125,7 @@ function HomePage() {
               لأن الأسرة في الأسابيع الأولى تحتاج إلى ما يطمئنها قبل ما يثقل عليها بالمعلومات.
             </p>
           </header>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
             {whySama.map((w) => (
               <article
                 key={w.title}
