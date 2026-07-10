@@ -475,7 +475,16 @@ function SimplifiedGuidePage() {
 
   const goToChapter = (i: number) => {
     setChapterIdx(i);
-    if (typeof window !== "undefined") window.scrollTo({ top: 0, behavior: "smooth" });
+    if (typeof window !== "undefined") {
+      const el = document.getElementById("chapter-sections");
+      if (el) {
+        const stickyOffset = 120;
+        const top = el.getBoundingClientRect().top + window.scrollY - stickyOffset;
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    }
   };
 
   const handlePrint = () => {
@@ -635,7 +644,7 @@ function SimplifiedGuidePage() {
 
 
         {/* Sections */}
-        <div className="space-y-8">
+        <div id="chapter-sections" className="space-y-8">
           {(isSearching ? searchResults : chapterSections).map((s, i) => {
             const sectionList = isSearching ? searchResults : chapterSections;
             const isLastInChapter = !isSearching && i === sectionList.length - 1;
