@@ -663,7 +663,12 @@ function SimplifiedGuidePage() {
         </div>
 
         {/* "متى أطلب المساعدة فورًا؟" — يظهر دائمًا في الفصل الأخير */}
-        {!isSearching && chapterIdx === chapters.length - 1 && <GetHelpNowSection />}
+        {!isSearching && chapterIdx === chapters.length - 1 && (
+          <>
+            <DeepDiveEnrichment />
+            <GetHelpNowSection />
+          </>
+        )}
 
 
         {/* Chapter nav (prev / next) */}
