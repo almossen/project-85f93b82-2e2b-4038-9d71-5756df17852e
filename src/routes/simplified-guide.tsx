@@ -23,7 +23,7 @@ import {
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
-import { DeepDiveEnrichment } from "@/components/sama/DeepDiveEnrichment";
+
 import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
 import { LessonAudioPlayer } from "@/components/sama/LessonAudioPlayer";
 import { Quiz } from "@/components/sama/Quiz";
@@ -665,7 +665,19 @@ function SimplifiedGuidePage() {
         {/* "متى أطلب المساعدة فورًا؟" — يظهر دائمًا في الفصل الأخير */}
         {!isSearching && chapterIdx === chapters.length - 1 && (
           <>
-            <DeepDiveEnrichment />
+            <div className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/60 to-mint/20 p-6 sm:p-8 text-center space-y-3">
+              <h2 className="text-xl sm:text-2xl font-bold">هل تريدون أدوات عملية جاهزة؟</h2>
+              <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto">
+                قوالب رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي — كلها في صفحة
+                واحدة جاهزة للنسخ والطباعة.
+              </p>
+              <a
+                href="/family-tools"
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors"
+              >
+                افتح أدوات جاهزة للأسرة
+              </a>
+            </div>
             <GetHelpNowSection />
           </>
         )}
