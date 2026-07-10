@@ -18,6 +18,7 @@ import {
   Phone,
   Siren,
   Volume2,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import {
