@@ -13,6 +13,7 @@ import {
   Printer,
   Siren,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -745,7 +746,7 @@ function SimplifiedGuidePage() {
 
         {/* Sources */}
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 print:break-inside-avoid">
-          <h2 className="text-2xl font-bold">مصادر للاستئناس والمراجعة الطبية</h2>
+          <h2 className="text-2xl font-bold">المصادر الطبية</h2>
           <ul className="space-y-2.5">
             {guideSources.map((s) => (
               <li key={s.url} className="flex items-start gap-2 text-sm sm:text-base">
@@ -762,8 +763,7 @@ function SimplifiedGuidePage() {
             ))}
           </ul>
           <p className="text-sm text-muted-foreground leading-loose pt-2 border-t border-border/60">
-            هذه المصادر للاستئناس وبناء المحتوى التوعوي، ويجب مراجعة المحتوى النهائي من طبيب مختص
-            قبل النشر العام.
+            مصادر موثوقة استند إليها المحتوى بعد مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
           </p>
           <div className="flex flex-wrap gap-2 pt-2 print:hidden">
             <a
