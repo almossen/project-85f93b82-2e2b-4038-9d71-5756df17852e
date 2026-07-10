@@ -23,6 +23,7 @@ import {
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
+import { DeepDiveEnrichment } from "@/components/sama/DeepDiveEnrichment";
 import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
 import { LessonAudioPlayer } from "@/components/sama/LessonAudioPlayer";
 import { Quiz } from "@/components/sama/Quiz";
@@ -662,7 +663,12 @@ function SimplifiedGuidePage() {
         </div>
 
         {/* "متى أطلب المساعدة فورًا؟" — يظهر دائمًا في الفصل الأخير */}
-        {!isSearching && chapterIdx === chapters.length - 1 && <GetHelpNowSection />}
+        {!isSearching && chapterIdx === chapters.length - 1 && (
+          <>
+            <DeepDiveEnrichment />
+            <GetHelpNowSection />
+          </>
+        )}
 
 
         {/* Chapter nav (prev / next) */}
