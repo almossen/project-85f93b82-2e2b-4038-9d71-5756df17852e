@@ -86,8 +86,8 @@ function MedicalAlert() {
     <div className="rounded-2xl border-2 border-destructive/40 bg-destructive/5 p-4 sm:p-5 flex items-start gap-3">
       <ShieldAlert className="h-6 w-6 text-destructive shrink-0 mt-0.5" />
       <p className="text-sm sm:text-base leading-loose text-foreground">
-        <span className="font-bold text-destructive">تنبيه مهم: </span>
-        هذه الإرشادات توعوية عامة ولا تغني عن تعليمات الفريق الطبي المعالج. في
+        <span className="font-bold text-destructive">تنويه: </span>
+        محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
         الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.
       </p>
     </div>
