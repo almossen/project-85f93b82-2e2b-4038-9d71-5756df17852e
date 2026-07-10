@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as WhatToDoNowRouteImport } from './routes/what-to-do-now'
+import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
 import { Route as FamilyToolsRouteImport } from './routes/family-tools'
 import { Route as IndexRouteImport } from './routes/index'
@@ -17,6 +18,11 @@ import { Route as IndexRouteImport } from './routes/index'
 const WhatToDoNowRoute = WhatToDoNowRouteImport.update({
   id: '/what-to-do-now',
   path: '/what-to-do-now',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SourcesRoute = SourcesRouteImport.update({
+  id: '/sources',
+  path: '/sources',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SimplifiedGuideRoute = SimplifiedGuideRouteImport.update({
@@ -39,12 +45,14 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/family-tools': typeof FamilyToolsRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
+  '/sources': typeof SourcesRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/family-tools': typeof FamilyToolsRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
+  '/sources': typeof SourcesRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
 }
 export interface FileRoutesById {
@@ -52,18 +60,30 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/family-tools': typeof FamilyToolsRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
+  '/sources': typeof SourcesRoute
   '/what-to-do-now': typeof WhatToDoNowRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/family-tools' | '/simplified-guide' | '/what-to-do-now'
+  fullPaths:
+    | '/'
+    | '/family-tools'
+    | '/simplified-guide'
+    | '/sources'
+    | '/what-to-do-now'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/family-tools' | '/simplified-guide' | '/what-to-do-now'
+  to:
+    | '/'
+    | '/family-tools'
+    | '/simplified-guide'
+    | '/sources'
+    | '/what-to-do-now'
   id:
     | '__root__'
     | '/'
     | '/family-tools'
     | '/simplified-guide'
+    | '/sources'
     | '/what-to-do-now'
   fileRoutesById: FileRoutesById
 }
@@ -71,6 +91,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   FamilyToolsRoute: typeof FamilyToolsRoute
   SimplifiedGuideRoute: typeof SimplifiedGuideRoute
+  SourcesRoute: typeof SourcesRoute
   WhatToDoNowRoute: typeof WhatToDoNowRoute
 }
 
@@ -81,6 +102,13 @@ declare module '@tanstack/react-router' {
       path: '/what-to-do-now'
       fullPath: '/what-to-do-now'
       preLoaderRoute: typeof WhatToDoNowRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/sources': {
+      id: '/sources'
+      path: '/sources'
+      fullPath: '/sources'
+      preLoaderRoute: typeof SourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/simplified-guide': {
@@ -111,6 +139,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   FamilyToolsRoute: FamilyToolsRoute,
   SimplifiedGuideRoute: SimplifiedGuideRoute,
+  SourcesRoute: SourcesRoute,
   WhatToDoNowRoute: WhatToDoNowRoute,
 }
 export const routeTree = rootRouteImport

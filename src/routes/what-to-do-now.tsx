@@ -18,6 +18,7 @@ import {
   Phone,
   Siren,
   Volume2,
+  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -257,65 +258,15 @@ function EmergencyGuidePage() {
 
         <MedicalAlert />
 
-        {/* Sources */}
-        <section className="rounded-3xl border border-border bg-card p-5 sm:p-6 space-y-3 print:hidden">
-          <h3 className="text-lg font-bold">المصادر الطبية</h3>
-          <p className="text-sm text-muted-foreground">
-            مصادر تمت مراجعتها طبيًا، ولا تغني عن متابعة الطبيب المعالج.
-          </p>
-          <ul className="grid sm:grid-cols-2 gap-2 text-sm">
-            <li>
-              <a
-                href="https://www.cdc.gov/diabetes/about/about-type-1-diabetes.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                CDC: Type 1 Diabetes in Children
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.cdc.gov/diabetes/treatment/low-blood-sugar-hypoglycemia.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                CDC: Low Blood Sugar Treatment
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.ispad.org/resources/ispad-clinical-practice-consensus-guidelines/2024-cpcg.html"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                ISPAD Clinical Practice Guidelines
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://diabetesjournals.org/care/issue/48/Supplement_1"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                ADA Standards of Care
-              </a>
-            </li>
-            <li>
-              <a
-                href="https://www.moh.gov.sa/HealthAwareness/EducationalContent/Diseases/diabetic/Pages/009.aspx"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="text-primary hover:underline"
-              >
-                وزارة الصحة السعودية — السكري
-              </a>
-            </li>
-          </ul>
-        </section>
+        <div className="flex justify-center print:hidden">
+          <Link
+            to="/sources"
+            className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
+          >
+            <BookOpen className="h-4 w-4 text-primary" />
+            عرض المصادر والمراجع
+          </Link>
+        </div>
       </main>
     </div>
   );
