@@ -125,11 +125,11 @@ function MedicalDisclaimer() {
 }
 
 function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
-  if (status !== "needs-medical-review") return null;
+  if (status !== "approved") return null;
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-warning/20 text-warning-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
-      <AlertTriangle className="h-3 w-3" />
-      يحتاج مراجعة طبية قبل النشر
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
+      <ShieldCheck className="h-3 w-3" />
+      تمت مراجعته طبيًا
     </span>
   );
 }

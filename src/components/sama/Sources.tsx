@@ -7,7 +7,7 @@ export function Sources() {
       <header className="max-w-2xl mx-auto text-center space-y-2">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">المصادر العلمية</h2>
         <p className="text-muted-foreground">
-          هذه قائمة مصادر موثوقة للاستئناس وبناء المحتوى، ويجب اعتماد الصياغة النهائية من مختص قبل النشر العام.
+          مصادر موثوقة استند إليها المحتوى التثقيفي، بعد مراجعته من مختص، مع استمرار تحديثه وتحسينه عند الحاجة.
         </p>
       </header>
       <div className="grid sm:grid-cols-2 gap-4">
