@@ -6,6 +6,12 @@ type Props = {
   lessonLabel: string;
 };
 
+// قائمة الدروس التي لها ملف صوتي فعلي في public/audio/lessons/
+const AUDIO_ENABLED_LESSONS = new Set<string>([
+  "journey-start",
+  "what-is-t1d",
+]);
+
 export function LessonAudioPlayer({ sectionId, lessonLabel }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
@@ -13,6 +19,8 @@ export function LessonAudioPlayer({ sectionId, lessonLabel }: Props) {
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
   const [available, setAvailable] = useState<boolean | null>(null);
+
+  if (!AUDIO_ENABLED_LESSONS.has(sectionId)) return null;
 
   const src = `/audio/lessons/${sectionId}.mp3`;
 
