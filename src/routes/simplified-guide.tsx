@@ -753,37 +753,14 @@ function SimplifiedGuidePage() {
 
         <MedicalDisclaimer />
 
-        {/* Sources */}
-        <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 print:break-inside-avoid">
-          <h2 className="text-2xl font-bold">المصادر الطبية</h2>
-          <ul className="space-y-2.5">
-            {guideSources.map((s) => (
-              <li key={s.url} className="flex items-start gap-2 text-sm sm:text-base">
-                <BookOpen className="h-4 w-4 mt-1 text-muted-foreground shrink-0" />
-                <a
-                  href={s.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-primary hover:underline"
-                >
-                  {s.label}
-                </a>
-              </li>
-            ))}
-          </ul>
-          <p className="text-sm text-muted-foreground leading-loose pt-2 border-t border-border/60">
-            مصادر موثوقة استند إليها المحتوى بعد مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
-          </p>
-          <div className="flex flex-wrap gap-2 pt-2 print:hidden">
-            <a
-              href="tel:997"
-              className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
-            >
-              <Phone className="h-4 w-4" />
-              997 — الهلال الأحمر السعودي
-            </a>
-          </div>
-        </section>
+        <Link
+          to="/sources"
+          className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
+        >
+          <BookOpen className="h-4 w-4 text-primary" />
+          عرض المصادر والمراجع
+        </Link>
+      </div>
       </main>
 
       <div className="print:hidden">
