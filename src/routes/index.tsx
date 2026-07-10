@@ -1,9 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
   ArrowLeft,
-  Clock,
   ShieldCheck,
-  BookOpen,
   Sparkles,
   Users,
   GraduationCap,
@@ -92,14 +90,6 @@ function HomePage() {
                   ابدأ الدليل المبسّط
                   <ArrowLeft className="h-4 w-4" />
                 </Link>
-              </div>
-              <div className="flex items-center gap-4 text-sm text-muted-foreground pt-2">
-                <span className="inline-flex items-center gap-1.5">
-                  <Clock className="h-4 w-4" /> دروس قصيرة ٥–٨ دقائق
-                </span>
-                <span className="inline-flex items-center gap-1.5">
-                  <BookOpen className="h-4 w-4" /> مجاني بالكامل
-                </span>
               </div>
             </div>
             <div className="relative">
