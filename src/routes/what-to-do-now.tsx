@@ -259,9 +259,9 @@ function EmergencyGuidePage() {
 
         {/* Sources */}
         <section className="rounded-3xl border border-border bg-card p-5 sm:p-6 space-y-3 print:hidden">
-          <h3 className="text-lg font-bold">مصادر للاستئناس والمراجعة الطبية</h3>
+          <h3 className="text-lg font-bold">المصادر الطبية</h3>
           <p className="text-sm text-muted-foreground">
-            هذه المصادر للمراجعة فقط ولا تغني عن مراجعة الطبيب المعالج.
+            مصادر تمت مراجعتها طبيًا، ولا تغني عن متابعة الطبيب المعالج.
           </p>
           <ul className="grid sm:grid-cols-2 gap-2 text-sm">
             <li>
