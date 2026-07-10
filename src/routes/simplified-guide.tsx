@@ -31,6 +31,8 @@ import { Quiz } from "@/components/sama/Quiz";
 import {
   guideSections,
   guideSummary,
+  guideSources,
+  guideSectionHeroes,
   type GuideSection,
 } from "@/data/simplifiedGuideContent";
 
