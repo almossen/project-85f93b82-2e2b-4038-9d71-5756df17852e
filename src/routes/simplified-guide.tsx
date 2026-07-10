@@ -110,7 +110,7 @@ export const Route = createFileRoute("/simplified-guide")({
 });
 
 const MEDICAL_DISCLAIMER =
-  "تنبيه مهم: هذا المحتوى توعوي عام، ولا يغني عن تعليمات الطبيب أو فريق السكري المعالج. كل طفل له خطة علاجية خاصة به. في الحالات الطارئة، اتصل بالإسعاف أو توجه لأقرب طوارئ.";
+  "تنبيه مهم: هذا المحتوى توعوي عام، ولا يغني عن تعليمات الطبيب أو فريق السكري المعالج. كل طفل له خطة علاجية خاصة به. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.";
 
 function MedicalDisclaimer() {
   return (
@@ -414,7 +414,7 @@ function GetHelpNowSection() {
     "علامات الجفاف",
     "وجود كيتونات مع مرض أو قيء",
     "انخفاض لا يتحسن حسب خطة الطبيب",
-    "أي قلق شديد لدى الأسرة",
+    "أي حالة لا تعرف الأسرة كيف تتصرف معها",
   ];
   return (
     <section className="rounded-3xl border border-destructive/40 bg-destructive/5 p-6 sm:p-8 space-y-4 print:break-inside-avoid">
@@ -423,7 +423,7 @@ function GetHelpNowSection() {
         <h2 className="text-2xl sm:text-3xl font-bold text-destructive">متى أطلب المساعدة فورًا؟</h2>
       </header>
       <p className="text-sm sm:text-base text-foreground/85 leading-loose">
-        إذا ظهرت أي من العلامات التالية، لا تتأخر — اتصل بالإسعاف أو توجه لأقرب طوارئ:
+إذا ظهرت أي من العلامات التالية، لا تنتظر — اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ:
       </p>
       <ul className="grid sm:grid-cols-2 gap-2.5">
         {items.map((t) => (
@@ -438,11 +438,11 @@ function GetHelpNowSection() {
       </ul>
       <div className="flex flex-wrap gap-2 pt-2 print:hidden">
         <a
-          href="tel:937"
+          href="tel:997"
           className="inline-flex items-center gap-2 rounded-full bg-destructive text-destructive-foreground px-5 py-2.5 text-sm font-semibold hover:bg-destructive/90 transition-colors"
         >
           <Phone className="h-4 w-4" />
-          اتصل بالإسعاف 937
+          اتصل بالهلال الأحمر 997
         </a>
       </div>
     </section>
@@ -486,12 +486,6 @@ function SimplifiedGuidePage() {
         <SiteHeader />
       </div>
 
-      <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-4 print:hidden">
-        <p className="text-[11px] text-muted-foreground/80">
-          ملاحظة داخلية: هذه صفحة تجريبية للمقارنة مع المحتوى الحالي.
-        </p>
-      </div>
-
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10">
         <MedicalDisclaimer />
 
@@ -519,10 +513,9 @@ function SimplifiedGuidePage() {
               منصة تعليمية تمشي معك خطوة بخطوة
             </h2>
             <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground leading-loose">
-              هدفنا أن نُعلّمك ونطمئنك، لا أن نغرقك بالمعلومات. كل فصل مصمَّم ليُقرأ
-              بهدوء، بلغة بسيطة، مع أمثلة واقعية من حياة أهالي أطفال السكري النوع
-              الأول. ابدأ من الفصل الأول وتقدّم على راحتك، وإذا واجهت موقفًا طارئًا،
-              لديك زر مباشر للوصول إلى خطوات التصرف الفوري.
+              هدفنا أن نُعلّمك ما تحتاجه الآن، لا أن نغرقك بكل التفاصيل. كل فصل قصير
+              ومبني على سؤال عملي يهم الأسرة في الأيام الأولى. ابدأ من الفصل الأول
+              وتقدّم بهدوء، وإذا واجهت موقفًا عاجلًا فهناك زر مباشر لخطوات التصرف الفوري.
             </p>
             <div className="grid sm:grid-cols-3 gap-3 pt-2 text-right">
               <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
@@ -756,11 +749,11 @@ function SimplifiedGuidePage() {
           </p>
           <div className="flex flex-wrap gap-2 pt-2 print:hidden">
             <a
-              href="tel:937"
+              href="tel:997"
               className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-medium hover:bg-muted transition-colors"
             >
               <Phone className="h-4 w-4" />
-              937 — الإسعاف الصحي
+              997 — الهلال الأحمر السعودي
             </a>
           </div>
         </section>
