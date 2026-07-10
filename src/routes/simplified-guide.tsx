@@ -760,7 +760,6 @@ function SimplifiedGuidePage() {
           <BookOpen className="h-4 w-4 text-primary" />
           عرض المصادر والمراجع
         </Link>
-      </div>
       </main>
 
       <div className="print:hidden">
