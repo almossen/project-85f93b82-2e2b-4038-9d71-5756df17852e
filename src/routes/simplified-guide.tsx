@@ -13,6 +13,7 @@ import {
   Printer,
   Siren,
   Sparkles,
+  ShieldCheck,
 } from "lucide-react";
 import {
   DropdownMenu,
@@ -111,7 +112,7 @@ export const Route = createFileRoute("/simplified-guide")({
 });
 
 const MEDICAL_DISCLAIMER =
-  "تنبيه مهم: هذا المحتوى توعوي عام، ولا يغني عن تعليمات الطبيب أو فريق السكري المعالج. كل طفل له خطة علاجية خاصة به. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.";
+  "تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.";
 
 function MedicalDisclaimer() {
   return (
@@ -125,11 +126,11 @@ function MedicalDisclaimer() {
 }
 
 function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
-  if (status !== "needs-medical-review") return null;
+  if (status !== "approved") return null;
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-warning/20 text-warning-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
-      <AlertTriangle className="h-3 w-3" />
-      يحتاج مراجعة طبية قبل النشر
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
+      <ShieldCheck className="h-3 w-3" />
+      تمت مراجعته طبيًا
     </span>
   );
 }
@@ -745,7 +746,7 @@ function SimplifiedGuidePage() {
 
         {/* Sources */}
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 print:break-inside-avoid">
-          <h2 className="text-2xl font-bold">مصادر للاستئناس والمراجعة الطبية</h2>
+          <h2 className="text-2xl font-bold">المصادر الطبية</h2>
           <ul className="space-y-2.5">
             {guideSources.map((s) => (
               <li key={s.url} className="flex items-start gap-2 text-sm sm:text-base">
@@ -762,8 +763,7 @@ function SimplifiedGuidePage() {
             ))}
           </ul>
           <p className="text-sm text-muted-foreground leading-loose pt-2 border-t border-border/60">
-            هذه المصادر للاستئناس وبناء المحتوى التوعوي، ويجب مراجعة المحتوى النهائي من طبيب مختص
-            قبل النشر العام.
+            مصادر موثوقة استند إليها المحتوى بعد مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
           </p>
           <div className="flex flex-wrap gap-2 pt-2 print:hidden">
             <a

@@ -86,8 +86,8 @@ function MedicalAlert() {
     <div className="rounded-2xl border-2 border-destructive/40 bg-destructive/5 p-4 sm:p-5 flex items-start gap-3">
       <ShieldAlert className="h-6 w-6 text-destructive shrink-0 mt-0.5" />
       <p className="text-sm sm:text-base leading-loose text-foreground">
-        <span className="font-bold text-destructive">تنبيه مهم: </span>
-        هذه الإرشادات توعوية عامة ولا تغني عن تعليمات الفريق الطبي المعالج. في
+        <span className="font-bold text-destructive">تنويه: </span>
+        محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
         الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.
       </p>
     </div>
@@ -259,9 +259,9 @@ function EmergencyGuidePage() {
 
         {/* Sources */}
         <section className="rounded-3xl border border-border bg-card p-5 sm:p-6 space-y-3 print:hidden">
-          <h3 className="text-lg font-bold">مصادر للاستئناس والمراجعة الطبية</h3>
+          <h3 className="text-lg font-bold">المصادر الطبية</h3>
           <p className="text-sm text-muted-foreground">
-            هذه المصادر للمراجعة فقط ولا تغني عن مراجعة الطبيب المعالج.
+            مصادر تمت مراجعتها طبيًا، ولا تغني عن متابعة الطبيب المعالج.
           </p>
           <ul className="grid sm:grid-cols-2 gap-2 text-sm">
             <li>

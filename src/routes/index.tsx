@@ -40,8 +40,8 @@ const whySama = [
   },
   {
     icon: Stethoscope,
-    title: "جاهز للمراجعة الطبية",
-    text: "المحتوى مكتوب بصياغة آمنة ومحايدة، ويُعرض بوضوح كنموذج أولي حتى يعتمد من مختص.",
+    title: "تمت مراجعته طبيًا",
+    text: "محتوى تثقيفي تمت مراجعته من مختص، ويستمر تحديثه وتحسينه عند الحاجة.",
   },
   {
     icon: Sparkles,
@@ -69,7 +69,7 @@ function HomePage() {
             <div className="space-y-6 text-right">
               <span className="inline-flex items-center gap-2 rounded-full bg-card/80 backdrop-blur border border-border px-3 py-1.5 text-xs font-medium">
                 <ShieldCheck className="h-3.5 w-3.5 text-primary" />
-                نموذج أولي بانتظار المراجعة والاعتماد الطبي
+                محتوى تثقيفي تمت مراجعته طبيًا
               </span>
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
                 <span className="block">سما</span>

@@ -144,7 +144,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Warm Saudi family sitting calmly with their child after a medical visit, soft natural light, reassuring atmosphere",
     imageAlt: "أسرة تجلس بهدوء مع طفلها بعد زيارة طبية",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
     printEnabled: true,
   },
   {
@@ -155,7 +155,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Simple educational illustration showing insulin helping sugar enter body cells, soft pastel colors",
     imageAlt: "رسم تعليمي بسيط يوضح دور الإنسولين",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "first-week",
@@ -172,7 +172,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Small notebook or checklist next to a glucose meter and a small bag, warm lighting",
     imageAlt: "قائمة مهام بجانب جهاز قياس السكر وحقيبة صغيرة",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
     printEnabled: true,
   },
   {
@@ -183,7 +183,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Parent gently hugging child in warm home atmosphere, reassuring mood",
     imageAlt: "أم أو أب يحتضن الطفل في أجواء منزلية مطمئنة",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "what-is-insulin",
@@ -193,7 +193,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Two insulin pens shown in educational safe style, no brand names visible",
     imageAlt: "قلما إنسولين بشكل تعليمي آمن",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "rapid-insulin",
@@ -202,7 +202,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Educational card labeled rapid acting insulin, soft icons, no brand",
     imageAlt: "بطاقة توضيحية للإنسولين سريع المفعول",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "long-insulin",
@@ -211,7 +211,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Educational card labeled long acting insulin with simple clock icon",
     imageAlt: "بطاقة توضيحية للإنسولين طويل المفعول",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "injection-basics",
@@ -227,7 +227,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Soft educational illustration of injection rotation sites on a child silhouette, gentle style",
     imageAlt: "رسم تعليمي بسيط لأماكن الحقن المناسبة",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
     printEnabled: true,
   },
   {
@@ -237,7 +237,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Glucose meter or sensor with smiling child in a home setting",
     imageAlt: "جهاز قياس السكر مع طفل في بيئة منزلية",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "fingerstick",
@@ -246,7 +246,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Gentle non-scary photo of child hand with glucose meter",
     imageAlt: "يد طفل مع جهاز قياس بطريقة لطيفة",
     medicalSensitivity: "medium",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "cgm-sensor",
@@ -255,7 +255,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Child wearing a glucose sensor while playing naturally",
     imageAlt: "طفل يستخدم حساس سكر بطريقة طبيعية",
     medicalSensitivity: "medium",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "sensor-arrows",
@@ -264,7 +264,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Simple illustration showing glucose number with up, down, and stable arrows",
     imageAlt: "رسم يوضح رقم السكر مع أسهم الاتجاهات",
     medicalSensitivity: "medium",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "low-sugar",
@@ -274,7 +274,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "بطاقة إسعاف بسيطة مع عصير وأقراص جلوكوز",
     relatedEmergencyScenario: "low-sugar",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "severe-low",
@@ -285,7 +285,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "أيقونة طوارئ هادئة",
     relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "high-sugar",
@@ -295,7 +295,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "طفل يشرب الماء أو ولي أمر يراجع القراءة",
     relatedEmergencyScenario: "high-sugar",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "ketones",
@@ -306,7 +306,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "شريط فحص كيتونات بشكل مبسط",
     relatedEmergencyScenario: "ketones",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "illness",
@@ -316,7 +316,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "طفل في المنزل مع ولي أمر بشكل مطمئن",
     relatedEmergencyScenario: "vomiting",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "sick-day-plan",
@@ -332,7 +332,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Clean printable checklist on a clipboard, soft pastel design",
     imageAlt: "قائمة قابلة للطباعة لأسئلة أيام المرض",
     medicalSensitivity: "medium",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
     printEnabled: true,
   },
   {
@@ -342,7 +342,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Simple healthy meal for a child, balanced and inviting",
     imageAlt: "وجبة صحية بسيطة مناسبة لطفل",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "carbs",
@@ -351,7 +351,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Simple visual chart with examples of carb-containing foods",
     imageAlt: "جدول بصري لأمثلة الكربوهيدرات",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "school",
@@ -361,7 +361,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "طفل في فصل دراسي مع حقيبة سكري صغيرة",
     relatedEmergencyScenario: "school",
     medicalSensitivity: "medium",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "diabetes-bag",
@@ -385,7 +385,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Small neatly organized bag with diabetes supplies, clean styling",
     imageAlt: "حقيبة صغيرة مرتبة تحتوي أدوات السكري",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
     printEnabled: true,
   },
   {
@@ -395,7 +395,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Child playing sports happily in a sunny outdoor scene",
     imageAlt: "طفل يلعب أو يمارس نشاطًا بدنيًا",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "glucagon",
@@ -406,7 +406,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "حقيبة طوارئ آمنة تحتوي الجلوكاجون",
     relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "emergency",
@@ -416,7 +416,7 @@ export const guideSections: GuideSection[] = [
     imageAlt: "صورة دعم طوارئ هادئة",
     relatedEmergencyScenario: "unconscious",
     medicalSensitivity: "high",
-    reviewStatus: "needs-medical-review",
+    reviewStatus: "approved",
   },
   {
     id: "confidence",
@@ -425,7 +425,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Smiling confident child playing freely",
     imageAlt: "طفل مبتسم يمارس حياته بشكل طبيعي",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "family-role",
@@ -434,7 +434,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Cooperative family around their child in a happy home scene",
     imageAlt: "أسرة متعاونة حول الطفل",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
   {
     id: "final-message",
@@ -443,7 +443,7 @@ export const guideSections: GuideSection[] = [
     imagePrompt: "Child with family in a bright optimistic scene at sunset",
     imageAlt: "طفل مع أسرته في تصميم مشرق ومتفائل",
     medicalSensitivity: "low",
-    reviewStatus: "draft",
+    reviewStatus: "approved",
   },
 ];
 
