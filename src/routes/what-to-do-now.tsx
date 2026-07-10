@@ -88,7 +88,7 @@ function MedicalAlert() {
       <p className="text-sm sm:text-base leading-loose text-foreground">
         <span className="font-bold text-destructive">تنبيه مهم: </span>
         هذه الإرشادات توعوية عامة ولا تغني عن تعليمات الفريق الطبي المعالج. في
-        الحالات الطارئة أو عند الشك، اتصل بالإسعاف أو توجه لأقرب طوارئ.
+        الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.
       </p>
     </div>
   );

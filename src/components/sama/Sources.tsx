@@ -26,6 +26,18 @@ const sources = [
     url: "https://www.cdc.gov/diabetes/about/about-type-1-diabetes.html",
   },
   {
+    name: "وزارة الصحة السعودية",
+    detail: "انخفاض السكر — التعامل الأولي والتنبيه عند الإغماء",
+    region: "السعودية",
+    url: "https://www.moh.gov.sa/healthawareness/educationalcontent/diseases/diabetic/pages/hypoglycemia-low-blood-glucose-levels.aspx",
+  },
+  {
+    name: "هيئة الهلال الأحمر السعودي",
+    detail: "البلاغات الإسعافية في السعودية — 997",
+    region: "السعودية",
+    url: "https://www.srca.org.sa/contact-us/",
+  },
+  {
     name: "CDC — رعاية الأطفال",
     detail: "3 Ways to Help Manage Your Child's Type 1 Diabetes",
     region: "دولي",
@@ -45,7 +57,7 @@ export function Sources() {
       <header className="max-w-2xl mx-auto text-center space-y-2">
         <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">المصادر العلمية</h2>
         <p className="text-muted-foreground">
-          كل معلومة في هذا الدرس مبنية على مصادر طبية موثوقة، ومُراجعة من قِبل مختصين.
+          هذه قائمة مصادر موثوقة للاستئناس وبناء المحتوى، ويجب اعتماد الصياغة النهائية من مختص قبل النشر العام.
         </p>
       </header>
       <div className="grid sm:grid-cols-2 gap-4">
