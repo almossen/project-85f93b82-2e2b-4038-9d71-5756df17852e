@@ -30,6 +30,13 @@ export function SiteHeader() {
           >
             الدليل المبسّط
           </Link>
+          <Link
+            to="/family-tools"
+            className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
+          >
+            أدوات جاهزة
+          </Link>
         </nav>
       </div>
     </header>
