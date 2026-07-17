@@ -38,7 +38,7 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSect
           {String(index + 1).padStart(2, "0")}
         </span>
 
-        <div className="aspect-[16/8] sm:aspect-[16/7] w-full relative">
+        <div className="aspect-[3/1] sm:aspect-[16/7] w-full relative">
           {showImage && !loaded && (
             <div className="absolute inset-0 animate-pulse bg-gradient-to-br from-muted/60 to-muted" />
           )}
