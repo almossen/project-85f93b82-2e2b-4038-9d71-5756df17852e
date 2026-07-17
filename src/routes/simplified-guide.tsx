@@ -803,35 +803,197 @@ function SimplifiedGuidePage() {
         </div>
 
 
-        {/* Sections */}
-        <div id="chapter-sections" className="space-y-8">
-          {(isSearching ? searchResults : chapterSections).map((s, i) => {
-            const sectionList = isSearching ? searchResults : chapterSections;
-            const isLastInChapter = !isSearching && i === sectionList.length - 1;
-            return (
-              <div key={s.id} className="space-y-8">
-                <SectionCard
-                  section={s}
-                  index={i}
-                  lessonNumber={isSearching ? undefined : i + 1}
-                  lessonTotal={isSearching ? undefined : sectionList.length}
-                  isRead={readSections.has(s.id)}
-                  onToggleRead={() => toggleRead(s.id)}
+        {/* View mode toggle */}
+        {!isSearching && (
+          <div className="flex items-center justify-between gap-3 print:hidden">
+            <div className="inline-flex rounded-full border border-border bg-card p-1 text-xs sm:text-sm">
+              <button
+                type="button"
+                onClick={() => setViewMode("focus")}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                  viewMode === "focus"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-pressed={viewMode === "focus"}
+              >
+                <LayoutList className="h-4 w-4" />
+                درس واحد
+              </button>
+              <button
+                type="button"
+                onClick={() => {
+                  setViewMode("continuous");
+                  setActiveLessonIdx(null);
+                }}
+                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                  viewMode === "continuous"
+                    ? "bg-primary text-primary-foreground"
+                    : "text-muted-foreground hover:text-foreground"
+                }`}
+                aria-pressed={viewMode === "continuous"}
+              >
+                <Rows3 className="h-4 w-4" />
+                قراءة متواصلة
+              </button>
+            </div>
+            {isFocusOne && (
+              <button
+                type="button"
+                onClick={() => setActiveLessonIdx(null)}
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs sm:text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
+              >
+                <ChevronRight className="h-4 w-4" />
+                قائمة دروس الفصل
+              </button>
+            )}
+          </div>
+        )}
+
+        {/* Focus mode — lesson list */}
+        {isFocusList && (
+          <section id="chapter-sections" className="space-y-4 animate-fade-in">
+            <header className="space-y-1">
+              <p className="text-xs font-semibold text-primary">{activeChapter.title}</p>
+              <h2 className="text-xl sm:text-2xl font-bold">دروس هذا الفصل ({chapterSections.length})</h2>
+              <p className="text-sm text-muted-foreground">اختر درسًا لتفتحه في عرض مركّز.</p>
+            </header>
+            <ol className="grid gap-2.5 sm:grid-cols-2">
+              {chapterSections.map((s, i) => {
+                const done = readSections.has(s.id);
+                return (
+                  <li key={s.id}>
+                    <button
+                      type="button"
+                      onClick={() => openLesson(i)}
+                      className={`w-full text-right rounded-2xl border p-4 flex items-start gap-3 transition-all hover:shadow-[var(--shadow-soft)] ${
+                        done
+                          ? "border-success/40 bg-success/5"
+                          : "border-border bg-card hover:border-primary/40"
+                      }`}
+                    >
+                      <span
+                        className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-colors ${
+                          done ? "bg-success text-success-foreground" : "bg-primary-soft text-primary"
+                        }`}
+                      >
+                        {done ? <CheckCircle2 className="h-5 w-5 animate-scale-in" /> : i + 1}
+                      </span>
+                      <span className="flex-1 min-w-0 space-y-1">
+                        <span className="block text-[11px] font-semibold text-muted-foreground">
+                          الدرس {i + 1} من {chapterSections.length}
+                        </span>
+                        <span className="block font-bold text-sm sm:text-base leading-tight">
+                          {s.title}
+                        </span>
+                        {s.subtitle && (
+                          <span className="block text-xs text-muted-foreground line-clamp-2">
+                            {s.subtitle}
+                          </span>
+                        )}
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        )}
+
+        {/* Focus mode — one lesson */}
+        {isFocusOne && focusedSection && (
+          <div id="chapter-sections" className="space-y-6">
+            {/* Lesson progress bar */}
+            <div className="rounded-2xl border border-border bg-card px-4 py-3 flex items-center gap-3 print:hidden">
+              <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-primary transition-all duration-500"
+                  style={{
+                    width: `${((activeLessonIdx! + 1) / chapterSections.length) * 100}%`,
+                  }}
                 />
-                {!isSearching && s.id === "injection-basics" && <InsulinStorageSection />}
-                {!isSearching && chapterIdx === 1 && isLastInChapter && <TrueFalseSection />}
-                {!isSearching && chapterIdx === 0 && isLastInChapter && (
-                  <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 shadow-[var(--shadow-card)] print:break-inside-avoid">
-                    <Quiz />
-                  </section>
-                )}
               </div>
-            );
-          })}
-          {isSearching && searchResults.length === 0 && (
-            <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
-          )}
-        </div>
+              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+                الدرس {activeLessonIdx! + 1} / {chapterSections.length}
+                {globalLessonIndex && (
+                  <span className="ms-2 text-muted-foreground/70">
+                    ({globalLessonIndex}/{guideSections.length})
+                  </span>
+                )}
+              </span>
+            </div>
+
+            <div key={focusedSection.id} className="animate-fade-in">
+              <SectionCard
+                section={focusedSection}
+                index={activeLessonIdx!}
+                lessonNumber={activeLessonIdx! + 1}
+                lessonTotal={chapterSections.length}
+                isRead={readSections.has(focusedSection.id)}
+                onToggleRead={() => toggleRead(focusedSection.id)}
+              />
+              {focusedSection.id === "injection-basics" && (
+                <div className="mt-8">
+                  <InsulinStorageSection />
+                </div>
+              )}
+            </div>
+
+            {/* Prev / Next lesson */}
+            <nav className="flex items-center justify-between gap-3 print:hidden">
+              <button
+                type="button"
+                onClick={goToPrevLesson}
+                disabled={isFirstLessonOverall}
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                <ChevronRight className="h-4 w-4" />
+                الدرس السابق
+              </button>
+              <button
+                type="button"
+                onClick={goToNextLesson}
+                disabled={isLastLessonOverall}
+                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              >
+                {isLastLessonInChapter && chapterIdx < chapters.length - 1
+                  ? "الفصل التالي"
+                  : "الدرس التالي"}
+                <ChevronLeft className="h-4 w-4" />
+              </button>
+            </nav>
+
+            {/* Chapter review appears after the last lesson in focus mode */}
+            {isLastLessonInChapter && <ChapterReview chapterIdx={chapterIdx} />}
+          </div>
+        )}
+
+        {/* Continuous mode + Search results */}
+        {(viewMode === "continuous" || isSearching) && (
+          <div id="chapter-sections" className="space-y-8">
+            {(isSearching ? searchResults : chapterSections).map((s, i) => {
+              const sectionList = isSearching ? searchResults : chapterSections;
+              const isLastInChapter = !isSearching && i === sectionList.length - 1;
+              return (
+                <div key={s.id} className="space-y-8 animate-fade-in">
+                  <SectionCard
+                    section={s}
+                    index={i}
+                    lessonNumber={isSearching ? undefined : i + 1}
+                    lessonTotal={isSearching ? undefined : sectionList.length}
+                    isRead={readSections.has(s.id)}
+                    onToggleRead={() => toggleRead(s.id)}
+                  />
+                  {!isSearching && s.id === "injection-basics" && <InsulinStorageSection />}
+                  {!isSearching && isLastInChapter && <ChapterReview chapterIdx={chapterIdx} />}
+                </div>
+              );
+            })}
+            {isSearching && searchResults.length === 0 && (
+              <p className="text-center text-muted-foreground py-10">لا توجد نتائج مطابقة.</p>
+            )}
+          </div>
+        )}
 
         {/* "متى أطلب المساعدة فورًا؟" — يظهر دائمًا في الفصل الأخير */}
         {!isSearching && chapterIdx === chapters.length - 1 && (
