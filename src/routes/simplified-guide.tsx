@@ -301,13 +301,13 @@ function SectionCard({
             <button
               type="button"
               onClick={onToggleRead}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors border ${
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 border ${
                 isRead
-                  ? "bg-success/15 text-success border-success/40"
+                  ? "bg-success/15 text-success border-success/40 shadow-[0_0_0_4px_color-mix(in_oklab,var(--success)_10%,transparent)]"
                   : "bg-card text-muted-foreground border-border hover:bg-muted"
               }`}
             >
-              <CheckCircle2 className="h-4 w-4" />
+              <CheckCircle2 className={`h-4 w-4 ${isRead ? "animate-scale-in" : ""}`} />
               {isRead ? "أنهيت هذا الدرس ✓" : "علّم كمقروء"}
             </button>
           )}
