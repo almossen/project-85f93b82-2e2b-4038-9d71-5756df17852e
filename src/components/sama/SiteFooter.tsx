@@ -8,6 +8,9 @@ export function SiteFooter() {
         <p className="text-xs text-muted-foreground">
           محتوى تثقيفي تمت مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
         </p>
+        <p className="text-[11px] text-muted-foreground/80">
+          آخر تحديث للمحتوى: يوليو ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
+        </p>
       </div>
     </footer>
   );

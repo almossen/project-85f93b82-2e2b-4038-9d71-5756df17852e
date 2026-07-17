@@ -13,14 +13,17 @@ const AUDIO_ENABLED_LESSONS = new Set<string>([
 ]);
 
 export function LessonAudioPlayer({ sectionId, lessonLabel }: Props) {
+  if (!AUDIO_ENABLED_LESSONS.has(sectionId)) return null;
+  return <LessonAudioPlayerInner sectionId={sectionId} lessonLabel={lessonLabel} />;
+}
+
+function LessonAudioPlayerInner({ sectionId, lessonLabel }: Props) {
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [playing, setPlaying] = useState(false);
   const [progress, setProgress] = useState(0);
   const [duration, setDuration] = useState(0);
   const [current, setCurrent] = useState(0);
   const [available, setAvailable] = useState<boolean | null>(null);
-
-  if (!AUDIO_ENABLED_LESSONS.has(sectionId)) return null;
 
   const src = `/audio/lessons/${sectionId}.mp3`;
 

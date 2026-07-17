@@ -116,6 +116,24 @@
     font-family: var(--font-serif);
     font-weight: 400;
   }
+
+  /* تكبير الخط لكبار السن — يضخّم نصوص الدروس تدريجيًا */
+  .text-scale-lg {
+    font-size: 1.0938rem;
+    line-height: 1.9;
+  }
+  .text-scale-xl {
+    font-size: 1.1875rem;
+    line-height: 2;
+  }
+  .text-scale-lg h1,
+  .text-scale-lg h2,
+  .text-scale-lg h3,
+  .text-scale-xl h1,
+  .text-scale-xl h2,
+  .text-scale-xl h3 {
+    line-height: 1.35;
+  }
 }
 
 @media print {
@@ -124,5 +142,20 @@
   }
   body {
     background: white !important;
+  }
+  /* طباعة قسم محدد فقط (أدوات الأسرة) */
+  body.printing-scope * {
+    visibility: hidden !important;
+  }
+  body.printing-scope .print-target,
+  body.printing-scope .print-target * {
+    visibility: visible !important;
+  }
+  body.printing-scope .print-target {
+    position: absolute;
+    inset-inline-start: 0;
+    top: 0;
+    width: 100%;
+    padding: 1.5rem;
   }
 }

@@ -1,8 +1,12 @@
 export type MedicalSensitivity = "low" | "medium" | "high";
 export type ReviewStatus = "draft" | "needs-medical-review" | "approved";
 
+export type Audience = "parent" | "child";
+
 export interface GuideSection {
   id: string;
+  /** الجمهور المستهدف — يمهد لنسخة الأطفال مستقبلًا. الافتراضي: parent */
+  audience?: Audience;
   title: string;
   subtitle?: string;
   body: string;
@@ -23,115 +27,115 @@ const HERO_BASE = "/images/simplified-guide";
 
 export const guideSectionHeroes: Record<string, { image: string; alt: string }> = {
   "journey-start": {
-    image: `${HERO_BASE}/a_clean_warm_modern_healthcare_parenting_informa_1.png`,
+    image: `${HERO_BASE}/a_clean_warm_modern_healthcare_parenting_informa_1.webp`,
     alt: "بداية الرحلة – الدليل المبسط لأهالي أطفال السكري النوع الأول",
   },
   "what-is-t1d": {
-    image: `${HERO_BASE}/wide_clean_modern_informational_medical_banner_s_2_batch_1.png`,
+    image: `${HERO_BASE}/wide_clean_modern_informational_medical_banner_s_2_batch_1.webp`,
     alt: "ما هو السكري النوع الأول – صورة توضيحية",
   },
   "what-is-insulin": {
-    image: `${HERO_BASE}/wide_clean_editorial_illustration_style_photo_bann_3_batch_2.png`,
+    image: `${HERO_BASE}/wide_clean_editorial_illustration_style_photo_bann_3_batch_2.webp`,
     alt: "الإنسولين – صورة تعليمية",
   },
   "why-measure": {
-    image: `${HERO_BASE}/a_clean_modern_educational_health_banner_layout_4_batch_3.png`,
+    image: `${HERO_BASE}/a_clean_modern_educational_health_banner_layout_4_batch_3.webp`,
     alt: "قياس السكر والحساس – صورة توضيحية",
   },
   "low-sugar": {
-    image: `${HERO_BASE}/a_clean_modern_arabic_infographic_hero_banner_sce_5_batch_4.png`,
+    image: `${HERO_BASE}/a_clean_modern_arabic_infographic_hero_banner_sce_5_batch_4.webp`,
     alt: "انخفاض السكر – صورة إرشادية",
   },
   "high-sugar": {
-    image: `${HERO_BASE}/wide_clean_promotional_educational_scene_with_a_s_6_batch_5.png`,
+    image: `${HERO_BASE}/wide_clean_promotional_educational_scene_with_a_s_6_batch_5.webp`,
     alt: "ارتفاع السكر والكيتونات – صورة إرشادية",
   },
   illness: {
-    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_infog_7_batch_6.png`,
+    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_infog_7_batch_6.webp`,
     alt: "المرض وأيام المرض – صورة توعوية",
   },
   carbs: {
-    image: `${HERO_BASE}/wide_bright_lifestyle_educational_banner_scene_a_8_batch_7.png`,
+    image: `${HERO_BASE}/wide_bright_lifestyle_educational_banner_scene_a_8_batch_7.webp`,
     alt: "الأكل والكربوهيدرات – صورة تعليمية",
   },
   school: {
-    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_poster_9_batch_8.png`,
+    image: `${HERO_BASE}/a_clean_modern_arabic_language_educational_poster_9_batch_8.webp`,
     alt: "المدرسة والحياة اليومية – صورة توعوية",
   },
   emergency: {
-    image: `${HERO_BASE}/wide_clean_warmly_lit_promotional_educational_sc_10_batch_9.png`,
+    image: `${HERO_BASE}/wide_clean_warmly_lit_promotional_educational_sc_10_batch_9.webp`,
     alt: "الطوارئ والدعم الأسري – صورة إرشادية",
   },
   "first-week": {
-    image: `${HERO_BASE}/first-week.png`,
+    image: `${HERO_BASE}/first-week.webp`,
     alt: "ماذا أتعلم في الأسبوع الأول؟ – صورة توضيحية",
   },
   "parents-feelings": {
-    image: `${HERO_BASE}/parents-feelings.png`,
+    image: `${HERO_BASE}/parents-feelings.webp`,
     alt: "مشاعر الأب والأم بعد التشخيص – صورة توضيحية",
   },
   "rapid-insulin": {
-    image: `${HERO_BASE}/rapid-insulin.png`,
+    image: `${HERO_BASE}/rapid-insulin.webp`,
     alt: "الإنسولين سريع المفعول – صورة تعليمية",
   },
   "long-insulin": {
-    image: `${HERO_BASE}/long-insulin.png`,
+    image: `${HERO_BASE}/long-insulin.webp`,
     alt: "الإنسولين طويل المفعول – صورة تعليمية",
   },
   "injection-basics": {
-    image: `${HERO_BASE}/injection-basics.png`,
+    image: `${HERO_BASE}/injection-basics.webp`,
     alt: "أساسيات حقن الإنسولين – صورة تعليمية",
   },
   fingerstick: {
-    image: `${HERO_BASE}/fingerstick.png`,
+    image: `${HERO_BASE}/fingerstick.webp`,
     alt: "قياس السكر بالوخز – صورة تعليمية",
   },
   "cgm-sensor": {
-    image: `${HERO_BASE}/cgm-sensor.png`,
+    image: `${HERO_BASE}/cgm-sensor.webp`,
     alt: "ما هو حساس السكر؟ – صورة توضيحية",
   },
   "sensor-arrows": {
-    image: `${HERO_BASE}/sensor-arrows.png`,
+    image: `${HERO_BASE}/sensor-arrows.webp`,
     alt: "فهم السهم في الحساس – صورة تعليمية",
   },
   "severe-low": {
-    image: `${HERO_BASE}/severe-low.png`,
+    image: `${HERO_BASE}/severe-low.webp`,
     alt: "الانخفاض الشديد – صورة إرشادية",
   },
   ketones: {
-    image: `${HERO_BASE}/ketones.png`,
+    image: `${HERO_BASE}/ketones.webp`,
     alt: "ما هي الكيتونات؟ – صورة تعليمية",
   },
   "sick-day-plan": {
-    image: `${HERO_BASE}/sick-day-plan.png`,
+    image: `${HERO_BASE}/sick-day-plan.webp`,
     alt: "خطة أيام المرض – صورة توضيحية",
   },
   "food-allowed": {
-    image: `${HERO_BASE}/food-allowed.png`,
+    image: `${HERO_BASE}/food-allowed.webp`,
     alt: "هل الطفل ممنوع من الأكل؟ – صورة تعليمية",
   },
   "diabetes-bag": {
-    image: `${HERO_BASE}/diabetes-bag.png`,
+    image: `${HERO_BASE}/diabetes-bag.webp`,
     alt: "حقيبة السكري – صورة إرشادية",
   },
   "play-sport": {
-    image: `${HERO_BASE}/play-sport.png`,
+    image: `${HERO_BASE}/play-sport.webp`,
     alt: "اللعب والرياضة – صورة توضيحية",
   },
   glucagon: {
-    image: `${HERO_BASE}/glucagon.png`,
+    image: `${HERO_BASE}/glucagon.webp`,
     alt: "ما هو الجلوكاجون؟ – صورة تعليمية",
   },
   confidence: {
-    image: `${HERO_BASE}/confidence.png`,
+    image: `${HERO_BASE}/confidence.webp`,
     alt: "ثقة الطفل بنفسه – صورة ملهمة",
   },
   "family-role": {
-    image: `${HERO_BASE}/family-role.png`,
+    image: `${HERO_BASE}/family-role.webp`,
     alt: "دور الأسرة – صورة توضيحية",
   },
   "final-message": {
-    image: `${HERO_BASE}/final-message.png`,
+    image: `${HERO_BASE}/final-message.webp`,
     alt: "رسالة أخيرة – صورة ختامية",
   },
 };
@@ -188,7 +192,7 @@ export const guideSections: GuideSection[] = [
   {
     id: "what-is-insulin",
     title: "ما هو الإنسولين؟",
-    body: "الإنسولين هو هرمون يحتاجه الجسم حتى يستخدم السكر الموجود في الدم كمصدر للطاقة.\n\nعند الطفل المصاب بالسكري النوع الأول، لا ينتج الجسم كمية كافية من الإنسولين.\n\nلذلك يحتاج الطفل إلى الإنسولين من خارج الجسم، حسب الخطة التي يحددها الطبيب.\n\nوجود الإنسولين ليس شيئًا إضافيًا، بل هو جزء أساسي من العلاج اليومي.\n\nبعض أنواع الإنسولين تعمل بسرعة مع الوجبات أو لتصحيح ارتفاع السكر، وبعضها يعمل لفترة طويلة لتغطية احتياج الجسم الأساسي.\n\nلا تغيروا نوع الإنسولين أو توقيته أو جرعته إلا بتوجيه من الفريق الطبي.",
+    body: "تعرفنا في الدرس الثاني أن الإنسولين هو الهرمون الذي يُدخل السكر إلى خلايا الجسم، وأن جسم طفلكم لا ينتج كمية كافية منه.\n\nلذلك يحتاج الطفل إلى الإنسولين من خارج الجسم، حسب الخطة التي يحددها الطبيب.\n\nوجود الإنسولين ليس شيئًا إضافيًا، بل هو جزء أساسي من العلاج اليومي.\n\nبعض أنواع الإنسولين تعمل بسرعة مع الوجبات أو لتصحيح ارتفاع السكر، وبعضها يعمل لفترة طويلة لتغطية احتياج الجسم الأساسي.\n\nلا تغيروا نوع الإنسولين أو توقيته أو جرعته إلا بتوجيه من الفريق الطبي.",
     alert: "لا تغيّر نوع الإنسولين أو جرعته أو توقيته بناءً على معلومات عامة. اتبع خطة طفلك المكتوبة من الطبيب.",
     imagePrompt: "Two insulin pens shown in educational safe style, no brand names visible",
     imageAlt: "قلما إنسولين بشكل تعليمي آمن",
@@ -359,7 +363,6 @@ export const guideSections: GuideSection[] = [
     body: "الطفل المصاب بالسكري النوع الأول يستطيع الذهاب للمدرسة مثل غيره.\n\nلكنه يحتاج خطة مكتوبة يعرفها المعلم أو المرشد الصحي أو المسؤول في المدرسة.\n\nينبغي أن تعرف المدرسة علامات انخفاض السكر، وماذا تفعل عند حدوثه، ومتى تتصل بولي الأمر أو الإسعاف.\n\nويجب أن يكون مع الطفل مصدر سكر سريع، وأدوات قياس، وأرقام تواصل واضحة، والجلوكاجون إذا كان موصوفًا وتوجد جهة مدربة على استخدامه.\n\nلا تعتمدوا على الشرح الشفهي فقط. جهزوا ورقة مختصرة تشرح حالة الطفل والخطوات المهمة.\n\nوتأكدوا أن الطفل لا يُمنع من الأكل أو الشرب أو دخول دورة المياه عند الحاجة.",
     imagePrompt: "Child in a classroom with a small diabetes care pouch nearby",
     imageAlt: "طفل في فصل دراسي مع حقيبة سكري صغيرة",
-    relatedEmergencyScenario: "school",
     medicalSensitivity: "medium",
     reviewStatus: "approved",
   },
@@ -369,14 +372,14 @@ export const guideSections: GuideSection[] = [
     body: "حقيبة السكري تساعد الطفل والأسرة والمدرسة على الاستعداد.\n\nقد تحتوي الحقيبة على جهاز قياس السكر، شرائح، إبر، مصدر سكر سريع، وجبة خفيفة، ماء، ومعلومات التواصل.\n\nوقد تحتوي على أدوات إضافية حسب خطة الطفل، مثل مستلزمات الحساس أو الجلوكاجون إذا كان موصوفًا.\n\nاكتبوا اسم الطفل ورقم ولي الأمر بوضوح.\n\nراجعوا الحقيبة بشكل منتظم.\n\nتأكدوا من صلاحية الأدوات، وأن مصدر السكر السريع موجود دائمًا.\n\nالحقيبة ليست علامة ضعف. هي وسيلة أمان.",
     bullets: [
       "جهاز قياس السكر",
-      "شرائط قياس",
-      "إبر وخز",
-      "قلم الإنسولين حسب الخطة",
-      "إبر جديدة",
-      "مصدر سكر سريع",
-      "وجبة خفيفة",
-      "ماء",
-      "بطاقة تعريف",
+      "شرائط قياس كافية",
+      "إبر وخز نظيفة",
+      "قلم الإنسولين حسب الخطة + إبر جديدة",
+      "مصدر سكر سريع (عصير صغير أو أقراص جلوكوز)",
+      "تمر أو وجبة خفيفة",
+      "ماء ومناديل تعقيم",
+      "حقيبة تبريد صغيرة في الجو الحار",
+      "بطاقة تعريف بحالة الطفل",
       "أرقام التواصل والطوارئ",
       "دفتر أو تطبيق لتسجيل القراءات",
       "مستلزمات الحساس إذا كان الطفل يستخدمه",

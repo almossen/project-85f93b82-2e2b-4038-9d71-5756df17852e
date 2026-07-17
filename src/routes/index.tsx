@@ -8,13 +8,16 @@ import {
   Baby,
   Stethoscope,
   Languages,
+  Compass,
+  Siren,
+  Wrench,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
-import heroFamily from "@/assets/sama-family.png";
-import happyChild from "@/assets/happy-child.png";
+import heroFamily from "@/assets/sama-family.webp";
+import happyChild from "@/assets/happy-child.webp";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -75,12 +78,11 @@ function HomePage() {
                   رحلة التعايش مع سكري النوع الأول
                 </span>
               </h1>
-              <div className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl whitespace-pre-line">
-                «سما» منصة عربية تثقيفية صُممت لمساندة أسر الأطفال المشخصين حديثًا بسكري النوع الأول، ومساعدتهم على فهم المرحلة الأولى بهدوء ووضوح.
-
-                تقدّم المنصة محتوى مبسطًا تمت مراجعته طبيًا، يشرح للأسرة أساسيات التعامل اليومي مع السكري: الإنسولين، قياس السكر، الهبوط، الارتفاع، الكيتونات، المدرسة، حقيبة السكري، والمواقف التي تستدعي طلب المساعدة. كما تساعد الوالدين على معرفة الأسئلة المهمة، وفهم ما يحدث دون تخويف أو تعقيد أو وعود علاجية.
-
-                هذه المنصة ليست بديلًا عن الطبيب أو فريق السكري، لكنها رفيق تثقيفي للأسرة في بداية الطريق؛ ترتّب المعلومات، وتخفف الارتباك، وتساعدكم على التعلّم خطوة بخطوة، حتى تتحول المرحلة الأولى من خوف وأسئلة كثيرة إلى فهم وطمأنينة وقدرة أفضل على التعامل.
+              <div className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
+                «سما» منصة عربية تثقيفية تمت مراجعتها طبيًا، تساند أسر الأطفال المشخصين حديثًا
+                بسكري النوع الأول: تشرح أساسيات التعامل اليومي — الإنسولين، القياس، الهبوط
+                والارتفاع، المدرسة والطوارئ — بهدوء ووضوح، خطوة بخطوة، دون أن تكون بديلًا عن
+                طبيبكم أو فريق السكري.
               </div>
               <div className="flex flex-wrap gap-3">
                 <Link
@@ -101,6 +103,50 @@ function HomePage() {
                 className="relative rounded-3xl shadow-[var(--shadow-card)] w-full h-auto object-cover"
               />
             </div>
+          </div>
+        </section>
+
+        {/* فرز فوري — ثلاثة مداخل واضحة حسب حاجة الأسرة الآن */}
+        <section className="mx-auto max-w-5xl px-4 sm:px-6 -mt-4 sm:-mt-8 relative z-10">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+            <Link
+              to="/simplified-guide"
+              className="group rounded-3xl border border-primary/25 bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-soft text-primary mb-4">
+                <Compass className="h-6 w-6" strokeWidth={2} />
+              </div>
+              <h3 className="font-bold text-lg mb-1">شُخّص طفلكم حديثًا؟</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                ابدؤوا من الفصل الأول — نأخذكم خطوة بخطوة من اليوم الأول.
+              </p>
+            </Link>
+
+            <Link
+              to="/what-to-do-now"
+              className="group rounded-3xl border border-destructive/30 bg-destructive/[0.04] p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-destructive/12 text-destructive mb-4">
+                <Siren className="h-6 w-6" strokeWidth={2.2} />
+              </div>
+              <h3 className="font-bold text-lg mb-1 text-destructive">عندكم موقف الآن؟</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                خطوات سريعة وواضحة للهبوط والارتفاع والكيتونات ومتى تطلبون المساعدة.
+              </p>
+            </Link>
+
+            <Link
+              to="/family-tools"
+              className="group rounded-3xl border border-border bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-mint/25 text-primary mb-4">
+                <Wrench className="h-6 w-6" strokeWidth={2} />
+              </div>
+              <h3 className="font-bold text-lg mb-1">أدوات وقوائم جاهزة</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                رسالة للطبيب، أسئلة أول موعد، حقيبة السكري، وروتين ليلي — جاهزة للطباعة.
+              </p>
+            </Link>
           </div>
         </section>
 

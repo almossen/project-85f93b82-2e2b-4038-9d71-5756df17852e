@@ -63,15 +63,18 @@ function PrintQuestionsButton({ targetId }: { targetId: string }) {
   const onPrint = () => {
     if (typeof window === "undefined") return;
     const el = document.getElementById(targetId);
-    if (!el) return window.print();
-    const win = window.open("", "_blank", "width=800,height=900");
-    if (!win) return;
-    win.document.write(
-      `<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>أسئلة لأول موعد</title><style>body{font-family:system-ui,Tahoma,Arial;padding:24px;line-height:1.9;color:#111}h3{margin:16px 0 6px}ul{padding-inline-start:20px}li{margin:4px 0}</style></head><body>${el.innerHTML}<p style="color:#555;font-size:12px">— من منصة سما — للاسترشاد فقط.</p></body></html>`
-    );
-    win.document.close();
-    win.focus();
-    setTimeout(() => win.print(), 250);
+    if (el) {
+      // نطاق طباعة موثوق يعمل داخل متصفحات الجوال و PWA
+      document.body.classList.add("printing-scope");
+      el.classList.add("print-target");
+      const cleanup = () => {
+        document.body.classList.remove("printing-scope");
+        el.classList.remove("print-target");
+        window.removeEventListener("afterprint", cleanup);
+      };
+      window.addEventListener("afterprint", cleanup);
+    }
+    window.print();
   };
   return (
     <button

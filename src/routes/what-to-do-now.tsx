@@ -8,16 +8,15 @@ import {
   AlertTriangle,
   Syringe,
   Activity,
-  School,
   Search,
   Printer,
   Share2,
+  MessageCircle,
   ArrowRight,
   Info,
   ShieldAlert,
   Phone,
   Siren,
-  Volume2,
   BookOpen,
   type LucideIcon,
 } from "lucide-react";
@@ -49,7 +48,6 @@ const iconMap: Record<string, LucideIcon> = {
   AlertTriangle,
   Syringe,
   Activity,
-  School,
 };
 
 const severityStyles: Record<
@@ -109,9 +107,13 @@ function EmergencyGuidePage() {
   }, []);
 
   const filtered = useMemo(() => {
+    const rank: Record<string, number> = { critical: 0, warning: 1, info: 2, safe: 3 };
+    const sorted = [...emergencyScenarios].sort(
+      (a, b) => (rank[a.severity] ?? 9) - (rank[b.severity] ?? 9),
+    );
     const q = query.trim();
-    if (!q) return emergencyScenarios;
-    return emergencyScenarios.filter(
+    if (!q) return sorted;
+    return sorted.filter(
       (s) =>
         s.title.includes(q) ||
         s.shortDescription.includes(q) ||
@@ -136,10 +138,6 @@ function EmergencyGuidePage() {
       await navigator.clipboard.writeText(text);
       alert("تم نسخ ملخص الحالة. يمكنك لصقه في المدرسة أو الواتساب.");
     }
-  };
-
-  const handleSpeak = (_s: EmergencyScenario) => {
-    alert("سيتم إضافة الصوت الواقعي قريبًا بإذن الله.");
   };
 
   return (
@@ -193,7 +191,7 @@ function EmergencyGuidePage() {
           <input
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، مدرسة، حساس..."
+            placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، حساس..."
             className="w-full rounded-2xl border border-border bg-card pr-12 pl-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/40"
             aria-label="ابحث في الحالات"
           />
@@ -252,7 +250,6 @@ function EmergencyGuidePage() {
             onBack={() => setActive(null)}
             onPrint={handlePrint}
             onShare={() => handleShare(active)}
-            onSpeak={() => handleSpeak(active)}
           />
         )}
 
@@ -320,13 +317,11 @@ function ScenarioDetail({
   onBack,
   onPrint,
   onShare,
-  onSpeak,
 }: {
   scenario: EmergencyScenario;
   onBack: () => void;
   onPrint: () => void;
   onShare: () => void;
-  onSpeak: () => void;
 }) {
   const Icon = iconMap[scenario.icon] ?? Info;
   const style = severityStyles[scenario.severity];
@@ -369,17 +364,19 @@ function ScenarioDetail({
         >
           <Printer className="h-4 w-4" /> اطبع هذه الحالة
         </button>
+        <a
+          href={`https://wa.me/?text=${encodeURIComponent(`${scenario.title}\n\n${scenario.printableSummary}\n\n— من منصة سما`)}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-1.5 rounded-full bg-success text-success-foreground px-4 py-2 text-sm font-semibold hover:bg-success/90"
+        >
+          <MessageCircle className="h-4 w-4" /> أرسلها واتساب
+        </a>
         <button
           onClick={onShare}
           className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted"
         >
-          <Share2 className="h-4 w-4" /> شاركها مع المدرسة
-        </button>
-        <button
-          onClick={onSpeak}
-          className="inline-flex items-center gap-1.5 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted"
-        >
-          <Volume2 className="h-4 w-4" /> قراءة صوتية
+          <Share2 className="h-4 w-4" /> مشاركة / نسخ
         </button>
       </div>
 
@@ -424,6 +421,18 @@ function ScenarioDetail({
         <h3 className="font-bold mb-2">ملخص للطباعة</h3>
         <p className="leading-loose">{scenario.printableSummary}</p>
       </section>
+
+      {(scenario.severity === "critical" || scenario.severity === "warning") && (
+        <div className="sticky bottom-16 md:bottom-4 z-40 print:hidden pt-2">
+          <a
+            href="tel:997"
+            className="flex items-center justify-center gap-2.5 rounded-2xl bg-destructive px-6 py-4 text-base font-bold text-destructive-foreground shadow-lg shadow-destructive/25 hover:bg-destructive/90 transition-colors"
+          >
+            <Phone className="h-5 w-5" strokeWidth={2.4} />
+            اتصال بالهلال الأحمر ٩٩٧
+          </a>
+        </div>
+      )}
     </article>
   );
 }

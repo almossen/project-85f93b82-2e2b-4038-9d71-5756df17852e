@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
   BookOpen,
@@ -9,7 +9,6 @@ import {
   ChevronRight,
   HelpCircle,
   Heart,
-  Phone,
   Printer,
   Siren,
   Sparkles,
@@ -28,6 +27,7 @@ import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment
 import { GuideSectionHero } from "@/components/sama/GuideSectionHero";
 import { LessonAudioPlayer } from "@/components/sama/LessonAudioPlayer";
 import { Quiz } from "@/components/sama/Quiz";
+import { useGuideProgress } from "@/hooks/useGuideProgress";
 import {
   guideSections,
   guideSummary,
@@ -65,8 +65,8 @@ const chapters: Chapter[] = [
   {
     id: "ch-4",
     title: "الفصل الرابع: الانخفاض والارتفاع",
-    subtitle: "الهبوط، الارتفاع، والكيتونات",
-    sectionIds: ["low-sugar", "severe-low", "high-sugar", "ketones"],
+    subtitle: "الهبوط، الجلوكاجون، الارتفاع، والكيتونات",
+    sectionIds: ["low-sugar", "severe-low", "glucagon", "high-sugar", "ketones"],
   },
   {
     id: "ch-5",
@@ -85,8 +85,8 @@ const chapters: Chapter[] = [
   {
     id: "ch-6",
     title: "الفصل السادس: الطوارئ والدعم",
-    subtitle: "الجلوكاجون، الطوارئ، والثقة",
-    sectionIds: ["glucagon", "emergency", "confidence", "family-role", "final-message"],
+    subtitle: "متى أطلب المساعدة، الثقة، ودور الأسرة",
+    sectionIds: ["emergency", "confidence", "family-role", "final-message"],
   },
 ];
 
@@ -184,11 +184,15 @@ function SectionCard({
   index,
   lessonNumber,
   lessonTotal,
+  isRead,
+  onToggleRead,
 }: {
   section: GuideSection;
   index: number;
   lessonNumber?: number;
   lessonTotal?: number;
+  isRead?: boolean;
+  onToggleRead?: () => void;
 }) {
   const paragraphs = section.body.split("\n\n");
   const isHighSensitivity = section.medicalSensitivity === "high";
@@ -253,7 +257,7 @@ function SectionCard({
 
         <div id={printScopeId}>
           <h1 className="hidden print:block">{section.title}</h1>
-          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90">
+          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 max-w-[68ch]">
             {paragraphs.map((p, i) => (
               <p key={i} className="whitespace-pre-line">
                 {p}
@@ -290,6 +294,20 @@ function SectionCard({
         {isHighSensitivity && doctorQ && <AskDoctorCard question={doctorQ} />}
 
         <div className="flex flex-wrap gap-2 pt-2 print:hidden">
+          {onToggleRead && (
+            <button
+              type="button"
+              onClick={onToggleRead}
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-colors border ${
+                isRead
+                  ? "bg-success/15 text-success border-success/40"
+                  : "bg-card text-muted-foreground border-border hover:bg-muted"
+              }`}
+            >
+              <CheckCircle2 className="h-4 w-4" />
+              {isRead ? "أنهيت هذا الدرس ✓" : "علّم كمقروء"}
+            </button>
+          )}
 
 
           {section.id === "school" && (
@@ -326,21 +344,6 @@ function SectionCard({
         </div>
       </div>
     </article>
-  );
-}
-
-function ReassuringPause() {
-  return (
-    <section className="rounded-3xl border border-primary/30 bg-primary-soft/60 p-6 sm:p-8 space-y-3 print:break-inside-avoid">
-      <div className="flex items-center gap-2">
-        <Heart className="h-5 w-5 text-primary" />
-        <h3 className="text-xl sm:text-2xl font-bold">وقفة مطمئنة</h3>
-      </div>
-      <p className="text-base sm:text-[17px] leading-loose text-foreground/90">
-        هذا ابتلاء ومعه لطف الله. الإيمان بالقضاء والقدر لا يلغي العلاج، بل يقوّي القلب على
-        الالتزام به. سكري النوع الأول ليس عقوبة وليس دليلًا على تقصير الوالدين.
-      </p>
-    </section>
   );
 }
 
@@ -406,54 +409,37 @@ function TrueFalseSection() {
   );
 }
 
-function GetHelpNowSection() {
-  const items = [
-    "فقدان الوعي",
-    "التشنجات",
-    "القيء المتكرر",
-    "صعوبة التنفس",
-    "الخمول الشديد",
-    "علامات الجفاف",
-    "وجود كيتونات مع مرض أو قيء",
-    "انخفاض لا يتحسن حسب خطة الطبيب",
-    "أي حالة لا تعرف الأسرة كيف تتصرف معها",
-  ];
-  return (
-    <section className="rounded-3xl border border-destructive/40 bg-destructive/5 p-6 sm:p-8 space-y-4 print:break-inside-avoid">
-      <header className="flex items-center gap-2">
-        <Siren className="h-6 w-6 text-destructive" />
-        <h2 className="text-2xl sm:text-3xl font-bold text-destructive">متى أطلب المساعدة فورًا؟</h2>
-      </header>
-      <p className="text-sm sm:text-base text-foreground/85 leading-loose">
-إذا ظهرت أي من العلامات التالية، لا تنتظر — اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ:
-      </p>
-      <ul className="grid sm:grid-cols-2 gap-2.5">
-        {items.map((t) => (
-          <li
-            key={t}
-            className="flex items-start gap-2.5 rounded-2xl bg-card border border-border px-4 py-3 text-sm sm:text-base leading-loose"
-          >
-            <AlertTriangle className="h-4 w-4 text-destructive shrink-0 mt-1" />
-            <span>{t}</span>
-          </li>
-        ))}
-      </ul>
-      <div className="flex flex-wrap gap-2 pt-2 print:hidden">
-        <a
-          href="tel:997"
-          className="inline-flex items-center gap-2 rounded-full bg-destructive text-destructive-foreground px-5 py-2.5 text-sm font-semibold hover:bg-destructive/90 transition-colors"
-        >
-          <Phone className="h-4 w-4" />
-          اتصل بالهلال الأحمر 997
-        </a>
-      </div>
-    </section>
-  );
-}
-
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
   const [chapterIdx, setChapterIdx] = useState(0);
+  const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
+  const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
+    useGuideProgress(guideSections.length);
+
+  // استعادة تفضيل حجم الخط
+  useEffect(() => {
+    if (typeof window === "undefined") return;
+    const saved = window.localStorage.getItem("sama-text-scale");
+    if (saved === "base" || saved === "lg" || saved === "xl") setTextScale(saved);
+  }, []);
+
+  const changeScale = (dir: 1 | -1) => {
+    const order: Array<"base" | "lg" | "xl"> = ["base", "lg", "xl"];
+    setTextScale((cur) => {
+      const next = order[Math.min(order.length - 1, Math.max(0, order.indexOf(cur) + dir))];
+      if (typeof window !== "undefined") window.localStorage.setItem("sama-text-scale", next);
+      return next;
+    });
+  };
+
+  const scaleClass =
+    textScale === "lg" ? "text-scale-lg" : textScale === "xl" ? "text-scale-xl" : "";
+
+  // استكمال القراءة من آخر فصل وصل له القارئ
+  useEffect(() => {
+    if (restored && lastChapter > 0) setChapterIdx(lastChapter);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restored]);
 
   const isSearching = query.trim().length > 0;
 
@@ -475,6 +461,7 @@ function SimplifiedGuidePage() {
 
   const goToChapter = (i: number) => {
     setChapterIdx(i);
+    setLastChapter(i);
     if (typeof window !== "undefined") {
       const el = document.getElementById("chapter-sections");
       if (el) {
@@ -491,19 +478,26 @@ function SimplifiedGuidePage() {
     if (typeof window !== "undefined") window.print();
   };
 
+  // نسبة إنجاز كل فصل لخريطة الرحلة
+  const chapterProgress = (c: (typeof chapters)[number]) => {
+    const total = c.sectionIds.length;
+    const done = c.sectionIds.filter((id) => readSections.has(id)).length;
+    return { done, total };
+  };
+
   return (
     <div className="min-h-screen bg-background" dir="rtl">
       <div className="print:hidden">
         <SiteHeader />
       </div>
 
-      <main className="mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10">
+      <main className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
         <MedicalDisclaimer />
 
         {/* Hero */}
         <section className="rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] print:break-inside-avoid">
           <img
-            src="/images/simplified-guide/hero-banner.png"
+            src="/images/simplified-guide/hero-banner.webp"
             alt="الدليل المبسّط لأهالي أطفال السكري النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
             loading="eager"
             decoding="async"
@@ -511,8 +505,70 @@ function SimplifiedGuidePage() {
           />
         </section>
 
-
-        {/* Philosophy / About the platform — chapter 1 only */}
+        {/* خريطة الرحلة — الفصول ظاهرة كمسار مع تقدّم كل فصل */}
+        {!isSearching && (
+          <section className="print:hidden" aria-label="خريطة الرحلة">
+            <div className="flex items-center justify-between mb-3">
+              <h2 className="text-lg sm:text-xl font-bold">خريطة رحلتكم</h2>
+              {readCount > 0 && (
+                <span className="text-xs font-semibold text-muted-foreground tabular-nums">
+                  {percent}% مكتمل
+                </span>
+              )}
+            </div>
+            <ol className="grid gap-2.5 sm:grid-cols-2">
+              {chapters.map((c, i) => {
+                const { done, total } = chapterProgress(c);
+                const active = i === chapterIdx;
+                const complete = done === total && total > 0;
+                return (
+                  <li key={c.id}>
+                    <button
+                      type="button"
+                      onClick={() => goToChapter(i)}
+                      className={`w-full text-right rounded-2xl border p-4 flex items-center gap-3.5 transition-all hover:shadow-[var(--shadow-soft)] ${
+                        active
+                          ? "border-primary/50 bg-primary-soft/60 shadow-[var(--shadow-soft)]"
+                          : "border-border bg-card hover:border-primary/30"
+                      }`}
+                    >
+                      <span
+                        className={`relative flex h-11 w-11 shrink-0 items-center justify-center rounded-full text-sm font-bold ${
+                          complete
+                            ? "bg-success text-success-foreground"
+                            : active
+                              ? "bg-primary text-primary-foreground"
+                              : "bg-muted text-foreground"
+                        }`}
+                      >
+                        {complete ? <CheckCircle2 className="h-5 w-5" /> : i + 1}
+                      </span>
+                      <span className="flex-1 min-w-0">
+                        <span className="block font-bold text-sm leading-tight truncate">
+                          {c.title}
+                        </span>
+                        <span className="block text-[11px] text-muted-foreground mt-0.5 truncate">
+                          {c.subtitle}
+                        </span>
+                        <span className="mt-2 flex items-center gap-2">
+                          <span className="flex-1 h-1.5 rounded-full bg-muted overflow-hidden">
+                            <span
+                              className={`block h-full rounded-full transition-all ${complete ? "bg-success" : "bg-primary"}`}
+                              style={{ width: `${total ? (done / total) * 100 : 0}%` }}
+                            />
+                          </span>
+                          <span className="text-[10px] font-semibold text-muted-foreground tabular-nums shrink-0">
+                            {done}/{total}
+                          </span>
+                        </span>
+                      </span>
+                    </button>
+                  </li>
+                );
+              })}
+            </ol>
+          </section>
+        )}
         {chapterIdx === 0 && !isSearching && (
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
           <div className="space-y-5 text-center">
@@ -579,7 +635,7 @@ function SimplifiedGuidePage() {
         )}
 
         {/* Sticky top bar: chapters dropdown + current chapter + search */}
-        <div className="sticky top-16 z-30 print:hidden space-y-2">
+        <div className="sticky top-2 md:top-16 z-30 print:hidden space-y-2">
           <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex items-center gap-3 flex-wrap">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -631,6 +687,27 @@ function SimplifiedGuidePage() {
               </p>
             )}
 
+            <div className="flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
+              <button
+                type="button"
+                onClick={() => changeScale(-1)}
+                disabled={textScale === "base"}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تصغير الخط"
+              >
+                أ<span className="text-[10px]">−</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => changeScale(1)}
+                disabled={textScale === "xl"}
+                className="flex h-8 w-8 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تكبير الخط"
+              >
+                أ<span className="text-xs">+</span>
+              </button>
+            </div>
+
             <input
               type="search"
               placeholder="ابحث في الدليل…"
@@ -640,6 +717,19 @@ function SimplifiedGuidePage() {
               aria-label="ابحث في الدليل"
             />
           </div>
+          {!isSearching && readCount > 0 && (
+            <div className="rounded-2xl border border-border bg-card/95 backdrop-blur px-4 py-2.5 flex items-center gap-3">
+              <div className="flex-1 h-2 rounded-full bg-muted overflow-hidden">
+                <div
+                  className="h-full rounded-full bg-primary transition-all"
+                  style={{ width: `${percent}%` }}
+                />
+              </div>
+              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+                أكملت {readCount} من {guideSections.length} درسًا
+              </span>
+            </div>
+          )}
         </div>
 
 
@@ -655,8 +745,9 @@ function SimplifiedGuidePage() {
                   index={i}
                   lessonNumber={isSearching ? undefined : i + 1}
                   lessonTotal={isSearching ? undefined : sectionList.length}
+                  isRead={readSections.has(s.id)}
+                  onToggleRead={() => toggleRead(s.id)}
                 />
-                {!isSearching && s.id === "journey-start" && <ReassuringPause />}
                 {!isSearching && s.id === "injection-basics" && <InsulinStorageSection />}
                 {!isSearching && chapterIdx === 1 && isLastInChapter && <TrueFalseSection />}
                 {!isSearching && chapterIdx === 0 && isLastInChapter && (
@@ -688,7 +779,6 @@ function SimplifiedGuidePage() {
                 افتح أدوات جاهزة للأسرة
               </a>
             </div>
-            <GetHelpNowSection />
           </>
         )}
 
@@ -750,8 +840,6 @@ function SimplifiedGuidePage() {
             </ul>
           </section>
         )}
-
-        <MedicalDisclaimer />
 
         <Link
           to="/sources"

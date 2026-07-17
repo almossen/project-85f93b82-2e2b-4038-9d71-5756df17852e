@@ -5,7 +5,6 @@ import {
   Key,
   Zap,
   XCircle,
-  CheckSquare,
   Phone,
   AlertTriangle,
 } from "lucide-react";
@@ -17,18 +16,18 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import insulinRapidImg from "@/assets/insulin-rapid.jpg";
-import insulinLongImg from "@/assets/insulin-long.jpg";
-import penHumalog from "@/assets/pen-humalog.jpg";
-import penNovorapid from "@/assets/pen-novorapid.jpg";
-import penApidra from "@/assets/pen-apidra.jpg";
-import penFiasp from "@/assets/pen-fiasp.jpg";
-import penLantus from "@/assets/pen-lantus.jpg";
-import penToujeo from "@/assets/pen-toujeo.jpg";
-import penLevemir from "@/assets/pen-levemir.jpg";
-import penTresiba from "@/assets/pen-tresiba.jpg";
-import faithImg from "@/assets/faith-section.png";
-import familyKitchen from "@/assets/family-kitchen.jpg";
+import insulinRapidImg from "@/assets/insulin-rapid.webp";
+import insulinLongImg from "@/assets/insulin-long.webp";
+import penHumalog from "@/assets/pen-humalog.webp";
+import penNovorapid from "@/assets/pen-novorapid.webp";
+import penApidra from "@/assets/pen-apidra.webp";
+import penFiasp from "@/assets/pen-fiasp.webp";
+import penLantus from "@/assets/pen-lantus.webp";
+import penToujeo from "@/assets/pen-toujeo.webp";
+import penLevemir from "@/assets/pen-levemir.webp";
+import penTresiba from "@/assets/pen-tresiba.webp";
+import faithImg from "@/assets/faith-section.webp";
+import familyKitchen from "@/assets/family-kitchen.webp";
 
 type Brand = { name: string; ar: string; img: string; note: string };
 
@@ -181,40 +180,6 @@ function InjectionVideo() {
   );
 }
 
-const diabetesBagChecklist = [
-  "جهاز قياس السكر",
-  "شرائط قياس كافية",
-  "إبر وخز نظيفة",
-  "قلم إنسولين سريع المفعول + إبر جديدة",
-  "قلم إنسولين طويل المفعول (عند الحاجة)",
-  "حقيبة تبريد صغيرة في الجو الحار",
-  "عصير صغير أو أقراص جلوكوز",
-  "تمر أو وجبة خفيفة",
-  "ماء كافٍ ومناديل تعقيم",
-  "بطاقة تعريف بحالة الطفل",
-  "رقم الطبيب والطوارئ",
-  "دفتر تسجيل القراءات",
-];
-
-function DiabetesBagChecklist() {
-  return (
-    <div className="rounded-2xl border border-border bg-background/60 p-4 space-y-3">
-      <div className="flex items-center gap-2">
-        <CheckSquare className="h-4 w-4 text-primary" />
-        <h4 className="font-semibold text-sm">قائمة جاهزة للطباعة</h4>
-      </div>
-      <ul className="grid sm:grid-cols-2 gap-2">
-        {diabetesBagChecklist.map((it) => (
-          <li key={it} className="flex items-center gap-2 rounded-xl border border-border bg-card p-2.5">
-            <span aria-hidden className="h-4 w-4 rounded border-2 border-muted-foreground/40 shrink-0" />
-            <span className="text-xs leading-snug">{it}</span>
-          </li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
 function FaithCallout() {
   return (
     <div className="rounded-2xl overflow-hidden border border-sand bg-[image:var(--gradient-sand)]">
@@ -318,9 +283,6 @@ export function GuideSectionEnrichment({ sectionId }: { sectionId: string }) {
       return <BrandPanel tone="sand" image={insulinLongImg} alt="أقلام الإنسولين طويل المفعول" brands={longBrands} />;
     case "injection-basics":
       return <InjectionVideo />;
-    case "diabetes-bag":
-      return <DiabetesBagChecklist />;
-    case "emergency":
     case "severe-low":
       return <WarningSignsList />;
     default:

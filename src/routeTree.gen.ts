@@ -66,18 +66,10 @@ export interface FileRoutesById {
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
-    | '/'
-    | '/family-tools'
-    | '/simplified-guide'
-    | '/sources'
-    | '/what-to-do-now'
+    '/' | '/family-tools' | '/simplified-guide' | '/sources' | '/what-to-do-now'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
-    | '/family-tools'
-    | '/simplified-guide'
-    | '/sources'
-    | '/what-to-do-now'
+    '/' | '/family-tools' | '/simplified-guide' | '/sources' | '/what-to-do-now'
   id:
     | '__root__'
     | '/'

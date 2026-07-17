@@ -1,5 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight } from "lucide-react";
+import { SiteHeader } from "@/components/sama/SiteHeader";
+import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DeepDiveEnrichment } from "@/components/sama/DeepDiveEnrichment";
 import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
 
@@ -25,7 +27,9 @@ export const Route = createFileRoute("/family-tools")({
 
 function FamilyToolsPage() {
   return (
-    <div className="mx-auto max-w-4xl px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+    <div className="min-h-screen flex flex-col bg-background">
+      <SiteHeader />
+      <main className="flex-1 mx-auto max-w-4xl w-full px-4 sm:px-6 py-8 sm:py-12 space-y-8">
       <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
         <Link to="/" className="hover:text-foreground transition-colors">الرئيسية</Link>
         <ArrowRight className="h-3.5 w-3.5 rotate-180" />
@@ -58,6 +62,8 @@ function FamilyToolsPage() {
           ماذا أفعل الآن؟
         </Link>
       </div>
+      </main>
+      <SiteFooter />
     </div>
   );
 }
