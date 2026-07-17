@@ -412,10 +412,30 @@ function TrueFalseSection() {
   );
 }
 
+function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
+  if (chapterIdx !== 0 && chapterIdx !== 1) return null;
+  return (
+    <section className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/50 to-mint/15 p-6 sm:p-8 shadow-[var(--shadow-card)] print:break-inside-avoid animate-fade-in">
+      <header className="flex items-center gap-3 mb-5">
+        <span className="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-primary-foreground">
+          <ListChecks className="h-5 w-5" />
+        </span>
+        <div>
+          <p className="text-[11px] font-semibold text-primary uppercase tracking-wide">ختام الفصل</p>
+          <h2 className="text-xl sm:text-2xl font-bold">راجع ما تعلمت في هذا الفصل</h2>
+        </div>
+      </header>
+      {chapterIdx === 0 ? <Quiz /> : <TrueFalseSection />}
+    </section>
+  );
+}
+
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
   const [chapterIdx, setChapterIdx] = useState(0);
   const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
+  const [viewMode, setViewMode] = useState<"focus" | "continuous">("focus");
+  const [activeLessonIdx, setActiveLessonIdx] = useState<number | null>(null);
   const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
     useGuideProgress(guideSections.length);
 
@@ -462,18 +482,48 @@ function SimplifiedGuidePage() {
     .map((id) => sectionMap.get(id))
     .filter(Boolean) as GuideSection[];
 
-  const goToChapter = (i: number) => {
+  const scrollToSections = () => {
+    if (typeof window === "undefined") return;
+    const el = document.getElementById("chapter-sections");
+    if (el) {
+      const stickyOffset = 120;
+      const top = el.getBoundingClientRect().top + window.scrollY - stickyOffset;
+      window.scrollTo({ top, behavior: "smooth" });
+    } else {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    }
+  };
+
+  const goToChapter = (i: number, lessonIdx: number | null = null) => {
     setChapterIdx(i);
     setLastChapter(i);
-    if (typeof window !== "undefined") {
-      const el = document.getElementById("chapter-sections");
-      if (el) {
-        const stickyOffset = 120;
-        const top = el.getBoundingClientRect().top + window.scrollY - stickyOffset;
-        window.scrollTo({ top, behavior: "smooth" });
-      } else {
-        window.scrollTo({ top: 0, behavior: "smooth" });
-      }
+    setActiveLessonIdx(lessonIdx);
+    scrollToSections();
+  };
+
+  const openLesson = (idx: number) => {
+    setActiveLessonIdx(idx);
+    scrollToSections();
+  };
+
+  const goToNextLesson = () => {
+    if (activeLessonIdx === null) return;
+    if (activeLessonIdx < chapterSections.length - 1) {
+      setActiveLessonIdx(activeLessonIdx + 1);
+      scrollToSections();
+    } else if (chapterIdx < chapters.length - 1) {
+      goToChapter(chapterIdx + 1, 0);
+    }
+  };
+
+  const goToPrevLesson = () => {
+    if (activeLessonIdx === null) return;
+    if (activeLessonIdx > 0) {
+      setActiveLessonIdx(activeLessonIdx - 1);
+      scrollToSections();
+    } else if (chapterIdx > 0) {
+      const prev = chapters[chapterIdx - 1];
+      goToChapter(chapterIdx - 1, prev.sectionIds.length - 1);
     }
   };
 
@@ -487,6 +537,23 @@ function SimplifiedGuidePage() {
     const done = c.sectionIds.filter((id) => readSections.has(id)).length;
     return { done, total };
   };
+
+  // الترقيم العالمي للدرس ضمن كل الدروس (لشريط تقدم الدرس)
+  const globalLessonIndex = useMemo(() => {
+    if (activeLessonIdx === null) return null;
+    let count = 0;
+    for (let i = 0; i < chapterIdx; i++) count += chapters[i].sectionIds.length;
+    return count + activeLessonIdx + 1;
+  }, [chapterIdx, activeLessonIdx]);
+
+  const isFocusOne = viewMode === "focus" && activeLessonIdx !== null && !isSearching;
+  const isFocusList = viewMode === "focus" && activeLessonIdx === null && !isSearching;
+  const focusedSection = isFocusOne ? chapterSections[activeLessonIdx!] : null;
+  const isLastLessonInChapter = activeLessonIdx === chapterSections.length - 1;
+  const isFirstLessonOverall = chapterIdx === 0 && activeLessonIdx === 0;
+  const isLastLessonOverall =
+    chapterIdx === chapters.length - 1 && activeLessonIdx === chapterSections.length - 1;
+
 
   return (
     <div className="min-h-screen bg-background" dir="rtl">
