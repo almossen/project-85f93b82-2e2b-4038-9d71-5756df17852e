@@ -352,6 +352,19 @@ function ScenarioDetail({
         </div>
       </header>
 
+      {(scenario.severity === "critical" || scenario.severity === "warning") && (
+        <div className="sticky top-2 z-40 print:hidden">
+          <a
+            href="tel:997"
+            className="flex items-center justify-center gap-2.5 rounded-2xl bg-destructive px-6 py-4 text-base font-bold text-destructive-foreground shadow-lg shadow-destructive/25 hover:bg-destructive/90 transition-colors"
+          >
+            <Phone className="h-5 w-5" strokeWidth={2.4} />
+            اتصال بالهلال الأحمر ٩٩٧
+          </a>
+        </div>
+      )}
+
+
       <div className="flex flex-wrap gap-2 print:hidden">
         <button
           onClick={onPrint}
