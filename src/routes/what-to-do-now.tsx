@@ -26,7 +26,13 @@ import {
   type Severity,
 } from "@/data/emergencyScenarios";
 
+type CaseSearch = { case?: string };
+
 export const Route = createFileRoute("/what-to-do-now")({
+  validateSearch: (search: Record<string, unknown>): CaseSearch => {
+    const id = search.case ?? search.scenario;
+    return typeof id === "string" && id.length > 0 ? { case: id } : {};
+  },
   head: () => ({
     meta: [
       { title: "ماذا أفعل الآن؟ — سما" },
