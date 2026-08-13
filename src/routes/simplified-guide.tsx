@@ -11,6 +11,7 @@ import {
   Heart,
   LayoutList,
   ListChecks,
+  Phone,
   Printer,
   Rows3,
   Siren,
