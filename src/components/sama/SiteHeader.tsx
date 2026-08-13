@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Search } from "lucide-react";
+import { GlobalSearch } from "@/components/sama/GlobalSearch";
+
 
 export function SiteHeader() {
   return (
@@ -44,7 +46,20 @@ export function SiteHeader() {
           >
             أدوات جاهزة
           </Link>
+          <GlobalSearch
+            trigger={
+              <button
+                type="button"
+                aria-label="بحث في المنصة"
+                className="inline-flex items-center gap-2 rounded-full border border-border px-3 py-2 min-h-11 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+              >
+                <Search className="h-4 w-4" />
+                بحث
+              </button>
+            }
+          />
         </nav>
+
       </div>
     </header>
   );

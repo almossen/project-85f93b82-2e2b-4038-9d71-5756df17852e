@@ -17,7 +17,9 @@ import {
   Siren,
   Sparkles,
   ShieldCheck,
+  Search as SearchIcon,
 } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -40,59 +42,10 @@ import {
   type GuideSection,
 } from "@/data/simplifiedGuideContent";
 
-type Chapter = {
-  id: string;
-  title: string;
-  subtitle: string;
-  sectionIds: string[];
-};
+import { chapters } from "@/data/guideChapters";
+import { GlobalSearch } from "@/components/sama/GlobalSearch";
 
-const chapters: Chapter[] = [
-  {
-    id: "ch-1",
-    title: "الفصل الأول: البداية",
-    subtitle: "الأيام الأولى بعد التشخيص",
-    sectionIds: ["journey-start", "what-is-t1d", "first-week", "parents-feelings"],
-  },
-  {
-    id: "ch-2",
-    title: "الفصل الثاني: الإنسولين",
-    subtitle: "ما هو ولماذا وكيف",
-    sectionIds: ["what-is-insulin", "rapid-insulin", "long-insulin", "injection-basics"],
-  },
-  {
-    id: "ch-3",
-    title: "الفصل الثالث: قياس السكر",
-    subtitle: "الجهاز، الحساس، والأسهم",
-    sectionIds: ["why-measure", "fingerstick", "cgm-sensor", "sensor-arrows"],
-  },
-  {
-    id: "ch-4",
-    title: "الفصل الرابع: الانخفاض والارتفاع",
-    subtitle: "الهبوط، الجلوكاجون، الارتفاع، والكيتونات",
-    sectionIds: ["low-sugar", "severe-low", "glucagon", "high-sugar", "ketones"],
-  },
-  {
-    id: "ch-5",
-    title: "الفصل الخامس: الحياة اليومية",
-    subtitle: "المرض، الأكل، المدرسة، واللعب",
-    sectionIds: [
-      "illness",
-      "sick-day-plan",
-      "food-allowed",
-      "carbs",
-      "school",
-      "diabetes-bag",
-      "play-sport",
-    ],
-  },
-  {
-    id: "ch-6",
-    title: "الفصل السادس: الطوارئ والدعم",
-    subtitle: "متى أطلب المساعدة، الثقة، ودور الأسرة",
-    sectionIds: ["emergency", "confidence", "family-role", "final-message"],
-  },
-];
+
 
 const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
@@ -457,7 +410,7 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
 }
 
 function SimplifiedGuidePage() {
-  const [query, setQuery] = useState("");
+  const query = "";
   const navigate = useNavigate({ from: "/simplified-guide" });
   const search = Route.useSearch();
   const chapterIdx = Math.min(chapters.length - 1, Math.max(0, (search.ch ?? 1) - 1));
@@ -765,7 +718,7 @@ function SimplifiedGuidePage() {
         )}
 
         {/* Sticky top bar: chapters dropdown + current chapter + search */}
-        <div className="sticky top-2 md:top-16 z-30 print:hidden space-y-2">
+        <div className="print:hidden space-y-2">
           <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex items-center gap-3 flex-wrap">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
@@ -838,14 +791,18 @@ function SimplifiedGuidePage() {
               </button>
             </div>
 
-            <input
-              type="search"
-              placeholder="ابحث في الدليل…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="w-full sm:w-64 min-h-11 rounded-full border border-border bg-background px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="ابحث في الدليل"
+            <GlobalSearch
+              trigger={
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
+                >
+                  <SearchIcon className="h-4 w-4" />
+                  ابحث في المنصة
+                </button>
+              }
             />
+
           </div>
           {!isSearching && readCount > 0 && (
             <div className="rounded-2xl border border-border bg-card/95 backdrop-blur px-4 py-2.5 flex items-center gap-3">

@@ -1,5 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Home, BookOpen, Wrench, AlertCircle } from "lucide-react";
+import { Home, BookOpen, Search, Wrench, AlertCircle } from "lucide-react";
+import { GlobalSearch } from "@/components/sama/GlobalSearch";
 
 const linkBase =
   "flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground";
@@ -12,7 +13,7 @@ export function MobileBottomNav() {
       className="md:hidden fixed bottom-0 inset-x-0 z-50 border-t border-border/60 bg-background/95 backdrop-blur-md pb-[env(safe-area-inset-bottom)]"
       aria-label="التنقل السفلي"
     >
-      <ul className="grid grid-cols-4">
+      <ul className="grid grid-cols-5">
         <li>
           <Link
             to="/"
@@ -35,13 +36,23 @@ export function MobileBottomNav() {
           </Link>
         </li>
         <li>
+          <GlobalSearch
+            trigger={
+              <button type="button" className={`${linkBase} w-full`} aria-label="بحث في المنصة">
+                <Search className="h-5 w-5" strokeWidth={2.1} />
+                <span>بحث</span>
+              </button>
+            }
+          />
+        </li>
+        <li>
           <Link
             to="/family-tools"
             className={linkBase}
             activeProps={{ className: linkActive }}
           >
             <Wrench className="h-5 w-5" strokeWidth={2.1} />
-            <span>أدوات الأسرة</span>
+            <span>أدوات</span>
           </Link>
         </li>
         <li>
@@ -51,7 +62,7 @@ export function MobileBottomNav() {
             activeProps={{ className: "flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-bold text-destructive-foreground bg-destructive" }}
           >
             <AlertCircle className="h-5 w-5" strokeWidth={2.4} />
-            <span>ماذا أفعل الآن</span>
+            <span>الطوارئ</span>
           </Link>
         </li>
       </ul>
