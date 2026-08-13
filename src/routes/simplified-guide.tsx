@@ -600,6 +600,23 @@ function SimplifiedGuidePage() {
       <main className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
         <MedicalDisclaimer />
 
+        {/* استكمل من حيث توقفت */}
+        {restored && readCount > 0 && !isSearching && (
+          <button
+            type="button"
+            onClick={() => goToChapter(lastChapter, null)}
+            className="w-full rounded-2xl border border-primary/30 bg-primary-soft/60 px-4 py-3 min-h-11 flex items-center justify-between gap-3 text-right hover:bg-primary-soft transition-colors print:hidden"
+          >
+            <span className="min-w-0">
+              <span className="block text-sm font-bold text-primary">استكمل من حيث توقفت</span>
+              <span className="block text-sm text-muted-foreground truncate">
+                {chapters[lastChapter]?.title} — أكملت {readCount} من {guideSections.length} درسًا
+              </span>
+            </span>
+            <ChevronLeft className="h-5 w-5 shrink-0 text-primary" />
+          </button>
+        )}
+
         {/* Hero */}
         <section className="rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] print:break-inside-avoid">
           <img
@@ -607,9 +624,10 @@ function SimplifiedGuidePage() {
             alt="الدليل المبسّط لأهالي أطفال السكري النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
             loading="eager"
             decoding="async"
-            className="w-full h-auto block"
+            className="w-full block h-32 sm:h-auto object-cover object-center"
           />
         </section>
+
 
         {/* خريطة الرحلة — الفصول ظاهرة كمسار مع تقدّم كل فصل */}
         {!isSearching && (
