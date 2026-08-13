@@ -17,7 +17,9 @@ import {
   Siren,
   Sparkles,
   ShieldCheck,
+  Search as SearchIcon,
 } from "lucide-react";
+
 import {
   DropdownMenu,
   DropdownMenuContent,
