@@ -101,16 +101,12 @@ function MedicalAlert() {
 
 function EmergencyGuidePage() {
   const [query, setQuery] = useState("");
-  const [active, setActive] = useState<EmergencyScenario | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("scenario");
-    if (!id) return;
-    const found = emergencyScenarios.find((s) => s.id === id);
-    if (found) setActive(found);
-  }, []);
+  const navigate = useNavigate({ from: "/what-to-do-now" });
+  const search = Route.useSearch();
+  const active =
+    emergencyScenarios.find((s) => s.id === search.case) ?? null;
+  const setActive = (s: EmergencyScenario | null) =>
+    navigate({ search: s ? { case: s.id } : {} });
 
   const filtered = useMemo(() => {
     const rank: Record<string, number> = { critical: 0, warning: 1, info: 2, safe: 3 };
