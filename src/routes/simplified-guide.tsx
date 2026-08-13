@@ -787,14 +787,18 @@ function SimplifiedGuidePage() {
               </button>
             </div>
 
-            <input
-              type="search"
-              placeholder="ابحث في الدليل…"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              className="w-full sm:w-64 min-h-11 rounded-full border border-border bg-background px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary"
-              aria-label="ابحث في الدليل"
+            <GlobalSearch
+              trigger={
+                <button
+                  type="button"
+                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
+                >
+                  <SearchIcon className="h-4 w-4" />
+                  ابحث في المنصة
+                </button>
+              }
             />
+
           </div>
           {!isSearching && readCount > 0 && (
             <div className="rounded-2xl border border-border bg-card/95 backdrop-blur px-4 py-2.5 flex items-center gap-3">
