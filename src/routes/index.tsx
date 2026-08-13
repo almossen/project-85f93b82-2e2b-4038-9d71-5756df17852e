@@ -17,6 +17,8 @@ import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
 import heroFamily from "@/assets/sama-family.webp";
+import heroFamily400 from "@/assets/sama-family-400.webp";
+import heroFamily800 from "@/assets/sama-family-800.webp";
 import happyChild from "@/assets/happy-child.webp";
 
 export const Route = createFileRoute("/")({
@@ -97,6 +99,8 @@ function HomePage() {
             <div className="relative">
               <img
                 src={heroFamily}
+                srcSet={`${heroFamily400} 400w, ${heroFamily800} 800w, ${heroFamily} 1600w`}
+                sizes="(max-width: 640px) 100vw, 50vw"
                 alt="عائلة سعودية تجلس بدفء مع طفلها"
                 width={1600}
                 height={900}
