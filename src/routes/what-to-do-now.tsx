@@ -223,6 +223,21 @@ function EmergencyGuidePage() {
           </section>
         )}
 
+        {/* Search — بعد البطاقات حتى تظهر الحالات أولاً */}
+        {!active && (
+          <div className="relative print:hidden">
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، حساس..."
+              className="w-full rounded-2xl border border-border bg-card pr-12 pl-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/40"
+              aria-label="ابحث في الحالات"
+            />
+          </div>
+        )}
+
+
         {/* Detail view */}
         {active && (
           <ScenarioDetail
