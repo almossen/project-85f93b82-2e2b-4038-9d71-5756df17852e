@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -11,6 +11,7 @@ import {
   Heart,
   LayoutList,
   ListChecks,
+  Phone,
   Printer,
   Rows3,
   Siren,
@@ -95,7 +96,17 @@ const chapters: Chapter[] = [
 
 const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
+type GuideSearch = { ch?: number; lesson?: number };
+
 export const Route = createFileRoute("/simplified-guide")({
+  validateSearch: (search: Record<string, unknown>): GuideSearch => {
+    const ch = Number(search.ch);
+    const lesson = Number(search.lesson);
+    return {
+      ...(Number.isFinite(ch) && ch > 0 ? { ch } : {}),
+      ...(Number.isFinite(lesson) && lesson > 0 ? { lesson } : {}),
+    };
+  },
   head: () => ({
     meta: [
       { title: "الدليل المبسّط لأهالي أطفال السكري النوع الأول — سما" },
@@ -114,16 +125,28 @@ export const Route = createFileRoute("/simplified-guide")({
   component: SimplifiedGuidePage,
 });
 
-const MEDICAL_DISCLAIMER =
-  "تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.";
-
 function MedicalDisclaimer() {
   return (
     <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 sm:p-5 flex gap-3 items-start print:break-inside-avoid">
       <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
-      <p className="text-sm sm:text-base leading-loose text-warning-foreground">
-        {MEDICAL_DISCLAIMER}
-      </p>
+      <div className="space-y-3">
+        <p className="text-sm sm:text-base leading-loose text-warning-foreground">
+          تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو
+          فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال
+          الأحمر السعودي{" "}
+          <a href="tel:997" className="font-bold underline">
+            997
+          </a>{" "}
+          أو توجه لأقرب طوارئ.
+        </p>
+        <a
+          href="tel:997"
+          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors print:hidden"
+        >
+          <Phone className="h-4 w-4" strokeWidth={2.4} />
+          اتصال بالإسعاف 997
+        </a>
+      </div>
     </div>
   );
 }
@@ -432,10 +455,19 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
 
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
-  const [chapterIdx, setChapterIdx] = useState(0);
+  const navigate = useNavigate({ from: "/simplified-guide" });
+  const search = Route.useSearch();
+  const chapterIdx = Math.min(chapters.length - 1, Math.max(0, (search.ch ?? 1) - 1));
+  const activeLessonIdx =
+    search.lesson !== undefined && search.lesson > 0 ? search.lesson - 1 : null;
+  const setUrl = (ch: number, lesson: number | null, replace = false) =>
+    navigate({
+      search: lesson === null ? { ch: ch + 1 } : { ch: ch + 1, lesson: lesson + 1 },
+      replace,
+    });
+  const setActiveLessonIdx = (idx: number | null) => setUrl(chapterIdx, idx);
   const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
   const [viewMode, setViewMode] = useState<"focus" | "continuous">("focus");
-  const [activeLessonIdx, setActiveLessonIdx] = useState<number | null>(null);
   const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
     useGuideProgress(guideSections.length);
 
@@ -460,7 +492,7 @@ function SimplifiedGuidePage() {
 
   // استكمال القراءة من آخر فصل وصل له القارئ
   useEffect(() => {
-    if (restored && lastChapter > 0) setChapterIdx(lastChapter);
+    if (restored && lastChapter > 0 && search.ch === undefined) setUrl(lastChapter, null, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restored]);
 
@@ -495,9 +527,8 @@ function SimplifiedGuidePage() {
   };
 
   const goToChapter = (i: number, lessonIdx: number | null = null) => {
-    setChapterIdx(i);
     setLastChapter(i);
-    setActiveLessonIdx(lessonIdx);
+    setUrl(i, lessonIdx);
     scrollToSections();
   };
 
@@ -546,8 +577,10 @@ function SimplifiedGuidePage() {
     return count + activeLessonIdx + 1;
   }, [chapterIdx, activeLessonIdx]);
 
-  const isFocusOne = viewMode === "focus" && activeLessonIdx !== null && !isSearching;
-  const isFocusList = viewMode === "focus" && activeLessonIdx === null && !isSearching;
+  const hasValidLesson =
+    activeLessonIdx !== null && activeLessonIdx < chapterSections.length;
+  const isFocusOne = viewMode === "focus" && hasValidLesson && !isSearching;
+  const isFocusList = viewMode === "focus" && !hasValidLesson && !isSearching;
   const focusedSection = isFocusOne ? chapterSections[activeLessonIdx!] : null;
   const isLastLessonInChapter = activeLessonIdx === chapterSections.length - 1;
   const isFirstLessonOverall = chapterIdx === 0 && activeLessonIdx === 0;

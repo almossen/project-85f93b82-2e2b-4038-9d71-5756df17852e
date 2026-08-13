@@ -1,5 +1,5 @@
-import { useEffect, useMemo, useState } from "react";
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { useMemo, useState } from "react";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import {
   TrendingDown,
   TrendingUp,
@@ -26,7 +26,13 @@ import {
   type Severity,
 } from "@/data/emergencyScenarios";
 
+type CaseSearch = { case?: string };
+
 export const Route = createFileRoute("/what-to-do-now")({
+  validateSearch: (search: Record<string, unknown>): CaseSearch => {
+    const id = search.case ?? search.scenario;
+    return typeof id === "string" && id.length > 0 ? { case: id } : {};
+  },
   head: () => ({
     meta: [
       { title: "ماذا أفعل الآن؟ — سما" },
@@ -84,27 +90,36 @@ function MedicalAlert() {
   return (
     <div className="rounded-2xl border-2 border-destructive/40 bg-destructive/5 p-4 sm:p-5 flex items-start gap-3">
       <ShieldAlert className="h-6 w-6 text-destructive shrink-0 mt-0.5" />
-      <p className="text-sm sm:text-base leading-loose text-foreground">
-        <span className="font-bold text-destructive">تنويه: </span>
-        محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
-        الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.
-      </p>
+      <div className="space-y-3">
+        <p className="text-sm sm:text-base leading-loose text-foreground">
+          <span className="font-bold text-destructive">تنويه: </span>
+          محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
+          الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي{" "}
+          <a href="tel:997" className="font-bold text-destructive underline">
+            997
+          </a>{" "}
+          أو توجه لأقرب طوارئ.
+        </p>
+        <a
+          href="tel:997"
+          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors print:hidden"
+        >
+          <Phone className="h-4 w-4" strokeWidth={2.4} />
+          اتصال بالإسعاف 997
+        </a>
+      </div>
     </div>
   );
 }
 
 function EmergencyGuidePage() {
   const [query, setQuery] = useState("");
-  const [active, setActive] = useState<EmergencyScenario | null>(null);
-
-  useEffect(() => {
-    if (typeof window === "undefined") return;
-    const params = new URLSearchParams(window.location.search);
-    const id = params.get("scenario");
-    if (!id) return;
-    const found = emergencyScenarios.find((s) => s.id === id);
-    if (found) setActive(found);
-  }, []);
+  const navigate = useNavigate({ from: "/what-to-do-now" });
+  const search = Route.useSearch();
+  const active =
+    emergencyScenarios.find((s) => s.id === search.case) ?? null;
+  const setActive = (s: EmergencyScenario | null) =>
+    navigate({ search: s ? { case: s.id } : {} });
 
   const filtered = useMemo(() => {
     const rank: Record<string, number> = { critical: 0, warning: 1, info: 2, safe: 3 };
@@ -172,30 +187,8 @@ function EmergencyGuidePage() {
             لا تحتاج أن تتذكر كل شيء. اختر الحالة التي أمامك الآن واتبع الخطوات
             بهدوء.
           </p>
-          <div className="max-w-2xl mx-auto rounded-2xl bg-primary-soft/60 border border-primary/20 p-4 text-sm sm:text-base text-primary-foreground/90 flex items-start gap-3 text-right">
-            <div className="h-9 w-9 shrink-0 rounded-full bg-primary text-primary-foreground grid place-items-center font-bold">
-              س
-            </div>
-            <p className="leading-loose text-foreground">
-              <span className="font-bold">أنا سما،</span> سأساعدك تختار الحالة
-              الأقرب لما يحدث الآن، لكن تذكر أن تعليمات طبيبك هي الأساس.
-            </p>
-          </div>
         </section>
 
-        <MedicalAlert />
-
-        {/* Search */}
-        <div className="relative print:hidden">
-          <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، حساس..."
-            className="w-full rounded-2xl border border-border bg-card pr-12 pl-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/40"
-            aria-label="ابحث في الحالات"
-          />
-        </div>
 
         {/* Cards grid */}
         {!active && (
@@ -242,6 +235,21 @@ function EmergencyGuidePage() {
             )}
           </section>
         )}
+
+        {/* Search — بعد البطاقات حتى تظهر الحالات أولاً */}
+        {!active && (
+          <div className="relative print:hidden">
+            <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
+            <input
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، حساس..."
+              className="w-full rounded-2xl border border-border bg-card pr-12 pl-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/40"
+              aria-label="ابحث في الحالات"
+            />
+          </div>
+        )}
+
 
         {/* Detail view */}
         {active && (
@@ -357,6 +365,19 @@ function ScenarioDetail({
         </div>
       </header>
 
+      {(scenario.severity === "critical" || scenario.severity === "warning") && (
+        <div className="sticky top-2 z-40 print:hidden">
+          <a
+            href="tel:997"
+            className="flex items-center justify-center gap-2.5 rounded-2xl bg-destructive px-6 py-4 text-base font-bold text-destructive-foreground shadow-lg shadow-destructive/25 hover:bg-destructive/90 transition-colors"
+          >
+            <Phone className="h-5 w-5" strokeWidth={2.4} />
+            اتصال بالهلال الأحمر ٩٩٧
+          </a>
+        </div>
+      )}
+
+
       <div className="flex flex-wrap gap-2 print:hidden">
         <button
           onClick={onPrint}
@@ -422,17 +443,6 @@ function ScenarioDetail({
         <p className="leading-loose">{scenario.printableSummary}</p>
       </section>
 
-      {(scenario.severity === "critical" || scenario.severity === "warning") && (
-        <div className="sticky bottom-16 md:bottom-4 z-40 print:hidden pt-2">
-          <a
-            href="tel:997"
-            className="flex items-center justify-center gap-2.5 rounded-2xl bg-destructive px-6 py-4 text-base font-bold text-destructive-foreground shadow-lg shadow-destructive/25 hover:bg-destructive/90 transition-colors"
-          >
-            <Phone className="h-5 w-5" strokeWidth={2.4} />
-            اتصال بالهلال الأحمر ٩٩٧
-          </a>
-        </div>
-      )}
     </article>
   );
 }
