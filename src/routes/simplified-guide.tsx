@@ -442,10 +442,19 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
 
 function SimplifiedGuidePage() {
   const [query, setQuery] = useState("");
-  const [chapterIdx, setChapterIdx] = useState(0);
+  const navigate = useNavigate({ from: "/simplified-guide" });
+  const search = Route.useSearch();
+  const chapterIdx = Math.min(chapters.length - 1, Math.max(0, (search.ch ?? 1) - 1));
+  const activeLessonIdx =
+    search.lesson !== undefined && search.lesson > 0 ? search.lesson - 1 : null;
+  const setUrl = (ch: number, lesson: number | null, replace = false) =>
+    navigate({
+      search: lesson === null ? { ch: ch + 1 } : { ch: ch + 1, lesson: lesson + 1 },
+      replace,
+    });
+  const setActiveLessonIdx = (idx: number | null) => setUrl(chapterIdx, idx);
   const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
   const [viewMode, setViewMode] = useState<"focus" | "continuous">("focus");
-  const [activeLessonIdx, setActiveLessonIdx] = useState<number | null>(null);
   const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
     useGuideProgress(guideSections.length);
 
