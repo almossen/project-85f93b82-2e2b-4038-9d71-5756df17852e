@@ -499,6 +499,12 @@ function SimplifiedGuidePage() {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restored]);
 
+  // مزامنة آخر فصل مفتوح مع التخزين المحلي
+  useEffect(() => {
+    if (restored && chapterIdx !== lastChapter) setLastChapter(chapterIdx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restored, chapterIdx]);
+
   const isSearching = query.trim().length > 0;
 
   const searchResults = useMemo(() => {
@@ -635,7 +641,7 @@ function SimplifiedGuidePage() {
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg sm:text-xl font-bold">خريطة رحلتكم</h2>
               {readCount > 0 && (
-                <span className="text-xs font-semibold text-muted-foreground tabular-nums">
+                <span className="text-sm font-semibold text-muted-foreground tabular-nums">
                   {percent}% مكتمل
                 </span>
               )}
@@ -646,7 +652,7 @@ function SimplifiedGuidePage() {
                 const active = i === chapterIdx;
                 const complete = done === total && total > 0;
                 return (
-                  <li key={c.id}>
+                  <li key={c.id} className="min-w-0">
                     <button
                       type="button"
                       onClick={() => goToChapter(i)}
@@ -668,7 +674,7 @@ function SimplifiedGuidePage() {
                         {complete ? <CheckCircle2 className="h-5 w-5" /> : i + 1}
                       </span>
                       <span className="flex-1 min-w-0">
-                        <span className="block font-bold text-sm leading-tight truncate">
+                        <span className="block font-bold text-sm leading-tight break-words">
                           {c.title}
                         </span>
                         <span className="block text-sm text-muted-foreground mt-0.5 truncate">
