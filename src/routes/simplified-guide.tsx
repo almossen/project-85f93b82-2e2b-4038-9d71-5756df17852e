@@ -795,7 +795,7 @@ function SimplifiedGuidePage() {
                 type="button"
                 onClick={() => changeScale(-1)}
                 disabled={textScale === "base"}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="تصغير الخط"
               >
                 أ<span className="text-sm">−</span>
@@ -804,7 +804,7 @@ function SimplifiedGuidePage() {
                 type="button"
                 onClick={() => changeScale(1)}
                 disabled={textScale === "xl"}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="تكبير الخط"
               >
                 أ<span className="text-xs">+</span>
@@ -816,7 +816,7 @@ function SimplifiedGuidePage() {
               placeholder="ابحث في الدليل…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full sm:w-64 rounded-full border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full sm:w-64 min-h-11 rounded-full border border-border bg-background px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="ابحث في الدليل"
             />
           </div>
@@ -843,7 +843,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={() => setViewMode("focus")}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 min-h-11 font-semibold transition-colors ${
                   viewMode === "focus"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -859,7 +859,7 @@ function SimplifiedGuidePage() {
                   setViewMode("continuous");
                   setActiveLessonIdx(null);
                 }}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 min-h-11 font-semibold transition-colors ${
                   viewMode === "continuous"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -874,7 +874,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={() => setActiveLessonIdx(null)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs sm:text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
               >
                 <ChevronRight className="h-4 w-4" />
                 قائمة دروس الفصل
@@ -895,7 +895,7 @@ function SimplifiedGuidePage() {
               {chapterSections.map((s, i) => {
                 const done = readSections.has(s.id);
                 return (
-                  <li key={s.id}>
+                  <li key={s.id} className="min-w-0">
                     <button
                       type="button"
                       onClick={() => openLesson(i)}
