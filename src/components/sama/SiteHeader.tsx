@@ -1,5 +1,7 @@
 import { Link } from "@tanstack/react-router";
-import { Sparkles } from "lucide-react";
+import { Sparkles, Search } from "lucide-react";
+import { GlobalSearch } from "@/components/sama/GlobalSearch";
+
 
 export function SiteHeader() {
   return (
