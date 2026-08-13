@@ -1,4 +1,4 @@
-import { createFileRoute, Link } from "@tanstack/react-router";
+import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import {
   AlertTriangle,
@@ -95,7 +95,17 @@ const chapters: Chapter[] = [
 
 const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
+type GuideSearch = { ch?: number; lesson?: number };
+
 export const Route = createFileRoute("/simplified-guide")({
+  validateSearch: (search: Record<string, unknown>): GuideSearch => {
+    const ch = Number(search.ch);
+    const lesson = Number(search.lesson);
+    return {
+      ...(Number.isFinite(ch) && ch > 0 ? { ch } : {}),
+      ...(Number.isFinite(lesson) && lesson > 0 ? { lesson } : {}),
+    };
+  },
   head: () => ({
     meta: [
       { title: "الدليل المبسّط لأهالي أطفال السكري النوع الأول — سما" },
