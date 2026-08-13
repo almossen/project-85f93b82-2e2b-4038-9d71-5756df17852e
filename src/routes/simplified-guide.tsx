@@ -505,9 +505,8 @@ function SimplifiedGuidePage() {
   };
 
   const goToChapter = (i: number, lessonIdx: number | null = null) => {
-    setChapterIdx(i);
     setLastChapter(i);
-    setActiveLessonIdx(lessonIdx);
+    setUrl(i, lessonIdx);
     scrollToSections();
   };
 
