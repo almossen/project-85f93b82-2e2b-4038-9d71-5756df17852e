@@ -564,8 +564,10 @@ function SimplifiedGuidePage() {
     return count + activeLessonIdx + 1;
   }, [chapterIdx, activeLessonIdx]);
 
-  const isFocusOne = viewMode === "focus" && activeLessonIdx !== null && !isSearching;
-  const isFocusList = viewMode === "focus" && activeLessonIdx === null && !isSearching;
+  const hasValidLesson =
+    activeLessonIdx !== null && activeLessonIdx < chapterSections.length;
+  const isFocusOne = viewMode === "focus" && hasValidLesson && !isSearching;
+  const isFocusList = viewMode === "focus" && !hasValidLesson && !isSearching;
   const focusedSection = isFocusOne ? chapterSections[activeLessonIdx!] : null;
   const isLastLessonInChapter = activeLessonIdx === chapterSections.length - 1;
   const isFirstLessonOverall = chapterIdx === 0 && activeLessonIdx === 0;
