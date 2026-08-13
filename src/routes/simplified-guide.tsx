@@ -470,7 +470,7 @@ function SimplifiedGuidePage() {
 
   // استكمال القراءة من آخر فصل وصل له القارئ
   useEffect(() => {
-    if (restored && lastChapter > 0) setChapterIdx(lastChapter);
+    if (restored && lastChapter > 0 && search.ch === undefined) setUrl(lastChapter, null, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restored]);
 
