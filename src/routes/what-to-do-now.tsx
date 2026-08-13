@@ -417,17 +417,6 @@ function ScenarioDetail({
         <p className="leading-loose">{scenario.printableSummary}</p>
       </section>
 
-      {(scenario.severity === "critical" || scenario.severity === "warning") && (
-        <div className="sticky bottom-16 md:bottom-4 z-40 print:hidden pt-2">
-          <a
-            href="tel:997"
-            className="flex items-center justify-center gap-2.5 rounded-2xl bg-destructive px-6 py-4 text-base font-bold text-destructive-foreground shadow-lg shadow-destructive/25 hover:bg-destructive/90 transition-colors"
-          >
-            <Phone className="h-5 w-5" strokeWidth={2.4} />
-            اتصال بالهلال الأحمر ٩٩٧
-          </a>
-        </div>
-      )}
     </article>
   );
 }
