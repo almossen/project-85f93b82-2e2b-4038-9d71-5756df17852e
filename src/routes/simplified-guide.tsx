@@ -43,6 +43,8 @@ import {
 } from "@/data/simplifiedGuideContent";
 
 import { chapters } from "@/data/guideChapters";
+import { GlobalSearch } from "@/components/sama/GlobalSearch";
+
 
 
 const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
