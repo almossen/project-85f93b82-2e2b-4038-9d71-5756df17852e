@@ -2,9 +2,9 @@ import { Link } from "@tanstack/react-router";
 import { Home, BookOpen, Wrench, AlertCircle } from "lucide-react";
 
 const linkBase =
-  "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-medium text-muted-foreground transition-colors hover:text-foreground";
+  "flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-medium text-muted-foreground transition-colors hover:text-foreground";
 const linkActive =
-  "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-medium text-primary";
+  "flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-medium text-primary";
 
 export function MobileBottomNav() {
   return (
@@ -47,8 +47,8 @@ export function MobileBottomNav() {
         <li>
           <Link
             to="/what-to-do-now"
-            className="flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold text-destructive transition-colors hover:text-destructive/80"
-            activeProps={{ className: "flex flex-col items-center justify-center gap-1 py-2.5 text-[11px] font-bold text-destructive-foreground bg-destructive" }}
+            className="flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-bold text-destructive transition-colors hover:text-destructive/80"
+            activeProps={{ className: "flex flex-col items-center justify-center gap-1 py-2.5 text-sm font-bold text-destructive-foreground bg-destructive" }}
           >
             <AlertCircle className="h-5 w-5" strokeWidth={2.4} />
             <span>ماذا أفعل الآن</span>

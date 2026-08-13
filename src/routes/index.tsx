@@ -17,6 +17,8 @@ import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
 import heroFamily from "@/assets/sama-family.webp";
+import heroFamily400 from "@/assets/sama-family-400.webp";
+import heroFamily800 from "@/assets/sama-family-800.webp";
 import happyChild from "@/assets/happy-child.webp";
 
 export const Route = createFileRoute("/")({
@@ -97,9 +99,11 @@ function HomePage() {
             <div className="relative">
               <img
                 src={heroFamily}
+                srcSet={`${heroFamily400} 400w, ${heroFamily800} 800w, ${heroFamily} 1600w`}
+                sizes="(max-width: 640px) 100vw, 50vw"
                 alt="عائلة سعودية تجلس بدفء مع طفلها"
-                width={1536}
-                height={1024}
+                width={1600}
+                height={900}
                 className="relative rounded-3xl shadow-[var(--shadow-card)] w-full h-auto object-cover"
               />
             </div>
@@ -224,8 +228,8 @@ function HomePage() {
             <img
               src={happyChild}
               alt="طفل يجري سعيداً في حديقة"
-              width={1024}
-              height={1024}
+              width={1448}
+              height={1086}
               loading="lazy"
               className="rounded-2xl w-full h-auto object-cover max-h-80"
             />

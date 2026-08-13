@@ -64,7 +64,7 @@ function BrandChip({ brand }: { brand: Brand }) {
         <div className="rounded-2xl overflow-hidden border border-border bg-muted/30">
           <img src={brand.img} alt={`قلم ${brand.ar}`} loading="lazy" className="w-full h-auto object-contain" />
         </div>
-        <p className="text-[11px] text-muted-foreground text-right leading-loose">
+        <p className="text-sm text-muted-foreground text-right leading-loose">
           الصورة توضيحية فقط. اختيار النوع قرار طبي.
         </p>
       </DialogContent>
@@ -94,7 +94,7 @@ function BrandPanel({ tone, image, alt }: { tone: "mint" | "sand"; image: string
           </div>
         </DialogContent>
       </Dialog>
-      <p className="text-[11px] text-muted-foreground leading-loose text-center">
+      <p className="text-sm text-muted-foreground leading-loose text-center">
         الأسماء للتعريف فقط. اختيار النوع والجرعة قرار طبي يتخذه فريق السكري المعالج لطفلك.
       </p>
     </div>
@@ -115,7 +115,7 @@ function FlowStep({
       <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${tints[tint]}`}>
         <Icon className="h-5 w-5" strokeWidth={2} />
       </div>
-      <span className="text-[11px] sm:text-xs font-medium">{label}</span>
+      <span className="text-sm font-medium">{label}</span>
     </div>
   );
 }
@@ -128,7 +128,7 @@ function DiabetesFlow() {
       <div className="rounded-2xl border border-mint/50 bg-mint/10 p-4 space-y-3">
         <div className="flex items-center justify-between">
           <h4 className="font-semibold text-sm">عند الطفل السليم</h4>
-          <span className="text-[10px] rounded-full bg-mint/60 text-mint-foreground px-2 py-0.5">طبيعي</span>
+          <span className="text-sm rounded-full bg-mint/60 text-mint-foreground px-2 py-0.5">طبيعي</span>
         </div>
         <div className="flex items-center justify-between flex-wrap gap-1">
           <FlowStep icon={Apple} label="الطعام" tint="mint" />
@@ -143,7 +143,7 @@ function DiabetesFlow() {
       <div className="rounded-2xl border border-primary/30 bg-primary-soft/50 p-4 space-y-3">
         <div className="flex items-center justify-between">
           <h4 className="font-semibold text-sm">عند طفل النوع الأول</h4>
-          <span className="text-[10px] rounded-full bg-primary text-primary-foreground px-2 py-0.5">يحتاج إنسولين</span>
+          <span className="text-sm rounded-full bg-primary text-primary-foreground px-2 py-0.5">يحتاج إنسولين</span>
         </div>
         <div className="flex items-center justify-between flex-wrap gap-1">
           <FlowStep icon={Apple} label="الطعام" tint="mint" />
@@ -173,7 +173,7 @@ function InjectionVideo() {
           allowFullScreen
         />
       </div>
-      <p className="text-[11px] text-muted-foreground leading-loose">
+      <p className="text-sm text-muted-foreground leading-loose">
         الفيديو للتوعية فقط — اطلب من فريقك الطبي جلسة تدريب عملية.
       </p>
     </div>
@@ -225,13 +225,13 @@ function FamilyTestimonial() {
     <div className="rounded-2xl overflow-hidden border border-border bg-card grid sm:grid-cols-[1fr_1.3fr]">
       <img src={familyKitchen} alt="عائلة في المطبخ" loading="lazy" className="w-full h-48 sm:h-full object-cover" />
       <div className="p-4 space-y-2">
-        <span className="inline-block text-[11px] rounded-full bg-primary-soft text-primary px-2 py-0.5 font-medium">
+        <span className="inline-block text-sm rounded-full bg-primary-soft text-primary px-2 py-0.5 font-medium">
           من تجارب الأهل
         </span>
         <p className="text-sm leading-loose text-foreground/90">
           «اليوم فهد عمره ٩ سنوات، يلعب كرة قدم، أوّل على فصله، ويعطي إنسولينه بنفسه. السكري صار جزء بسيط من يومنا، مو حياتنا كلها.»
         </p>
-        <p className="text-[11px] text-muted-foreground">— أم فهد، الرياض</p>
+        <p className="text-sm text-muted-foreground">— أم فهد، الرياض</p>
       </div>
     </div>
   );

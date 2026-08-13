@@ -127,13 +127,16 @@ export const Route = createFileRoute("/simplified-guide")({
 
 function MedicalDisclaimer() {
   return (
-    <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 sm:p-5 flex gap-3 items-start print:break-inside-avoid">
-      <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
-      <div className="space-y-3">
+    <details className="rounded-2xl border border-warning/40 bg-warning/10 px-4 py-3 print:break-inside-avoid group">
+      <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-semibold text-warning-foreground min-h-11">
+        <AlertTriangle className="h-4 w-4 shrink-0" />
+        تنويه طبي — محتوى تثقيفي تمت مراجعته طبيًا (اضغط للتفاصيل)
+        <ChevronDown className="h-4 w-4 ms-auto transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="space-y-3 pt-2">
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
-          تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو
-          فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال
-          الأحمر السعودي{" "}
+          هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج
+          تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
           <a href="tel:997" className="font-bold underline">
             997
           </a>{" "}
@@ -147,14 +150,14 @@ function MedicalDisclaimer() {
           اتصال بالإسعاف 997
         </a>
       </div>
-    </div>
+    </details>
   );
 }
 
 function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
   if (status !== "approved") return null;
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-sm font-semibold print:hidden">
       <ShieldCheck className="h-3 w-3" />
       تمت مراجعته طبيًا
     </span>
@@ -324,7 +327,7 @@ function SectionCard({
             <button
               type="button"
               onClick={onToggleRead}
-              className={`inline-flex items-center gap-2 rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 border ${
+              className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold transition-all duration-300 border ${
                 isRead
                   ? "bg-success/15 text-success border-success/40 shadow-[0_0_0_4px_color-mix(in_oklab,var(--success)_10%,transparent)]"
                   : "bg-card text-muted-foreground border-border hover:bg-muted"
@@ -340,7 +343,7 @@ function SectionCard({
             <button
               type="button"
               onClick={handleSectionPrint}
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
             >
               <Printer className="h-4 w-4" />
               طباعة خطة المدرسة
@@ -351,7 +354,7 @@ function SectionCard({
             <button
               type="button"
               onClick={handleSectionPrint}
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
             >
               <Printer className="h-4 w-4" />
               طباعة قائمة الحقيبة
@@ -444,7 +447,7 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
           <ListChecks className="h-5 w-5" />
         </span>
         <div>
-          <p className="text-[11px] font-semibold text-primary uppercase tracking-wide">ختام الفصل</p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-wide">ختام الفصل</p>
           <h2 className="text-xl sm:text-2xl font-bold">راجع ما تعلمت في هذا الفصل</h2>
         </div>
       </header>
@@ -495,6 +498,12 @@ function SimplifiedGuidePage() {
     if (restored && lastChapter > 0 && search.ch === undefined) setUrl(lastChapter, null, true);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [restored]);
+
+  // مزامنة آخر فصل مفتوح مع التخزين المحلي
+  useEffect(() => {
+    if (restored && chapterIdx !== lastChapter) setLastChapter(chapterIdx);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [restored, chapterIdx]);
 
   const isSearching = query.trim().length > 0;
 
@@ -597,6 +606,23 @@ function SimplifiedGuidePage() {
       <main className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
         <MedicalDisclaimer />
 
+        {/* استكمل من حيث توقفت */}
+        {restored && readCount > 0 && !isSearching && (
+          <button
+            type="button"
+            onClick={() => goToChapter(lastChapter, null)}
+            className="w-full rounded-2xl border border-primary/30 bg-primary-soft/60 px-4 py-3 min-h-11 flex items-center justify-between gap-3 text-right hover:bg-primary-soft transition-colors print:hidden"
+          >
+            <span className="min-w-0">
+              <span className="block text-sm font-bold text-primary">استكمل من حيث توقفت</span>
+              <span className="block text-sm text-muted-foreground truncate">
+                {chapters[lastChapter]?.title} — أكملت {readCount} من {guideSections.length} درسًا
+              </span>
+            </span>
+            <ChevronLeft className="h-5 w-5 shrink-0 text-primary" />
+          </button>
+        )}
+
         {/* Hero */}
         <section className="rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] print:break-inside-avoid">
           <img
@@ -604,9 +630,10 @@ function SimplifiedGuidePage() {
             alt="الدليل المبسّط لأهالي أطفال السكري النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
             loading="eager"
             decoding="async"
-            className="w-full h-auto block"
+            className="w-full block h-32 sm:h-auto object-cover object-center"
           />
         </section>
+
 
         {/* خريطة الرحلة — الفصول ظاهرة كمسار مع تقدّم كل فصل */}
         {!isSearching && (
@@ -614,7 +641,7 @@ function SimplifiedGuidePage() {
             <div className="flex items-center justify-between mb-3">
               <h2 className="text-lg sm:text-xl font-bold">خريطة رحلتكم</h2>
               {readCount > 0 && (
-                <span className="text-xs font-semibold text-muted-foreground tabular-nums">
+                <span className="text-sm font-semibold text-muted-foreground tabular-nums">
                   {percent}% مكتمل
                 </span>
               )}
@@ -625,7 +652,7 @@ function SimplifiedGuidePage() {
                 const active = i === chapterIdx;
                 const complete = done === total && total > 0;
                 return (
-                  <li key={c.id}>
+                  <li key={c.id} className="min-w-0">
                     <button
                       type="button"
                       onClick={() => goToChapter(i)}
@@ -647,10 +674,10 @@ function SimplifiedGuidePage() {
                         {complete ? <CheckCircle2 className="h-5 w-5" /> : i + 1}
                       </span>
                       <span className="flex-1 min-w-0">
-                        <span className="block font-bold text-sm leading-tight truncate">
+                        <span className="block font-bold text-sm leading-tight break-words">
                           {c.title}
                         </span>
-                        <span className="block text-[11px] text-muted-foreground mt-0.5 truncate">
+                        <span className="block text-sm text-muted-foreground mt-0.5 truncate">
                           {c.subtitle}
                         </span>
                         <span className="mt-2 flex items-center gap-2">
@@ -660,7 +687,7 @@ function SimplifiedGuidePage() {
                               style={{ width: `${total ? (done / total) * 100 : 0}%` }}
                             />
                           </span>
-                          <span className="text-[10px] font-semibold text-muted-foreground tabular-nums shrink-0">
+                          <span className="text-sm font-semibold text-muted-foreground tabular-nums shrink-0">
                             {done}/{total}
                           </span>
                         </span>
@@ -744,7 +771,7 @@ function SimplifiedGuidePage() {
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2 text-sm font-semibold hover:bg-primary/90 transition-colors"
+                  className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
                 >
                   <BookOpen className="h-4 w-4" />
                   فهرس الفصول
@@ -769,7 +796,7 @@ function SimplifiedGuidePage() {
                       </span>
                       <div className="space-y-0.5">
                         <div className="font-bold text-sm">{c.title}</div>
-                        <div className="text-[11px] text-muted-foreground">{c.subtitle}</div>
+                        <div className="text-sm text-muted-foreground">{c.subtitle}</div>
                       </div>
                     </DropdownMenuItem>
                   );
@@ -779,7 +806,7 @@ function SimplifiedGuidePage() {
 
             {!isSearching ? (
               <div className="flex-1 min-w-[180px]">
-                <p className="text-[11px] text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   الفصل {chapterIdx + 1} من {chapters.length}
                 </p>
                 <h2 className="text-base sm:text-lg font-bold leading-tight">{activeChapter.title}</h2>
@@ -795,16 +822,16 @@ function SimplifiedGuidePage() {
                 type="button"
                 onClick={() => changeScale(-1)}
                 disabled={textScale === "base"}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="تصغير الخط"
               >
-                أ<span className="text-[10px]">−</span>
+                أ<span className="text-sm">−</span>
               </button>
               <button
                 type="button"
                 onClick={() => changeScale(1)}
                 disabled={textScale === "xl"}
-                className="flex h-8 w-8 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="تكبير الخط"
               >
                 أ<span className="text-xs">+</span>
@@ -816,7 +843,7 @@ function SimplifiedGuidePage() {
               placeholder="ابحث في الدليل…"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              className="w-full sm:w-64 rounded-full border border-border bg-background px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-primary"
+              className="w-full sm:w-64 min-h-11 rounded-full border border-border bg-background px-4 py-2 text-base focus:outline-none focus:ring-2 focus:ring-primary"
               aria-label="ابحث في الدليل"
             />
           </div>
@@ -828,7 +855,7 @@ function SimplifiedGuidePage() {
                   style={{ width: `${percent}%` }}
                 />
               </div>
-              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+              <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
                 أكملت {readCount} من {guideSections.length} درسًا
               </span>
             </div>
@@ -843,7 +870,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={() => setViewMode("focus")}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 min-h-11 font-semibold transition-colors ${
                   viewMode === "focus"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -859,7 +886,7 @@ function SimplifiedGuidePage() {
                   setViewMode("continuous");
                   setActiveLessonIdx(null);
                 }}
-                className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 font-semibold transition-colors ${
+                className={`inline-flex items-center gap-1.5 rounded-full px-4 py-2.5 min-h-11 font-semibold transition-colors ${
                   viewMode === "continuous"
                     ? "bg-primary text-primary-foreground"
                     : "text-muted-foreground hover:text-foreground"
@@ -874,7 +901,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={() => setActiveLessonIdx(null)}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3 py-1.5 text-xs sm:text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
               >
                 <ChevronRight className="h-4 w-4" />
                 قائمة دروس الفصل
@@ -895,7 +922,7 @@ function SimplifiedGuidePage() {
               {chapterSections.map((s, i) => {
                 const done = readSections.has(s.id);
                 return (
-                  <li key={s.id}>
+                  <li key={s.id} className="min-w-0">
                     <button
                       type="button"
                       onClick={() => openLesson(i)}
@@ -913,7 +940,7 @@ function SimplifiedGuidePage() {
                         {done ? <CheckCircle2 className="h-5 w-5 animate-scale-in" /> : i + 1}
                       </span>
                       <span className="flex-1 min-w-0 space-y-1">
-                        <span className="block text-[11px] font-semibold text-muted-foreground">
+                        <span className="block text-sm font-semibold text-muted-foreground">
                           الدرس {i + 1} من {chapterSections.length}
                         </span>
                         <span className="block font-bold text-sm sm:text-base leading-tight">
@@ -946,7 +973,7 @@ function SimplifiedGuidePage() {
                   }}
                 />
               </div>
-              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+              <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
                 الدرس {activeLessonIdx! + 1} / {chapterSections.length}
                 {globalLessonIndex && (
                   <span className="ms-2 text-muted-foreground/70">

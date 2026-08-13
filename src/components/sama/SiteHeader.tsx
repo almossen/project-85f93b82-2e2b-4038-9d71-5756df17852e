@@ -11,7 +11,7 @@ export function SiteHeader() {
           </div>
           <div className="leading-tight">
             <div className="text-lg font-bold tracking-tight">سما</div>
-            <div className="text-[10px] text-muted-foreground -mt-0.5">رحلة التعايش</div>
+            <div className="text-sm text-muted-foreground -mt-0.5">رحلة التعايش</div>
           </div>
         </Link>
         <nav className="flex items-center gap-1 sm:gap-2 text-sm font-medium">

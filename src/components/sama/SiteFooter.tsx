@@ -19,7 +19,7 @@ export function SiteFooter() {
             اتصال بالإسعاف 997
           </a>
         </div>
-        <p className="text-[11px] text-muted-foreground/80">
+        <p className="text-sm text-muted-foreground/80">
           آخر تحديث للمحتوى: يوليو ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
         </p>
       </div>

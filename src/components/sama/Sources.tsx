@@ -22,7 +22,7 @@ export function Sources() {
             <div className="space-y-1.5">
               <div className="flex items-center gap-2">
                 <h3 className="font-semibold group-hover:text-primary transition-colors">{s.name}</h3>
-                <span className="text-[10px] font-medium rounded-full bg-muted px-2 py-0.5 text-muted-foreground">
+                <span className="text-sm font-medium rounded-full bg-muted px-2 py-0.5 text-muted-foreground">
                   {s.region}
                 </span>
               </div>
