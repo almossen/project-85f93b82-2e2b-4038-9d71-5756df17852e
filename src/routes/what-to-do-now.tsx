@@ -213,7 +213,7 @@ function EmergencyGuidePage() {
                         {s.title}
                       </h2>
                       <span
-                        className={`text-[10px] font-bold uppercase tracking-wide rounded-full px-2 py-0.5 ${style.chip}`}
+                        className={`text-sm font-bold uppercase tracking-wide rounded-full px-2 py-0.5 ${style.chip}`}
                       >
                         {style.label}
                       </span>
@@ -354,7 +354,7 @@ function ScenarioDetail({
         </div>
         <div className="space-y-1.5 flex-1">
           <span
-            className={`inline-block text-[10px] font-bold uppercase tracking-wide rounded-full px-2 py-0.5 ${style.chip}`}
+            className={`inline-block text-sm font-bold uppercase tracking-wide rounded-full px-2 py-0.5 ${style.chip}`}
           >
             {style.label}
           </span>

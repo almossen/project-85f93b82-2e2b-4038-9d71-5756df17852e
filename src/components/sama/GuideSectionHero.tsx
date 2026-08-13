@@ -62,7 +62,7 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSect
               <p className="text-xs sm:text-sm text-foreground/70 font-medium max-w-md leading-relaxed">
                 {fallbackLabel ?? alt}
               </p>
-              <span className="text-[10px] text-muted-foreground/80">صورة توضيحية — قريبًا</span>
+              <span className="text-sm text-muted-foreground/80">صورة توضيحية — قريبًا</span>
             </div>
           )}
         </div>

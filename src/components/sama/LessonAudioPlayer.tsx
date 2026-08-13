@@ -115,7 +115,7 @@ function LessonAudioPlayerInner({ sectionId, lessonLabel }: Props) {
         </div>
         <div className="flex-1 min-w-[180px] space-y-1">
           <div className="flex items-center gap-2">
-            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 text-primary px-2 py-0.5 text-[11px] font-semibold">
+            <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 text-primary px-2 py-0.5 text-sm font-semibold">
               <Volume2 className="h-3 w-3" />
               {lessonLabel}
             </span>

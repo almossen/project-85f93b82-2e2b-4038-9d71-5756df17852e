@@ -154,7 +154,7 @@ function MedicalDisclaimer() {
 function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
   if (status !== "approved") return null;
   return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-[11px] font-semibold print:hidden">
+    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-sm font-semibold print:hidden">
       <ShieldCheck className="h-3 w-3" />
       تمت مراجعته طبيًا
     </span>
@@ -444,7 +444,7 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
           <ListChecks className="h-5 w-5" />
         </span>
         <div>
-          <p className="text-[11px] font-semibold text-primary uppercase tracking-wide">ختام الفصل</p>
+          <p className="text-sm font-semibold text-primary uppercase tracking-wide">ختام الفصل</p>
           <h2 className="text-xl sm:text-2xl font-bold">راجع ما تعلمت في هذا الفصل</h2>
         </div>
       </header>
@@ -650,7 +650,7 @@ function SimplifiedGuidePage() {
                         <span className="block font-bold text-sm leading-tight truncate">
                           {c.title}
                         </span>
-                        <span className="block text-[11px] text-muted-foreground mt-0.5 truncate">
+                        <span className="block text-sm text-muted-foreground mt-0.5 truncate">
                           {c.subtitle}
                         </span>
                         <span className="mt-2 flex items-center gap-2">
@@ -660,7 +660,7 @@ function SimplifiedGuidePage() {
                               style={{ width: `${total ? (done / total) * 100 : 0}%` }}
                             />
                           </span>
-                          <span className="text-[10px] font-semibold text-muted-foreground tabular-nums shrink-0">
+                          <span className="text-sm font-semibold text-muted-foreground tabular-nums shrink-0">
                             {done}/{total}
                           </span>
                         </span>
@@ -769,7 +769,7 @@ function SimplifiedGuidePage() {
                       </span>
                       <div className="space-y-0.5">
                         <div className="font-bold text-sm">{c.title}</div>
-                        <div className="text-[11px] text-muted-foreground">{c.subtitle}</div>
+                        <div className="text-sm text-muted-foreground">{c.subtitle}</div>
                       </div>
                     </DropdownMenuItem>
                   );
@@ -779,7 +779,7 @@ function SimplifiedGuidePage() {
 
             {!isSearching ? (
               <div className="flex-1 min-w-[180px]">
-                <p className="text-[11px] text-muted-foreground">
+                <p className="text-sm text-muted-foreground">
                   الفصل {chapterIdx + 1} من {chapters.length}
                 </p>
                 <h2 className="text-base sm:text-lg font-bold leading-tight">{activeChapter.title}</h2>
@@ -798,7 +798,7 @@ function SimplifiedGuidePage() {
                 className="flex h-8 w-8 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
                 aria-label="تصغير الخط"
               >
-                أ<span className="text-[10px]">−</span>
+                أ<span className="text-sm">−</span>
               </button>
               <button
                 type="button"
@@ -828,7 +828,7 @@ function SimplifiedGuidePage() {
                   style={{ width: `${percent}%` }}
                 />
               </div>
-              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+              <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
                 أكملت {readCount} من {guideSections.length} درسًا
               </span>
             </div>
@@ -913,7 +913,7 @@ function SimplifiedGuidePage() {
                         {done ? <CheckCircle2 className="h-5 w-5 animate-scale-in" /> : i + 1}
                       </span>
                       <span className="flex-1 min-w-0 space-y-1">
-                        <span className="block text-[11px] font-semibold text-muted-foreground">
+                        <span className="block text-sm font-semibold text-muted-foreground">
                           الدرس {i + 1} من {chapterSections.length}
                         </span>
                         <span className="block font-bold text-sm sm:text-base leading-tight">
@@ -946,7 +946,7 @@ function SimplifiedGuidePage() {
                   }}
                 />
               </div>
-              <span className="text-[11px] font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
+              <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
                 الدرس {activeLessonIdx! + 1} / {chapterSections.length}
                 {globalLessonIndex && (
                   <span className="ms-2 text-muted-foreground/70">
