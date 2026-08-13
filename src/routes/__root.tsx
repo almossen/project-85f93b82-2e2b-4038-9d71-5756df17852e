@@ -136,6 +136,7 @@ function RootComponent() {
         <Outlet />
       </div>
       <EmergencyFloatingButton />
+      <CallEmergencyFab />
       <MobileBottomNav />
     </QueryClientProvider>
   );
