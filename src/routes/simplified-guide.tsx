@@ -124,16 +124,28 @@ export const Route = createFileRoute("/simplified-guide")({
   component: SimplifiedGuidePage,
 });
 
-const MEDICAL_DISCLAIMER =
-  "تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي 997 أو توجه لأقرب طوارئ.";
-
 function MedicalDisclaimer() {
   return (
     <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 sm:p-5 flex gap-3 items-start print:break-inside-avoid">
       <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
-      <p className="text-sm sm:text-base leading-loose text-warning-foreground">
-        {MEDICAL_DISCLAIMER}
-      </p>
+      <div className="space-y-3">
+        <p className="text-sm sm:text-base leading-loose text-warning-foreground">
+          تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو
+          فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال
+          الأحمر السعودي{" "}
+          <a href="tel:997" className="font-bold underline">
+            997
+          </a>{" "}
+          أو توجه لأقرب طوارئ.
+        </p>
+        <a
+          href="tel:997"
+          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors print:hidden"
+        >
+          <Phone className="h-4 w-4" strokeWidth={2.4} />
+          اتصال بالإسعاف 997
+        </a>
+      </div>
     </div>
   );
 }
