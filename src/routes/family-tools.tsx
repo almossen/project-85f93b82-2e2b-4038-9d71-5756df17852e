@@ -31,7 +31,7 @@ function FamilyToolsPage() {
       <SiteHeader />
       <main className="flex-1 mx-auto max-w-4xl w-full px-4 sm:px-6 py-8 sm:py-12 space-y-8">
       <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
-        <Link to="/" className="hover:text-foreground transition-colors">الرئيسية</Link>
+        <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">الرئيسية</Link>
         <ArrowRight className="h-3.5 w-3.5 rotate-180" />
         <span className="text-foreground">أدوات جاهزة للأسرة</span>
       </nav>
@@ -51,13 +51,13 @@ function FamilyToolsPage() {
       <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
         <Link
           to="/simplified-guide"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2 text-sm font-semibold hover:bg-muted transition-colors"
+          className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors"
         >
           العودة إلى الدليل المبسّط
         </Link>
         <Link
           to="/what-to-do-now"
-          className="inline-flex items-center gap-2 rounded-full bg-destructive text-destructive-foreground px-4 py-2 text-sm font-semibold hover:bg-destructive/90 transition-colors"
+          className="inline-flex items-center gap-2 rounded-full bg-destructive text-destructive-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-destructive/90 transition-colors"
         >
           ماذا أفعل الآن؟
         </Link>

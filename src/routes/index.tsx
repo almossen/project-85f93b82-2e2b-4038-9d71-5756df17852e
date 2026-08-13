@@ -98,8 +98,8 @@ function HomePage() {
               <img
                 src={heroFamily}
                 alt="عائلة سعودية تجلس بدفء مع طفلها"
-                width={1536}
-                height={1024}
+                width={1600}
+                height={900}
                 className="relative rounded-3xl shadow-[var(--shadow-card)] w-full h-auto object-cover"
               />
             </div>
@@ -224,8 +224,8 @@ function HomePage() {
             <img
               src={happyChild}
               alt="طفل يجري سعيداً في حديقة"
-              width={1024}
-              height={1024}
+              width={1448}
+              height={1086}
               loading="lazy"
               className="rounded-2xl w-full h-auto object-cover max-h-80"
             />
