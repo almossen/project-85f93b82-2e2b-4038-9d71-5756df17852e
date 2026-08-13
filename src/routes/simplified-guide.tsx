@@ -410,7 +410,7 @@ function ChapterReview({ chapterIdx }: { chapterIdx: number }) {
 }
 
 function SimplifiedGuidePage() {
-  const [query, setQuery] = useState("");
+  const query = "";
   const navigate = useNavigate({ from: "/simplified-guide" });
   const search = Route.useSearch();
   const chapterIdx = Math.min(chapters.length - 1, Math.max(0, (search.ch ?? 1) - 1));
