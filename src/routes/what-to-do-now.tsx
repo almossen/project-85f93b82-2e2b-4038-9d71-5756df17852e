@@ -174,30 +174,8 @@ function EmergencyGuidePage() {
             لا تحتاج أن تتذكر كل شيء. اختر الحالة التي أمامك الآن واتبع الخطوات
             بهدوء.
           </p>
-          <div className="max-w-2xl mx-auto rounded-2xl bg-primary-soft/60 border border-primary/20 p-4 text-sm sm:text-base text-primary-foreground/90 flex items-start gap-3 text-right">
-            <div className="h-9 w-9 shrink-0 rounded-full bg-primary text-primary-foreground grid place-items-center font-bold">
-              س
-            </div>
-            <p className="leading-loose text-foreground">
-              <span className="font-bold">أنا سما،</span> سأساعدك تختار الحالة
-              الأقرب لما يحدث الآن، لكن تذكر أن تعليمات طبيبك هي الأساس.
-            </p>
-          </div>
         </section>
 
-        <MedicalAlert />
-
-        {/* Search */}
-        <div className="relative print:hidden">
-          <Search className="absolute right-4 top-1/2 -translate-y-1/2 h-5 w-5 text-muted-foreground" />
-          <input
-            value={query}
-            onChange={(e) => setQuery(e.target.value)}
-            placeholder="ابحث: هبوط، ارتفاع، كيتونات، قيء، حساس..."
-            className="w-full rounded-2xl border border-border bg-card pr-12 pl-4 py-3.5 text-base focus:outline-none focus:ring-2 focus:ring-primary/40"
-            aria-label="ابحث في الحالات"
-          />
-        </div>
 
         {/* Cards grid */}
         {!active && (
