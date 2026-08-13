@@ -127,13 +127,16 @@ export const Route = createFileRoute("/simplified-guide")({
 
 function MedicalDisclaimer() {
   return (
-    <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 sm:p-5 flex gap-3 items-start print:break-inside-avoid">
-      <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
-      <div className="space-y-3">
+    <details className="rounded-2xl border border-warning/40 bg-warning/10 px-4 py-3 print:break-inside-avoid group">
+      <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-semibold text-warning-foreground min-h-11">
+        <AlertTriangle className="h-4 w-4 shrink-0" />
+        تنويه طبي — محتوى تثقيفي تمت مراجعته طبيًا (اضغط للتفاصيل)
+        <ChevronDown className="h-4 w-4 ms-auto transition-transform group-open:rotate-180" />
+      </summary>
+      <div className="space-y-3 pt-2">
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
-          تنويه: هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا، ولا يغني عن متابعة الطبيب أو
-          فريق السكري؛ لأن خطة العلاج تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال
-          الأحمر السعودي{" "}
+          هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج
+          تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
           <a href="tel:997" className="font-bold underline">
             997
           </a>{" "}
@@ -147,7 +150,7 @@ function MedicalDisclaimer() {
           اتصال بالإسعاف 997
         </a>
       </div>
-    </div>
+    </details>
   );
 }
 
