@@ -66,4 +66,10 @@ export const medicalSources: MedicalSource[] = [
     region: "دولي",
     url: "https://www.mayoclinic.org/ar/diseases-conditions/type-1-diabetes-in-children/symptoms-causes/syc-20355306",
   },
+  {
+    name: "UpToDate",
+    detail: "مراجع طبية سريرية محدّثة يستند إليها الأطباء في القرارات العلاجية",
+    region: "دولي",
+    url: "https://www.uptodate.com",
+  },
 ];
