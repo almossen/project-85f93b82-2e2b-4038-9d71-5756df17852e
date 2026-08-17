@@ -5,7 +5,7 @@ import {
   Bell,
   ExternalLink,
   Eye,
-  ImageIcon,
+  
 
   Globe,
   HeartHandshake,
@@ -18,6 +18,7 @@ import {
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
+import frioCase from "@/assets/frio-case.jpg.asset.json";
 import {
   Accordion,
   AccordionContent,
@@ -365,14 +366,12 @@ function ParentExperiencesPage() {
           </div>
 
           <figure className="mx-auto w-full max-w-[220px] sm:max-w-[260px]">
-            <div className="aspect-square w-full rounded-2xl border border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-2 text-center p-4">
-              <ImageIcon className="h-8 w-8 text-muted-foreground" aria-hidden />
-              <span className="text-sm text-muted-foreground leading-relaxed">
-                مكان صورة المنتج
-                <br />
-                (تُستبدل لاحقاً بصورة حقيقية)
-              </span>
-            </div>
+            <img
+              src={frioCase.url}
+              alt="حافظة FRIO لتبريد الإنسولين باللون الأخضر مع البطانة الداخلية"
+              loading="lazy"
+              className="aspect-square w-full rounded-2xl border border-border bg-muted/30 object-contain p-3"
+            />
             <figcaption className="mt-2 text-center text-sm text-muted-foreground">
               FRIO Individual Insulin Cooling Wallet
             </figcaption>
