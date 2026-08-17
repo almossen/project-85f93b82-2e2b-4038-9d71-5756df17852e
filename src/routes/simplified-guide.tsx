@@ -857,8 +857,8 @@ function SimplifiedGuidePage() {
                 }`}
                 aria-pressed={viewMode === "focus"}
               >
-                <LayoutList className="h-4 w-4" />
-                درس واحد
+                <LayoutList className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">درس واحد</span>
               </button>
               <button
                 type="button"
