@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { BookOpen, HeartHandshake, Phone, ShieldCheck, Sparkles } from "lucide-react";
+import { BookOpen, HeartHandshake, Mail, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { Sources } from "@/components/sama/Sources";
@@ -74,6 +74,47 @@ function AboutPage() {
               <p className="text-sm leading-loose text-muted-foreground">{p.text}</p>
             </div>
           ))}
+        </section>
+
+        <section className="rounded-2xl border border-border bg-card p-5 sm:p-7 space-y-4">
+          <h2 className="text-xl sm:text-2xl font-bold tracking-tight">تنويه مهم</h2>
+          <div className="space-y-3 text-sm sm:text-base leading-loose text-muted-foreground">
+            <p>
+              منصة <strong className="text-foreground">سما</strong> هي اجتهاد شخصي من ولي أمر
+              لطفلة مصابة بالسكري من النوع الأول، أُنشئت بهدف مشاركة المعرفة والخبرة وتسهيل
+              الوصول إلى المعلومات التي قد تساعد الأسر في فهم رحلة التعايش مع السكري النوع
+              الأول.
+            </p>
+            <p>
+              المنصة <strong className="text-foreground">ليست مشروعًا تجاريًا، ولا تمثل جهة
+              طبية أو صحية، ولا تهدف إلى الترويج لأي منتج أو خدمة</strong>.
+            </p>
+            <p>
+              المحتوى المنشور في المنصة ذو طابع <strong className="text-foreground">تثقيفي
+              وإرشادي فقط</strong>، وقد روعي في إعداده ومراجعته الاستناد إلى مصادر طبية
+              موثوقة، إلا أنه <strong className="text-foreground">لا يُعد بديلًا عن استشارة
+              الطبيب أو الفريق الطبي المعالج، ولا ينبغي بناء أي قرار طبي أو تغيير في العلاج
+              أو جرعات الإنسولين اعتمادًا على محتوى المنصة وحده</strong>.
+            </p>
+            <p>
+              تختلف حالة كل طفل واحتياجاته العلاجية، ولذلك تبقى القرارات الطبية مسؤولية الفريق
+              الطبي المعالج بالتعاون مع الأسرة.
+            </p>
+            <p>
+              نسعد بالملاحظات والتجارب والاقتراحات التي يمكن أن تسهم في تطوير المنصة وتحسين
+              محتواها.
+            </p>
+          </div>
+          <div className="pt-1">
+            <p className="text-sm text-muted-foreground mb-1">للتواصل:</p>
+            <a
+              href="mailto:sama.t1d.ar@gmail.com"
+              className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-5 py-3 min-h-11 text-sm font-semibold hover:bg-muted transition-colors"
+            >
+              <Mail className="h-4 w-4 text-primary" strokeWidth={2.2} />
+              sama.t1d.ar@gmail.com
+            </a>
+          </div>
         </section>
 
         <section className="rounded-2xl border border-warning/40 bg-warning/10 p-5 space-y-3">
