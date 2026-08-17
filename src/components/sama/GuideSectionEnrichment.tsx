@@ -282,7 +282,9 @@ export function GuideSectionEnrichment({ sectionId }: { sectionId: string }) {
         </div>
       );
     case "parents-feelings":
-      return <FamilyTestimonial />;
+      // مؤقتًا مخفي حتى يُعدّل محتواه ويُعاد لاحقًا
+      // return <FamilyTestimonial />;
+      return null;
     case "rapid-insulin":
       return <BrandPanel tone="mint" image={insulinRapidImg} alt="أقلام الإنسولين سريع المفعول" brands={rapidBrands} />;
     case "long-insulin":
