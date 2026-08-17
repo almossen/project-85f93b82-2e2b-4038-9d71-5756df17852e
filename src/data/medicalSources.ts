@@ -28,7 +28,7 @@ export const medicalSources: MedicalSource[] = [
     name: "هيئة الهلال الأحمر السعودي",
     detail: "البلاغات الإسعافية في السعودية — 997",
     region: "السعودية",
-    url: "https://www.srca.org.sa/contact-us/",
+    url: "https://www.srca.org.sa/",
   },
   {
     name: "ISPAD",
