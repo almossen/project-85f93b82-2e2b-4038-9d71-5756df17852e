@@ -19,6 +19,7 @@ import {
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import frioCase from "@/assets/frio-case.jpg.asset.json";
+import sugarPixel from "@/assets/sugarpixel-classroom.webp.asset.json";
 import {
   Accordion,
   AccordionContent,
