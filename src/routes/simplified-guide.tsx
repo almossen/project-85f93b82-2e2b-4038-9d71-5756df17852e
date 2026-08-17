@@ -1069,11 +1069,13 @@ function SimplifiedGuidePage() {
               type="button"
               onClick={() => goToChapter(Math.min(chapters.length - 1, chapterIdx + 1))}
               disabled={chapterIdx === chapters.length - 1}
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 rounded-full bg-success text-success-foreground px-5 py-2.5 text-sm font-semibold hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
+              <BookOpen className="h-4 w-4" />
               الفصل التالي
               <ChevronLeft className="h-4 w-4" />
             </button>
+
           </nav>
         )}
 
