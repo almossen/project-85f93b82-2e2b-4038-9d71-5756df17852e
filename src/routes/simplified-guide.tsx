@@ -586,18 +586,30 @@ function SimplifiedGuidePage() {
         </section>
 
 
-        {/* خريطة الرحلة — الفصول ظاهرة كمسار مع تقدّم كل فصل */}
+        {/* خريطة الرحلة — مطوية أثناء القراءة، مفتوحة في شاشة الفصول */}
         {!isSearching && (
-          <section className="print:hidden" aria-label="خريطة الرحلة">
-            <div className="flex items-center justify-between mb-3">
-              <h2 className="text-lg sm:text-xl font-bold">خريطة رحلتكم</h2>
-              {readCount > 0 && (
-                <span className="text-sm font-semibold text-muted-foreground tabular-nums">
-                  {percent}% مكتمل
+          <details
+            key={isFocusOne ? "map-collapsed" : "map-open"}
+            open={!isFocusOne}
+            className="group print:hidden rounded-2xl border border-border bg-card/60"
+            aria-label="خريطة الرحلة"
+          >
+            <summary className="flex items-center gap-3 cursor-pointer list-none px-4 py-3 min-h-11">
+              <span className="flex-1 min-w-0">
+                <span className="block text-sm sm:text-base font-bold">خريطة رحلتكم</span>
+                <span className="block text-xs text-muted-foreground">
+                  {readCount} من {guideSections.length} درسًا · {percent}% مكتمل
                 </span>
-              )}
-            </div>
-            <ol className="grid gap-2.5 sm:grid-cols-2">
+              </span>
+              <span className="hidden sm:block w-32 h-1.5 rounded-full bg-muted overflow-hidden">
+                <span
+                  className="block h-full rounded-full bg-primary transition-all"
+                  style={{ width: `${percent}%` }}
+                />
+              </span>
+              <ChevronDown className="h-5 w-5 shrink-0 text-muted-foreground transition-transform group-open:rotate-180" />
+            </summary>
+            <ol className="grid gap-2.5 sm:grid-cols-2 px-4 pb-4 pt-1">
               {chapters.map((c, i) => {
                 const { done, total } = chapterProgress(c);
                 const active = i === chapterIdx;
@@ -648,8 +660,9 @@ function SimplifiedGuidePage() {
                 );
               })}
             </ol>
-          </section>
+          </details>
         )}
+
         {chapterIdx === 0 && !isSearching && (
         <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
           <div className="space-y-5 text-center">
