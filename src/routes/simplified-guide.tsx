@@ -246,13 +246,13 @@ function SectionCard({
           </div>
 
           {section.bullets && section.bullets.length > 0 && (
-            <ul className="grid sm:grid-cols-2 gap-2.5 mt-4">
+            <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 divide-y divide-border/60 sm:divide-y-0">
               {section.bullets.map((b) => (
                 <li
                   key={b}
-                  className="flex items-center gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-sm font-medium"
+                  className="flex items-start gap-2.5 py-2.5 text-sm sm:text-[15px] font-medium leading-relaxed"
                 >
-                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0" />
+                  <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-1" />
                   {b}
                 </li>
               ))}
@@ -261,7 +261,7 @@ function SectionCard({
         </div>
 
         {section.alert && (
-          <div className="rounded-2xl border border-warning/40 bg-warning/10 p-4 flex gap-3 items-start">
+          <div className="border-s-4 border-warning/60 bg-warning/10 rounded-e-xl ps-4 pe-3 py-3 flex gap-3 items-start">
             <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
             <p className="text-sm sm:text-base leading-loose text-warning-foreground">
               {section.alert}
@@ -273,7 +273,7 @@ function SectionCard({
 
         {isHighSensitivity && doctorQ && <AskDoctorCard question={doctorQ} />}
 
-        <div className="flex flex-wrap gap-2 pt-2 print:hidden">
+        <div className="flex flex-wrap gap-2 pt-4 mt-2 border-t border-border/60 print:hidden">
           {onToggleRead && (
             <button
               type="button"
