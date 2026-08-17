@@ -747,11 +747,11 @@ function SimplifiedGuidePage() {
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
+                  className="order-2 sm:order-none justify-self-end inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  <BookOpen className="h-4 w-4" />
-                  فهرس الفصول
-                  <ChevronDown className="h-4 w-4" />
+                  <BookOpen className="h-4 w-4 shrink-0" />
+                  <span className="hidden xs:inline sm:inline">الفصول</span>
+                  <ChevronDown className="h-4 w-4 shrink-0" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-80 max-w-[90vw]">
