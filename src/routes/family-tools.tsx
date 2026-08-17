@@ -8,7 +8,7 @@ import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
 export const Route = createFileRoute("/family-tools")({
   head: () => ({
     meta: [
-      { title: "أدوات جاهزة للأسرة — سما" },
+      { title: "إضافات معرفية — سما" },
       {
         name: "description",
         content:
