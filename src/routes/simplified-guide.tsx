@@ -873,9 +873,10 @@ function SimplifiedGuidePage() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 aria-pressed={viewMode === "continuous"}
+                aria-label="قراءة متواصلة"
               >
-                <Rows3 className="h-4 w-4" />
-                قراءة متواصلة
+                <Rows3 className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">قراءة متواصلة</span>
               </button>
             </div>
             {isFocusOne && (
@@ -885,10 +886,10 @@ function SimplifiedGuidePage() {
                   setListRequested(true);
                   setActiveLessonIdx(null);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
               >
-                <ChevronRight className="h-4 w-4" />
-                قائمة دروس الفصل
+                <ChevronRight className="h-4 w-4 shrink-0" />
+                دروس الفصل
               </button>
             )}
           </div>
