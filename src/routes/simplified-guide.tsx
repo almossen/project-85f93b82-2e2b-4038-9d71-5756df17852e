@@ -845,7 +845,27 @@ function SimplifiedGuidePage() {
 
         {/* View mode toggle */}
         {!isSearching && (
-          <div className="flex items-center justify-between gap-3 print:hidden">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 print:hidden">
+            <div className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1" role="group" aria-label="حجم الخط">
+              <button
+                type="button"
+                onClick={() => changeScale(-1)}
+                disabled={textScale === "base"}
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تصغير الخط"
+              >
+                أ<span className="text-sm">−</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => changeScale(1)}
+                disabled={textScale === "xl"}
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تكبير الخط"
+              >
+                أ<span className="text-xs">+</span>
+              </button>
+            </div>
             <div className="inline-flex rounded-full border border-border bg-card p-1 text-xs sm:text-sm">
               <button
                 type="button"
