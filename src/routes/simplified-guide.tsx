@@ -422,6 +422,8 @@ function SimplifiedGuidePage() {
   const setActiveLessonIdx = (idx: number | null) => setUrl(chapterIdx, idx);
   const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
   const [viewMode, setViewMode] = useState<"focus" | "continuous">("focus");
+  // يطلب المستخدم صراحةً عرض فهرس الدروس؟ (false افتراضياً = افتح أول درس مباشرة)
+  const [listRequested, setListRequested] = useState(false);
   const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
     useGuideProgress(guideSections.length);
 
@@ -473,6 +475,9 @@ function SimplifiedGuidePage() {
   const chapterSections = activeChapter.sectionIds
     .map((id) => sectionMap.get(id))
     .filter(Boolean) as GuideSection[];
+  // الدرس الفعلي المعروض: إن لم يُحدد درس ولم يطلب المستخدم الفهرس، افتح أول درس مباشرة
+  const effLessonIdx: number | null =
+    activeLessonIdx ?? (listRequested ? null : 0);
 
   const scrollToSections = () => {
     if (typeof window === "undefined") return;
@@ -486,21 +491,23 @@ function SimplifiedGuidePage() {
     }
   };
 
-  const goToChapter = (i: number, lessonIdx: number | null = null) => {
+  const goToChapter = (i: number, lessonIdx: number | null = 0) => {
+    setListRequested(false);
     setLastChapter(i);
     setUrl(i, lessonIdx);
     scrollToSections();
   };
 
   const openLesson = (idx: number) => {
+    setListRequested(false);
     setActiveLessonIdx(idx);
     scrollToSections();
   };
 
   const goToNextLesson = () => {
-    if (activeLessonIdx === null) return;
-    if (activeLessonIdx < chapterSections.length - 1) {
-      setActiveLessonIdx(activeLessonIdx + 1);
+    if (effLessonIdx === null) return;
+    if (effLessonIdx < chapterSections.length - 1) {
+      setActiveLessonIdx(effLessonIdx + 1);
       scrollToSections();
     } else if (chapterIdx < chapters.length - 1) {
       goToChapter(chapterIdx + 1, 0);
@@ -508,9 +515,9 @@ function SimplifiedGuidePage() {
   };
 
   const goToPrevLesson = () => {
-    if (activeLessonIdx === null) return;
-    if (activeLessonIdx > 0) {
-      setActiveLessonIdx(activeLessonIdx - 1);
+    if (effLessonIdx === null) return;
+    if (effLessonIdx > 0) {
+      setActiveLessonIdx(effLessonIdx - 1);
       scrollToSections();
     } else if (chapterIdx > 0) {
       const prev = chapters[chapterIdx - 1];
@@ -531,21 +538,21 @@ function SimplifiedGuidePage() {
 
   // الترقيم العالمي للدرس ضمن كل الدروس (لشريط تقدم الدرس)
   const globalLessonIndex = useMemo(() => {
-    if (activeLessonIdx === null) return null;
+    if (effLessonIdx === null) return null;
     let count = 0;
     for (let i = 0; i < chapterIdx; i++) count += chapters[i].sectionIds.length;
-    return count + activeLessonIdx + 1;
-  }, [chapterIdx, activeLessonIdx]);
+    return count + effLessonIdx + 1;
+  }, [chapterIdx, effLessonIdx]);
 
   const hasValidLesson =
-    activeLessonIdx !== null && activeLessonIdx < chapterSections.length;
+    effLessonIdx !== null && effLessonIdx < chapterSections.length;
   const isFocusOne = viewMode === "focus" && hasValidLesson && !isSearching;
-  const isFocusList = viewMode === "focus" && !hasValidLesson && !isSearching;
-  const focusedSection = isFocusOne ? chapterSections[activeLessonIdx!] : null;
-  const isLastLessonInChapter = activeLessonIdx === chapterSections.length - 1;
-  const isFirstLessonOverall = chapterIdx === 0 && activeLessonIdx === 0;
+  const isFocusList = viewMode === "focus" && !hasValidLesson && listRequested && !isSearching;
+  const focusedSection = isFocusOne ? chapterSections[effLessonIdx!] : null;
+  const isLastLessonInChapter = effLessonIdx === chapterSections.length - 1;
+  const isFirstLessonOverall = chapterIdx === 0 && effLessonIdx === 0;
   const isLastLessonOverall =
-    chapterIdx === chapters.length - 1 && activeLessonIdx === chapterSections.length - 1;
+    chapterIdx === chapters.length - 1 && effLessonIdx === chapterSections.length - 1;
 
 
   return (
@@ -561,7 +568,7 @@ function SimplifiedGuidePage() {
         {restored && readCount > 0 && !isSearching && (
           <button
             type="button"
-            onClick={() => goToChapter(lastChapter, null)}
+            onClick={() => goToChapter(lastChapter)}
             className="w-full rounded-2xl border border-primary/30 bg-primary-soft/60 px-4 py-3 min-h-11 flex items-center justify-between gap-3 text-right hover:bg-primary-soft transition-colors print:hidden"
           >
             <span className="min-w-0">
@@ -869,7 +876,10 @@ function SimplifiedGuidePage() {
             {isFocusOne && (
               <button
                 type="button"
-                onClick={() => setActiveLessonIdx(null)}
+                onClick={() => {
+                  setListRequested(true);
+                  setActiveLessonIdx(null);
+                }}
                 className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
               >
                 <ChevronRight className="h-4 w-4" />
@@ -938,12 +948,12 @@ function SimplifiedGuidePage() {
                 <div
                   className="h-full rounded-full bg-primary transition-all duration-500"
                   style={{
-                    width: `${((activeLessonIdx! + 1) / chapterSections.length) * 100}%`,
+                    width: `${((effLessonIdx! + 1) / chapterSections.length) * 100}%`,
                   }}
                 />
               </div>
               <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
-                الدرس {activeLessonIdx! + 1} / {chapterSections.length}
+                الدرس {effLessonIdx! + 1} / {chapterSections.length}
                 {globalLessonIndex && (
                   <span className="ms-2 text-muted-foreground/70">
                     ({globalLessonIndex}/{guideSections.length})
@@ -955,8 +965,8 @@ function SimplifiedGuidePage() {
             <div key={focusedSection.id} className="animate-fade-in">
               <SectionCard
                 section={focusedSection}
-                index={activeLessonIdx!}
-                lessonNumber={activeLessonIdx! + 1}
+                index={effLessonIdx!}
+                lessonNumber={effLessonIdx! + 1}
                 lessonTotal={chapterSections.length}
                 isRead={readSections.has(focusedSection.id)}
                 onToggleRead={() => toggleRead(focusedSection.id)}
