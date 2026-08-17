@@ -663,8 +663,9 @@ function SimplifiedGuidePage() {
           </details>
         )}
 
-        {chapterIdx === 0 && !isSearching && (
-        <section className="rounded-3xl border border-border bg-card p-6 sm:p-9 print:hidden">
+        {chapterIdx === 0 && !isSearching && !isFocusOne && (
+        <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 print:hidden">
+
           <div className="space-y-5 text-center">
             <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
               <Sparkles className="h-3.5 w-3.5" />
