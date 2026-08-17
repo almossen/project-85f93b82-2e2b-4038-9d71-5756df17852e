@@ -52,7 +52,7 @@ export function MobileBottomNav() {
             activeProps={{ className: linkActive }}
           >
             <Wrench className="h-5 w-5" strokeWidth={2.1} />
-            <span>أدوات</span>
+            <span>إضافات</span>
           </Link>
         </li>
         <li>

@@ -8,13 +8,13 @@ import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
 export const Route = createFileRoute("/family-tools")({
   head: () => ({
     meta: [
-      { title: "أدوات جاهزة للأسرة — سما" },
+      { title: "إضافات معرفية — سما" },
       {
         name: "description",
         content:
           "قوالب وأسئلة وقوائم عملية للأسرة بعد تشخيص سكري النوع الأول: رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي.",
       },
-      { property: "og:title", content: "أدوات جاهزة للأسرة — سما" },
+      { property: "og:title", content: "إضافات معرفية — سما" },
       {
         property: "og:description",
         content:
@@ -33,11 +33,11 @@ function FamilyToolsPage() {
       <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
         <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">الرئيسية</Link>
         <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-        <span className="text-foreground">أدوات جاهزة للأسرة</span>
+        <span className="text-foreground">إضافات معرفية</span>
       </nav>
 
       <header className="space-y-3 text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">أدوات جاهزة للأسرة</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">إضافات معرفية</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto leading-loose">
           مجموعة قوالب وقوائم عملية جاهزة للنسخ والطباعة، تساعدكم في التواصل مع الفريق الطبي
           وتنظيم الأيام الأولى بعد التشخيص.

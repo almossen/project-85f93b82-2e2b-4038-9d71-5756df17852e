@@ -33,6 +33,13 @@ export function SiteHeader() {
             الدليل المبسّط
           </Link>
           <Link
+            to="/family-tools"
+            className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
+          >
+            إضافات معرفية
+          </Link>
+          <Link
             to="/parent-experiences"
             className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
@@ -45,13 +52,6 @@ export function SiteHeader() {
             activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
           >
             عن المنصة
-          </Link>
-          <Link
-            to="/family-tools"
-            className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
-            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
-          >
-            أدوات جاهزة
           </Link>
           <GlobalSearch
             trigger={
