@@ -111,8 +111,8 @@ function FlowStep({
     rose: "bg-destructive/10 text-destructive",
   } as const;
   return (
-    <div className="flex flex-col items-center text-center gap-2 min-w-[70px]">
-      <div className={`flex h-12 w-12 items-center justify-center rounded-2xl ${tints[tint]}`}>
+    <div className="flex flex-row sm:flex-col items-center text-start sm:text-center gap-3 sm:gap-2 w-full sm:w-auto sm:min-w-[70px]">
+      <div className={`flex h-11 w-11 sm:h-12 sm:w-12 shrink-0 items-center justify-center rounded-2xl ${tints[tint]}`}>
         <Icon className="h-5 w-5" strokeWidth={2} />
       </div>
       <span className="text-sm font-medium">{label}</span>
@@ -120,17 +120,22 @@ function FlowStep({
   );
 }
 
-const Arrow = () => <div className="text-muted-foreground text-lg select-none">←</div>;
+const Arrow = () => (
+  <div className="text-muted-foreground select-none text-lg leading-none w-11 sm:w-auto text-center">
+    <span className="sm:hidden">↓</span>
+    <span className="hidden sm:inline">←</span>
+  </div>
+);
 
 function DiabetesFlow() {
   return (
     <div className="grid md:grid-cols-2 gap-4">
       <div className="rounded-2xl border border-mint/50 bg-mint/10 p-4 space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
           <h4 className="font-semibold text-sm">عند الطفل السليم</h4>
           <span className="text-sm rounded-full bg-mint/60 text-mint-foreground px-2 py-0.5">طبيعي</span>
         </div>
-        <div className="flex items-center justify-between flex-wrap gap-1">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between items-stretch gap-1">
           <FlowStep icon={Apple} label="الطعام" tint="mint" />
           <Arrow />
           <FlowStep icon={Droplet} label="سكر بالدم" tint="blue" />
@@ -141,11 +146,11 @@ function DiabetesFlow() {
         </div>
       </div>
       <div className="rounded-2xl border border-primary/30 bg-primary-soft/50 p-4 space-y-3">
-        <div className="flex items-center justify-between">
+        <div className="flex items-center justify-between gap-2 flex-wrap">
           <h4 className="font-semibold text-sm">عند طفل النوع الأول</h4>
           <span className="text-sm rounded-full bg-primary text-primary-foreground px-2 py-0.5">يحتاج إنسولين</span>
         </div>
-        <div className="flex items-center justify-between flex-wrap gap-1">
+        <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between items-stretch gap-1">
           <FlowStep icon={Apple} label="الطعام" tint="mint" />
           <Arrow />
           <FlowStep icon={Droplet} label="سكر مرتفع" tint="rose" />
@@ -158,6 +163,7 @@ function DiabetesFlow() {
     </div>
   );
 }
+
 
 function InjectionVideo() {
   return (
