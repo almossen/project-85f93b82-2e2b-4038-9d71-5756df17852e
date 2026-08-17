@@ -33,6 +33,13 @@ export function SiteHeader() {
             الدليل المبسّط
           </Link>
           <Link
+            to="/parent-experiences"
+            className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
+          >
+            تجارب أهالي مفيدة
+          </Link>
+          <Link
             to="/about"
             className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
             activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
