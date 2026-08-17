@@ -965,17 +965,37 @@ function SimplifiedGuidePage() {
                 <ChevronRight className="h-4 w-4" />
                 الدرس السابق
               </button>
-              <button
-                type="button"
-                onClick={goToNextLesson}
-                disabled={isLastLessonOverall}
-                className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 text-sm font-semibold hover:bg-primary/90 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
-              >
-                {isLastLessonInChapter && chapterIdx < chapters.length - 1
-                  ? "الفصل التالي"
-                  : "الدرس التالي"}
-                <ChevronLeft className="h-4 w-4" />
-              </button>
+              {(() => {
+                const isChapterJump =
+                  isLastLessonInChapter && chapterIdx < chapters.length - 1;
+                const nextChapterTitle = isChapterJump
+                  ? chapters[chapterIdx + 1].title.replace(/^الفصل [^:]+:\s*/, "")
+                  : "";
+                return (
+                  <button
+                    type="button"
+                    onClick={goToNextLesson}
+                    disabled={isLastLessonOverall}
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                      isChapterJump
+                        ? "bg-success text-success-foreground hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25"
+                        : "bg-primary text-primary-foreground hover:bg-primary/90"
+                    }`}
+                  >
+                    {isChapterJump ? (
+                      <>
+                        <BookOpen className="h-4 w-4" />
+                        <span className="max-w-[12rem] truncate">
+                          الفصل التالي: {nextChapterTitle}
+                        </span>
+                      </>
+                    ) : (
+                      "الدرس التالي"
+                    )}
+                    <ChevronLeft className="h-4 w-4" />
+                  </button>
+                );
+              })()}
             </nav>
 
             {/* Chapter review appears after the last lesson in focus mode */}
