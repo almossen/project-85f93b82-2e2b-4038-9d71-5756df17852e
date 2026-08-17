@@ -3,7 +3,10 @@ import { useState } from "react";
 import {
   ArrowRight,
   Bell,
+  ExternalLink,
   Eye,
+  ImageIcon,
+
   Globe,
   HeartHandshake,
   Info,
