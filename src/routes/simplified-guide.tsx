@@ -742,7 +742,7 @@ function SimplifiedGuidePage() {
 
         {/* Sticky top bar: chapters dropdown + current chapter + search */}
         <div className="print:hidden space-y-2">
-          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex items-center gap-3 flex-wrap">
+          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 grid grid-cols-[minmax(0,1fr)_auto] items-center gap-x-3 gap-y-2 sm:flex sm:items-center sm:gap-3 sm:flex-wrap">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
