@@ -91,6 +91,13 @@ function AboutPage() {
               <Phone className="h-4 w-4" strokeWidth={2.4} />
               اتصال بالإسعاف 997
             </a>
+            <a
+              href="tel:937"
+              className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 min-h-11 text-sm font-bold text-primary-foreground hover:bg-primary/90 transition-colors"
+            >
+              <Phone className="h-4 w-4" strokeWidth={2.4} />
+              استشارات طبية 937
+            </a>
             <Link
               to="/what-to-do-now"
               className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-5 py-3 min-h-11 text-sm font-semibold hover:bg-muted transition-colors"
