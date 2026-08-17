@@ -422,6 +422,8 @@ function SimplifiedGuidePage() {
   const setActiveLessonIdx = (idx: number | null) => setUrl(chapterIdx, idx);
   const [textScale, setTextScale] = useState<"base" | "lg" | "xl">("base");
   const [viewMode, setViewMode] = useState<"focus" | "continuous">("focus");
+  // يطلب المستخدم صراحةً عرض فهرس الدروس؟ (false افتراضياً = افتح أول درس مباشرة)
+  const [listRequested, setListRequested] = useState(false);
   const { readSections, toggleRead, lastChapter, setLastChapter, readCount, percent, restored } =
     useGuideProgress(guideSections.length);
 
