@@ -263,15 +263,6 @@ function EmergencyGuidePage() {
 
         <MedicalAlert />
 
-        <div className="flex justify-center print:hidden">
-          <Link
-            to="/sources"
-            className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
-          >
-            <BookOpen className="h-4 w-4 text-primary" />
-            عرض المصادر والمراجع
-          </Link>
-        </div>
       </main>
     </div>
   );

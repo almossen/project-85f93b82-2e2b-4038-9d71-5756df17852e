@@ -95,13 +95,6 @@ function MedicalDisclaimer() {
           </a>{" "}
           أو توجه لأقرب طوارئ.
         </p>
-        <a
-          href="tel:997"
-          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors print:hidden"
-        >
-          <Phone className="h-4 w-4" strokeWidth={2.4} />
-          اتصال بالإسعاف 997
-        </a>
       </div>
     </details>
   );
@@ -1139,13 +1132,6 @@ function SimplifiedGuidePage() {
           </section>
         )}
 
-        <Link
-          to="/sources"
-          className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-5 py-2.5 text-sm font-semibold hover:bg-muted transition-colors"
-        >
-          <BookOpen className="h-4 w-4 text-primary" />
-          عرض المصادر والمراجع
-        </Link>
       </main>
 
       <div className="print:hidden">
