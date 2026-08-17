@@ -793,27 +793,6 @@ function SimplifiedGuidePage() {
               </p>
             )}
 
-            <div className="order-3 sm:order-none shrink-0 flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
-              <button
-                type="button"
-                onClick={() => changeScale(-1)}
-                disabled={textScale === "base"}
-                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-                aria-label="تصغير الخط"
-              >
-                أ<span className="text-sm">−</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => changeScale(1)}
-                disabled={textScale === "xl"}
-                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-                aria-label="تكبير الخط"
-              >
-                أ<span className="text-xs">+</span>
-              </button>
-            </div>
-
             <GlobalSearch
               trigger={
                 <button
