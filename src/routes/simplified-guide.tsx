@@ -856,6 +856,7 @@ function SimplifiedGuidePage() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 aria-pressed={viewMode === "focus"}
+                aria-label="عرض درس واحد"
               >
                 <LayoutList className="h-4 w-4 shrink-0" />
                 <span className="hidden sm:inline">درس واحد</span>
