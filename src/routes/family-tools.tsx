@@ -14,7 +14,7 @@ export const Route = createFileRoute("/family-tools")({
         content:
           "قوالب وأسئلة وقوائم عملية للأسرة بعد تشخيص سكري النوع الأول: رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي.",
       },
-      { property: "og:title", content: "أدوات جاهزة للأسرة — سما" },
+      { property: "og:title", content: "إضافات معرفية — سما" },
       {
         property: "og:description",
         content:
