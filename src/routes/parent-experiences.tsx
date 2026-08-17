@@ -19,6 +19,7 @@ import {
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import frioCase from "@/assets/frio-case.jpg.asset.json";
+import sugarPixel from "@/assets/sugarpixel-classroom.webp.asset.json";
 import {
   Accordion,
   AccordionContent,
@@ -210,6 +211,19 @@ function ParentExperiencesPage() {
               الساعة — حتى لو كان طفلك في مدرسة أخرى أو مدينة أخرى.
             </p>
           </div>
+
+          <figure className="mx-auto w-full max-w-[420px]">
+            <img
+              src={sugarPixel.url}
+              alt="جهاز SugarPixel على طاولة داخل فصل دراسي يعرض قراءة السكر ١١٣ بسهم ثابت"
+              loading="lazy"
+              className="aspect-[4/3] w-full rounded-2xl border border-border bg-muted/30 object-cover"
+            />
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+              SugarPixel — القراءة تظهر بوضوح حتى داخل الفصل الدراسي
+            </figcaption>
+          </figure>
+
 
           <ul className="flex flex-wrap gap-2 text-sm">
             {["لا يحتاج قرب المريض", "لا يحتاج نفس الشبكة", "يعمل من أي مكان"].map((k) => (
