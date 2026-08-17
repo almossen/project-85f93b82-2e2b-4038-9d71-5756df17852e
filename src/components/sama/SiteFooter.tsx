@@ -1,4 +1,4 @@
-import { Phone } from "lucide-react";
+import { Link } from "@tanstack/react-router";
 
 export function SiteFooter() {
   return (
@@ -11,13 +11,12 @@ export function SiteFooter() {
           محتوى تثقيفي تمت مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
         </p>
         <div className="flex justify-center print:hidden">
-          <a
-            href="tel:997"
-            className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors"
+          <Link
+            to="/about"
+            className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
-            <Phone className="h-4 w-4" strokeWidth={2.4} />
-            اتصال بالإسعاف 997
-          </a>
+            عن المنصة والمصادر وأرقام الطوارئ
+          </Link>
         </div>
         <p className="text-sm text-muted-foreground/80">
           آخر تحديث للمحتوى: يوليو ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
