@@ -818,7 +818,7 @@ function SimplifiedGuidePage() {
               trigger={
                 <button
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
+                  className="hidden sm:inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
                 >
                   <SearchIcon className="h-4 w-4" />
                   ابحث في المنصة
