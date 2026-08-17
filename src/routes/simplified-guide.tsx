@@ -561,7 +561,7 @@ function SimplifiedGuidePage() {
         {restored && readCount > 0 && !isSearching && (
           <button
             type="button"
-            onClick={() => goToChapter(lastChapter, null)}
+            onClick={() => goToChapter(lastChapter)}
             className="w-full rounded-2xl border border-primary/30 bg-primary-soft/60 px-4 py-3 min-h-11 flex items-center justify-between gap-3 text-right hover:bg-primary-soft transition-colors print:hidden"
           >
             <span className="min-w-0">
