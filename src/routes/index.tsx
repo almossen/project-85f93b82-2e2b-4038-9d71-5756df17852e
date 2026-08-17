@@ -86,15 +86,6 @@ function HomePage() {
                 والارتفاع، المدرسة والطوارئ — بهدوء ووضوح، خطوة بخطوة، دون أن تكون بديلًا عن
                 طبيبكم أو فريق السكري.
               </div>
-              <div className="flex flex-wrap gap-3">
-                <Link
-                  to="/simplified-guide"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary px-6 py-3 text-base font-semibold text-primary-foreground shadow-[var(--shadow-soft)] hover:bg-primary/90 transition-colors"
-                >
-                  ابدأ الدليل المبسّط
-                  <ArrowLeft className="h-4 w-4" />
-                </Link>
-              </div>
             </div>
             <div className="relative">
               <img
