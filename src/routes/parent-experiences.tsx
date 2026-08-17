@@ -283,6 +283,139 @@ function ParentExperiencesPage() {
             ))}
           </Accordion>
         </section>
+        </div>
+        )}
+
+        {showFrio && (
+        <div className="space-y-8">
+        <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 space-y-6 shadow-[var(--shadow-soft)]">
+          <div className="space-y-3">
+            <span className="inline-block rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground">
+              تجربة (٢) — حافظة الإنسولين أثناء الخروج والسفر
+            </span>
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-success/10 px-3 py-1 text-sm font-semibold text-success ms-2">
+              ✓ جُرّب من أحد الأهالي
+            </span>
+            <h2 className="text-2xl font-bold">حل بسيط لحمل الإنسولين بعيدًا عن حرارة الجو</h2>
+          </div>
+
+          <figure className="mx-auto w-full max-w-[220px] sm:max-w-[260px]">
+            <div className="aspect-square w-full rounded-2xl border border-dashed border-border bg-muted/50 flex flex-col items-center justify-center gap-2 text-center p-4">
+              <ImageIcon className="h-8 w-8 text-muted-foreground" aria-hidden />
+              <span className="text-sm text-muted-foreground leading-relaxed">
+                مكان صورة المنتج
+                <br />
+                (تُستبدل لاحقاً بصورة حقيقية)
+              </span>
+            </div>
+            <figcaption className="mt-2 text-center text-sm text-muted-foreground">
+              FRIO Individual Insulin Cooling Wallet
+            </figcaption>
+          </figure>
+
+          <div className="space-y-3 text-muted-foreground leading-loose">
+            <p>
+              من الأشياء التي وجدناها مفيدة جدًا في الاستخدام اليومي والسفر حافظة FRIO للإنسولين.
+            </p>
+            <p>
+              فكرتها بسيطة: تُفعّل بالماء وتساعد على حماية الإنسولين من الحرارة أثناء التنقل، دون
+              الحاجة إلى كهرباء أو أكياس ثلج.
+            </p>
+            <p>
+              بالنسبة لنا كانت مريحة خصوصًا في السفر والمشاوير الطويلة، لأنها خففت علينا التفكير
+              المستمر في كيفية حفظ قلم الإنسولين أثناء وجودنا خارج المنزل.
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">لماذا وجدناها مفيدة؟</h3>
+          <div className="grid gap-3 sm:grid-cols-2">
+            {frioBenefits.map((f) => (
+              <div key={f.title} className="rounded-2xl border border-border bg-card p-4 flex gap-3">
+                <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-base">
+                  {f.emoji}
+                </span>
+                <div>
+                  <div className="font-semibold">{f.title}</div>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">تجربتنا</h3>
+          <div className="rounded-2xl bg-primary-soft/60 border-r-4 border-primary p-4 sm:p-5 space-y-3 text-sm leading-loose text-foreground">
+            <p>
+              استخدمناها لحمل قلم الإنسولين أثناء الخروج والسفر، وأصبحت من الأشياء التي نحرص على
+              وجودها معنا.
+            </p>
+            <p>
+              أكثر ما أعجبنا فيها أنها بسيطة جدًا؛ لا نحتاج تجهيز أكياس ثلج أو البحث باستمرار عن
+              ثلاجة. عند الحاجة نقوم بتفعيل الحافظة بالماء حسب تعليماتها ونستخدمها أثناء التنقل.
+            </p>
+            <p>
+              بالنسبة لنا هي من الأشياء الصغيرة التي جعلت التعامل اليومي مع الإنسولين أسهل.
+            </p>
+          </div>
+        </section>
+
+        <section className="space-y-4">
+          <h3 className="text-xl font-bold">متى وجدناها مفيدة أكثر؟</h3>
+          <ul className="flex flex-wrap gap-2 text-sm">
+            {frioMoments.map((m) => (
+              <li
+                key={m}
+                className="rounded-full border border-border bg-card px-3 py-1.5 font-medium text-muted-foreground"
+              >
+                {m}
+              </li>
+            ))}
+          </ul>
+        </section>
+
+        <section className="space-y-4">
+          <div className="rounded-2xl bg-warning/10 border-r-4 border-warning p-4 text-sm leading-loose text-foreground space-y-2">
+            <strong className="block">ملاحظة مهمة</strong>
+            <p>
+              هذه تجربة شخصية من أحد الأهالي وليست إعلانًا أو توصية طبية، ولا توجد أي علاقة تجارية
+              بين منصة سما والشركة المصنعة أو البائع.
+            </p>
+            <p>
+              حافظة FRIO ليست ثلاجة، ولا ينبغي وصفها بأنها تقوم بتبريد الإنسولين إلى درجة حرارة
+              الثلاجة.
+            </p>
+            <p>
+              يجب الالتزام دائمًا بتعليمات الشركة المصنعة للحافظة، وتعليمات الشركة المصنعة للإنسولين
+              بشأن درجات الحرارة وطريقة الحفظ.
+            </p>
+            <p>
+              وفي حال وجود أي شك حول صلاحية الإنسولين بعد تعرضه للحرارة، يجب الرجوع إلى الصيدلي أو
+              الفريق الطبي المعالج.
+            </p>
+          </div>
+
+          <div className="text-center space-y-2">
+            <a
+              href="https://www.amazon.sa/dp/B0002262BW"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center gap-2 rounded-full bg-primary text-primary-foreground px-5 py-3 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
+            >
+              مشاهدة المنتج الذي استخدمناه على Amazon
+              <ExternalLink className="h-4 w-4" />
+            </a>
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto">
+              الرابط للمساعدة في الوصول إلى نفس المنتج الذي جُرّب فقط. منصة سما لا تحصل على أي عمولة
+              من الشراء.
+            </p>
+          </div>
+        </section>
+        </div>
+        )}
+
 
         <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
           <Link
