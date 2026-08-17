@@ -781,19 +781,19 @@ function SimplifiedGuidePage() {
             </DropdownMenu>
 
             {!isSearching ? (
-              <div className="flex-1 min-w-[180px]">
-                <p className="text-sm text-muted-foreground">
+              <div className="order-1 sm:order-none min-w-0 flex-1 sm:min-w-[180px]">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   الفصل {chapterIdx + 1} من {chapters.length}
                 </p>
-                <h2 className="text-base sm:text-lg font-bold leading-tight">{activeChapter.title}</h2>
+                <h2 className="text-base sm:text-lg font-bold leading-tight truncate">{activeChapter.title}</h2>
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground flex-1">
+              <p className="order-1 sm:order-none text-sm text-muted-foreground flex-1 min-w-0">
                 نتائج البحث ({searchResults.length})
               </p>
             )}
 
-            <div className="flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
+            <div className="order-3 sm:order-none col-span-2 sm:col-auto justify-self-start flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
               <button
                 type="button"
                 onClick={() => changeScale(-1)}
