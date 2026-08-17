@@ -74,7 +74,7 @@ function BrandChip({ brand }: { brand: Brand }) {
 
 function BrandPanel({ tone, image, alt }: { tone: "mint" | "sand"; image: string; alt: string; brands?: Brand[] }) {
   return (
-    <div className={`space-y-3 rounded-2xl border border-border p-4 ${tone === "mint" ? "bg-mint/20" : "bg-sand/30"}`}>
+    <div className={`space-y-3 rounded-2xl border border-border/50 p-4 ${tone === "mint" ? "bg-mint/15" : "bg-sand/20"}`}>
       <Dialog>
         <DialogTrigger asChild>
           <button
