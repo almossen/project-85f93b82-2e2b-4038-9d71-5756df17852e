@@ -470,5 +470,5 @@ export const guideSources = [
   { label: "CDC: Low Blood Sugar Treatment", url: "https://www.cdc.gov/diabetes/basics/low-blood-sugar-treatment.html" },
   { label: "ISPAD Clinical Practice Guidelines", url: "https://www.ispad.org/page/ISPADGuidelines" },
   { label: "American Diabetes Association Standards of Care 2026", url: "https://professional.diabetes.org/standards-of-care" },
-  { label: "هيئة الهلال الأحمر السعودي: أرقام الطوارئ", url: "https://www.srca.org.sa/contact-us/" },
+  { label: "هيئة الهلال الأحمر السعودي: أرقام الطوارئ", url: "https://www.srca.org.sa/" },
 ];
