@@ -950,7 +950,7 @@ function SimplifiedGuidePage() {
                 />
               </div>
               <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
-                الدرس {activeLessonIdx! + 1} / {chapterSections.length}
+                الدرس {effLessonIdx! + 1} / {chapterSections.length}
                 {globalLessonIndex && (
                   <span className="ms-2 text-muted-foreground/70">
                     ({globalLessonIndex}/{guideSections.length})
@@ -962,8 +962,8 @@ function SimplifiedGuidePage() {
             <div key={focusedSection.id} className="animate-fade-in">
               <SectionCard
                 section={focusedSection}
-                index={activeLessonIdx!}
-                lessonNumber={activeLessonIdx! + 1}
+                index={effLessonIdx!}
+                lessonNumber={effLessonIdx! + 1}
                 lessonTotal={chapterSections.length}
                 isRead={readSections.has(focusedSection.id)}
                 onToggleRead={() => toggleRead(focusedSection.id)}
