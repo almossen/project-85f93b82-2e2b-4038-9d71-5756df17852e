@@ -486,7 +486,7 @@ function SimplifiedGuidePage() {
     }
   };
 
-  const goToChapter = (i: number, lessonIdx: number | null = null) => {
+  const goToChapter = (i: number, lessonIdx: number | null = 0) => {
     setLastChapter(i);
     setUrl(i, lessonIdx);
     scrollToSections();
