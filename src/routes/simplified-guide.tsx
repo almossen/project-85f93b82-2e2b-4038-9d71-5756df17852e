@@ -747,7 +747,7 @@ function SimplifiedGuidePage() {
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="order-2 sm:order-none justify-self-end inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
+                  className="order-2 sm:order-none shrink-0 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
                 >
                   <BookOpen className="h-4 w-4 shrink-0" />
                   <span>الفصول</span>
