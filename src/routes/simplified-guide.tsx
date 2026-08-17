@@ -593,11 +593,11 @@ function SimplifiedGuidePage() {
         </section>
 
 
-        {/* خريطة الرحلة — مطوية أثناء القراءة، مفتوحة في شاشة الفصول */}
-        {!isSearching && (
+        {/* خريطة الرحلة — تظهر فقط خارج وضع قراءة الدرس */}
+        {!isSearching && !isFocusOne && (
           <details
-            key={isFocusOne ? "map-collapsed" : "map-open"}
-            open={!isFocusOne}
+            key="map-open"
+            open
             className="group print:hidden rounded-2xl border border-border bg-card/60"
             aria-label="خريطة الرحلة"
           >
