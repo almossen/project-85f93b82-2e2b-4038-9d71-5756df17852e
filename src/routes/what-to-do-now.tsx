@@ -99,13 +99,22 @@ function MedicalAlert() {
           </a>{" "}
           أو توجه لأقرب طوارئ.
         </p>
-        <a
-          href="tel:997"
-          className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors print:hidden"
-        >
-          <Phone className="h-4 w-4" strokeWidth={2.4} />
-          اتصال بالإسعاف 997
-        </a>
+        <div className="flex flex-wrap gap-2 print:hidden">
+          <a
+            href="tel:997"
+            className="inline-flex items-center gap-2 rounded-full bg-destructive px-5 py-3 min-h-11 text-sm font-bold text-destructive-foreground hover:bg-destructive/90 transition-colors"
+          >
+            <Phone className="h-4 w-4" strokeWidth={2.4} />
+            اتصال بالإسعاف 997
+          </a>
+          <a
+            href="tel:937"
+            className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 min-h-11 text-sm font-bold text-primary-foreground hover:bg-primary/90 transition-colors"
+          >
+            <Phone className="h-4 w-4" strokeWidth={2.4} />
+            استشارات طبية 937
+          </a>
+        </div>
       </div>
     </div>
   );
