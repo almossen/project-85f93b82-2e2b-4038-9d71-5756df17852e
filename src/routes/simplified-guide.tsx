@@ -136,10 +136,8 @@ const doctorQuestions: Record<string, string> = {
 
 function AskDoctorCard({ question }: { question: string }) {
   return (
-    <div className="rounded-2xl border border-primary/30 bg-primary-soft/50 p-4 flex gap-3 items-start">
-      <div className="flex h-9 w-9 shrink-0 items-center justify-center rounded-full bg-primary text-primary-foreground">
-        <HelpCircle className="h-5 w-5" />
-      </div>
+    <div className="border-s-4 border-primary/50 bg-primary-soft/30 rounded-e-xl ps-4 pe-3 py-3 flex gap-3 items-start">
+      <HelpCircle className="h-5 w-5 shrink-0 text-primary mt-0.5" />
       <div className="space-y-1">
         <p className="text-xs font-bold text-primary">اسأل طبيب طفلك</p>
         <p className="text-sm sm:text-base leading-loose text-foreground/90">{question}</p>
