@@ -46,7 +46,7 @@ export const medicalSources: MedicalSource[] = [
     name: "CDC — انخفاض السكر (Hypoglycemia)",
     detail: "Low Blood Sugar (Hypoglycemia) — العلامات والتعامل",
     region: "دولي",
-    url: "https://www.cdc.gov/diabetes/signs-symptoms/low-blood-sugar.html",
+    url: "https://www.cdc.gov/diabetes/about/low-blood-sugar-hypoglycemia.html",
   },
   {
     name: "CDC — رعاية الأطفال",
