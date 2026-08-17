@@ -481,14 +481,18 @@ function SimplifiedGuidePage() {
 
   const scrollToSections = () => {
     if (typeof window === "undefined") return;
-    const el = document.getElementById("chapter-sections");
-    if (el) {
-      const stickyOffset = 120;
-      const top = el.getBoundingClientRect().top + window.scrollY - stickyOffset;
-      window.scrollTo({ top, behavior: "smooth" });
-    } else {
-      window.scrollTo({ top: 0, behavior: "smooth" });
-    }
+    // ننتظر إعادة الرسم حتى نقيس موضع الدرس الجديد بعد تغيّر المحتوى
+    const run = () => {
+      const el = document.getElementById("chapter-sections");
+      if (el) {
+        const stickyOffset = 96;
+        const top = Math.max(0, el.getBoundingClientRect().top + window.scrollY - stickyOffset);
+        window.scrollTo({ top, behavior: "smooth" });
+      } else {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      }
+    };
+    requestAnimationFrame(() => requestAnimationFrame(() => setTimeout(run, 50)));
   };
 
   const goToChapter = (i: number, lessonIdx: number | null = 0) => {
