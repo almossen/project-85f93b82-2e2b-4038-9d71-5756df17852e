@@ -103,9 +103,50 @@ const faqs: [string, string][] = [
   ["من أين يمكن شراؤه ويصل للسعودية؟", "خياران رسميان يشحنان من دبي: الموقع الرسمي customtypeone.com (‏110$ تقريباً) أو Diapoint (‏150$ تقريباً)، وقد تُطبّق رسوم جمركية عند الاستلام."],
 ];
 
+const filters = [
+  { id: "all", label: "كل التجارب" },
+  { id: "devices", label: "أجهزة ومتابعة" },
+  { id: "insulin", label: "حفظ الإنسولين" },
+  { id: "travel", label: "سفر وتنقل" },
+] as const;
+
+type FilterId = (typeof filters)[number]["id"];
+
+const frioBenefits = [
+  { emoji: "💧", title: "تحتاج ماء فقط", body: "لا تحتاج إلى ثلاجة أو كهرباء لتفعيلها أثناء الاستخدام." },
+  {
+    emoji: "✈️",
+    title: "مناسبة للسفر",
+    body: "مفيدة في المطارات، الرحلات، المشاوير الطويلة والأيام التي نقضي فيها وقتًا طويلًا خارج المنزل.",
+  },
+  {
+    emoji: "🎒",
+    title: "خفيفة وسهلة الحمل",
+    body: "يمكن وضع قلم الإنسولين داخلها وحملها بسهولة في حقيبة الطفل أو حقيبة الأدوية.",
+  },
+  {
+    emoji: "🔄",
+    title: "قابلة لإعادة الاستخدام",
+    body: "يمكن إعادة تفعيلها بالماء حسب تعليمات الشركة المصنعة.",
+  },
+];
+
+const frioMoments = [
+  "السفر ✈️",
+  "الرحلات البرية 🚗",
+  "المشاوير الطويلة",
+  "المدرسة",
+  "الحدائق والأنشطة الخارجية",
+  "الأيام الحارة",
+];
+
 function ParentExperiencesPage() {
   const [tab, setTab] = useState<keyof typeof steps>("dexcom");
+  const [filter, setFilter] = useState<FilterId>("all");
   const active = steps[tab];
+  const showSugar = filter === "all" || filter === "devices";
+  const showFrio = filter === "all" || filter === "insulin" || filter === "travel";
+
 
   return (
     <div className="min-h-screen flex flex-col bg-background">
@@ -133,7 +174,28 @@ function ParentExperiencesPage() {
           </p>
         </header>
 
+        <div className="flex flex-wrap justify-center gap-2 print:hidden">
+          {filters.map((f) => (
+            <button
+              key={f.id}
+              type="button"
+              onClick={() => setFilter(f.id)}
+              aria-pressed={filter === f.id}
+              className={
+                filter === f.id
+                  ? "rounded-full bg-primary text-primary-foreground px-4 py-2 min-h-11 text-sm font-semibold"
+                  : "rounded-full border border-border bg-card px-4 py-2 min-h-11 text-sm font-medium text-muted-foreground hover:bg-muted transition-colors"
+              }
+            >
+              {f.label}
+            </button>
+          ))}
+        </div>
+
+        {showSugar && (
+        <div className="space-y-10">
         <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 space-y-6 shadow-[var(--shadow-soft)]">
+
           <div className="space-y-2">
             <span className="inline-block rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground">
               تجربة (١) — متابعة السكر عن بُعد
