@@ -475,6 +475,9 @@ function SimplifiedGuidePage() {
   const chapterSections = activeChapter.sectionIds
     .map((id) => sectionMap.get(id))
     .filter(Boolean) as GuideSection[];
+  // الدرس الفعلي المعروض: إن لم يُحدد درس ولم يطلب المستخدم الفهرس، افتح أول درس مباشرة
+  const effLessonIdx: number | null =
+    activeLessonIdx ?? (listRequested ? null : 0);
 
   const scrollToSections = () => {
     if (typeof window === "undefined") return;
