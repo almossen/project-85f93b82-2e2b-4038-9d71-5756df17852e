@@ -793,7 +793,7 @@ function SimplifiedGuidePage() {
               </p>
             )}
 
-            <div className="order-3 sm:order-none col-span-2 sm:col-auto justify-self-start flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
+            <div className="order-3 sm:order-none shrink-0 flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
               <button
                 type="button"
                 onClick={() => changeScale(-1)}
