@@ -742,16 +742,16 @@ function SimplifiedGuidePage() {
 
         {/* Sticky top bar: chapters dropdown + current chapter + search */}
         <div className="print:hidden space-y-2">
-          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex items-center gap-3 flex-wrap">
+          <div className="rounded-2xl border border-border bg-card/95 backdrop-blur shadow-[var(--shadow-soft)] p-3 sm:p-4 flex flex-wrap items-center gap-2 sm:gap-3">
             <DropdownMenu>
               <DropdownMenuTrigger asChild>
                 <button
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
+                  className="order-2 sm:order-none shrink-0 inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
                 >
-                  <BookOpen className="h-4 w-4" />
-                  فهرس الفصول
-                  <ChevronDown className="h-4 w-4" />
+                  <BookOpen className="h-4 w-4 shrink-0" />
+                  <span>الفصول</span>
+                  <ChevronDown className="h-4 w-4 shrink-0" />
                 </button>
               </DropdownMenuTrigger>
               <DropdownMenuContent align="end" className="w-80 max-w-[90vw]">
@@ -781,44 +781,23 @@ function SimplifiedGuidePage() {
             </DropdownMenu>
 
             {!isSearching ? (
-              <div className="flex-1 min-w-[180px]">
-                <p className="text-sm text-muted-foreground">
+              <div className="order-1 sm:order-none min-w-0 flex-1 sm:min-w-[180px]">
+                <p className="text-xs sm:text-sm text-muted-foreground">
                   الفصل {chapterIdx + 1} من {chapters.length}
                 </p>
-                <h2 className="text-base sm:text-lg font-bold leading-tight">{activeChapter.title}</h2>
+                <h2 className="text-base sm:text-lg font-bold leading-tight truncate">{activeChapter.title}</h2>
               </div>
             ) : (
-              <p className="text-sm text-muted-foreground flex-1">
+              <p className="order-1 sm:order-none text-sm text-muted-foreground flex-1 min-w-0">
                 نتائج البحث ({searchResults.length})
               </p>
             )}
-
-            <div className="flex items-center gap-1.5 rounded-full border border-border bg-background px-1.5 py-1" role="group" aria-label="حجم الخط">
-              <button
-                type="button"
-                onClick={() => changeScale(-1)}
-                disabled={textScale === "base"}
-                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-                aria-label="تصغير الخط"
-              >
-                أ<span className="text-sm">−</span>
-              </button>
-              <button
-                type="button"
-                onClick={() => changeScale(1)}
-                disabled={textScale === "xl"}
-                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
-                aria-label="تكبير الخط"
-              >
-                أ<span className="text-xs">+</span>
-              </button>
-            </div>
 
             <GlobalSearch
               trigger={
                 <button
                   type="button"
-                  className="inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
+                  className="hidden sm:inline-flex items-center gap-2 rounded-full border border-border bg-background px-4 py-2 min-h-11 text-sm text-muted-foreground hover:bg-muted transition-colors"
                 >
                   <SearchIcon className="h-4 w-4" />
                   ابحث في المنصة
@@ -845,7 +824,27 @@ function SimplifiedGuidePage() {
 
         {/* View mode toggle */}
         {!isSearching && (
-          <div className="flex items-center justify-between gap-3 print:hidden">
+          <div className="flex items-center justify-between gap-2 sm:gap-3 print:hidden">
+            <div className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1" role="group" aria-label="حجم الخط">
+              <button
+                type="button"
+                onClick={() => changeScale(-1)}
+                disabled={textScale === "base"}
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-sm font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تصغير الخط"
+              >
+                أ<span className="text-sm">−</span>
+              </button>
+              <button
+                type="button"
+                onClick={() => changeScale(1)}
+                disabled={textScale === "xl"}
+                className="flex h-11 w-11 min-h-11 min-w-11 items-center justify-center rounded-full text-base font-bold hover:bg-muted disabled:opacity-40 disabled:cursor-not-allowed"
+                aria-label="تكبير الخط"
+              >
+                أ<span className="text-xs">+</span>
+              </button>
+            </div>
             <div className="inline-flex rounded-full border border-border bg-card p-1 text-xs sm:text-sm">
               <button
                 type="button"
@@ -856,9 +855,10 @@ function SimplifiedGuidePage() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 aria-pressed={viewMode === "focus"}
+                aria-label="عرض درس واحد"
               >
-                <LayoutList className="h-4 w-4" />
-                درس واحد
+                <LayoutList className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">درس واحد</span>
               </button>
               <button
                 type="button"
@@ -872,9 +872,10 @@ function SimplifiedGuidePage() {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 aria-pressed={viewMode === "continuous"}
+                aria-label="قراءة متواصلة"
               >
-                <Rows3 className="h-4 w-4" />
-                قراءة متواصلة
+                <Rows3 className="h-4 w-4 shrink-0" />
+                <span className="hidden sm:inline">قراءة متواصلة</span>
               </button>
             </div>
             {isFocusOne && (
@@ -884,10 +885,10 @@ function SimplifiedGuidePage() {
                   setListRequested(true);
                   setActiveLessonIdx(null);
                 }}
-                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
+                className="inline-flex items-center gap-1.5 rounded-full border border-border bg-card px-3.5 sm:px-4 py-2.5 min-h-11 text-sm font-semibold text-muted-foreground hover:bg-muted transition-colors"
               >
-                <ChevronRight className="h-4 w-4" />
-                قائمة دروس الفصل
+                <ChevronRight className="h-4 w-4 shrink-0" />
+                دروس الفصل
               </button>
             )}
           </div>
