@@ -12,7 +12,6 @@ import {
 import appCss from "../styles.css?url";
 import { MobileBottomNav } from "@/components/sama/MobileBottomNav";
 import { EmergencyFloatingButton } from "@/components/sama/EmergencyFloatingButton";
-import { CallEmergencyFab } from "@/components/sama/CallEmergencyFab";
 
 function NotFoundComponent() {
   return (
@@ -137,7 +136,6 @@ function RootComponent() {
         <Outlet />
       </div>
       <EmergencyFloatingButton />
-      <CallEmergencyFab />
       <MobileBottomNav />
     </QueryClientProvider>
   );

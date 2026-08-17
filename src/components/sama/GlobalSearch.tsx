@@ -24,7 +24,7 @@ const pages = [
   { title: "الدليل المبسط", subtitle: "كل الفصول والدروس", to: "/simplified-guide" },
   { title: "ماذا أفعل الآن؟", subtitle: "الحالات الطارئة", to: "/what-to-do-now" },
   { title: "أدوات جاهزة للأسرة", subtitle: "قوالب وقوائم للطباعة", to: "/family-tools" },
-  { title: "المصادر الطبية", subtitle: "المراجع المعتمدة", to: "/sources" },
+  { title: "عن المنصة والمصادر", subtitle: "هدف المنصة والمراجع المعتمدة", to: "/about" },
 ];
 
 const kindMeta = {
