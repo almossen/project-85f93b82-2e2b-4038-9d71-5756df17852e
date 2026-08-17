@@ -17,7 +17,6 @@ import {
   ShieldAlert,
   Phone,
   Siren,
-  BookOpen,
   type LucideIcon,
 } from "lucide-react";
 import {
