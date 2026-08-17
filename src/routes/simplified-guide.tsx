@@ -492,20 +492,22 @@ function SimplifiedGuidePage() {
   };
 
   const goToChapter = (i: number, lessonIdx: number | null = 0) => {
+    setListRequested(false);
     setLastChapter(i);
     setUrl(i, lessonIdx);
     scrollToSections();
   };
 
   const openLesson = (idx: number) => {
+    setListRequested(false);
     setActiveLessonIdx(idx);
     scrollToSections();
   };
 
   const goToNextLesson = () => {
-    if (activeLessonIdx === null) return;
-    if (activeLessonIdx < chapterSections.length - 1) {
-      setActiveLessonIdx(activeLessonIdx + 1);
+    if (effLessonIdx === null) return;
+    if (effLessonIdx < chapterSections.length - 1) {
+      setActiveLessonIdx(effLessonIdx + 1);
       scrollToSections();
     } else if (chapterIdx < chapters.length - 1) {
       goToChapter(chapterIdx + 1, 0);
@@ -513,9 +515,9 @@ function SimplifiedGuidePage() {
   };
 
   const goToPrevLesson = () => {
-    if (activeLessonIdx === null) return;
-    if (activeLessonIdx > 0) {
-      setActiveLessonIdx(activeLessonIdx - 1);
+    if (effLessonIdx === null) return;
+    if (effLessonIdx > 0) {
+      setActiveLessonIdx(effLessonIdx - 1);
       scrollToSections();
     } else if (chapterIdx > 0) {
       const prev = chapters[chapterIdx - 1];
