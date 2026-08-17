@@ -538,21 +538,21 @@ function SimplifiedGuidePage() {
 
   // الترقيم العالمي للدرس ضمن كل الدروس (لشريط تقدم الدرس)
   const globalLessonIndex = useMemo(() => {
-    if (activeLessonIdx === null) return null;
+    if (effLessonIdx === null) return null;
     let count = 0;
     for (let i = 0; i < chapterIdx; i++) count += chapters[i].sectionIds.length;
-    return count + activeLessonIdx + 1;
-  }, [chapterIdx, activeLessonIdx]);
+    return count + effLessonIdx + 1;
+  }, [chapterIdx, effLessonIdx]);
 
   const hasValidLesson =
-    activeLessonIdx !== null && activeLessonIdx < chapterSections.length;
+    effLessonIdx !== null && effLessonIdx < chapterSections.length;
   const isFocusOne = viewMode === "focus" && hasValidLesson && !isSearching;
-  const isFocusList = viewMode === "focus" && !hasValidLesson && !isSearching;
-  const focusedSection = isFocusOne ? chapterSections[activeLessonIdx!] : null;
-  const isLastLessonInChapter = activeLessonIdx === chapterSections.length - 1;
-  const isFirstLessonOverall = chapterIdx === 0 && activeLessonIdx === 0;
+  const isFocusList = viewMode === "focus" && !hasValidLesson && listRequested && !isSearching;
+  const focusedSection = isFocusOne ? chapterSections[effLessonIdx!] : null;
+  const isLastLessonInChapter = effLessonIdx === chapterSections.length - 1;
+  const isFirstLessonOverall = chapterIdx === 0 && effLessonIdx === 0;
   const isLastLessonOverall =
-    chapterIdx === chapters.length - 1 && activeLessonIdx === chapterSections.length - 1;
+    chapterIdx === chapters.length - 1 && effLessonIdx === chapterSections.length - 1;
 
 
   return (
