@@ -282,6 +282,9 @@ export function GuideSectionEnrichment({ sectionId }: { sectionId: string }) {
         </div>
       );
     case "parents-feelings":
+      // مؤقتًا مخفي حتى يُعدّل محتواه ويُعاد لاحقًا
+      return null;
+      // eslint-disable-next-line no-unreachable
       return <FamilyTestimonial />;
     case "rapid-insulin":
       return <BrandPanel tone="mint" image={insulinRapidImg} alt="أقلام الإنسولين سريع المفعول" brands={rapidBrands} />;
