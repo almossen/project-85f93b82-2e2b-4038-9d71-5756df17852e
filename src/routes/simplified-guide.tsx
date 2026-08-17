@@ -945,7 +945,7 @@ function SimplifiedGuidePage() {
                 <div
                   className="h-full rounded-full bg-primary transition-all duration-500"
                   style={{
-                    width: `${((activeLessonIdx! + 1) / chapterSections.length) * 100}%`,
+                    width: `${((effLessonIdx! + 1) / chapterSections.length) * 100}%`,
                   }}
                 />
               </div>
