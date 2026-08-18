@@ -5,6 +5,7 @@ import {
   Link,
   createRootRouteWithContext,
   useRouter,
+  useRouterState,
   HeadContent,
   Scripts,
 } from "@tanstack/react-router";
@@ -12,6 +13,8 @@ import {
 import appCss from "../styles.css?url";
 import { MobileBottomNav } from "@/components/sama/MobileBottomNav";
 import { EmergencyFloatingButton } from "@/components/sama/EmergencyFloatingButton";
+import { initAnalytics, trackPageView } from "@/lib/analytics";
+
 
 function NotFoundComponent() {
   return (
