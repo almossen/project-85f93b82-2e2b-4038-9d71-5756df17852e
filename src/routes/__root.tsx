@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-title", content: "سما" },
       { name: "twitter:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
       { name: "twitter:description", content: "منصة توعوية لأهالي الأطفال المصابين حديثاً بسكري النوع الأول — محتوى مبسط، علمي، ومطمئن." },
-      // TODO: ارفع صورة المشاركة الرسمية إلى public/og-image.png (1200×630) — الرابط أدناه جاهز مسبقًا
+      // صورة المشاركة الرسمية (1200×630)
       { property: "og:image", content: "https://t1d-ar.com/og-image.png" },
       { name: "twitter:image", content: "https://t1d-ar.com/og-image.png" },
     ],
