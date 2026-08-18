@@ -243,6 +243,12 @@ function ParentExperiencesPage() {
 
           <div className="rounded-2xl bg-muted/60 border-r-4 border-primary p-4 text-sm leading-loose text-muted-foreground">
             <strong className="block text-foreground mb-1">ملاحظة مهمة</strong>
+            <span className="block mb-2 font-semibold text-foreground">
+              تم التحقق من معلومات هذه التجربة: أغسطس ٢٠٢٦
+            </span>
+            <span className="block mb-2">
+              الأسعار والشحن والتوافق قد تتغير؛ تحقق من الموقع الرسمي قبل الشراء.
+            </span>
             هذا الشرح اجتهاد شخصي من ولي أمر، والمعلومات مستقاة من الموقع الرسمي للجهاز. يُنصح
             بالتحقق من أي معلومة أو سعر مباشرةً من{" "}
             <a
