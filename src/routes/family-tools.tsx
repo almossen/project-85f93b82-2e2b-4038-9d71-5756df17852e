@@ -20,7 +20,16 @@ export const Route = createFileRoute("/family-tools")({
         content:
           "قوالب وأسئلة وقوائم عملية جاهزة للنسخ والطباعة تساعدك في الأيام الأولى بعد تشخيص طفلك.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://t1d-ar.com/family-tools" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "إضافات معرفية — سما" },
+      {
+        name: "twitter:description",
+        content: "قوالب وأسئلة وقوائم عملية جاهزة للنسخ والطباعة للأسرة.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/family-tools" }],
   }),
   component: FamilyToolsPage,
 });

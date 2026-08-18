@@ -30,7 +30,22 @@ export const Route = createFileRoute("/")({
         content:
           "منصة سما: محتوى عربي توعوي مبسط لأهالي الأطفال المصابين حديثاً بسكري النوع الأول — من اليوم الأول للتشخيص حتى التمكّن بثقة وطمأنينة.",
       },
+      { property: "og:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      {
+        property: "og:description",
+        content:
+          "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول — محتوى مبسط، علمي، ومطمئن.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://t1d-ar.com/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      {
+        name: "twitter:description",
+        content: "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/" }],
   }),
   component: HomePage,
 });

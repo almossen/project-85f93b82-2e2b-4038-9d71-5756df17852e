@@ -72,7 +72,16 @@ export const Route = createFileRoute("/simplified-guide")({
         property: "og:description",
         content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://t1d-ar.com/simplified-guide" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "الدليل المبسّط لأهالي أطفال السكري النوع الأول" },
+      {
+        name: "twitter:description",
+        content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/simplified-guide" }],
   }),
   component: SimplifiedGuidePage,
 });

@@ -34,17 +34,25 @@ export const Route = createFileRoute("/parent-experiences")({
       {
         name: "description",
         content:
-          "تجارب واجتهادات شخصية من أهالي أطفال سكري النوع الأول: شرح جهاز SugarPixel لمتابعة السكر لحظياً، وطريقة ربطه وتنبيهاته.",
+          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
       },
       { property: "og:title", content: "تجارب أهالي مفيدة — سما" },
       {
         property: "og:description",
         content:
-          "تجارب أهالي عملية مع أجهزة ومتابعة سكر الأطفال، مُعاد صياغتها بلغة مبسطة داخل منصة سما.",
+          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
       },
       { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://t1d-ar.com/parent-experiences" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "تجارب أهالي مفيدة — سما" },
+      {
+        name: "twitter:description",
+        content:
+          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/parent-experiences" }],
   }),
   component: ParentExperiencesPage,
 });
