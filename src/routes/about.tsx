@@ -20,8 +20,15 @@ export const Route = createFileRoute("/about")({
           "فلسفة المنصة، التنويه الطبي، أرقام الطوارئ، والمراجع: وزارة الصحة السعودية، ISPAD، CDC، ADA، Mayo Clinic.",
       },
       { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://t1d-ar.com/about" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "عن منصة سما وهدفها والمصادر" },
+      {
+        name: "twitter:description",
+        content: "فلسفة المنصة، التنويه الطبي، أرقام الطوارئ، والمراجع الطبية المعتمدة.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/about" }],
   }),
   component: AboutPage,
 });

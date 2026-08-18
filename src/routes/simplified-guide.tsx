@@ -72,7 +72,16 @@ export const Route = createFileRoute("/simplified-guide")({
         property: "og:description",
         content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
       },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://t1d-ar.com/simplified-guide" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "الدليل المبسّط لأهالي أطفال السكري النوع الأول" },
+      {
+        name: "twitter:description",
+        content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/simplified-guide" }],
   }),
   component: SimplifiedGuidePage,
 });
@@ -351,8 +360,8 @@ function InsulinStorageSection() {
 function TrueFalseSection() {
   const items = [
     { t: "إذا تحسنت القراءة أوقف الإنسولين", a: false, why: "خطأ — لا توقف الإنسولين من نفسك أبدًا، حتى لو تحسنت القراءات. أي تعديل يكون بتوجيه الطبيب." },
-    { t: "كل أدوية السكري تناسب كل الأنواع", a: false, why: "خطأ — أدوية السكري النوع الثاني لا تستخدم لطفل السكري النوع الأول. الإنسولين هو العلاج الأساسي." },
-    { t: "لا أغير الجرعة إلا بتوجيه الطبيب", a: true, why: "صح — تغيير الجرعة من تلقاء النفس قد يكون خطيرًا. التواصل مع الفريق الطبي هو الأساس." },
+    { t: "كل أدوية السكري تناسب كل الأنواع", a: false, why: "خطأ — الإنسولين هو العلاج الأساسي للسكري النوع الأول، ولا يُستخدم أي دواء إضافي أو بديل إلا إذا وصفه الفريق الطبي المعالج." },
+    { t: "لا أغيّر خطة الإنسولين أو نسب الجرعات من نفسي خارج الخطة والتعليمات التي وضعها الفريق الطبي", a: true, why: "صح — تغيير الخطة أو النسب من تلقاء النفس قد يكون خطيرًا. التواصل مع الفريق الطبي هو الأساس." },
   ];
   return (
     <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">

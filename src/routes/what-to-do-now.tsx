@@ -40,7 +40,22 @@ export const Route = createFileRoute("/what-to-do-now")({
         content:
           "دليل سريع لأولياء أمور الأطفال المصابين بسكري النوع الأول للحالات اليومية والعاجلة بلغة عربية مبسطة.",
       },
+      { property: "og:title", content: "ماذا أفعل الآن؟ — سما" },
+      {
+        property: "og:description",
+        content:
+          "دليل سريع للحالات اليومية والعاجلة لأطفال سكري النوع الأول بلغة عربية مبسطة.",
+      },
+      { property: "og:type", content: "article" },
+      { property: "og:url", content: "https://t1d-ar.com/what-to-do-now" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "ماذا أفعل الآن؟ — سما" },
+      {
+        name: "twitter:description",
+        content: "دليل سريع للحالات اليومية والعاجلة لأطفال سكري النوع الأول.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/what-to-do-now" }],
   }),
   component: EmergencyGuidePage,
 });
@@ -436,6 +451,19 @@ function ScenarioDetail({
           icon={Siren}
         />
       </div>
+
+      {scenario.callout && (
+        <aside
+          role="note"
+          aria-label="تنبيه مهم"
+          className="rounded-2xl border-2 border-warning bg-warning/10 p-4 sm:p-5 flex gap-3"
+        >
+          <ShieldAlert className="h-5 w-5 shrink-0 text-warning-foreground" strokeWidth={2.4} />
+          <p className="text-sm sm:text-base font-semibold leading-loose text-warning-foreground">
+            {scenario.callout}
+          </p>
+        </aside>
+      )}
 
       <section className="rounded-2xl bg-muted/50 border border-border p-4 sm:p-5 hidden print:block">
         <h3 className="font-bold mb-2">ملخص للطباعة</h3>

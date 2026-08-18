@@ -1,10 +1,22 @@
 /* سما — Service Worker
  * الهدف: عمل المنصة دون اتصال بعد أول زيارة،
  * وبالأخص صفحة الطوارئ «ماذا أفعل الآن؟».
- * الاستراتيجية: network-first للصفحات، cache-first للأصول الثابتة.
+ * الاستراتيجية:
+ *  - الصفحات: network-first مع fallback للكاش.
+ *  - الأصول المُبصَمة (/assets, /_build): cache-first.
+ *  - الأصول ذات الأسماء الثابتة (favicon, icon-512, og-image, manifest):
+ *    stale-while-revalidate حتى لا تبقى قديمة بعد الإصدارات.
  */
-const CACHE_NAME = "sama-cache-v1";
+const CACHE_NAME = "sama-cache-v2";
 const CRITICAL_PAGES = ["/", "/what-to-do-now", "/simplified-guide"];
+
+// أصول بأسماء ثابتة قد تتغير بين الإصدارات
+const MUTABLE_NAMED_ASSETS = [
+  "/favicon.png",
+  "/icon-512.png",
+  "/og-image.png",
+  "/manifest.json",
+];
 
 self.addEventListener("install", (event) => {
   event.waitUntil(
@@ -26,44 +38,50 @@ self.addEventListener("activate", (event) => {
   );
 });
 
+function putInCache(req, res) {
+  if (res && res.ok) {
+    const copy = res.clone();
+    caches.open(CACHE_NAME).then((c) => c.put(req, copy));
+  }
+  return res;
+}
+
 self.addEventListener("fetch", (event) => {
   const req = event.request;
   if (req.method !== "GET") return;
   const url = new URL(req.url);
   if (url.origin !== self.location.origin) return; // نفس النطاق فقط
 
-  const isStaticAsset =
-    /\.(js|css|webp|png|jpg|svg|mp3|wav|woff2?)$/.test(url.pathname) ||
+  const isNamedMutable = MUTABLE_NAMED_ASSETS.includes(url.pathname);
+  const isHashedAsset =
     url.pathname.startsWith("/_build/") ||
-    url.pathname.startsWith("/assets/");
+    url.pathname.startsWith("/assets/") ||
+    /\.(js|css|woff2?)$/.test(url.pathname);
+  const isMediaAsset = /\.(webp|png|jpg|jpeg|svg|mp3|wav)$/.test(url.pathname);
 
-  if (isStaticAsset) {
-    // cache-first: الأصول الثابتة لا تتغير بين النشرات
+  if (isNamedMutable) {
+    // stale-while-revalidate: نعرض النسخة المخزنة ونحدثها في الخلفية
     event.respondWith(
-      caches.match(req).then(
-        (cached) =>
-          cached ||
-          fetch(req).then((res) => {
-            if (res.ok) {
-              const copy = res.clone();
-              caches.open(CACHE_NAME).then((c) => c.put(req, copy));
-            }
-            return res;
-          }),
-      ),
+      caches.match(req).then((cached) => {
+        const network = fetch(req)
+          .then((res) => putInCache(req, res))
+          .catch(() => cached);
+        return cached || network;
+      }),
+    );
+  } else if (isHashedAsset || isMediaAsset) {
+    // cache-first: أسماء مُبصَمة أو وسائط لا تتغير
+    event.respondWith(
+      caches
+        .match(req)
+        .then((cached) => cached || fetch(req).then((res) => putInCache(req, res))),
     );
   } else {
     // network-first للصفحات: أحدث نسخة عند توفر الشبكة،
     // ونسخة الكاش عند انقطاعها (وضع الطوارئ)
     event.respondWith(
       fetch(req)
-        .then((res) => {
-          if (res.ok) {
-            const copy = res.clone();
-            caches.open(CACHE_NAME).then((c) => c.put(req, copy));
-          }
-          return res;
-        })
+        .then((res) => putInCache(req, res))
         .catch(() =>
           caches
             .match(req)

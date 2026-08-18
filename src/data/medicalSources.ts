@@ -55,10 +55,10 @@ export const medicalSources: MedicalSource[] = [
     url: "https://www.cdc.gov/diabetes/caring/3-ways-help-manage-childs-type-1.html",
   },
   {
-    name: "ADA — American Diabetes Association",
-    detail: "Standards of Care in Diabetes — أحدث نسخة سنوية",
+    name: "ADA — Standards of Care in Diabetes—2026",
+    detail: "American Diabetes Association — معايير الرعاية في السكري، إصدار 2026",
     region: "دولي",
-    url: "https://diabetesjournals.org/care/issue/48/Supplement_1",
+    url: "https://diabetesjournals.org/care/issue/49/Supplement_1",
   },
   {
     name: "Mayo Clinic",

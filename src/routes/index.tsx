@@ -30,7 +30,22 @@ export const Route = createFileRoute("/")({
         content:
           "منصة سما: محتوى عربي توعوي مبسط لأهالي الأطفال المصابين حديثاً بسكري النوع الأول — من اليوم الأول للتشخيص حتى التمكّن بثقة وطمأنينة.",
       },
+      { property: "og:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      {
+        property: "og:description",
+        content:
+          "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول — محتوى مبسط، علمي، ومطمئن.",
+      },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "https://t1d-ar.com/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      {
+        name: "twitter:description",
+        content: "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول.",
+      },
     ],
+    links: [{ rel: "canonical", href: "https://t1d-ar.com/" }],
   }),
   component: HomePage,
 });
@@ -204,9 +219,9 @@ function HomePage() {
         <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
           <div className="rounded-3xl bg-gradient-to-br from-mint/30 to-primary-soft border border-border p-8 sm:p-12 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center">
             <div className="space-y-4 text-right">
-              <h2 className="text-2xl sm:text-3xl font-bold">ابنكم سيكبر بصحة، بإذن الله</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold">يمكن لطفلكم أن يكبر ويتعلم ويلعب ويحقق طموحاته، بإذن الله</h2>
               <p className="text-muted-foreground leading-loose">
-                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج يصنع فرقًا كبيرًا في ثقة الأسرة والطفل.
+                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج والإدارة المناسبة يصنعان فرقًا كبيرًا في ثقة الأسرة والطفل.
               </p>
               <Link
                 to="/simplified-guide"
