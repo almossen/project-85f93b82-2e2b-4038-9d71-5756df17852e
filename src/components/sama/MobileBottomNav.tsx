@@ -18,6 +18,7 @@ import {
   SheetContent,
   SheetHeader,
   SheetTitle,
+  SheetDescription,
   SheetTrigger,
 } from "@/components/ui/sheet";
 
@@ -95,6 +96,9 @@ export function MobileBottomNav() {
             <SheetContent side="bottom" className="rounded-t-3xl pb-[calc(env(safe-area-inset-bottom)+1rem)]">
               <SheetHeader className="text-right">
                 <SheetTitle>المزيد من الأقسام</SheetTitle>
+                <SheetDescription className="sr-only">
+                  روابط إضافية للتنقل داخل منصة سما
+                </SheetDescription>
               </SheetHeader>
               <ul className="mt-4 space-y-1">
                 {moreLinks.map((l) => (
