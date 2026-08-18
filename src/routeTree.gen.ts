@@ -13,6 +13,7 @@ import { Route as WhatToDoNowRouteImport } from './routes/what-to-do-now'
 import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ParentExperiencesRouteImport } from './routes/parent-experiences'
 import { Route as FamilyToolsRouteImport } from './routes/family-tools'
 import { Route as AboutRouteImport } from './routes/about'
@@ -36,6 +37,11 @@ const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
 const SimplifiedGuideRoute = SimplifiedGuideRouteImport.update({
   id: '/simplified-guide',
   path: '/simplified-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ParentExperiencesRoute = ParentExperiencesRouteImport.update({
@@ -64,6 +70,7 @@ export interface FileRoutesByFullPath {
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
   '/parent-experiences': typeof ParentExperiencesRoute
+  '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
@@ -74,6 +81,7 @@ export interface FileRoutesByTo {
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
   '/parent-experiences': typeof ParentExperiencesRoute
+  '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
@@ -85,6 +93,7 @@ export interface FileRoutesById {
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
   '/parent-experiences': typeof ParentExperiencesRoute
+  '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
   '/sitemap.xml': typeof SitemapDotxmlRoute
   '/sources': typeof SourcesRoute
@@ -97,6 +106,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/family-tools'
     | '/parent-experiences'
+    | '/privacy'
     | '/simplified-guide'
     | '/sitemap.xml'
     | '/sources'
@@ -107,6 +117,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/family-tools'
     | '/parent-experiences'
+    | '/privacy'
     | '/simplified-guide'
     | '/sitemap.xml'
     | '/sources'
@@ -117,6 +128,7 @@ export interface FileRouteTypes {
     | '/about'
     | '/family-tools'
     | '/parent-experiences'
+    | '/privacy'
     | '/simplified-guide'
     | '/sitemap.xml'
     | '/sources'
@@ -128,6 +140,7 @@ export interface RootRouteChildren {
   AboutRoute: typeof AboutRoute
   FamilyToolsRoute: typeof FamilyToolsRoute
   ParentExperiencesRoute: typeof ParentExperiencesRoute
+  PrivacyRoute: typeof PrivacyRoute
   SimplifiedGuideRoute: typeof SimplifiedGuideRoute
   SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   SourcesRoute: typeof SourcesRoute
@@ -162,6 +175,13 @@ declare module '@tanstack/react-router' {
       path: '/simplified-guide'
       fullPath: '/simplified-guide'
       preLoaderRoute: typeof SimplifiedGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/parent-experiences': {
@@ -200,6 +220,7 @@ const rootRouteChildren: RootRouteChildren = {
   AboutRoute: AboutRoute,
   FamilyToolsRoute: FamilyToolsRoute,
   ParentExperiencesRoute: ParentExperiencesRoute,
+  PrivacyRoute: PrivacyRoute,
   SimplifiedGuideRoute: SimplifiedGuideRoute,
   SitemapDotxmlRoute: SitemapDotxmlRoute,
   SourcesRoute: SourcesRoute,
