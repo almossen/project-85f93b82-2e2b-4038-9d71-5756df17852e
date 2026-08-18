@@ -10,16 +10,23 @@ export function SiteFooter() {
         <p className="text-xs text-muted-foreground">
           محتوى تثقيفي تمت مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
         </p>
-        <div className="flex justify-center print:hidden">
+        <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
           <Link
             to="/about"
             className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
           >
             عن المنصة والمصادر وأرقام الطوارئ
           </Link>
+          <span className="text-muted-foreground/50" aria-hidden="true">·</span>
+          <Link
+            to="/privacy"
+            className="text-sm font-semibold text-primary underline-offset-4 hover:underline"
+          >
+            سياسة الخصوصية
+          </Link>
         </div>
         <p className="text-sm text-muted-foreground/80">
-          آخر تحديث للمحتوى: يوليو ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
+          آخر تحديث للمنصة: أغسطس ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
         </p>
       </div>
     </footer>

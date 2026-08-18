@@ -204,9 +204,9 @@ function HomePage() {
         <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
           <div className="rounded-3xl bg-gradient-to-br from-mint/30 to-primary-soft border border-border p-8 sm:p-12 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center">
             <div className="space-y-4 text-right">
-              <h2 className="text-2xl sm:text-3xl font-bold">ابنكم سيكبر بصحة، بإذن الله</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold">يمكن لطفلكم أن يكبر ويتعلم ويلعب ويحقق طموحاته، بإذن الله</h2>
               <p className="text-muted-foreground leading-loose">
-                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج يصنع فرقًا كبيرًا في ثقة الأسرة والطفل.
+                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج والإدارة المناسبة يصنعان فرقًا كبيرًا في ثقة الأسرة والطفل.
               </p>
               <Link
                 to="/simplified-guide"

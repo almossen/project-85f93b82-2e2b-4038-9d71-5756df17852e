@@ -138,9 +138,17 @@
   /* ضبط الأسطر العربية لتملأ عرض السطر بالكامل */
   p:not([class*="text-center"]):not([class*="text-end"]):not([class*="text-right"]):not([class*="text-left"]),
   li:not([class*="text-center"]):not([class*="text-end"]) {
-    text-align: justify;
-    text-justify: inter-word;
+    text-align: right;
     text-wrap: pretty;
+  }
+
+  /* justify فقط على الشاشات الواسعة — يضر القراءة على الجوال */
+  @media (min-width: 768px) {
+    p:not([class*="text-center"]):not([class*="text-end"]):not([class*="text-right"]):not([class*="text-left"]),
+    li:not([class*="text-center"]):not([class*="text-end"]) {
+      text-align: justify;
+      text-justify: inter-word;
+    }
   }
 }
 
