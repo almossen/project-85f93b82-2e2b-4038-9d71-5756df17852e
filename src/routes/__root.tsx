@@ -126,6 +126,7 @@ function RootShell({ children }: { children: React.ReactNode }) {
 
 function RootComponent() {
   const { queryClient } = Route.useRouteContext();
+  const pathname = useRouterState({ select: (s) => s.location.pathname });
 
   // تسجيل الـ Service Worker حتى تعمل صفحة الطوارئ دون اتصال
   useEffect(() => {
@@ -133,6 +134,17 @@ function RootComponent() {
     if (!("serviceWorker" in navigator)) return;
     navigator.serviceWorker.register("/sw.js").catch(() => {});
   }, []);
+
+  // Google Analytics: تهيئة مرة واحدة + تسجيل page_view عند كل تنقل داخلي
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
+  useEffect(() => {
+    trackPageView(pathname);
+  }, [pathname]);
+
+
 
   return (
     <QueryClientProvider client={queryClient}>
