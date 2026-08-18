@@ -825,7 +825,7 @@ function SimplifiedGuidePage() {
 
         {/* View mode toggle */}
         {!isSearching && (
-          <div className="flex items-center justify-between gap-2 sm:gap-3 print:hidden">
+          <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 print:hidden">
             <div className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1" role="group" aria-label="حجم الخط">
               <button
                 type="button"
