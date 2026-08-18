@@ -4,6 +4,7 @@ import { Search, BookOpen, LifeBuoy, FileText } from "lucide-react";
 import {
   Dialog,
   DialogContent,
+  DialogDescription,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
