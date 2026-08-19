@@ -676,6 +676,24 @@ function SimplifiedGuidePage() {
         )}
 
         {chapterIdx === 0 && !isSearching && !isFocusOne && (
+          <Link
+            to="/listen"
+            className="flex items-center gap-3 rounded-2xl border border-primary/25 bg-primary-soft/50 p-4 print:hidden hover:bg-primary-soft transition-colors"
+          >
+            <Headphones className="h-5 w-5 text-primary shrink-0" aria-hidden="true" />
+            <span className="flex-1 min-w-0">
+              <span className="block text-sm font-bold text-foreground">تفضل الاستماع؟</span>
+              <span className="block text-xs text-muted-foreground">
+                استمع إلى جميع دروس سما بالترتيب.
+              </span>
+            </span>
+            <span className="shrink-0 rounded-full bg-primary text-primary-foreground px-4 py-2 text-xs font-bold">
+              استمع إلى سما
+            </span>
+          </Link>
+        )}
+
+        {chapterIdx === 0 && !isSearching && !isFocusOne && (
         <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 print:hidden">
 
           <div className="space-y-5 text-center">
