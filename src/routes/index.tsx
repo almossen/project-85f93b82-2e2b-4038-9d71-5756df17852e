@@ -9,6 +9,7 @@ import {
   Stethoscope,
   Languages,
   Compass,
+  Headphones,
   Siren,
   Wrench,
 } from "lucide-react";
