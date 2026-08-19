@@ -676,7 +676,7 @@ function SimplifiedGuidePage() {
           </details>
         )}
 
-        {chapterIdx === 0 && !isSearching && !isFocusOne && (
+        {chapterIdx === 0 && !isSearching && (
           <Link
             to="/listen"
             className="flex items-center gap-3 rounded-2xl border border-primary/25 bg-primary-soft/50 p-4 print:hidden hover:bg-primary-soft transition-colors"
