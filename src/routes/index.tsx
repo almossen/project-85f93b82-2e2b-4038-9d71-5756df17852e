@@ -9,6 +9,7 @@ import {
   Stethoscope,
   Languages,
   Compass,
+  Headphones,
   Siren,
   Wrench,
 } from "lucide-react";
@@ -71,7 +72,11 @@ const whySama = [
 const audience = [
   { icon: Users, title: "أولياء الأمور", text: "خاصة الأسر التي شُخّص طفلها حديثاً." },
   { icon: Baby, title: "الأجداد والمرافقون", text: "كل من يرعى الطفل في غياب الوالدين." },
-  { icon: GraduationCap, title: "المعلمون والمرشدون الصحيون", text: "للتعامل الآمن مع الطفل في المدرسة." },
+  {
+    icon: GraduationCap,
+    title: "المعلمون والمرشدون الصحيون",
+    text: "للتعامل الآمن مع الطفل في المدرسة.",
+  },
 ];
 
 function HomePage() {
@@ -82,7 +87,10 @@ function HomePage() {
       <main className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden">
-          <div className="absolute inset-0 bg-[image:var(--gradient-hero)] opacity-60" aria-hidden />
+          <div
+            className="absolute inset-0 bg-[image:var(--gradient-hero)] opacity-60"
+            aria-hidden
+          />
           <div className="relative mx-auto max-w-6xl px-4 sm:px-6 py-12 sm:py-20 grid md:grid-cols-2 gap-10 items-center">
             <div className="space-y-6 text-right">
               <span className="inline-flex items-center gap-2 rounded-full bg-card/80 backdrop-blur border border-border px-3 py-1.5 text-xs font-medium">
@@ -96,10 +104,10 @@ function HomePage() {
                 </span>
               </h1>
               <div className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
-                «سما» منصة عربية تثقيفية تمت مراجعتها طبيًا، تساند أسر الأطفال المشخصين حديثًا
-                بسكري النوع الأول: تشرح أساسيات التعامل اليومي — الإنسولين، القياس، الهبوط
-                والارتفاع، المدرسة والطوارئ — بهدوء ووضوح، خطوة بخطوة، دون أن تكون بديلًا عن
-                طبيبكم أو فريق السكري.
+                «سما» منصة عربية تثقيفية تمت مراجعتها طبيًا، تساند أسر الأطفال المشخصين حديثًا بسكري
+                النوع الأول: تشرح أساسيات التعامل اليومي — الإنسولين، القياس، الهبوط والارتفاع،
+                المدرسة والطوارئ — بهدوء ووضوح، خطوة بخطوة، دون أن تكون بديلًا عن طبيبكم أو فريق
+                السكري.
               </div>
             </div>
             <div className="relative">
@@ -118,7 +126,7 @@ function HomePage() {
 
         {/* فرز فوري — ثلاثة مداخل واضحة حسب حاجة الأسرة الآن */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 -mt-4 sm:-mt-8 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <Link
               to="/simplified-guide"
               className="group rounded-3xl border border-primary/25 bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
@@ -146,6 +154,19 @@ function HomePage() {
             </Link>
 
             <Link
+              to="/listen"
+              className="group rounded-3xl border border-border bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-soft text-primary mb-4">
+                <Headphones className="h-6 w-6" strokeWidth={2} />
+              </div>
+              <h3 className="font-bold text-lg mb-1">استمع إلى سما</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                استمعوا إلى الدروس بالترتيب أثناء القيادة أو المشي أو في أي وقت.
+              </p>
+            </Link>
+
+            <Link
               to="/family-tools"
               className="group rounded-3xl border border-border bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
             >
@@ -165,7 +186,8 @@ function HomePage() {
           <header className="text-center max-w-2xl mx-auto space-y-2">
             <h2 className="text-2xl sm:text-3xl font-bold tracking-tight">لماذا منصة سما؟</h2>
             <p className="text-muted-foreground leading-loose">
-              لأن الأسرة في الأسابيع الأولى تحتاج إلى محتوى يطمئنها، ويعطيها ما تحتاجه الآن فقط، دون إغراق أو تهويل.
+              لأن الأسرة في الأسابيع الأولى تحتاج إلى محتوى يطمئنها، ويعطيها ما تحتاجه الآن فقط، دون
+              إغراق أو تهويل.
             </p>
           </header>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
@@ -188,7 +210,9 @@ function HomePage() {
         <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-16">
           <div className="rounded-3xl bg-sand/40 border border-sand p-8 sm:p-10 space-y-6">
             <header className="text-center max-w-2xl mx-auto space-y-2">
-              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-sand-foreground">لمن هذه المنصة؟</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold tracking-tight text-sand-foreground">
+                لمن هذه المنصة؟
+              </h2>
               <p className="text-sand-foreground/80 leading-loose">
                 موجّهة لكل من يرعى طفلاً مصاباً بسكري النوع الأول، بأي مستوى تعليمي وأي خلفية.
               </p>
@@ -219,9 +243,12 @@ function HomePage() {
         <section className="mx-auto max-w-6xl px-4 sm:px-6 pb-20">
           <div className="rounded-3xl bg-gradient-to-br from-mint/30 to-primary-soft border border-border p-8 sm:p-12 grid md:grid-cols-[1.2fr_1fr] gap-8 items-center">
             <div className="space-y-4 text-right">
-              <h2 className="text-2xl sm:text-3xl font-bold">يمكن لطفلكم أن يكبر ويتعلم ويلعب ويحقق طموحاته، بإذن الله</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold">
+                يمكن لطفلكم أن يكبر ويتعلم ويلعب ويحقق طموحاته، بإذن الله
+              </h2>
               <p className="text-muted-foreground leading-loose">
-                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج والإدارة المناسبة يصنعان فرقًا كبيرًا في ثقة الأسرة والطفل.
+                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج
+                والإدارة المناسبة يصنعان فرقًا كبيرًا في ثقة الأسرة والطفل.
               </p>
               <Link
                 to="/simplified-guide"
