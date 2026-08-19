@@ -138,55 +138,52 @@ function ListenPage() {
   }, []);
 
   /* ---------- تغيير الدرس: مصدر واحد فقط ---------- */
-  const selectLesson = useCallback(
-    (nextIndex: number, autoPlay: boolean, startAt = 0) => {
-      const target = audioPlaylist[nextIndex];
-      if (!target) return;
-      const a = audioRef.current;
-      setFinished(false);
-      setError(false);
-      setAutoplayBlocked(false);
-      setIndex(nextIndex);
-      setCurrent(startAt);
-      setDuration(0);
-      if (!a) return;
-      a.pause();
-      a.src = target.src;
-      a.load();
-      const applyStart = () => {
-        if (startAt > 0) {
-          try {
-            a.currentTime = startAt;
-          } catch {
-            /* لا يمكن التقديم قبل تحميل الميتاداتا */
-          }
+  const selectLesson = useCallback((nextIndex: number, autoPlay: boolean, startAt = 0) => {
+    const target = audioPlaylist[nextIndex];
+    if (!target) return;
+    const a = audioRef.current;
+    setFinished(false);
+    setError(false);
+    setAutoplayBlocked(false);
+    setIndex(nextIndex);
+    setCurrent(startAt);
+    setDuration(0);
+    if (!a) return;
+    a.pause();
+    a.src = target.src;
+    a.load();
+    const applyStart = () => {
+      if (startAt > 0) {
+        try {
+          a.currentTime = startAt;
+        } catch {
+          /* لا يمكن التقديم قبل تحميل الميتاداتا */
         }
-      };
-      a.addEventListener("loadedmetadata", applyStart, { once: true });
-      if (autoPlay) {
-        setLoading(true);
-        a.play()
-          .then(() => {
-            setPlaying(true);
-            setAutoplayBlocked(false);
-          })
-          .catch(() => {
-            setPlaying(false);
-            setAutoplayBlocked(true);
-          })
-          .finally(() => setLoading(false));
-      } else {
-        setPlaying(false);
       }
-      try {
-        localStorage.setItem(K_LESSON, target.id);
-        localStorage.setItem(K_TIME, String(startAt));
-      } catch {
-        /* التخزين غير متاح */
-      }
-    },
-    [],
-  );
+    };
+    a.addEventListener("loadedmetadata", applyStart, { once: true });
+    if (autoPlay) {
+      setLoading(true);
+      a.play()
+        .then(() => {
+          setPlaying(true);
+          setAutoplayBlocked(false);
+        })
+        .catch(() => {
+          setPlaying(false);
+          setAutoplayBlocked(true);
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setPlaying(false);
+    }
+    try {
+      localStorage.setItem(K_LESSON, target.id);
+      localStorage.setItem(K_TIME, String(startAt));
+    } catch {
+      /* التخزين غير متاح */
+    }
+  }, []);
 
   const toggle = useCallback(() => {
     const a = audioRef.current;
@@ -279,20 +276,20 @@ function ListenPage() {
 
   /* ---------- حفظ عند المغادرة + إيقاف الصوت عند ترك الصفحة ---------- */
   useEffect(() => {
+    const audioEl = audioRef.current;
     const onHide = () => persist();
     window.addEventListener("pagehide", onHide);
     window.addEventListener("beforeunload", onHide);
     return () => {
       window.removeEventListener("pagehide", onHide);
       window.removeEventListener("beforeunload", onHide);
-      const a = audioRef.current;
-      if (a) {
+      if (audioEl) {
         try {
-          persist(a.currentTime);
+          persist(audioEl.currentTime);
         } catch {
           /* تجاهل */
         }
-        a.pause();
+        audioEl.pause();
       }
     };
   }, [persist]);
@@ -450,9 +447,7 @@ function ListenPage() {
             </button>
           </div>
 
-          {loading && (
-            <p className="text-center text-xs text-muted-foreground">جاري التحميل…</p>
-          )}
+          {loading && <p className="text-center text-xs text-muted-foreground">جاري التحميل…</p>}
 
           {finished && (
             <div className="rounded-2xl border border-success/30 bg-success/[0.08] p-4 text-center space-y-2">

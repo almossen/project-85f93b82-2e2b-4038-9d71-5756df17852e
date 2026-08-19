@@ -3,7 +3,6 @@ import { Search } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
 import samaLogo from "@/assets/sama-logo-icon.png.asset.json";
 
-
 export function SiteHeader() {
   return (
     <header className="hidden md:block sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-md pt-[env(safe-area-inset-top)]">
@@ -78,7 +77,6 @@ export function SiteHeader() {
             }
           />
         </nav>
-
       </div>
     </header>
   );

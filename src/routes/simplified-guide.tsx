@@ -45,8 +45,6 @@ import {
 import { chapters } from "@/data/guideChapters";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
 
-
-
 const sectionMap = new Map(guideSections.map((s) => [s.id, s]));
 
 type GuideSearch = { ch?: number; lesson?: number };
@@ -97,8 +95,8 @@ function MedicalDisclaimer() {
       </summary>
       <div className="space-y-3 pt-2">
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
-          هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج
-          تختلف من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
+          هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف
+          من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
           <a href="tel:997" className="font-bold underline">
             997
           </a>{" "}
@@ -128,12 +126,12 @@ const doctorQuestions: Record<string, string> = {
   "low-sugar": "ما هو الرقم الذي يعتبر هبوطًا لطفلي بالضبط، وكم جرام سكر سريع أعطيه؟",
   "severe-low": "متى أستخدم الجلوكاجون ومن يجب أن يتدرب عليه في الأسرة والمدرسة؟",
   "high-sugar": "ما هي خطة التصحيح المكتوبة عند ارتفاع السكر، ومتى أتصل بكم؟",
-  "ketones": "متى أفحص الكيتونات بالضبط؟ ومتى أذهب للطوارئ؟",
-  "illness": "ما هي خطة أيام المرض لطفلي؟ هل أوقف الإنسولين إذا لم يأكل؟",
+  ketones: "متى أفحص الكيتونات بالضبط؟ ومتى أذهب للطوارئ؟",
+  illness: "ما هي خطة أيام المرض لطفلي؟ هل أوقف الإنسولين إذا لم يأكل؟",
   "sick-day-plan": "هل يمكنكم تزويدي بخطة أيام المرض مكتوبة وواضحة؟",
-  "school": "هل يمكن تزويدي بخطة مكتوبة للمدرسة تشرح حالة طفلي والإجراءات اللازمة؟",
-  "glucagon": "متى أستخدم الجلوكاجون بالضبط، ومن يجب أن يتدرب على استخدامه؟",
-  "emergency": "ما هي العلامات التي توجب الذهاب للطوارئ مباشرة دون انتظار؟",
+  school: "هل يمكن تزويدي بخطة مكتوبة للمدرسة تشرح حالة طفلي والإجراءات اللازمة؟",
+  glucagon: "متى أستخدم الجلوكاجون بالضبط، ومن يجب أن يتدرب على استخدامه؟",
+  emergency: "ما هي العلامات التي توجب الذهاب للطوارئ مباشرة دون انتظار؟",
 };
 
 function AskDoctorCard({ question }: { question: string }) {
@@ -185,12 +183,12 @@ function SectionCard({
     lessonNumber && lessonNumber >= 1 && lessonNumber <= lessonOrdinals.length
       ? lessonOrdinals[lessonNumber - 1]
       : lessonNumber
-      ? `الدرس ${lessonNumber}`
-      : undefined;
+        ? `الدرس ${lessonNumber}`
+        : undefined;
   const lessonLabel =
     lessonOrdinal && lessonTotal
       ? `${lessonOrdinal} من ${lessonTotal}`
-      : lessonOrdinal ?? "الدرس";
+      : (lessonOrdinal ?? "الدرس");
 
   const handleSectionPrint = () => {
     if (typeof window === "undefined") return;
@@ -198,7 +196,9 @@ function SectionCard({
     if (!el) return window.print();
     const win = window.open("", "_blank", "width=800,height=900");
     if (!win) return;
-    win.document.write(`<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>${section.title}</title><style>body{font-family:system-ui,Tahoma,Arial;padding:24px;line-height:1.9;color:#111}h1{font-size:22px;margin:0 0 12px}h2{font-size:16px;margin:16px 0 6px}ul{padding-inline-start:20px}li{margin:4px 0}.muted{color:#555;font-size:12px}</style></head><body>${el.innerHTML}<p class="muted">— من منصة سما — للاسترشاد فقط، لا تغني عن تعليمات الطبيب.</p></body></html>`);
+    win.document.write(
+      `<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>${section.title}</title><style>body{font-family:system-ui,Tahoma,Arial;padding:24px;line-height:1.9;color:#111}h1{font-size:22px;margin:0 0 12px}h2{font-size:16px;margin:16px 0 6px}ul{padding-inline-start:20px}li{margin:4px 0}.muted{color:#555;font-size:12px}</style></head><body>${el.innerHTML}<p class="muted">— من منصة سما — للاسترشاد فقط، لا تغني عن تعليمات الطبيب.</p></body></html>`,
+    );
     win.document.close();
     win.focus();
     setTimeout(() => win.print(), 250);
@@ -215,8 +215,6 @@ function SectionCard({
         index={index}
         fallbackLabel={section.imageAlt}
       />
-
-
 
       <div className="p-6 sm:p-8 space-y-5">
         <header className="space-y-2">
@@ -235,7 +233,6 @@ function SectionCard({
         </header>
 
         <LessonAudioPlayer sectionId={section.id} lessonLabel={lessonLabel} />
-
 
         <div id={printScopeId}>
           <h1 className="hidden print:block">{section.title}</h1>
@@ -290,7 +287,6 @@ function SectionCard({
               {isRead ? "أنهيت هذا الدرس ✓" : "علّم كمقروء"}
             </button>
           )}
-
 
           {section.id === "school" && (
             <button
@@ -360,9 +356,21 @@ function InsulinStorageSection() {
 
 function TrueFalseSection() {
   const items = [
-    { t: "إذا تحسنت القراءة أوقف الإنسولين", a: false, why: "خطأ — لا توقف الإنسولين من نفسك أبدًا، حتى لو تحسنت القراءات. أي تعديل يكون بتوجيه الطبيب." },
-    { t: "كل أدوية السكري تناسب كل الأنواع", a: false, why: "خطأ — الإنسولين هو العلاج الأساسي للسكري النوع الأول، ولا يُستخدم أي دواء إضافي أو بديل إلا إذا وصفه الفريق الطبي المعالج." },
-    { t: "لا أغيّر خطة الإنسولين أو نسب الجرعات من نفسي خارج الخطة والتعليمات التي وضعها الفريق الطبي", a: true, why: "صح — تغيير الخطة أو النسب من تلقاء النفس قد يكون خطيرًا. التواصل مع الفريق الطبي هو الأساس." },
+    {
+      t: "إذا تحسنت القراءة أوقف الإنسولين",
+      a: false,
+      why: "خطأ — لا توقف الإنسولين من نفسك أبدًا، حتى لو تحسنت القراءات. أي تعديل يكون بتوجيه الطبيب.",
+    },
+    {
+      t: "كل أدوية السكري تناسب كل الأنواع",
+      a: false,
+      why: "خطأ — الإنسولين هو العلاج الأساسي للسكري النوع الأول، ولا يُستخدم أي دواء إضافي أو بديل إلا إذا وصفه الفريق الطبي المعالج.",
+    },
+    {
+      t: "لا أغيّر خطة الإنسولين أو نسب الجرعات من نفسي خارج الخطة والتعليمات التي وضعها الفريق الطبي",
+      a: true,
+      why: "صح — تغيير الخطة أو النسب من تلقاء النفس قد يكون خطيرًا. التواصل مع الفريق الطبي هو الأساس.",
+    },
   ];
   return (
     <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
@@ -467,9 +475,7 @@ function SimplifiedGuidePage() {
     if (!q) return [];
     return guideSections.filter(
       (s) =>
-        s.title.includes(q) ||
-        s.body.includes(q) ||
-        (s.bullets ?? []).some((b) => b.includes(q))
+        s.title.includes(q) || s.body.includes(q) || (s.bullets ?? []).some((b) => b.includes(q)),
     );
   }, [query]);
 
@@ -478,8 +484,7 @@ function SimplifiedGuidePage() {
     .map((id) => sectionMap.get(id))
     .filter(Boolean) as GuideSection[];
   // الدرس الفعلي المعروض: إن لم يُحدد درس ولم يطلب المستخدم الفهرس، افتح أول درس مباشرة
-  const effLessonIdx: number | null =
-    activeLessonIdx ?? (listRequested ? null : 0);
+  const effLessonIdx: number | null = activeLessonIdx ?? (listRequested ? null : 0);
 
   const scrollToSections = () => {
     if (typeof window === "undefined") return;
@@ -550,8 +555,7 @@ function SimplifiedGuidePage() {
     return count + effLessonIdx + 1;
   }, [chapterIdx, effLessonIdx]);
 
-  const hasValidLesson =
-    effLessonIdx !== null && effLessonIdx < chapterSections.length;
+  const hasValidLesson = effLessonIdx !== null && effLessonIdx < chapterSections.length;
   const isFocusOne = viewMode === "focus" && hasValidLesson && !isSearching;
   const isFocusList = viewMode === "focus" && !hasValidLesson && listRequested && !isSearching;
   const focusedSection = isFocusOne ? chapterSections[effLessonIdx!] : null;
@@ -559,7 +563,6 @@ function SimplifiedGuidePage() {
   const isFirstLessonOverall = chapterIdx === 0 && effLessonIdx === 0;
   const isLastLessonOverall =
     chapterIdx === chapters.length - 1 && effLessonIdx === chapterSections.length - 1;
-
 
   return (
     <div className="min-h-screen bg-background" dir="rtl">
@@ -597,7 +600,6 @@ function SimplifiedGuidePage() {
             className="w-full block h-32 sm:h-auto object-cover object-center"
           />
         </section>
-
 
         {/* خريطة الرحلة — تظهر فقط خارج وضع قراءة الدرس */}
         {!isSearching && !isFocusOne && (
@@ -695,69 +697,68 @@ function SimplifiedGuidePage() {
         )}
 
         {chapterIdx === 0 && !isSearching && !isFocusOne && (
-        <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 print:hidden">
-
-          <div className="space-y-5 text-center">
-            <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
-              <Sparkles className="h-3.5 w-3.5" />
-              فلسفة المنصة
-            </span>
-            <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
-              منصة تعليمية تمشي معك خطوة بخطوة
-            </h2>
-            <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground leading-loose">
-              هدفنا أن نُعلّمك ما تحتاجه الآن، لا أن نغرقك بكل التفاصيل. كل فصل قصير
-              ومبني على سؤال عملي يهم الأسرة في الأيام الأولى. ابدأ من الفصل الأول
-              وتقدّم بهدوء، وإذا واجهت موقفًا عاجلًا فهناك زر مباشر لخطوات التصرف الفوري.
-            </p>
-            <div className="grid sm:grid-cols-3 gap-3 pt-2 text-right">
-              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
-                <BookOpen className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold text-sm">تعلّم متدرّج</div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    ستة فصول قصيرة، من البداية إلى الحياة اليومية.
-                  </p>
+          <section className="rounded-3xl border border-border bg-card p-5 sm:p-7 print:hidden">
+            <div className="space-y-5 text-center">
+              <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1.5 text-xs font-semibold text-primary border border-primary/20">
+                <Sparkles className="h-3.5 w-3.5" />
+                فلسفة المنصة
+              </span>
+              <h2 className="text-2xl sm:text-3xl font-bold leading-tight">
+                منصة تعليمية تمشي معك خطوة بخطوة
+              </h2>
+              <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground leading-loose">
+                هدفنا أن نُعلّمك ما تحتاجه الآن، لا أن نغرقك بكل التفاصيل. كل فصل قصير ومبني على
+                سؤال عملي يهم الأسرة في الأيام الأولى. ابدأ من الفصل الأول وتقدّم بهدوء، وإذا واجهت
+                موقفًا عاجلًا فهناك زر مباشر لخطوات التصرف الفوري.
+              </p>
+              <div className="grid sm:grid-cols-3 gap-3 pt-2 text-right">
+                <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                  <BookOpen className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold text-sm">تعلّم متدرّج</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      ستة فصول قصيرة، من البداية إلى الحياة اليومية.
+                    </p>
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                  <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold text-sm">لغة مطمئنة</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      شرح واضح بلا مصطلحات معقّدة، مع وقفات إيمانية.
+                    </p>
+                  </div>
+                </div>
+                <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
+                  <Siren className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
+                  <div>
+                    <div className="font-bold text-sm">جاهز للطوارئ</div>
+                    <p className="text-xs text-muted-foreground leading-relaxed">
+                      خطوات سريعة وواضحة عند أي موقف طارئ.
+                    </p>
+                  </div>
                 </div>
               </div>
-              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
-                <Heart className="h-5 w-5 text-primary shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold text-sm">لغة مطمئنة</div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    شرح واضح بلا مصطلحات معقّدة، مع وقفات إيمانية.
-                  </p>
-                </div>
-              </div>
-              <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
-                <Siren className="h-5 w-5 text-destructive shrink-0 mt-0.5" />
-                <div>
-                  <div className="font-bold text-sm">جاهز للطوارئ</div>
-                  <p className="text-xs text-muted-foreground leading-relaxed">
-                    خطوات سريعة وواضحة عند أي موقف طارئ.
-                  </p>
-                </div>
+              <div className="flex flex-wrap justify-center gap-2.5 pt-3">
+                <button
+                  type="button"
+                  onClick={() => goToChapter(0)}
+                  className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
+                >
+                  <BookOpen className="h-4 w-4" />
+                  ابدأ الفصل الأول
+                </button>
+                <Link
+                  to="/what-to-do-now"
+                  className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
+                >
+                  <Siren className="h-4 w-4" />
+                  ماذا أفعل في حالة الطوارئ؟
+                </Link>
               </div>
             </div>
-            <div className="flex flex-wrap justify-center gap-2.5 pt-3">
-              <button
-                type="button"
-                onClick={() => goToChapter(0)}
-                className="inline-flex items-center gap-2 rounded-full bg-primary px-5 py-2.5 text-sm font-semibold text-primary-foreground hover:bg-primary/90 transition-colors"
-              >
-                <BookOpen className="h-4 w-4" />
-                ابدأ الفصل الأول
-              </button>
-              <Link
-                to="/what-to-do-now"
-                className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive border border-destructive/30 px-5 py-2.5 text-sm font-semibold hover:bg-destructive/15 transition-colors"
-              >
-                <Siren className="h-4 w-4" />
-                ماذا أفعل في حالة الطوارئ؟
-              </Link>
-            </div>
-          </div>
-        </section>
+          </section>
         )}
 
         {/* Sticky top bar: chapters dropdown + current chapter + search */}
@@ -805,7 +806,9 @@ function SimplifiedGuidePage() {
                 <p className="text-xs sm:text-sm text-muted-foreground">
                   الفصل {chapterIdx + 1} من {chapters.length}
                 </p>
-                <h2 className="text-base sm:text-lg font-bold leading-tight truncate">{activeChapter.title}</h2>
+                <h2 className="text-base sm:text-lg font-bold leading-tight truncate">
+                  {activeChapter.title}
+                </h2>
               </div>
             ) : (
               <p className="order-1 sm:order-none text-sm text-muted-foreground flex-1 min-w-0">
@@ -824,7 +827,6 @@ function SimplifiedGuidePage() {
                 </button>
               }
             />
-
           </div>
           {!isSearching && readCount > 0 && (
             <div className="rounded-2xl border border-border bg-card/95 backdrop-blur px-4 py-2.5 flex items-center gap-3">
@@ -841,11 +843,14 @@ function SimplifiedGuidePage() {
           )}
         </div>
 
-
         {/* View mode toggle */}
         {!isSearching && (
           <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 print:hidden">
-            <div className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1" role="group" aria-label="حجم الخط">
+            <div
+              className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1"
+              role="group"
+              aria-label="حجم الخط"
+            >
               <button
                 type="button"
                 onClick={() => changeScale(-1)}
@@ -919,7 +924,9 @@ function SimplifiedGuidePage() {
           <section id="chapter-sections" className="space-y-4 animate-fade-in">
             <header className="space-y-1">
               <p className="text-xs font-semibold text-primary">{activeChapter.title}</p>
-              <h2 className="text-xl sm:text-2xl font-bold">دروس هذا الفصل ({chapterSections.length})</h2>
+              <h2 className="text-xl sm:text-2xl font-bold">
+                دروس هذا الفصل ({chapterSections.length})
+              </h2>
               <p className="text-sm text-muted-foreground">اختر درسًا لتفتحه في عرض مركّز.</p>
             </header>
             <ol className="grid gap-2.5 sm:grid-cols-2">
@@ -938,7 +945,9 @@ function SimplifiedGuidePage() {
                     >
                       <span
                         className={`flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-sm font-bold transition-colors ${
-                          done ? "bg-success text-success-foreground" : "bg-primary-soft text-primary"
+                          done
+                            ? "bg-success text-success-foreground"
+                            : "bg-primary-soft text-primary"
                         }`}
                       >
                         {done ? <CheckCircle2 className="h-5 w-5 animate-scale-in" /> : i + 1}
@@ -1015,8 +1024,7 @@ function SimplifiedGuidePage() {
                 الدرس السابق
               </button>
               {(() => {
-                const isChapterJump =
-                  isLastLessonInChapter && chapterIdx < chapters.length - 1;
+                const isChapterJump = isLastLessonInChapter && chapterIdx < chapters.length - 1;
                 const nextChapterTitle = isChapterJump
                   ? chapters[chapterIdx + 1].title.replace(/^الفصل [^:]+:\s*/, "")
                   : "";
@@ -1085,8 +1093,8 @@ function SimplifiedGuidePage() {
             <div className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/60 to-mint/20 p-6 sm:p-8 text-center space-y-3">
               <h2 className="text-xl sm:text-2xl font-bold">هل تريدون أدوات عملية جاهزة؟</h2>
               <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto">
-                قوالب رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي — كلها في صفحة
-                واحدة جاهزة للنسخ والطباعة.
+                قوالب رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي — كلها في صفحة واحدة
+                جاهزة للنسخ والطباعة.
               </p>
               <a
                 href="/family-tools"
@@ -1097,7 +1105,6 @@ function SimplifiedGuidePage() {
             </div>
           </>
         )}
-
 
         {/* Chapter nav (prev / next) */}
         {!isSearching && (
@@ -1124,12 +1131,11 @@ function SimplifiedGuidePage() {
               الفصل التالي
               <ChevronLeft className="h-4 w-4" />
             </button>
-
           </nav>
         )}
 
         {/* Summary - only show on last chapter or when searching is off and we're at end */}
-        {(!isSearching && chapterIdx === chapters.length - 1) && (
+        {!isSearching && chapterIdx === chapters.length - 1 && (
           <section
             id="summary"
             className="rounded-3xl border border-primary/20 bg-primary-soft p-6 sm:p-8 space-y-5 print:break-inside-avoid"
@@ -1158,7 +1164,6 @@ function SimplifiedGuidePage() {
             </ul>
           </section>
         )}
-
       </main>
 
       <div className="print:hidden">
