@@ -10,6 +10,7 @@ import {
   HelpCircle,
   Heart,
   LayoutList,
+  Headphones,
   ListChecks,
   Printer,
   Rows3,

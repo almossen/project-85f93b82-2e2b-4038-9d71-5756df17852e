@@ -118,7 +118,7 @@ function HomePage() {
 
         {/* فرز فوري — ثلاثة مداخل واضحة حسب حاجة الأسرة الآن */}
         <section className="mx-auto max-w-5xl px-4 sm:px-6 -mt-4 sm:-mt-8 relative z-10">
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
             <Link
               to="/simplified-guide"
               className="group rounded-3xl border border-primary/25 bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
@@ -142,6 +142,19 @@ function HomePage() {
               <h3 className="font-bold text-lg mb-1 text-destructive">عندكم موقف الآن؟</h3>
               <p className="text-sm text-muted-foreground leading-relaxed">
                 خطوات سريعة وواضحة للهبوط والارتفاع والكيتونات ومتى تطلبون المساعدة.
+              </p>
+            </Link>
+
+            <Link
+              to="/listen"
+              className="group rounded-3xl border border-border bg-card p-5 sm:p-6 text-right shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] hover:-translate-y-0.5 transition-all"
+            >
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary-soft text-primary mb-4">
+                <Headphones className="h-6 w-6" strokeWidth={2} />
+              </div>
+              <h3 className="font-bold text-lg mb-1">استمع إلى سما</h3>
+              <p className="text-sm text-muted-foreground leading-relaxed">
+                استمعوا إلى الدروس بالترتيب أثناء القيادة أو المشي أو في أي وقت.
               </p>
             </Link>
 
