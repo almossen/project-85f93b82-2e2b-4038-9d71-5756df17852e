@@ -16,9 +16,8 @@ import { SiteFooter } from "@/components/sama/SiteFooter";
 import { audioChapters, audioPlaylist, findLessonIndex } from "@/data/audioLessons";
 
 export const Route = createFileRoute("/listen")({
-  validateSearch: (search: Record<string, unknown>) => ({
-    lesson: typeof search.lesson === "string" ? search.lesson : undefined,
-  }),
+  validateSearch: (search: Record<string, unknown>): { lesson?: string } =>
+    typeof search.lesson === "string" ? { lesson: search.lesson } : {},
   head: () => ({
     meta: [
       { title: "استمع إلى سما — الدروس الصوتية | سما" },
