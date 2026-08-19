@@ -15,6 +15,7 @@ import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
 import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as ParentExperiencesRouteImport } from './routes/parent-experiences'
+import { Route as ListenRouteImport } from './routes/listen'
 import { Route as FamilyToolsRouteImport } from './routes/family-tools'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
@@ -49,6 +50,11 @@ const ParentExperiencesRoute = ParentExperiencesRouteImport.update({
   path: '/parent-experiences',
   getParentRoute: () => rootRouteImport,
 } as any)
+const ListenRoute = ListenRouteImport.update({
+  id: '/listen',
+  path: '/listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const FamilyToolsRoute = FamilyToolsRouteImport.update({
   id: '/family-tools',
   path: '/family-tools',
@@ -69,6 +75,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
+  '/listen': typeof ListenRoute
   '/parent-experiences': typeof ParentExperiencesRoute
   '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
@@ -80,6 +87,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
+  '/listen': typeof ListenRoute
   '/parent-experiences': typeof ParentExperiencesRoute
   '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
@@ -92,6 +100,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/about': typeof AboutRoute
   '/family-tools': typeof FamilyToolsRoute
+  '/listen': typeof ListenRoute
   '/parent-experiences': typeof ParentExperiencesRoute
   '/privacy': typeof PrivacyRoute
   '/simplified-guide': typeof SimplifiedGuideRoute
@@ -105,6 +114,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/family-tools'
+    | '/listen'
     | '/parent-experiences'
     | '/privacy'
     | '/simplified-guide'
@@ -116,6 +126,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/family-tools'
+    | '/listen'
     | '/parent-experiences'
     | '/privacy'
     | '/simplified-guide'
@@ -127,6 +138,7 @@ export interface FileRouteTypes {
     | '/'
     | '/about'
     | '/family-tools'
+    | '/listen'
     | '/parent-experiences'
     | '/privacy'
     | '/simplified-guide'
@@ -139,6 +151,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AboutRoute: typeof AboutRoute
   FamilyToolsRoute: typeof FamilyToolsRoute
+  ListenRoute: typeof ListenRoute
   ParentExperiencesRoute: typeof ParentExperiencesRoute
   PrivacyRoute: typeof PrivacyRoute
   SimplifiedGuideRoute: typeof SimplifiedGuideRoute
@@ -191,6 +204,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ParentExperiencesRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/listen': {
+      id: '/listen'
+      path: '/listen'
+      fullPath: '/listen'
+      preLoaderRoute: typeof ListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/family-tools': {
       id: '/family-tools'
       path: '/family-tools'
@@ -219,6 +239,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AboutRoute: AboutRoute,
   FamilyToolsRoute: FamilyToolsRoute,
+  ListenRoute: ListenRoute,
   ParentExperiencesRoute: ParentExperiencesRoute,
   PrivacyRoute: PrivacyRoute,
   SimplifiedGuideRoute: SimplifiedGuideRoute,
