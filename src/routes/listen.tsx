@@ -67,6 +67,8 @@ function ListenPage() {
   const { lesson: lessonParam } = Route.useSearch();
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const lastSavedRef = useRef(0);
+  const indexRef = useRef(0);
+  const finishedRef = useRef(false);
 
   const [index, setIndex] = useState(0);
   const [playing, setPlaying] = useState(false);
@@ -93,6 +95,7 @@ function ListenPage() {
 
     const fromParam = findLessonIndex(lessonParam);
     if (fromParam >= 0) {
+      indexRef.current = fromParam;
       setIndex(fromParam);
       return;
     }
@@ -110,19 +113,30 @@ function ListenPage() {
   }, []);
 
   /* ---------- حفظ التقدم ---------- */
-  const persist = useCallback(
-    (time?: number) => {
-      const l = audioPlaylist[index];
-      if (!l) return;
-      try {
-        localStorage.setItem(K_LESSON, l.id);
-        localStorage.setItem(K_TIME, String(time ?? audioRef.current?.currentTime ?? 0));
-      } catch {
-        /* التخزين غير متاح */
-      }
-    },
-    [index],
-  );
+  const persist = useCallback((time?: number) => {
+    if (finishedRef.current) return;
+    const l = audioPlaylist[indexRef.current];
+    if (!l) return;
+    try {
+      localStorage.setItem(K_LESSON, l.id);
+      localStorage.setItem(K_TIME, String(time ?? audioRef.current?.currentTime ?? 0));
+    } catch {
+      /* التخزين غير متاح */
+    }
+  }, []);
+
+  /* ---------- إنهاء القائمة: لا يظهر «تابع من حيث توقفت» بعدها ---------- */
+  const markPlaylistFinished = useCallback(() => {
+    finishedRef.current = true;
+    setFinished(true);
+    setResume(null);
+    try {
+      localStorage.removeItem(K_LESSON);
+      localStorage.removeItem(K_TIME);
+    } catch {
+      /* التخزين غير متاح */
+    }
+  }, []);
 
   const markCompleted = useCallback((id: string) => {
     setCompleted((prev) => {
@@ -142,6 +156,8 @@ function ListenPage() {
     const target = audioPlaylist[nextIndex];
     if (!target) return;
     const a = audioRef.current;
+    finishedRef.current = false;
+    indexRef.current = nextIndex;
     setFinished(false);
     setError(false);
     setAutoplayBlocked(false);
@@ -252,8 +268,7 @@ function ListenPage() {
       if (index + 1 < total) {
         goNext(true);
       } else {
-        setFinished(true);
-        persist(0);
+        markPlaylistFinished();
       }
     };
     const onWaiting = () => setLoading(true);
@@ -272,7 +287,7 @@ function ListenPage() {
       a.removeEventListener("waiting", onWaiting);
       a.removeEventListener("playing", onPlaying);
     };
-  }, [goNext, index, markCompleted, persist, total]);
+  }, [goNext, index, markCompleted, markPlaylistFinished, persist, total]);
 
   /* ---------- حفظ عند المغادرة + إيقاف الصوت عند ترك الصفحة ---------- */
   useEffect(() => {
@@ -292,7 +307,9 @@ function ListenPage() {
         audioEl.pause();
       }
     };
-  }, [persist]);
+    // يعمل مرة واحدة فقط: الإيقاف عند مغادرة الصفحة، لا عند تغيير الدرس
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   const onSeek = (e: React.ChangeEvent<HTMLInputElement>) => {
     const a = audioRef.current;
