@@ -10,6 +10,7 @@ import {
   Wrench,
   Info,
   Library,
+  Headphones,
   ShieldCheck,
 } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
@@ -28,6 +29,7 @@ const linkActive =
   "flex flex-col items-center justify-center gap-1 py-2.5 text-xs font-medium text-primary";
 
 const moreLinks = [
+  { to: "/listen", label: "استمع إلى سما", icon: Headphones },
   { to: "/parent-experiences", label: "تجارب أهالي مفيدة", icon: HeartHandshake },
   { to: "/family-tools", label: "إضافات معرفية", icon: Wrench },
   { to: "/about", label: "عن المنصة", icon: Info },

@@ -21,7 +21,7 @@ export function SiteHeader() {
             <div className="text-sm text-muted-foreground -mt-0.5">رحلة التعايش</div>
           </div>
         </Link>
-        <nav className="flex items-center gap-1 sm:gap-2 text-sm font-medium">
+        <nav className="flex flex-wrap items-center justify-end gap-1 text-sm font-medium">
           <Link
             to="/"
             className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
@@ -36,6 +36,13 @@ export function SiteHeader() {
             activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
           >
             الدليل المبسّط
+          </Link>
+          <Link
+            to="/listen"
+            className="rounded-full px-3 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground"
+            activeProps={{ className: "rounded-full px-3 py-2 bg-primary-soft text-primary" }}
+          >
+            استمع
           </Link>
           <Link
             to="/family-tools"
