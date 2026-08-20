@@ -4,10 +4,17 @@
  * الاستراتيجية:
  *  - الصفحات: network-first مع fallback للكاش.
  *  - الأصول المُبصَمة (/assets, /_build): cache-first.
+ *  - الصور ذات الأسماء الثابتة: cache-first.
+ *  - ملفات الصوت (mp3/wav): stale-while-revalidate — تعمل دون اتصال،
+ *    وتتحدث في الخلفية حتى لا يبقى تسجيل قديم بعد استبدال الملفات
+ *    على نفس المسار. لا precache لها: 46 ملفًا ≈ 37MB لا تُحمَّل مسبقًا.
  *  - الأصول ذات الأسماء الثابتة (favicon, icon-512, og-image, manifest):
  *    stale-while-revalidate حتى لا تبقى قديمة بعد الإصدارات.
+ *
+ * عند استبدال أي صوت أو أصل ثابت: ارفع رقم النسخة أدناه.
+ * حذف النسخ القديمة يتم في حدث activate.
  */
-const CACHE_NAME = "sama-cache-v2";
+const CACHE_NAME = "sama-cache-v3";
 const CRITICAL_PAGES = ["/", "/what-to-do-now", "/simplified-guide"];
 
 // أصول بأسماء ثابتة قد تتغير بين الإصدارات
@@ -57,9 +64,10 @@ self.addEventListener("fetch", (event) => {
     url.pathname.startsWith("/_build/") ||
     url.pathname.startsWith("/assets/") ||
     /\.(js|css|woff2?)$/.test(url.pathname);
-  const isMediaAsset = /\.(webp|png|jpg|jpeg|svg|mp3|wav)$/.test(url.pathname);
+  const isAudioAsset = /\.(mp3|wav)$/.test(url.pathname);
+  const isMediaAsset = /\.(webp|png|jpg|jpeg|svg)$/.test(url.pathname);
 
-  if (isNamedMutable) {
+  if (isNamedMutable || isAudioAsset) {
     // stale-while-revalidate: نعرض النسخة المخزنة ونحدثها في الخلفية
     event.respondWith(
       caches.match(req).then((cached) => {

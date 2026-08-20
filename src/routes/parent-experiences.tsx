@@ -1,16 +1,16 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight,
   Bell,
   ExternalLink,
   Eye,
-  
-
   Globe,
   HeartHandshake,
+  Headphones,
   Info,
   Moon,
+  Pause,
   ShieldAlert,
   Sparkles,
   Users,
@@ -26,6 +26,7 @@ import {
   AccordionItem,
   AccordionTrigger,
 } from "@/components/ui/accordion";
+import { audioExperienceTracks } from "@/data/audioLessons";
 
 export const Route = createFileRoute("/parent-experiences")({
   head: () => ({
@@ -34,13 +35,13 @@ export const Route = createFileRoute("/parent-experiences")({
       {
         name: "description",
         content:
-          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
+          "تجارب شخصية من أهالي أطفال السكري من النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
       },
       { property: "og:title", content: "تجارب أهالي مفيدة — سما" },
       {
         property: "og:description",
         content:
-          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
+          "تجارب شخصية من أهالي أطفال السكري من النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر والحياة اليومية، دون إعلانات أو عمولات.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://t1d-ar.com/parent-experiences" },
@@ -49,7 +50,7 @@ export const Route = createFileRoute("/parent-experiences")({
       {
         name: "twitter:description",
         content:
-          "تجارب شخصية من أهالي أطفال السكري النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر.",
+          "تجارب شخصية من أهالي أطفال السكري من النوع الأول مع أدوات وأجهزة ساعدتهم في المتابعة والسفر.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/parent-experiences" }],
@@ -59,7 +60,7 @@ export const Route = createFileRoute("/parent-experiences")({
 
 const features = [
   { icon: Eye, title: "عرض دائم وواضح", body: "أرقام كبيرة تُقرأ من بعيد طوال اليوم بدون لمس." },
-  { icon: Globe, title: "يعمل عن بُعد", body: "طفلك في المدرسة أو مدينة أخرى والقراءة تصلك لحظياً." },
+  { icon: Globe, title: "يعمل عن بُعد", body: "طفلك في المدرسة أو مدينة أخرى والقراءة تصلك لحظيًّا." },
   { icon: Bell, title: "تنبيهات صوتية", body: "نغمات مختلفة في كل مرة لمنع التعوّد والتجاهل." },
   { icon: Vibrate, title: "قرص اهتزاز", body: "يوضع تحت الوسادة — للنوم العميق وضعاف السمع." },
   { icon: Users, title: "متابعة شخصين", body: "جهاز واحد يعرض سكر شخصين في آن واحد." },
@@ -77,13 +78,13 @@ const steps: Record<string, { label: string; items: [string, string][]; tip: str
   dexcom: {
     label: "Dexcom",
     items: [
-      ["فعّل مشاركة Dexcom Share", "افتح تطبيق Dexcom على هاتف طفلك ← Share ← أضف متابعاً واحداً على الأقل ببريدك الإلكتروني."],
+      ["فعّل مشاركة Dexcom Share", "افتح تطبيق Dexcom على هاتف طفلك ← Share ← أضف متابعًا واحداً على الأقل ببريدك الإلكتروني."],
       ["حمّل تطبيق SugarPixel Hub", "ابحث عنه في App Store أو Google Play وثبّته على هاتفك أنت."],
       ["وصّل الجهاز بشبكة WiFi", "شغّل الجهاز ← افتح التطبيق ← Add SugarPixel ← أدخل اسم الشبكة وكلمة المرور."],
       ["أضف مصدر البيانات", "Add Data Source ← اختر Dexcom ← أدخل بيانات حساب Dexcom الخاص بطفلك."],
       ["اضبط حدود التنبيه", "حدّد مستوى السكر المنخفض والمرتفع — راجعوا الطبيب للأرقام المناسبة لطفلكم."],
     ],
-    tip: "إذا لم تظهر البيانات: تأكد أن هناك متابعاً مضافاً في إعدادات Share داخل تطبيق Dexcom.",
+    tip: "إذا لم تظهر البيانات: تأكد أن هناك متابعًا مضافاً في إعدادات Share داخل تطبيق Dexcom.",
   },
   libre: {
     label: "Freestyle Libre",
@@ -107,13 +108,13 @@ const steps: Record<string, { label: string; items: [string, string][]; tip: str
 };
 
 const faqs: [string, string][] = [
-  ["هل يجب أن يكون طفلي في نفس المنزل أو الشبكة؟", "لا. الجهاز يجلب البيانات من الإنترنت مباشرة، فطفلك قد يكون في المدرسة أو عند أقاربه أو في مدينة أخرى وتصلك القراءة لحظياً."],
+  ["هل يجب أن يكون طفلي في نفس المنزل أو الشبكة؟", "لا. الجهاز يجلب البيانات من الإنترنت مباشرة، فطفلك قد يكون في المدرسة أو عند أقاربه أو في مدينة أخرى وتصلك القراءة لحظيًّا."],
   ["هل يحتاج الجهاز بلوتوث؟", "لا، يعمل عبر WiFi على شبكة 2.4 GHz فقط، ولا يحتاج قرباً من هاتف طفلك."],
-  ["كم مرة تتحدّث القراءة؟", "كل ٥ دقائق تقريباً، حسب معدل إرسال جهاز القياس المستمر."],
+  ["كم مرة تتحدّث القراءة؟", "كل ٥ دقائق تقريبًا، حسب معدل إرسال جهاز القياس المستمر."],
   ["ماذا يحدث إذا انقطع الإنترنت؟", "يتوقف جلب القراءات الجديدة، ويوجد تنبيه خاص لانقطاع الاتصال."],
   ["كيف أغيّر وحدة القياس؟", "من التطبيق ← اختر الجهاز ← Display Settings ← اختر mg/dL أو mmol/L."],
   ["البيانات لا تظهر — ماذا أفعل؟", "تأكد أن الشبكة 2.4 GHz وتعمل، وأن البيانات تظهر في تطبيق Dexcom/Libre، وأن المتابع مضاف في إعدادات المشاركة، ثم أعد تشغيل الجهاز."],
-  ["من أين يمكن شراؤه ويصل للسعودية؟", "خياران رسميان يشحنان من دبي: الموقع الرسمي customtypeone.com (‏110$ تقريباً) أو Diapoint (‏150$ تقريباً)، وقد تُطبّق رسوم جمركية عند الاستلام."],
+  ["من أين يمكن شراؤه ويصل للسعودية؟", "خياران رسميان يشحنان من دبي: الموقع الرسمي customtypeone.com (‏110$ تقريبًا) أو Diapoint (‏150$ تقريبًا)، وقد تُطبّق رسوم جمركية عند الاستلام."],
 ];
 
 const filters = [
@@ -153,10 +154,66 @@ const frioMoments = [
   "الأيام الحارة",
 ];
 
+/** زر «استمع إلى التجربة» — يستدعي عنصر الصوت الوحيد في الصفحة. */
+function ListenToExperienceButton({
+  playing,
+  onToggle,
+}: {
+  playing: boolean;
+  onToggle: () => void;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onToggle}
+      aria-pressed={playing}
+      className="inline-flex items-center gap-2 rounded-2xl border border-primary/30 bg-primary-soft px-5 py-3 min-h-11 text-sm font-bold text-primary hover:bg-primary-soft/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+    >
+      {playing ? <Pause className="h-4 w-4 fill-current" /> : <Headphones className="h-4 w-4" />}
+      {playing ? "إيقاف الصوت" : "استمع إلى التجربة"}
+    </button>
+  );
+}
+
 function ParentExperiencesPage() {
   const [tab, setTab] = useState<keyof typeof steps>("dexcom");
   const [filter, setFilter] = useState<FilterId>("all");
   const active = steps[tab];
+
+  /* عنصر صوت واحد للصفحة كلها — بلا تشغيل تلقائي، ومقطع واحد في كل مرة. */
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
+
+  const toggleExperienceAudio = (trackId: string) => {
+    const a = audioRef.current;
+    const track = audioExperienceTracks.find((t) => t.id === trackId);
+    if (!a || !track) return;
+    if (playingId === trackId) {
+      a.pause();
+      setPlayingId(null);
+      return;
+    }
+    a.pause();
+    a.src = track.src;
+    a.load();
+    a.play()
+      .then(() => setPlayingId(trackId))
+      .catch(() => setPlayingId(null));
+  };
+
+  /* إيقاف الصوت عند مغادرة الصفحة. */
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    const onEnded = () => setPlayingId(null);
+    a.addEventListener("ended", onEnded);
+    return () => {
+      a.removeEventListener("ended", onEnded);
+      a.pause();
+      a.removeAttribute("src");
+      a.load();
+    };
+  }, []);
   const showSugar = filter === "all" || filter === "devices";
   const showFrio = filter === "all" || filter === "insulin" || filter === "travel";
 
@@ -165,6 +222,8 @@ function ParentExperiencesPage() {
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
       <main className="flex-1 mx-auto max-w-3xl w-full px-4 sm:px-6 py-6 sm:py-12 space-y-10">
+        {/* عنصر الصوت الوحيد في الصفحة */}
+        <audio ref={audioRef} preload="none" className="hidden" />
         <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
           <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">
             الرئيسية
@@ -182,7 +241,7 @@ function ParentExperiencesPage() {
             اجتهادات وتجارب من أهالٍ عاشوا الرحلة
           </h1>
           <p className="text-muted-foreground max-w-2xl mx-auto leading-loose">
-            هذه المساحة لتجارب شخصية شاركها أهالي أطفال مصابين بسكري النوع الأول. ليست توصية طبية
+            هذه المساحة لتجارب شخصية شاركها أهالي أطفال مصابين بالسكري من النوع الأول. ليست توصية طبية
             ولا إعلاناً تجارياً، بل خبرة عملية قد تختصر عليكم الطريق.
           </p>
         </header>
@@ -213,11 +272,17 @@ function ParentExperiencesPage() {
             <span className="inline-block rounded-full bg-muted px-3 py-1 text-sm text-muted-foreground">
               تجربة (١) — متابعة السكر عن بُعد
             </span>
-            <h2 className="text-2xl font-bold">شاشة تعرض سكر طفلك لحظياً وتنبّهك فوراً</h2>
+            <h2 className="text-2xl font-bold">شاشة تعرض سكر طفلك لحظيًّا وتنبّهك فورًا</h2>
             <p className="text-muted-foreground leading-loose">
               جهاز مستقل (SugarPixel) يتصل بجهاز القياس المستمر عبر الإنترنت ويعرض القراءة على مدار
               الساعة — حتى لو كان طفلك في مدرسة أخرى أو مدينة أخرى.
             </p>
+            <div className="pt-1">
+              <ListenToExperienceButton
+                playing={playingId === "experience-sugarpixel"}
+                onToggle={() => toggleExperienceAudio("experience-sugarpixel")}
+              />
+            </div>
           </div>
 
           <figure className="mx-auto w-full max-w-[420px]">
@@ -359,7 +424,7 @@ function ParentExperiencesPage() {
           </div>
           <p className="rounded-2xl bg-destructive/10 border-r-4 border-destructive p-4 text-sm leading-loose text-foreground">
             <ShieldAlert className="inline h-4 w-4 text-destructive ml-1" />
-            هذا الجهاز للمراقبة والتنبيه فقط. لا تتخذوا قرارات علاجية بناءً عليه وحده — اتبعوا دائماً
+            هذا الجهاز للمراقبة والتنبيه فقط. لا تتخذوا قرارات علاجية بناءً عليه وحده — اتبعوا دائمًا
             تعليمات الفريق الطبي المعالج.
           </p>
         </section>
@@ -391,6 +456,12 @@ function ParentExperiencesPage() {
               ✓ جُرّب من أحد الأهالي
             </span>
             <h2 className="text-2xl font-bold">حل بسيط لحمل الإنسولين بعيدًا عن حرارة الجو</h2>
+            <div className="pt-1">
+              <ListenToExperienceButton
+                playing={playingId === "experience-frio"}
+                onToggle={() => toggleExperienceAudio("experience-frio")}
+              />
+            </div>
           </div>
 
           <figure className="mx-auto w-full max-w-[220px] sm:max-w-[260px]">

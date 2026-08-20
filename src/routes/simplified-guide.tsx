@@ -60,13 +60,13 @@ export const Route = createFileRoute("/simplified-guide")({
   },
   head: () => ({
     meta: [
-      { title: "الدليل المبسّط لأهالي أطفال السكري النوع الأول — سما" },
+      { title: "الدليل المبسّط لأهالي أطفال السكري من النوع الأول — سما" },
       {
         name: "description",
         content:
-          "دليل مكتوب مبسّط ومطمئن لأولياء أمور الأطفال المصابين حديثًا بسكري النوع الأول، خطوة بخطوة من اليوم الأول.",
+          "دليل مكتوب مبسّط ومطمئن لأولياء أمور الأطفال المصابين حديثًا بالسكري من النوع الأول، خطوة بخطوة من اليوم الأول.",
       },
-      { property: "og:title", content: "الدليل المبسّط لأهالي أطفال السكري النوع الأول" },
+      { property: "og:title", content: "الدليل المبسّط لأهالي أطفال السكري من النوع الأول" },
       {
         property: "og:description",
         content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
@@ -74,7 +74,7 @@ export const Route = createFileRoute("/simplified-guide")({
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://t1d-ar.com/simplified-guide" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "الدليل المبسّط لأهالي أطفال السكري النوع الأول" },
+      { name: "twitter:title", content: "الدليل المبسّط لأهالي أطفال السكري من النوع الأول" },
       {
         name: "twitter:description",
         content: "محتوى مكتوب جميل ومنظم وسهل القراءة، من اليوم الأول بعد التشخيص.",
@@ -119,11 +119,11 @@ function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
 
 // أسئلة عملية للطبيب حسب القسم
 const doctorQuestions: Record<string, string> = {
-  "what-is-insulin": "ما هي خطة الإنسولين الخاصة بطفلي مكتوبةً، ومتى تُراجع؟",
+  "what-is-insulin": "ما خطة الإنسولين المكتوبة الخاصة بطفلي؟ ومتى تُراجع؟",
   "rapid-insulin": "متى أعطي جرعة سريع المفعول بالضبط، وماذا أفعل إذا نسيت الجرعة؟",
   "long-insulin": "ماذا أفعل إذا نسيت أو تأخرت في جرعة الإنسولين طويل المفعول؟",
   "injection-basics": "هل تستطيعون مراجعة طريقة الحقن معي عمليًا، وأماكن التغيير المناسبة؟",
-  "low-sugar": "ما هو الرقم الذي يعتبر هبوطًا لطفلي بالضبط، وكم جرام سكر سريع أعطيه؟",
+  "low-sugar": "ما مستوى السكر الذي يُعد هبوطًا لطفلي؟ وما كمية السكر السريع المناسبة وفق خطته؟",
   "severe-low": "متى أستخدم الجلوكاجون ومن يجب أن يتدرب عليه في الأسرة والمدرسة؟",
   "high-sugar": "ما هي خطة التصحيح المكتوبة عند ارتفاع السكر، ومتى أتصل بكم؟",
   ketones: "متى أفحص الكيتونات بالضبط؟ ومتى أذهب للطوارئ؟",
@@ -325,35 +325,6 @@ function SectionCard({
   );
 }
 
-function InsulinStorageSection() {
-  const items = [
-    "الإنسولين غير المستخدم يحفظ في الثلاجة حسب تعليمات النشرة والفريق الطبي.",
-    "لا يوضع في الفريزر.",
-    "القلم المستخدم يحفظ حسب تعليمات الشركة والفريق الطبي.",
-    "لا يستخدم إذا تغير لونه أو ظهرت شوائب.",
-    "أثناء السفر أو الحر، استخدم حقيبة تبريد مناسبة ولا تتركه في السيارة.",
-  ];
-  return (
-    <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
-      <header className="space-y-1">
-        <h3 className="text-2xl sm:text-3xl font-bold">كيف أحفظ الإنسولين؟</h3>
-        <p className="text-sm text-muted-foreground">حفظ صحيح للإنسولين يحمي مفعوله ويحمي طفلك.</p>
-      </header>
-      <ul className="space-y-2.5">
-        {items.map((t) => (
-          <li
-            key={t}
-            className="flex items-start gap-2.5 rounded-2xl bg-muted/60 px-4 py-3 text-sm sm:text-base leading-loose"
-          >
-            <CheckCircle2 className="h-4 w-4 text-primary shrink-0 mt-1" />
-            <span>{t}</span>
-          </li>
-        ))}
-      </ul>
-    </section>
-  );
-}
-
 function TrueFalseSection() {
   const items = [
     {
@@ -364,7 +335,7 @@ function TrueFalseSection() {
     {
       t: "كل أدوية السكري تناسب كل الأنواع",
       a: false,
-      why: "خطأ — الإنسولين هو العلاج الأساسي للسكري النوع الأول، ولا يُستخدم أي دواء إضافي أو بديل إلا إذا وصفه الفريق الطبي المعالج.",
+      why: "خطأ — الإنسولين هو العلاج الأساسي للسكري من النوع الأول، ولا يُستخدم أي دواء إضافي أو بديل إلا إذا وصفه الفريق الطبي المعالج.",
     },
     {
       t: "لا أغيّر خطة الإنسولين أو نسب الجرعات من نفسي خارج الخطة والتعليمات التي وضعها الفريق الطبي",
@@ -594,7 +565,7 @@ function SimplifiedGuidePage() {
         <section className="rounded-3xl overflow-hidden border border-border bg-card shadow-[var(--shadow-card)] print:break-inside-avoid">
           <img
             src="/images/simplified-guide/hero-banner.webp"
-            alt="الدليل المبسّط لأهالي أطفال السكري النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
+            alt="الدليل المبسّط لأهالي أطفال السكري من النوع الأول — من اليوم الأول بعد التشخيص، نمشي معكم خطوة بخطوة بلغة واضحة ومطمئنة"
             loading="eager"
             decoding="async"
             className="w-full block h-32 sm:h-auto object-cover object-center"
@@ -707,9 +678,9 @@ function SimplifiedGuidePage() {
                 منصة تعليمية تمشي معك خطوة بخطوة
               </h2>
               <p className="mx-auto max-w-2xl text-base sm:text-lg text-muted-foreground leading-loose">
-                هدفنا أن نُعلّمك ما تحتاجه الآن، لا أن نغرقك بكل التفاصيل. كل فصل قصير ومبني على
-                سؤال عملي يهم الأسرة في الأيام الأولى. ابدأ من الفصل الأول وتقدّم بهدوء، وإذا واجهت
-                موقفًا عاجلًا فهناك زر مباشر لخطوات التصرف الفوري.
+                هدفنا أن نُعلّمكم ما تحتاجون إليه الآن، لا أن نغرقكم بكل التفاصيل. كل فصل قصير ومبني
+                على سؤال عملي يهم الأسرة في الأيام الأولى. ابدؤوا من الفصل الأول وتقدّموا بهدوء،
+                وإذا واجهتم موقفًا عاجلًا فهناك زر مباشر لخطوات التصرف الفوري.
               </p>
               <div className="grid sm:grid-cols-3 gap-3 pt-2 text-right">
                 <div className="rounded-2xl bg-background border border-border p-4 flex gap-3 items-start">
@@ -1005,11 +976,6 @@ function SimplifiedGuidePage() {
                 isRead={readSections.has(focusedSection.id)}
                 onToggleRead={() => toggleRead(focusedSection.id)}
               />
-              {focusedSection.id === "injection-basics" && (
-                <div className="mt-8">
-                  <InsulinStorageSection />
-                </div>
-              )}
             </div>
 
             {/* Prev / Next lesson */}
@@ -1076,7 +1042,6 @@ function SimplifiedGuidePage() {
                     isRead={readSections.has(s.id)}
                     onToggleRead={() => toggleRead(s.id)}
                   />
-                  {!isSearching && s.id === "injection-basics" && <InsulinStorageSection />}
                   {!isSearching && isLastInChapter && <ChapterReview chapterIdx={chapterIdx} />}
                 </div>
               );

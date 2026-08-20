@@ -1,4 +1,4 @@
-import { useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import {
   TrendingDown,
@@ -17,6 +17,8 @@ import {
   ShieldAlert,
   Phone,
   Siren,
+  Headphones,
+  Pause,
   type LucideIcon,
 } from "lucide-react";
 import {
@@ -24,6 +26,7 @@ import {
   type EmergencyScenario,
   type Severity,
 } from "@/data/emergencyScenarios";
+import { emergencyTrackForScenario } from "@/data/audioLessons";
 
 type CaseSearch = { case?: string };
 
@@ -38,13 +41,13 @@ export const Route = createFileRoute("/what-to-do-now")({
       {
         name: "description",
         content:
-          "دليل سريع لأولياء أمور الأطفال المصابين بسكري النوع الأول للحالات اليومية والعاجلة بلغة عربية مبسطة.",
+          "دليل سريع لأولياء أمور الأطفال المصابين بالسكري من النوع الأول للحالات اليومية والعاجلة بلغة عربية مبسطة.",
       },
       { property: "og:title", content: "ماذا أفعل الآن؟ — سما" },
       {
         property: "og:description",
         content:
-          "دليل سريع للحالات اليومية والعاجلة لأطفال سكري النوع الأول بلغة عربية مبسطة.",
+          "دليل سريع للحالات اليومية والعاجلة لأطفال السكري من النوع الأول بلغة عربية مبسطة.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://t1d-ar.com/what-to-do-now" },
@@ -52,7 +55,7 @@ export const Route = createFileRoute("/what-to-do-now")({
       { name: "twitter:title", content: "ماذا أفعل الآن؟ — سما" },
       {
         name: "twitter:description",
-        content: "دليل سريع للحالات اليومية والعاجلة لأطفال سكري النوع الأول.",
+        content: "دليل سريع للحالات اليومية والعاجلة لأطفال السكري من النوع الأول.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/what-to-do-now" }],
@@ -143,6 +146,55 @@ function EmergencyGuidePage() {
     emergencyScenarios.find((s) => s.id === search.case) ?? null;
   const setActive = (s: EmergencyScenario | null) =>
     navigate({ search: s ? { case: s.id } : {} });
+
+  /* عنصر صوت واحد للصفحة كلها — بلا تشغيل تلقائي. */
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+  const [audioPlaying, setAudioPlaying] = useState(false);
+  const activeId = active?.id ?? null;
+
+  const toggleScenarioAudio = () => {
+    const a = audioRef.current;
+    const track = emergencyTrackForScenario(activeId);
+    if (!a || !track) return;
+    if (audioPlaying) {
+      a.pause();
+      setAudioPlaying(false);
+      return;
+    }
+    if (!a.src.endsWith(track.src)) {
+      a.src = track.src;
+      a.load();
+    }
+    a.play()
+      .then(() => setAudioPlaying(true))
+      .catch(() => setAudioPlaying(false));
+  };
+
+  /* تغيير الحالة أو مغادرة الصفحة يوقف الصوت. */
+  useEffect(() => {
+    const a = audioRef.current;
+    return () => {
+      if (a) {
+        a.pause();
+        a.removeAttribute("src");
+        a.load();
+      }
+      setAudioPlaying(false);
+    };
+  }, [activeId]);
+
+  useEffect(() => {
+    const a = audioRef.current;
+    if (!a) return;
+    const onEnded = () => setAudioPlaying(false);
+    const onPause = () => setAudioPlaying(false);
+    a.addEventListener("ended", onEnded);
+    a.addEventListener("pause", onPause);
+    return () => {
+      a.removeEventListener("ended", onEnded);
+      a.removeEventListener("pause", onPause);
+    };
+  }, []);
 
   const filtered = useMemo(() => {
     const rank: Record<string, number> = { critical: 0, warning: 1, info: 2, safe: 3 };
@@ -274,6 +326,9 @@ function EmergencyGuidePage() {
         )}
 
 
+        {/* عنصر الصوت الوحيد في الصفحة */}
+        <audio ref={audioRef} preload="none" className="hidden" />
+
         {/* Detail view */}
         {active && (
           <ScenarioDetail
@@ -281,6 +336,9 @@ function EmergencyGuidePage() {
             onBack={() => setActive(null)}
             onPrint={handlePrint}
             onShare={() => handleShare(active)}
+            hasAudio={Boolean(emergencyTrackForScenario(active.id))}
+            audioPlaying={audioPlaying}
+            onToggleAudio={toggleScenarioAudio}
           />
         )}
 
@@ -339,11 +397,17 @@ function ScenarioDetail({
   onBack,
   onPrint,
   onShare,
+  hasAudio,
+  audioPlaying,
+  onToggleAudio,
 }: {
   scenario: EmergencyScenario;
   onBack: () => void;
   onPrint: () => void;
   onShare: () => void;
+  hasAudio: boolean;
+  audioPlaying: boolean;
+  onToggleAudio: () => void;
 }) {
   const Icon = iconMap[scenario.icon] ?? Info;
   const style = severityStyles[scenario.severity];
@@ -391,6 +455,27 @@ function ScenarioDetail({
         </div>
       )}
 
+
+      {hasAudio && (
+        <div className="print:hidden">
+          <button
+            type="button"
+            onClick={onToggleAudio}
+            aria-pressed={audioPlaying}
+            className="inline-flex items-center gap-2 rounded-2xl border border-primary/30 bg-primary-soft px-5 py-3 min-h-11 text-sm font-bold text-primary hover:bg-primary-soft/70 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+          >
+            {audioPlaying ? (
+              <Pause className="h-4 w-4 fill-current" />
+            ) : (
+              <Headphones className="h-4 w-4" />
+            )}
+            {audioPlaying ? "إيقاف الصوت" : "استمع إلى الخطوات"}
+          </button>
+          <p className="pt-1.5 text-xs text-muted-foreground">
+            الصوت مساعد فقط، ولا يغني عن قراءة الخطوات المكتوبة أدناه.
+          </p>
+        </div>
+      )}
 
       <div className="flex flex-wrap gap-2 print:hidden">
         <button

@@ -8,25 +8,24 @@ import { AskDoctorReminder } from "@/components/sama/AskDoctorReminder";
 export const Route = createFileRoute("/family-tools")({
   head: () => ({
     meta: [
-      { title: "إضافات معرفية — سما" },
+      { title: "أدوات عملية للأسرة — سما" },
       {
         name: "description",
         content:
-          "قوالب وأسئلة وقوائم عملية للأسرة بعد تشخيص سكري النوع الأول: رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي.",
+          "أدوات جاهزة للأسرة بعد تشخيص السكري من النوع الأول: قالب رسالة للفريق الطبي يُنسخ بضغطة، وقائمة أسئلة أول موعد جاهزة للطباعة.",
       },
-      { property: "og:title", content: "إضافات معرفية — سما" },
+      { property: "og:title", content: "أدوات عملية للأسرة — سما" },
       {
         property: "og:description",
-        content:
-          "قوالب وأسئلة وقوائم عملية جاهزة للنسخ والطباعة تساعدك في الأيام الأولى بعد تشخيص طفلك.",
+        content: "قالب رسالة للفريق الطبي وقائمة أسئلة أول موعد — جاهزة للنسخ والطباعة.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://t1d-ar.com/family-tools" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "إضافات معرفية — سما" },
+      { name: "twitter:title", content: "أدوات عملية للأسرة — سما" },
       {
         name: "twitter:description",
-        content: "قوالب وأسئلة وقوائم عملية جاهزة للنسخ والطباعة للأسرة.",
+        content: "قالب رسالة للفريق الطبي وقائمة أسئلة أول موعد — جاهزة للنسخ والطباعة.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/family-tools" }],
@@ -42,14 +41,14 @@ function FamilyToolsPage() {
       <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
         <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">الرئيسية</Link>
         <ArrowRight className="h-3.5 w-3.5 rotate-180" />
-        <span className="text-foreground">إضافات معرفية</span>
+        <span className="text-foreground">أدوات عملية للأسرة</span>
       </nav>
 
       <header className="space-y-3 text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">إضافات معرفية</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">أدوات عملية للأسرة</h1>
         <p className="text-muted-foreground max-w-2xl mx-auto leading-loose">
-          مجموعة قوالب وقوائم عملية جاهزة للنسخ والطباعة، تساعدكم في التواصل مع الفريق الطبي
-          وتنظيم الأيام الأولى بعد التشخيص.
+          أدوات تستخدمونها وقت الحاجة، لا محتوى تقرؤونه مرة أخرى: قالب رسالة يُنسخ بضغطة، وقائمة
+          أسئلة تُطبع وتُؤخذ إلى الموعد. الدروس التعليمية كاملة في الدليل المبسّط.
         </p>
       </header>
 

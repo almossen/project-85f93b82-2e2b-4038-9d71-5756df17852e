@@ -25,25 +25,25 @@ import happyChild from "@/assets/happy-child.webp";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "سما — رحلة التعايش مع سكري النوع الأول" },
+      { title: "سما — رحلة التعايش مع السكري من النوع الأول" },
       {
         name: "description",
         content:
-          "منصة سما: محتوى عربي توعوي مبسط لأهالي الأطفال المصابين حديثاً بسكري النوع الأول — من اليوم الأول للتشخيص حتى التمكّن بثقة وطمأنينة.",
+          "منصة سما: محتوى عربي توعوي مبسط لأهالي الأطفال المصابين حديثاً بالسكري من النوع الأول — من اليوم الأول للتشخيص حتى التمكّن بثقة وطمأنينة.",
       },
-      { property: "og:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      { property: "og:title", content: "سما — رحلة التعايش مع السكري من النوع الأول" },
       {
         property: "og:description",
         content:
-          "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول — محتوى مبسط، علمي، ومطمئن.",
+          "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بالسكري من النوع الأول — محتوى مبسط، علمي، ومطمئن.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://t1d-ar.com/" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "سما — رحلة التعايش مع سكري النوع الأول" },
+      { name: "twitter:title", content: "سما — رحلة التعايش مع السكري من النوع الأول" },
       {
         name: "twitter:description",
-        content: "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بسكري النوع الأول.",
+        content: "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بالسكري من النوع الأول.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/" }],
@@ -55,7 +55,7 @@ const whySama = [
   {
     icon: Languages,
     title: "بلغة عربية مبسّطة",
-    text: "محتوى مكتوب بلغة قريبة من الأسرة، بعيداً عن المصطلحات الطبية المعقدة.",
+    text: "محتوى مكتوب بلغة قريبة من الأسرة، بعيدًا عن المصطلحات الطبية المعقّدة.",
   },
   {
     icon: Stethoscope,
@@ -100,7 +100,7 @@ function HomePage() {
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
                 <span className="block">سما</span>
                 <span className="block text-2xl sm:text-3xl lg:text-4xl text-muted-foreground font-medium mt-2">
-                  رحلة التعايش مع سكري النوع الأول
+                  رحلة التعايش مع السكري من النوع الأول
                 </span>
               </h1>
               <div className="text-base sm:text-lg text-muted-foreground leading-relaxed max-w-xl">
@@ -214,7 +214,7 @@ function HomePage() {
                 لمن هذه المنصة؟
               </h2>
               <p className="text-sand-foreground/80 leading-loose">
-                موجّهة لكل من يرعى طفلاً مصاباً بسكري النوع الأول، بأي مستوى تعليمي وأي خلفية.
+                موجّهة لكل من يرعى طفلاً مصاباً بالسكري من النوع الأول، بأي مستوى تعليمي وأي خلفية.
               </p>
             </header>
             <div className="grid sm:grid-cols-3 gap-4">
@@ -247,7 +247,7 @@ function HomePage() {
                 يمكن لطفلكم أن يكبر ويتعلم ويلعب ويحقق طموحاته، بإذن الله
               </h2>
               <p className="text-muted-foreground leading-loose">
-                ابدؤوا بالأساسيات أولاً، ثم ارجعوا للدليل كلما ظهر سؤال جديد. التعلم المتدرّج
+                ابدؤوا بالأساسيات أولًا، ثم ارجعوا إلى الدليل كلما ظهر سؤال جديد. التعلم المتدرّج
                 والإدارة المناسبة يصنعان فرقًا كبيرًا في ثقة الأسرة والطفل.
               </p>
               <Link

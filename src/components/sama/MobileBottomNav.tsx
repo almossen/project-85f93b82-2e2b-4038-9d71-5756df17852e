@@ -31,7 +31,7 @@ const linkActive =
 const moreLinks = [
   { to: "/listen", label: "استمع إلى سما", icon: Headphones },
   { to: "/parent-experiences", label: "تجارب أهالي مفيدة", icon: HeartHandshake },
-  { to: "/family-tools", label: "إضافات معرفية", icon: Wrench },
+  { to: "/family-tools", label: "أدوات عملية للأسرة", icon: Wrench },
   { to: "/about", label: "عن المنصة", icon: Info },
   { to: "/sources", label: "المصادر", icon: Library },
   { to: "/privacy", label: "سياسة الخصوصية", icon: ShieldCheck },

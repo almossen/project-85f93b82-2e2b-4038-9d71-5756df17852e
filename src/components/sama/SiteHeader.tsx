@@ -58,7 +58,7 @@ export function SiteHeader() {
               className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
             }}
           >
-            إضافات معرفية
+            أدوات عملية للأسرة
           </Link>
           <Link
             to="/parent-experiences"

@@ -24,7 +24,7 @@ type Result = {
 const pages = [
   { title: "الدليل المبسط", subtitle: "كل الفصول والدروس", to: "/simplified-guide" },
   { title: "ماذا أفعل الآن؟", subtitle: "الحالات الطارئة", to: "/what-to-do-now" },
-  { title: "إضافات معرفية", subtitle: "قوالب وقوائم للطباعة", to: "/family-tools" },
+  { title: "أدوات عملية للأسرة", subtitle: "قوالب وقوائم للطباعة", to: "/family-tools" },
   { title: "تجارب أهالي مفيدة", subtitle: "تجارب عملية مثل جهاز متابعة السكر عن بُعد", to: "/parent-experiences" },
   { title: "عن المنصة والمصادر", subtitle: "هدف المنصة والمراجع المعتمدة", to: "/about" },
 ];
