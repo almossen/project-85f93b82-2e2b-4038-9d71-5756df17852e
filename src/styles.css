@@ -175,6 +175,7 @@
     max-width: none !important;
     width: auto !important;
     height: auto !important;
+    min-height: 0 !important;
     overflow: visible !important;
   }
   body.printing-scope .print-target {
