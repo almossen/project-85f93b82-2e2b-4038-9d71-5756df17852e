@@ -142,6 +142,38 @@ export const guideSectionHeroes: Record<string, { image: string; alt: string }> 
     image: `${HERO_BASE}/final-message.webp`,
     alt: "رسالة أخيرة – صورة ختامية",
   },
+  "communicating-with-team": {
+    image: `${HERO_BASE}/clear-communication-with-diabetes-team.webp`,
+    alt: "أسرة تجهّز ملاحظاتها قبل التواصل مع فريق السكري – صورة توضيحية",
+  },
+  "honeymoon-phase": {
+    image: `${HERO_BASE}/honeymoon-phase-after-diagnosis.webp`,
+    alt: "مرحلة التحسّن المؤقت بعد التشخيص – صورة توضيحية",
+  },
+  "insulin-storage": {
+    image: `${HERO_BASE}/storing-insulin-with-family.webp`,
+    alt: "حفظ الإنسولين في المنزل وأثناء التنقل – صورة إرشادية",
+  },
+  "missed-dose": {
+    image: `${HERO_BASE}/missed-insulin-dose-what-to-do.webp`,
+    alt: "ماذا نفعل عند نسيان جرعة الإنسولين – صورة إرشادية",
+  },
+  "pattern-not-number": {
+    image: `${HERO_BASE}/pattern-management-and-smart-notes.webp`,
+    alt: "فهم نمط القراءات ودفتر الملاحظات الذكي – صورة توضيحية",
+  },
+  "cgm-vs-symptoms": {
+    image: `${HERO_BASE}/when-not-to-rely-on-sensor-alone.webp`,
+    alt: "متى لا نكتفي بقراءة الحساس وحدها – صورة توضيحية",
+  },
+  "sleep-night": {
+    image: `${HERO_BASE}/night-care-and-sleep-routine.webp`,
+    alt: "روتين ليلي هادئ لمتابعة الطفل أثناء النوم – صورة توضيحية",
+  },
+  "outings-restaurants": {
+    image: `${HERO_BASE}/eating-out-and-restaurants-with-family.webp`,
+    alt: "الخروج والمطاعم والمناسبات مع الأسرة – صورة توضيحية",
+  },
 };
 
 /**
