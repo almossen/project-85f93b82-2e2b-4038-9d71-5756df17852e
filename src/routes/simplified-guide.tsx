@@ -14,6 +14,7 @@ import {
   ListChecks,
   Printer,
   Rows3,
+  Settings2,
   Siren,
   Sparkles,
   ShieldCheck,
@@ -24,6 +25,8 @@ import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SiteHeader } from "@/components/sama/SiteHeader";
@@ -235,8 +238,10 @@ function SectionCard({
         <LessonAudioPlayer sectionId={section.id} lessonLabel={lessonLabel} />
 
         <div id={printScopeId}>
-          <h1 className="hidden print:block">{section.title}</h1>
-          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 max-w-[68ch]">
+          {/* عنوان نسخة الطباعة: <p> لا <h1> — الصفحة تحتوي H1 واحدًا في أعلى main،
+              وتكرار H1 لكل درس كان يكسر التسلسل الدلالي. */}
+          <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
+          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
             {paragraphs.map((p, i) => (
               <p key={i} className="whitespace-pre-line">
                 {p}
@@ -542,6 +547,10 @@ function SimplifiedGuidePage() {
       </div>
 
       <main className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
+        {/* العنوان الدلالي الوحيد للصفحة. مخفي بصريًا لأن الهوية الحالية
+            تعتمد على بطاقة الترحيب، لكنه ضروري لتسلسل H1 → H2 → H3. */}
+        <h1 className="sr-only">الدليل المبسّط لأهالي الأطفال المصابين بالسكري من النوع الأول</h1>
+
         <MedicalDisclaimer />
 
         {/* استكمل من حيث توقفت */}
@@ -649,7 +658,9 @@ function SimplifiedGuidePage() {
           </details>
         )}
 
-        {chapterIdx === 0 && !isSearching && (
+        {/* مدخل الصوت العام يظهر في سياق الفهرس/نظرة الفصل فقط.
+            داخل درس مركّز يكفي <LessonAudioPlayer /> الخاص بالدرس نفسه. */}
+        {chapterIdx === 0 && !isSearching && !isFocusOne && (
           <Link
             to="/listen"
             className="flex items-center gap-3 rounded-2xl border border-primary/25 bg-primary-soft/50 p-4 print:hidden hover:bg-primary-soft transition-colors"
@@ -817,8 +828,74 @@ function SimplifiedGuidePage() {
         {/* View mode toggle */}
         {!isSearching && (
           <div className="flex flex-wrap items-center justify-between gap-2 sm:gap-3 print:hidden">
+            {/* الجوال: إعدادات القراءة كلها في زر واحد لتقليل الازدحام فوق الدرس */}
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button
+                  type="button"
+                  className="sm:hidden shrink-0 inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  <Settings2 className="h-4 w-4 shrink-0" />
+                  <span>إعدادات القراءة</span>
+                  <ChevronDown className="h-4 w-4 shrink-0" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="start" className="w-64 max-w-[90vw]">
+                <DropdownMenuLabel>حجم الخط</DropdownMenuLabel>
+                <DropdownMenuItem
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    changeScale(-1);
+                  }}
+                  disabled={textScale === "base"}
+                  className="min-h-11 gap-2"
+                >
+                  <span className="font-bold">أ−</span>
+                  <span>تصغير الخط</span>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={(e) => {
+                    e.preventDefault();
+                    changeScale(1);
+                  }}
+                  disabled={textScale === "xl"}
+                  className="min-h-11 gap-2"
+                >
+                  <span className="font-bold">أ+</span>
+                  <span>تكبير الخط</span>
+                </DropdownMenuItem>
+
+                <DropdownMenuSeparator />
+
+                <DropdownMenuLabel>نمط العرض</DropdownMenuLabel>
+                <DropdownMenuItem
+                  onSelect={() => setViewMode("focus")}
+                  className="min-h-11 gap-2"
+                  aria-current={viewMode === "focus" ? "true" : undefined}
+                >
+                  <LayoutList className="h-4 w-4 shrink-0" />
+                  <span className={viewMode === "focus" ? "font-bold text-primary" : ""}>
+                    درس واحد
+                  </span>
+                </DropdownMenuItem>
+                <DropdownMenuItem
+                  onSelect={() => {
+                    setViewMode("continuous");
+                    setActiveLessonIdx(null);
+                  }}
+                  className="min-h-11 gap-2"
+                  aria-current={viewMode === "continuous" ? "true" : undefined}
+                >
+                  <Rows3 className="h-4 w-4 shrink-0" />
+                  <span className={viewMode === "continuous" ? "font-bold text-primary" : ""}>
+                    قراءة متواصلة
+                  </span>
+                </DropdownMenuItem>
+              </DropdownMenuContent>
+            </DropdownMenu>
+
             <div
-              className="shrink-0 flex items-center gap-1 rounded-full border border-border bg-card px-1 py-1"
+              className="hidden sm:flex shrink-0 items-center gap-1 rounded-full border border-border bg-card px-1 py-1"
               role="group"
               aria-label="حجم الخط"
             >
@@ -841,7 +918,7 @@ function SimplifiedGuidePage() {
                 أ<span className="text-xs">+</span>
               </button>
             </div>
-            <div className="inline-flex rounded-full border border-border bg-card p-1 text-xs sm:text-sm">
+            <div className="hidden sm:inline-flex rounded-full border border-border bg-card p-1 text-xs sm:text-sm">
               <button
                 type="button"
                 onClick={() => setViewMode("focus")}

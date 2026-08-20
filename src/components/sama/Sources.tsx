@@ -13,7 +13,7 @@ export function Sources() {
       <div className="grid sm:grid-cols-2 gap-4">
         {sources.map((s) => (
           <a
-            key={s.name}
+            key={s.url}
             href={s.url}
             target="_blank"
             rel="noopener noreferrer"

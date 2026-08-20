@@ -36,7 +36,7 @@ function PrivacyPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
-      <main className="flex-1 mx-auto max-w-3xl w-full px-4 sm:px-6 py-8 sm:py-12 space-y-8">
+      <main className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-8 sm:py-12 space-y-8">
         <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
           <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">
             الرئيسية
@@ -50,7 +50,7 @@ function PrivacyPage() {
             <ShieldCheck className="h-6 w-6" aria-hidden="true" />
           </span>
           <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">سياسة الخصوصية — سما</h1>
-          <p className="text-muted-foreground leading-loose">
+          <p className="mx-auto max-w-[72ch] text-muted-foreground leading-loose">
             نحرص على أن تكون تجربتكم في «سما» بسيطة وآمنة، وأن تبقى بيانات أسركم وأطفالكم لديكم.
           </p>
         </header>
@@ -61,7 +61,7 @@ function PrivacyPage() {
             {points.map((p) => (
               <li
                 key={p}
-                className="rounded-2xl border border-border bg-card p-4 text-sm sm:text-base leading-loose"
+                className="rounded-2xl border border-border bg-card p-4 text-sm sm:text-base leading-loose [&>*]:max-w-[72ch]"
               >
                 {p}
               </li>
@@ -71,7 +71,7 @@ function PrivacyPage() {
 
         <section className="rounded-2xl border-2 border-warning bg-warning/10 p-4 sm:p-5 space-y-2">
           <h2 className="text-lg font-bold text-warning-foreground">تنبيه مهم قبل مشاركة أي معلومة</h2>
-          <p className="text-sm sm:text-base leading-loose text-warning-foreground">
+          <p className="max-w-[72ch] text-sm sm:text-base leading-loose text-warning-foreground">
             لا ينبغي إرسال أسماء الأطفال أو قراءات السكر أو جرعات الإنسولين أو نتائج التحاليل أو أي
             معلومات صحية حساسة عبر أي نموذج أو وسيلة تواصل أو تتبع مرتبطة بالمنصة. هذه المعلومات
             مكانها الفريق الطبي المعالج فقط.
@@ -80,7 +80,7 @@ function PrivacyPage() {
 
         <section className="space-y-3">
           <h2 className="text-xl font-bold">التواصل معنا</h2>
-          <p className="text-sm sm:text-base leading-loose text-muted-foreground">
+          <p className="max-w-[72ch] text-sm sm:text-base leading-loose text-muted-foreground">
             لأي استفسار يخص الخصوصية أو المحتوى، يمكنكم مراسلتنا:
           </p>
           <a

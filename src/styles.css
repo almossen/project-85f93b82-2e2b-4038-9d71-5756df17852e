@@ -135,20 +135,15 @@
     line-height: 1.35;
   }
 
-  /* ضبط الأسطر العربية لتملأ عرض السطر بالكامل */
+  /* محاذاة النص العربي إلى اليمين في كل المقاسات.
+   *
+   * لا نستخدم text-align: justify إطلاقًا: العربية تمدّ المسافات بين الكلمات
+   * بدل مدّ الحروف، فتظهر فجوات وصلت إلى ~31px داخل البطاقات الضيقة.
+   * ضبط عرض السطر (max-w-[..ch]) هو الحل الصحيح لملء العرض، لا justify. */
   p:not([class*="text-center"]):not([class*="text-end"]):not([class*="text-right"]):not([class*="text-left"]),
   li:not([class*="text-center"]):not([class*="text-end"]) {
     text-align: right;
     text-wrap: pretty;
-  }
-
-  /* justify فقط على الشاشات الواسعة — يضر القراءة على الجوال */
-  @media (min-width: 768px) {
-    p:not([class*="text-center"]):not([class*="text-end"]):not([class*="text-right"]):not([class*="text-left"]),
-    li:not([class*="text-center"]):not([class*="text-end"]) {
-      text-align: justify;
-      text-justify: inter-word;
-    }
   }
 }
 

@@ -46,7 +46,7 @@ function FamilyToolsPage() {
 
       <header className="space-y-3 text-center">
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">أدوات عملية للأسرة</h1>
-        <p className="text-muted-foreground max-w-2xl mx-auto leading-loose">
+        <p className="text-muted-foreground max-w-[72ch] mx-auto leading-loose">
           أدوات تستخدمونها وقت الحاجة، لا محتوى تقرؤونه مرة أخرى: قالب رسالة يُنسخ بضغطة، وقائمة
           أسئلة تُطبع وتُؤخذ إلى الموعد. الدروس التعليمية كاملة في الدليل المبسّط.
         </p>

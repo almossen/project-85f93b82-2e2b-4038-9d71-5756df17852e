@@ -85,7 +85,7 @@ function AboutPage() {
 
         <section className="rounded-2xl border border-border bg-card p-5 sm:p-7 space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight">تنويه مهم</h2>
-          <div className="space-y-3 text-sm sm:text-base leading-loose text-muted-foreground">
+          <div className="space-y-3 max-w-[72ch] text-sm sm:text-base leading-loose text-muted-foreground">
             <p>
               منصة <strong className="text-foreground">سما</strong> هي اجتهاد شخصي من ولي أمر
               لطفلة مصابة بالسكري من النوع الأول، أُنشئت بهدف مشاركة المعرفة والخبرة وتسهيل

@@ -427,7 +427,7 @@ function ListenPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
-      <main className="flex-1 mx-auto w-full max-w-3xl px-4 sm:px-6 py-6 sm:py-12 space-y-10">
+      <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 py-6 sm:py-12 space-y-10">
         {/* عنصر الصوت الوحيد في الصفحة */}
         <audio ref={audioRef} preload="metadata" />
 
@@ -471,10 +471,10 @@ function ListenPage() {
           )}
         </header>
 
-        {/* المشغل */}
+        {/* المشغل — يبقى بعرض قراءة مركزي ولا يتمدد مع اتساع الحاوية */}
         <section
           aria-label="مشغل الرحلة الصوتية"
-          className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/70 to-mint/15 p-4 sm:p-6 space-y-4"
+          className="mx-auto w-full max-w-3xl rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/70 to-mint/15 p-4 sm:p-6 space-y-4"
         >
           <div className="space-y-1">
             <div className="flex items-center gap-2 flex-wrap text-xs font-semibold text-primary">
@@ -531,17 +531,21 @@ function ListenPage() {
           )}
 
           <div className="space-y-2">
-            <input
-              type="range"
-              min={0}
-              max={duration || 0}
-              step={1}
-              value={Math.min(current, duration || 0)}
-              onChange={onSeek}
-              aria-label="شريط تقدم المقطع"
-              disabled={!duration}
-              className="w-full h-2 accent-primary cursor-pointer disabled:opacity-50"
-            />
+            {/* الغلاف يمنح منطقة لمس ~44px بينما يبقى الـrail المرئي رفيعًا (h-2).
+                touch-none تمنع تمرير الصفحة أثناء السحب بالإصبع. */}
+            <div className="flex min-h-11 items-center py-4 -my-4">
+              <input
+                type="range"
+                min={0}
+                max={duration || 0}
+                step={1}
+                value={Math.min(current, duration || 0)}
+                onChange={onSeek}
+                aria-label="شريط تقدم المقطع"
+                disabled={!duration}
+                className="w-full h-2 accent-primary cursor-pointer touch-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+              />
+            </div>
             <div className="flex justify-between text-xs font-medium text-muted-foreground tabular-nums">
               <span>{fmt(current)}</span>
               <span>{fmt(duration)}</span>
@@ -632,54 +636,58 @@ function ListenPage() {
             )}
           </button>
 
-          {audioChapters.map((chapter) => (
-            <div key={chapter.id} className="space-y-2">
-              <h3 className="text-sm font-bold text-muted-foreground">{chapter.title}</h3>
-              <ul className="rounded-2xl border border-border bg-card divide-y divide-border/60 overflow-hidden">
-                {chapter.lessons.map((l) => {
-                  const isCurrent = !sideActive && l.id === mainTrack.id;
-                  const isDone = completed.includes(l.id);
-                  return (
-                    <li key={l.id}>
-                      <button
-                        type="button"
-                        onClick={() => selectMain(l.lessonIndex, false)}
-                        aria-current={isCurrent ? "true" : undefined}
-                        className={`w-full flex items-center gap-3 px-4 py-3 min-h-11 text-right transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset ${
-                          isCurrent ? "bg-primary-soft" : "hover:bg-muted"
-                        }`}
-                      >
-                        <span
-                          className={`text-xs font-bold tabular-nums shrink-0 ${isCurrent ? "text-primary" : "text-muted-foreground"}`}
+          {/* على الشاشات الكبيرة: عمودان من الفصول. كل فصل يبقى كتلة واحدة
+              بعنوانه ودروسه، فلا ينفصل درس عن فصله ولا يتغير ترتيب القائمة. */}
+          <div className="grid gap-6 lg:grid-cols-2 lg:items-start">
+            {audioChapters.map((chapter) => (
+              <div key={chapter.id} className="space-y-2">
+                <h3 className="text-sm font-bold text-muted-foreground">{chapter.title}</h3>
+                <ul className="rounded-2xl border border-border bg-card divide-y divide-border/60 overflow-hidden">
+                  {chapter.lessons.map((l) => {
+                    const isCurrent = !sideActive && l.id === mainTrack.id;
+                    const isDone = completed.includes(l.id);
+                    return (
+                      <li key={l.id}>
+                        <button
+                          type="button"
+                          onClick={() => selectMain(l.lessonIndex, false)}
+                          aria-current={isCurrent ? "true" : undefined}
+                          className={`w-full flex items-center gap-3 px-4 py-3 min-h-11 text-right transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-inset ${
+                            isCurrent ? "bg-primary-soft" : "hover:bg-muted"
+                          }`}
                         >
-                          {pad2(l.lessonIndex)}
-                        </span>
-                        <span
-                          className={`flex-1 text-sm font-semibold ${isCurrent ? "text-primary" : "text-foreground"}`}
-                        >
-                          {l.title}
-                        </span>
-                        <span className="text-[11px] font-semibold shrink-0">
-                          {isCurrent ? (
-                            <span className="text-primary">
-                              {playing ? "قيد التشغيل" : "الدرس الحالي"}
-                            </span>
-                          ) : isDone ? (
-                            <span className="text-success inline-flex items-center gap-1">
-                              <CheckCircle2 className="h-3.5 w-3.5" />
-                              تم الاستماع
-                            </span>
-                          ) : (
-                            <span className="text-muted-foreground">لم يُستمع إليه</span>
-                          )}
-                        </span>
-                      </button>
-                    </li>
-                  );
-                })}
-              </ul>
-            </div>
-          ))}
+                          <span
+                            className={`text-xs font-bold tabular-nums shrink-0 ${isCurrent ? "text-primary" : "text-muted-foreground"}`}
+                          >
+                            {pad2(l.lessonIndex)}
+                          </span>
+                          <span
+                            className={`flex-1 text-sm font-semibold ${isCurrent ? "text-primary" : "text-foreground"}`}
+                          >
+                            {l.title}
+                          </span>
+                          <span className="text-[11px] font-semibold shrink-0">
+                            {isCurrent ? (
+                              <span className="text-primary">
+                                {playing ? "قيد التشغيل" : "الدرس الحالي"}
+                              </span>
+                            ) : isDone ? (
+                              <span className="text-success inline-flex items-center gap-1">
+                                <CheckCircle2 className="h-3.5 w-3.5" />
+                                تم الاستماع
+                              </span>
+                            ) : (
+                              <span className="text-muted-foreground">لم يُستمع إليه</span>
+                            )}
+                          </span>
+                        </button>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            ))}
+          </div>
         </section>
 
         {/* 2. ماذا أفعل الآن؟ — استمع */}

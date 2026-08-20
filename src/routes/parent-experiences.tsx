@@ -221,7 +221,7 @@ function ParentExperiencesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
-      <main className="flex-1 mx-auto max-w-3xl w-full px-4 sm:px-6 py-6 sm:py-12 space-y-10">
+      <main className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-6 sm:py-12 space-y-10">
         {/* عنصر الصوت الوحيد في الصفحة */}
         <audio ref={audioRef} preload="none" className="hidden" />
         <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
@@ -330,7 +330,7 @@ function ParentExperiencesPage() {
 
         <section className="space-y-4">
           <h3 className="text-xl font-bold">لماذا وجده الأهالي مفيداً؟</h3>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {features.map((f) => (
               <div key={f.title} className="rounded-2xl border border-border bg-card p-4 flex gap-3">
                 <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-primary">
@@ -352,7 +352,7 @@ function ParentExperiencesPage() {
 
         <section className="space-y-4">
           <h3 className="text-xl font-bold">هل يعمل مع جهاز طفلي؟</h3>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {devices.map((d) => (
               <div key={d.name} className="rounded-2xl border border-border bg-card p-4 space-y-1">
                 <div className="font-semibold">{d.name}</div>
@@ -493,7 +493,7 @@ function ParentExperiencesPage() {
 
         <section className="space-y-4">
           <h3 className="text-xl font-bold">لماذا وجدناها مفيدة؟</h3>
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {frioBenefits.map((f) => (
               <div key={f.title} className="rounded-2xl border border-border bg-card p-4 flex gap-3">
                 <span className="mt-0.5 flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-primary-soft text-base">
