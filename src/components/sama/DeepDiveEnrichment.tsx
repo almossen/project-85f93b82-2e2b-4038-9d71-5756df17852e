@@ -71,15 +71,24 @@ function PrintQuestionsButton({ targetId }: { targetId: string }) {
       // نطاق طباعة موثوق يعمل داخل متصفحات الجوال و PWA
       document.body.classList.add("printing-scope");
       el.classList.add("print-target");
+      const ancestors: HTMLElement[] = [];
+      let parent = el.parentElement;
+      while (parent && parent !== document.body) {
+        parent.classList.add("print-ancestor");
+        ancestors.push(parent);
+        parent = parent.parentElement;
+      }
       const cleanup = () => {
         document.body.classList.remove("printing-scope");
         el.classList.remove("print-target");
+        ancestors.forEach((a) => a.classList.remove("print-ancestor"));
         window.removeEventListener("afterprint", cleanup);
       };
       window.addEventListener("afterprint", cleanup);
     }
     window.print();
   };
+
   return (
     <button
       type="button"
