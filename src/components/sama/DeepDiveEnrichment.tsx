@@ -215,8 +215,11 @@ const items: Item[] = [
     subtitle: "قائمة جاهزة للطباعة",
     content: (
       <div className="space-y-3">
-        <P>خذوا هذه الأسئلة معكم للموعد، واكتبوا الإجابات في دفتر أو ملاحظات الجوال.</P>
-        <div id="print-first-appointment" className="space-y-4">
+        <P>
+          خذوا هذه الأسئلة معكم للموعد. عند الطباعة ستحصلون على نموذج A4 فيه مساحة للكتابة بالقلم
+          بعد كل سؤال.
+        </P>
+        <div className="space-y-4">
           {appointmentQuestions.map((sec) => (
             <div key={sec.h} className="space-y-1.5">
               <H>{sec.h}</H>
@@ -224,6 +227,7 @@ const items: Item[] = [
             </div>
           ))}
         </div>
+        <PrintableAppointmentSheet />
         <div className="flex flex-wrap gap-2 pt-1">
           <PrintQuestionsButton targetId="print-first-appointment" />
         </div>
