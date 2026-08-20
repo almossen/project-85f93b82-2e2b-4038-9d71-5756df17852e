@@ -160,21 +160,29 @@
   body {
     background: white !important;
   }
-  /* طباعة قسم محدد فقط (أدوات الأسرة) */
-  body.printing-scope * {
-    visibility: hidden !important;
+  /* طباعة قسم محدد فقط (أدوات الأسرة) — نخفي كل ما عدا سلسلة العنصر المستهدف */
+  body.printing-scope > *:not(.print-ancestor):not(.print-target),
+  body.printing-scope .print-ancestor > *:not(.print-ancestor):not(.print-target) {
+    display: none !important;
   }
-  body.printing-scope .print-target,
-  body.printing-scope .print-target * {
-    visibility: visible !important;
+  body.printing-scope .print-ancestor {
+    display: block !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    border: 0 !important;
+    background: none !important;
+    box-shadow: none !important;
+    max-width: none !important;
+    width: auto !important;
+    height: auto !important;
+    overflow: visible !important;
   }
   body.printing-scope .print-target {
-    position: absolute;
-    inset-inline-start: 0;
-    top: 0;
+    display: block !important;
     width: 100%;
     padding: 0;
   }
+
 }
 
 /* ===== نموذج A4 للطباعة (ورقة أسئلة الموعد) ===== */
