@@ -227,7 +227,7 @@ function PrintableAppointmentSheet() {
               <div className="sama-print-q-text">{q}</div>
               <div className="sama-print-line" />
               <div className="sama-print-line" />
-              {q.length > 45 && <div className="sama-print-line" />}
+              {q.length > 60 && <div className="sama-print-line" />}
             </div>
           ))}
         </div>
