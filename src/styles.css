@@ -173,6 +173,118 @@
     inset-inline-start: 0;
     top: 0;
     width: 100%;
-    padding: 1.5rem;
+    padding: 0;
+  }
+}
+
+/* ===== نموذج A4 للطباعة (ورقة أسئلة الموعد) ===== */
+.sama-print-sheet {
+  display: none;
+}
+
+@media print {
+  @page {
+    size: A4 portrait;
+    margin: 13mm;
+  }
+
+  body.printing-scope .sama-print-sheet {
+    display: block;
+    direction: rtl;
+    color: #000;
+    background: #fff;
+    font-family: var(--font-sans);
+    font-size: 11pt;
+    line-height: 1.5;
+  }
+
+  .sama-print-header {
+    display: flex;
+    align-items: center;
+    gap: 8mm;
+    border-bottom: 1.2pt solid #000;
+    padding-bottom: 3mm;
+    margin-bottom: 4mm;
+  }
+  .sama-print-header img {
+    width: 16mm;
+    height: 16mm;
+    object-fit: contain;
+  }
+  .sama-print-brand {
+    font-size: 9.5pt;
+    font-weight: 700;
+  }
+  .sama-print-title {
+    font-size: 15pt;
+    font-weight: 800;
+    margin: 1mm 0 0.5mm;
+  }
+  .sama-print-sub {
+    font-size: 9pt;
+  }
+  .sama-print-url {
+    margin-inline-start: auto;
+    font-size: 9pt;
+    font-weight: 700;
+    white-space: nowrap;
+  }
+
+  .sama-print-fields {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3mm 8mm;
+    margin-bottom: 5mm;
+    break-inside: avoid;
+  }
+  .sama-print-field {
+    display: flex;
+    align-items: flex-end;
+    gap: 2mm;
+    font-size: 10pt;
+    font-weight: 700;
+  }
+  .sama-print-field span:last-child {
+    flex: 1;
+    border-bottom: 0.8pt solid #000;
+    height: 6mm;
+  }
+
+  .sama-print-section {
+    margin-bottom: 4mm;
+  }
+  .sama-print-section-title {
+    font-size: 12pt;
+    font-weight: 800;
+    border-inline-start: 2pt solid #000;
+    padding-inline-start: 2.5mm;
+    margin-bottom: 2.5mm;
+    break-after: avoid;
+    page-break-after: avoid;
+  }
+  .sama-print-q {
+    break-inside: avoid;
+    page-break-inside: avoid;
+    margin-bottom: 3.5mm;
+  }
+  .sama-print-q-text {
+    font-size: 10.5pt;
+    font-weight: 600;
+    margin-bottom: 1.5mm;
+  }
+  .sama-print-line {
+    border-bottom: 0.6pt solid #555;
+    height: 8mm;
+  }
+
+  .sama-print-footer {
+    border-top: 0.8pt solid #000;
+    padding-top: 2mm;
+    margin-top: 4mm;
+    font-size: 8.5pt;
+    display: flex;
+    justify-content: space-between;
+    gap: 6mm;
+    break-inside: avoid;
   }
 }
