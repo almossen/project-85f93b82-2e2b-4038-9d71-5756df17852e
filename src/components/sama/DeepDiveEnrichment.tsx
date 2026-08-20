@@ -7,6 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { Link } from "@tanstack/react-router";
 import { Check, Copy, Printer, Wrench } from "lucide-react";
+import samaLogo from "@/assets/sama-logo-icon.png.asset.json";
 
 /**
  * أدوات عملية للأسرة.
@@ -70,15 +71,24 @@ function PrintQuestionsButton({ targetId }: { targetId: string }) {
       // نطاق طباعة موثوق يعمل داخل متصفحات الجوال و PWA
       document.body.classList.add("printing-scope");
       el.classList.add("print-target");
+      const ancestors: HTMLElement[] = [];
+      let parent = el.parentElement;
+      while (parent && parent !== document.body) {
+        parent.classList.add("print-ancestor");
+        ancestors.push(parent);
+        parent = parent.parentElement;
+      }
       const cleanup = () => {
         document.body.classList.remove("printing-scope");
         el.classList.remove("print-target");
+        ancestors.forEach((a) => a.classList.remove("print-ancestor"));
         window.removeEventListener("afterprint", cleanup);
       };
       window.addEventListener("afterprint", cleanup);
     }
     window.print();
   };
+
   return (
     <button
       type="button"
@@ -180,6 +190,57 @@ const appointmentQuestions = [
   },
 ];
 
+const printFields = [
+  "اسم الطفل",
+  "تاريخ الموعد",
+  "اسم الطبيب / العيادة",
+  "اسم المرافق",
+];
+
+function PrintableAppointmentSheet() {
+  return (
+    <div id="print-first-appointment" className="sama-print-sheet" aria-hidden>
+      <div className="sama-print-header">
+        <img src={samaLogo.url} alt="" />
+        <div>
+          <div className="sama-print-brand">سما — رحلة التعايش مع السكري من النوع الأول</div>
+          <div className="sama-print-title">أسئلة مهمة لأول موعد بعد التشخيص</div>
+          <div className="sama-print-sub">ورقة مساعدة للأسرة أثناء الموعد الطبي</div>
+        </div>
+        <div className="sama-print-url">t1d-ar.com</div>
+      </div>
+
+      <div className="sama-print-fields">
+        {printFields.map((f) => (
+          <div key={f} className="sama-print-field">
+            <span>{f}:</span>
+            <span />
+          </div>
+        ))}
+      </div>
+
+      {appointmentQuestions.map((sec) => (
+        <div key={sec.h} className="sama-print-section">
+          <div className="sama-print-section-title">{sec.h}</div>
+          {sec.q.map((q) => (
+            <div key={q} className="sama-print-q">
+              <div className="sama-print-q-text">{q}</div>
+              <div className="sama-print-line" />
+              <div className="sama-print-line" />
+              {q.length > 60 && <div className="sama-print-line" />}
+            </div>
+          ))}
+        </div>
+      ))}
+
+      <div className="sama-print-footer">
+        <span>منصة سما — t1d-ar.com</span>
+        <span>هذه الورقة للتنظيم وتدوين الملاحظات، ولا تغني عن توجيه الفريق الطبي.</span>
+      </div>
+    </div>
+  );
+}
+
 const items: Item[] = [
   {
     id: "message-to-doctor",
@@ -215,8 +276,11 @@ const items: Item[] = [
     subtitle: "قائمة جاهزة للطباعة",
     content: (
       <div className="space-y-3">
-        <P>خذوا هذه الأسئلة معكم للموعد، واكتبوا الإجابات في دفتر أو ملاحظات الجوال.</P>
-        <div id="print-first-appointment" className="space-y-4">
+        <P>
+          خذوا هذه الأسئلة معكم للموعد. عند الطباعة ستحصلون على نموذج A4 فيه مساحة للكتابة بالقلم
+          بعد كل سؤال.
+        </P>
+        <div className="space-y-4">
           {appointmentQuestions.map((sec) => (
             <div key={sec.h} className="space-y-1.5">
               <H>{sec.h}</H>
@@ -224,6 +288,7 @@ const items: Item[] = [
             </div>
           ))}
         </div>
+        <PrintableAppointmentSheet />
         <div className="flex flex-wrap gap-2 pt-1">
           <PrintQuestionsButton targetId="print-first-appointment" />
         </div>
