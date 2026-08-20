@@ -54,7 +54,9 @@ export const INTRO_ID = "sama-intro";
 export const audioIntro: AudioIntro = {
   id: INTRO_ID,
   title: "مقدمة: أهلًا بكم في سما",
-  src: `/audio/intro/${INTRO_ID}.mp3`,
+  // ?v= يمنع تشغيل نسخة المقدمة القديمة من كاش المتصفح أو Service Worker
+  // بعد تصحيح النطق. ارفع الطابع عند أي استبدال لاحق لملف المقدمة.
+  src: `/audio/intro/${INTRO_ID}.mp3?v=20260820-1`,
   kind: "intro",
 };
 
