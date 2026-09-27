@@ -61,8 +61,8 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel, brandBox }:
                   loaded ? "opacity-100" : "opacity-0"
                 }`}
               />
-              )}
-            </div>
+              {brandBox && <BrandOverlay box={brandBox} />}
+            </>
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center">
               <ImageIcon className="h-10 w-10 sm:h-12 sm:w-12 text-primary/40" strokeWidth={1.5} />
