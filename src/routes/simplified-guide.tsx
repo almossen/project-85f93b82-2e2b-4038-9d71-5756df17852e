@@ -214,6 +214,7 @@ function SectionCard({
     >
       <GuideSectionHero
         image={hero?.image}
+        brandBox={hero?.brandBox}
         alt={hero?.alt ?? section.imageAlt}
         index={index}
         fallbackLabel={section.imageAlt}

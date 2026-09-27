@@ -29,7 +29,13 @@ const HERO_BASE = "/images/simplified-guide";
  * صور الأغلفة المتوفرة حاليًا. الدروس التي لا مفتاح لها هنا
  * تعرض بديلًا لطيفًا عبر <GuideSectionHero /> دون كسر الصفحة.
  */
-export const guideSectionHeroes: Record<string, { image: string; alt: string }> = {
+/** موضع الشعار القديم المطبوع داخل الصورة، كنسب مئوية من الأبعاد الأصلية. */
+export type GuideBrandBox = { x: number; y: number; w: number; h: number };
+
+export const guideSectionHeroes: Record<
+  string,
+  { image: string; alt: string; brandBox?: GuideBrandBox }
+> = {
   "journey-start": {
     image: `${HERO_BASE}/a_clean_warm_modern_healthcare_parenting_informa_1.webp`,
     alt: "بداية الرحلة – الدليل المبسط لأهالي أطفال السكري من النوع الأول",
@@ -144,34 +150,42 @@ export const guideSectionHeroes: Record<string, { image: string; alt: string }> 
   },
   "communicating-with-team": {
     image: `${HERO_BASE}/clear-communication-with-diabetes-team.webp`,
+    brandBox: { x: 87.9, y: 1.6, w: 11.1, h: 26.6 },
     alt: "أسرة تجهّز ملاحظاتها قبل التواصل مع فريق السكري – صورة توضيحية",
   },
   "honeymoon-phase": {
     image: `${HERO_BASE}/honeymoon-phase-after-diagnosis.webp`,
+    brandBox: { x: 4.2, y: 2.1, w: 9.9, h: 23.9 },
     alt: "مرحلة التحسّن المؤقت بعد التشخيص – صورة توضيحية",
   },
   "insulin-storage": {
     image: `${HERO_BASE}/storing-insulin-with-family.webp`,
+    brandBox: { x: 15.3, y: 73.3, w: 13.8, h: 25.5 },
     alt: "حفظ الإنسولين في المنزل وأثناء التنقل – صورة إرشادية",
   },
   "missed-dose": {
     image: `${HERO_BASE}/missed-insulin-dose-what-to-do.webp`,
+    brandBox: { x: 3.0, y: 62.7, w: 12.0, h: 28.2 },
     alt: "ماذا نفعل عند نسيان جرعة الإنسولين – صورة إرشادية",
   },
   "pattern-not-number": {
     image: `${HERO_BASE}/pattern-management-and-smart-notes.webp`,
+    brandBox: { x: 87.7, y: 0.5, w: 11.3, h: 28.4 },
     alt: "فهم نمط القراءات ودفتر الملاحظات الذكي – صورة توضيحية",
   },
   "cgm-vs-symptoms": {
     image: `${HERO_BASE}/when-not-to-rely-on-sensor-alone.webp`,
+    brandBox: { x: 4.2, y: 68.0, w: 16.1, h: 31.3 },
     alt: "متى لا نكتفي بقراءة الحساس وحدها – صورة توضيحية",
   },
   "sleep-night": {
     image: `${HERO_BASE}/night-care-and-sleep-routine.webp`,
+    brandBox: { x: 0.9, y: 68.5, w: 12.9, h: 28.2 },
     alt: "روتين ليلي هادئ لمتابعة الطفل أثناء النوم – صورة توضيحية",
   },
   "outings-restaurants": {
     image: `${HERO_BASE}/eating-out-and-restaurants-with-family.webp`,
+    brandBox: { x: 2.1, y: 0.5, w: 12.6, h: 27.3 },
     alt: "الخروج والمطاعم والمناسبات مع الأسرة – صورة توضيحية",
   },
 };
