@@ -38,7 +38,7 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel, brandBox }:
   return (
     <div className="px-4 sm:px-6 pt-4 sm:pt-6">
       <div className="relative w-full overflow-hidden rounded-2xl sm:rounded-3xl border border-border/60 bg-gradient-to-br from-primary-soft via-mint/20 to-sand shadow-[var(--shadow-card)]">
-        <span className={`absolute top-3 ${brandBox && brandBox.x > 50 ? "end-3" : "start-3"} z-10 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground`}>
+        <span className={`absolute start-3 ${brandBox && brandBox.x > 50 ? "bottom-3" : "top-3"} z-10 rounded-full bg-card/90 backdrop-blur px-3 py-1 text-xs font-semibold text-foreground`}>
           {String(index + 1).padStart(2, "0")}
         </span>
 
