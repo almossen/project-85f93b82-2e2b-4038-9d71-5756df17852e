@@ -1,11 +1,15 @@
 import { useEffect, useRef, useState } from "react";
 import { ImageIcon } from "lucide-react";
+import samaLogo from "@/assets/sama-home-logo-original.png.asset.json";
+import type { GuideBrandBox } from "@/data/simplifiedGuideContent";
 
 interface GuideSectionHeroProps {
   image?: string;
   alt: string;
   index: number;
   fallbackLabel?: string;
+  /** يغطي الشعار القديم المطبوع داخل الصورة بشعار سما الحالي. */
+  brandBox?: GuideBrandBox;
 }
 
 /**
@@ -14,7 +18,7 @@ interface GuideSectionHeroProps {
  * - Lazy loads, with skeleton while loading and graceful placeholder on error/missing.
  * - No text overlay (text is baked into the artwork).
  */
-export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSectionHeroProps) {
+export function GuideSectionHero({ image, alt, index, fallbackLabel, brandBox }: GuideSectionHeroProps) {
   const imgRef = useRef<HTMLImageElement | null>(null);
   const [loaded, setLoaded] = useState(false);
   const [errored, setErrored] = useState(false);
@@ -44,18 +48,44 @@ export function GuideSectionHero({ image, alt, index, fallbackLabel }: GuideSect
           )}
 
           {showImage ? (
-            <img
-              ref={imgRef}
-              src={image}
-              alt={alt}
-              loading="lazy"
-              decoding="async"
-              onLoad={() => setLoaded(true)}
-              onError={() => setErrored(true)}
-              className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
-                loaded ? "opacity-100" : "opacity-0"
-              }`}
-            />
+            // إطار بنسبة الصورة الأصلية، متمركز رأسيًا — يطابق object-cover تمامًا
+            // لأن الحاوية (3:1 / 16:7) أعرض دائمًا من الصورة (16:9)،
+            // فتبقى نسب brandBox صحيحة على كل المقاسات وفي الطباعة.
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 aspect-[1672/941] w-full [container-type:inline-size]">
+              <img
+                ref={imgRef}
+                src={image}
+                alt={alt}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setLoaded(true)}
+                onError={() => setErrored(true)}
+                className={`absolute inset-0 h-full w-full object-cover transition-opacity duration-500 ${
+                  loaded ? "opacity-100" : "opacity-0"
+                }`}
+              />
+              {brandBox && (
+                <div
+                  aria-hidden
+                  className="absolute flex flex-col items-center justify-center gap-[0.4cqw] rounded-[1.2cqw] bg-background shadow-[var(--shadow-soft)] print:shadow-none"
+                  style={{
+                    left: `${brandBox.x}%`,
+                    top: `${brandBox.y}%`,
+                    width: `${brandBox.w}%`,
+                    height: `${brandBox.h}%`,
+                  }}
+                >
+                  <img
+                    src={samaLogo.url}
+                    alt=""
+                    className="aspect-square w-[78%] rounded-[1cqw] object-contain"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <span className="text-[2.2cqw] font-bold leading-none text-primary">سما</span>
+                </div>
+              )}
+            </div>
           ) : (
             <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-4 text-center">
               <ImageIcon className="h-10 w-10 sm:h-12 sm:w-12 text-primary/40" strokeWidth={1.5} />
