@@ -14,13 +14,16 @@
  * عند استبدال أي صوت أو أصل ثابت: ارفع رقم النسخة أدناه.
  * حذف النسخ القديمة يتم في حدث activate.
  */
-const CACHE_NAME = "sama-cache-v3";
+const CACHE_NAME = "sama-cache-v4";
 const CRITICAL_PAGES = ["/", "/what-to-do-now", "/simplified-guide"];
 
 // أصول بأسماء ثابتة قد تتغير بين الإصدارات
 const MUTABLE_NAMED_ASSETS = [
   "/favicon.png",
   "/icon-512.png",
+  "/icon-192.png",
+  "/apple-touch-icon.png",
+  "/favicon-32.png",
   "/og-image.png",
   "/manifest.json",
 ];

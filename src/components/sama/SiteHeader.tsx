@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
-import samaLogo from "@/assets/sama-logo-icon.png.asset.json";
+import samaLogo from "@/assets/sama-home-logo-original.png.asset.json";
 
 type SiteHeaderProps = {
   logoOverride?: string;
@@ -23,7 +23,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
             <img
               src={logoSrc}
               alt="شعار سما"
-              className="h-12 w-12 shrink-0 object-contain"
+              className="h-12 w-12 shrink-0 rounded-xl object-contain"
               width={48}
               height={48}
             />
@@ -35,14 +35,14 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
         </header>
       )}
       <header className="hidden md:block sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-md pt-[env(safe-area-inset-top)]">
-        <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 ${logoOverride ? "h-20" : "h-16"}`}>
+        <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 h-20`}>
           <Link to="/" className="flex shrink-0 items-center gap-2 group lg:gap-2.5">
             <img
               src={logoSrc}
               alt="شعار سما"
-              className={`${logoOverride ? "h-14 w-14" : "h-10 w-10"} shrink-0 object-contain`}
-              width={logoOverride ? 56 : 40}
-              height={logoOverride ? 56 : 40}
+              className="h-14 w-14 shrink-0 rounded-xl object-contain"
+              width={56}
+              height={56}
             />
             <div className="leading-tight">
               <div className="text-base font-bold tracking-tight lg:text-lg">سما</div>

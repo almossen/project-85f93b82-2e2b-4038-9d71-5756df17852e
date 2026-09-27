@@ -17,7 +17,6 @@ import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
-import homeLogo from "@/assets/sama-home-logo-original.png.asset.json";
 import heroFamily from "@/assets/sama-family.webp";
 import heroFamily400 from "@/assets/sama-family-400.webp";
 import heroFamily800 from "@/assets/sama-family-800.webp";
@@ -84,7 +83,7 @@ function HomePage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <DisclaimerBanner />
-      <SiteHeader logoOverride={homeLogo.url} showMobileBrand />
+      <SiteHeader showMobileBrand />
       <main className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden">
