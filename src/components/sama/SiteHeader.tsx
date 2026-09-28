@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Search } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
-import samaLogo from "@/assets/sama-home-logo-original.png.asset.json";
+import samaLogo from "@/assets/sama-logo-white.png";
 
 type SiteHeaderProps = {
   logoOverride?: string;
@@ -9,7 +9,7 @@ type SiteHeaderProps = {
 };
 
 export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeaderProps) {
-  const logoSrc = logoOverride ?? samaLogo.url;
+  const logoSrc = logoOverride ?? samaLogo;
 
   return (
     <>

@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { ImageIcon } from "lucide-react";
-import samaLogo from "@/assets/sama-home-logo-original.png.asset.json";
+import samaLogo from "@/assets/sama-logo-white.png";
 import type { GuideBrandBox } from "@/data/simplifiedGuideContent";
 
 interface GuideSectionHeroProps {
@@ -100,7 +100,7 @@ function BrandOverlay({ box }: { box: GuideBrandBox }) {
       }}
     >
       <img
-        src={samaLogo.url}
+        src={samaLogo}
         alt=""
         loading="lazy"
         decoding="async"

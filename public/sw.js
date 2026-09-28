@@ -14,7 +14,7 @@
  * عند استبدال أي صوت أو أصل ثابت: ارفع رقم النسخة أدناه.
  * حذف النسخ القديمة يتم في حدث activate.
  */
-const CACHE_NAME = "sama-cache-v4";
+const CACHE_NAME = "sama-cache-v5";
 const CRITICAL_PAGES = ["/", "/what-to-do-now", "/simplified-guide"];
 
 // أصول بأسماء ثابتة قد تتغير بين الإصدارات
