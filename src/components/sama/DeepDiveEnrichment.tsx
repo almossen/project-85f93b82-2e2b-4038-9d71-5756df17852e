@@ -201,7 +201,7 @@ function PrintableAppointmentSheet() {
   return (
     <div id="print-first-appointment" className="sama-print-sheet" aria-hidden>
       <div className="sama-print-header">
-        <img src={samaLogo.url} alt="" />
+        <img src={samaLogo} alt="" />
         <div>
           <div className="sama-print-brand">سما — رحلة التعايش مع السكري من النوع الأول</div>
           <div className="sama-print-title">أسئلة مهمة لأول موعد بعد التشخيص</div>
