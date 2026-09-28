@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/accordion";
 import { Link } from "@tanstack/react-router";
 import { Check, Copy, Printer, Wrench } from "lucide-react";
-import samaLogo from "@/assets/sama-home-logo-original.png.asset.json";
+import samaLogo from "@/assets/sama-logo-white.png";
 
 /**
  * أدوات عملية للأسرة.
