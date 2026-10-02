@@ -5,4 +5,4 @@
 
 - [x] Add the approved “Sama Kids World” links and home section; verify preview only, no publish
 
-- [ ] Import the complete Sama Kids package from the approved public repository into /kids/, update all entry links, verify every page and asset, preview only
+- [x] Import the complete Sama Kids package from the approved public repository into /kids/, update all entry links, verify every page and asset, preview only
