@@ -185,37 +185,44 @@ function HomePage() {
         </section>
 
         {/* عالم سما للأطفال */}
-        <section className="mt-10 border-y border-primary/15 bg-primary-soft/45 sm:mt-12">
-          <div className="mx-auto grid max-w-6xl items-center gap-7 px-4 py-9 sm:px-6 sm:py-11 md:grid-cols-[1.05fr_1fr] md:gap-10">
-            <div className="max-w-2xl space-y-3 text-right">
-              <div className="flex items-center gap-2 text-primary" aria-hidden="true">
-                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-card shadow-[var(--shadow-card)]">
-                  <Plane className="h-5 w-5 -rotate-12" />
-                </span>
-                <Sun className="h-5 w-5 text-warning" />
+        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-10 sm:mt-12">
+          <div className="rounded-3xl border border-kids/25 bg-kids-soft p-5 sm:p-7 shadow-[var(--shadow-card)]">
+            <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:items-center sm:gap-6 sm:text-right">
+              <div className="order-1 sm:order-2 w-full min-w-0 space-y-2.5">
+                <div className="flex items-center justify-center gap-2 sm:justify-start">
+                  <span
+                    className="flex h-9 w-9 shrink-0 items-center justify-center rounded-xl bg-card shadow-[var(--shadow-card)] text-kids"
+                    aria-hidden="true"
+                  >
+                    <Plane className="h-4.5 w-4.5 -rotate-12" />
+                  </span>
+                  <Sun className="h-4.5 w-4.5 shrink-0 text-warning" aria-hidden="true" />
+                  <h2 className="text-xl font-bold text-kids-foreground sm:text-2xl">
+                    عالم سما للأطفال
+                  </h2>
+                </div>
+                <p className="text-sm leading-loose text-muted-foreground sm:text-base">
+                  منصة مخصصة للأطفال للتعلّم بطريقة قريبة منهم، ضمن عالم لطيف يناسب فضولهم.
+                </p>
+                <a
+                  href="/kids/index.html"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-kids px-5 py-2.5 text-sm font-semibold text-white shadow-[var(--shadow-card)] transition-colors hover:bg-kids/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kids focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+                >
+                  ادخل عالم سما للأطفال
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </a>
               </div>
-              <h2 className="text-2xl font-bold sm:text-3xl">عالم سما للأطفال</h2>
-              <p className="max-w-xl leading-loose text-muted-foreground">
-                منصة مخصصة للأطفال للتعلّم بطريقة قريبة منهم، ضمن عالم لطيف يناسب فضولهم.
-              </p>
-              <a
-                href="/kids/index.html"
-                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-fit"
-              >
-                ادخل عالم سما للأطفال
-                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-              </a>
+              <img
+                src={kidsFeatureAsset.url}
+                alt="رسم لطفلة بحقيبة بنفسجية تبتسم في عالم قصصي من عالم سما للأطفال"
+                width={1536}
+                height={1024}
+                loading="lazy"
+                decoding="async"
+                className="order-2 sm:order-1 h-28 w-28 shrink-0 rounded-2xl object-cover shadow-[var(--shadow-card)] sm:h-36 sm:w-36 md:h-40 md:w-40"
+                style={{ objectPosition: "35% 30%" }}
+              />
             </div>
-            <img
-              src={kidsFeatureAsset.url}
-              alt="رسم لطفلة بحقيبة بنفسجية تتجول بابتسامة في عالم قصصي من عالم سما للأطفال، بتلال بنفسجية وسماء هادئة"
-              width={1536}
-              height={1024}
-              loading="lazy"
-              decoding="async"
-              className="aspect-[4/3] w-full rounded-3xl object-cover shadow-[var(--shadow-card)] sm:aspect-[16/10]"
-              style={{ objectPosition: "35% 30%" }}
-            />
           </div>
         </section>
 
