@@ -1,6 +1,15 @@
 import { createFileRoute, redirect } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/kids")({
+  server: {
+    handlers: {
+      GET: () =>
+        new Response(null, {
+          status: 302,
+          headers: { Location: "/kids/index.html", "Cache-Control": "no-store" },
+        }),
+    },
+  },
   beforeLoad: () => {
     throw redirect({ href: "/kids/index.html" });
   },

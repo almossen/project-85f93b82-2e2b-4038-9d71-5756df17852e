@@ -31,7 +31,7 @@ const linkActive =
 
 const moreLinks = [
   {
-    href: "/kids/",
+    href: "/kids/index.html",
     label: "عالم سما للأطفال",
     icon: Sparkles,
   },
