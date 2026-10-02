@@ -118,7 +118,7 @@ export function MobileBottomNav() {
                       <a
                         href={l.href}
                         onClick={() => setMoreOpen(false)}
-                        className="flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-primary hover:bg-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                        className="flex min-h-11 items-center gap-3 rounded-xl border border-kids/40 bg-kids-soft px-3 py-3 text-sm font-semibold text-kids-foreground transition-colors hover:border-kids hover:bg-kids hover:text-kids-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kids"
                       >
                         <l.icon className="h-4.5 w-4.5 shrink-0" aria-hidden="true" />
                         <span>{l.label}</span>
