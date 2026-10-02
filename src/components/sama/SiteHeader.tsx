@@ -99,7 +99,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
             تجارب أهالي مفيدة
           </Link>
           <a
-            href="/kids/"
+            href="/kids/index.html"
             className="inline-flex items-center gap-1 rounded-full px-1.5 py-2 text-primary transition-colors hover:bg-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:px-2 xl:px-3"
           >
             عالم سما للأطفال
