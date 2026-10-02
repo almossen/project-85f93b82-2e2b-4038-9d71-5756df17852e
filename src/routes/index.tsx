@@ -23,6 +23,7 @@ import heroFamily from "@/assets/sama-family.webp";
 import heroFamily400 from "@/assets/sama-family-400.webp";
 import heroFamily800 from "@/assets/sama-family-800.webp";
 import happyChild from "@/assets/happy-child.webp";
+import kidsFeatureAsset from "@/assets/sama-kids-home-feature.png.asset.json";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -185,7 +186,7 @@ function HomePage() {
 
         {/* عالم سما للأطفال */}
         <section className="mt-10 border-y border-primary/15 bg-primary-soft/45 sm:mt-12">
-          <div className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-9 sm:px-6 sm:py-11 md:grid-cols-[1fr_auto] md:gap-10">
+          <div className="mx-auto grid max-w-6xl items-center gap-7 px-4 py-9 sm:px-6 sm:py-11 md:grid-cols-[1.05fr_1fr] md:gap-10">
             <div className="max-w-2xl space-y-3 text-right">
               <div className="flex items-center gap-2 text-primary" aria-hidden="true">
                 <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-card shadow-[var(--shadow-card)]">
@@ -197,14 +198,24 @@ function HomePage() {
               <p className="max-w-xl leading-loose text-muted-foreground">
                 منصة مخصصة للأطفال للتعلّم بطريقة قريبة منهم، ضمن عالم لطيف يناسب فضولهم.
               </p>
+              <a
+                href="/kids/index.html"
+                className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-fit"
+              >
+                ادخل عالم سما للأطفال
+                <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+              </a>
             </div>
-            <a
-              href="/kids/index.html"
-              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-fit"
-            >
-              ادخل عالم سما للأطفال
-              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
-            </a>
+            <img
+              src={kidsFeatureAsset.url}
+              alt="رسم لطفلة بحقيبة بنفسجية تتجول بابتسامة في عالم قصصي من عالم سما للأطفال، بتلال بنفسجية وسماء هادئة"
+              width={1536}
+              height={1024}
+              loading="lazy"
+              decoding="async"
+              className="aspect-[4/3] w-full rounded-3xl object-cover shadow-[var(--shadow-card)] sm:aspect-[16/10]"
+              style={{ objectPosition: "35% 30%" }}
+            />
           </div>
         </section>
 
