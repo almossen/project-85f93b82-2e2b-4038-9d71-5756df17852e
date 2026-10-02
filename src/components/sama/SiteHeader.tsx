@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { Search, Sparkles } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
 import samaLogo from "@/assets/sama-logo-white.png";
 
@@ -99,9 +99,10 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
             تجارب أهالي مفيدة
           </Link>
           <a
-            href="/kids/index.html"
-            className="inline-flex items-center gap-1 rounded-full px-1.5 py-2 text-primary transition-colors hover:bg-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:px-2 xl:px-3"
+            href="/kids/"
+            className="inline-flex items-center gap-1.5 rounded-full border border-kids/40 bg-kids-soft px-2 py-1 font-semibold text-kids-foreground transition-colors hover:border-kids hover:bg-kids hover:text-kids-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kids lg:px-2.5 lg:py-1.5 xl:px-3"
           >
+            <Sparkles className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
             عالم سما للأطفال
           </a>
           <Link

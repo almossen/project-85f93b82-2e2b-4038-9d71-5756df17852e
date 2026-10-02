@@ -31,6 +31,10 @@
   --color-mint-foreground: var(--mint-foreground);
   --color-sand: var(--sand);
   --color-sand-foreground: var(--sand-foreground);
+  --color-kids: var(--kids);
+  --color-kids-soft: var(--kids-soft);
+  --color-kids-foreground: var(--kids-foreground);
+  --color-kids-contrast: var(--kids-contrast);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
@@ -69,6 +73,12 @@
   /* Warm sand for faith section */
   --sand: oklch(0.95 0.025 75);
   --sand-foreground: oklch(0.38 0.06 60);
+
+  /* Kids world purple (عالم سما للأطفال) */
+  --kids: oklch(0.52 0.12 300);
+  --kids-soft: oklch(0.95 0.025 300);
+  --kids-foreground: oklch(0.40 0.10 300);
+  --kids-contrast: oklch(0.99 0.005 300);
 
   --secondary: oklch(0.96 0.012 235);
   --secondary-foreground: oklch(0.30 0.06 240);
