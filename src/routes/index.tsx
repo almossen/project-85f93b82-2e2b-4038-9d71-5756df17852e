@@ -14,7 +14,7 @@ import {
   Wrench,
   ExternalLink,
   Sun,
-  Kite,
+  Plane,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
@@ -190,7 +190,7 @@ function HomePage() {
             <div className="max-w-2xl space-y-3 text-right">
               <div className="flex items-center gap-2 text-primary" aria-hidden="true">
                 <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-card shadow-[var(--shadow-card)]">
-                  <Kite className="h-5 w-5" />
+                  <Plane className="h-5 w-5 -rotate-12" />
                 </span>
                 <Sun className="h-5 w-5 text-warning" />
               </div>
