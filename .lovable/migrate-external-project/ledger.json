@@ -1,0 +1,13 @@
+{
+  "source": "https://github.com/almossen/sama-kids-beta",
+  "branch": "main",
+  "capabilities": [
+    {"capability":"static HTML package","source":"repository root","outcome":"copy original pages into public/kids","status":"verified","next_action":"none"},
+    {"capability":"embedded images","source":"HTML data URLs","outcome":"preserve unchanged","status":"verified","next_action":"none"},
+    {"capability":"embedded audio","source":"HTML data URLs","outcome":"preserve unchanged","status":"verified","next_action":"none"},
+    {"capability":"internal navigation","source":"relative HTML links","outcome":"preserve under /kids/ and redirect /kids to /kids/index.html","status":"verified","next_action":"none"},
+    {"capability":"return links","source":"index.html footer","outcome":"retain https://t1d-ar.com/ destinations","status":"verified","next_action":"none"},
+    {"capability":"database, users, auth, storage, webhooks, schedules, secrets","source":"repository inspection","outcome":"not present","status":"not_applicable","next_action":"none"},
+    {"capability":"publication","source":"user instruction","outcome":"preview only","status":"blocked","next_action":"owner publishes after review"}
+  ]
+}

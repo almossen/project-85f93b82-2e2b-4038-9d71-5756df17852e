@@ -1,0 +1,42 @@
+{
+  "index.html": {
+    "bytes": 3203215,
+    "sha256": "b533d3ba2718251b26b7852a76496bb90c8b6e9347f8f2f24fa52105879f7e73"
+  },
+  "adventure-02.html": {
+    "bytes": 2467099,
+    "sha256": "bcb4f07d3862d6a76b4471731142eda8ca33f1e5c52c6dc98a2bb75cf094b471"
+  },
+  "adventure-03.html": {
+    "bytes": 3647024,
+    "sha256": "27130936152dca66ea8d848568bf9d47f88b8de254b954bff7c096f0d5496d1e"
+  },
+  "adventure-04.html": {
+    "bytes": 4281645,
+    "sha256": "f06aea5ca380f9d956b3fe923714c4dc76a3137882b2ec441879a4189fdc2c20"
+  },
+  "adventure-05.html": {
+    "bytes": 3838705,
+    "sha256": "11ccf3f7d4243a7d4b6c1fa445bcd305f6913566ae80a5eebff4e6ada05b734c"
+  },
+  "adventure-06.html": {
+    "bytes": 1757403,
+    "sha256": "e7a1f4975ccae80689307f3f35fc85b1780866189b8df6d84eb8ad5131b0f38d"
+  },
+  "adventure-07.html": {
+    "bytes": 2198295,
+    "sha256": "85b9c4ae618cae1ce4d3f40246670ea36f52c5e8cc204317babbfa12391954da"
+  },
+  "adventure-08.html": {
+    "bytes": 1741467,
+    "sha256": "2b0b64a7015b9eb8a946c03d464893b69b826020a9b1db096aaaa0b19cae0e57"
+  },
+  "energy-keys.html": {
+    "bytes": 783887,
+    "sha256": "007c8c12a95fc3662976e0f71f69a1bc10326b6bedb6b3c7af2131d4727fa309"
+  },
+  "sama-road.html": {
+    "bytes": 3939819,
+    "sha256": "788082e8065de82844babbacf4a005268446a47dd32a51d76c4444963298b360"
+  }
+}

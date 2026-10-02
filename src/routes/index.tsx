@@ -12,7 +12,6 @@ import {
   Headphones,
   Siren,
   Wrench,
-  ExternalLink,
   Sun,
   Plane,
 } from "lucide-react";
@@ -200,13 +199,11 @@ function HomePage() {
               </p>
             </div>
             <a
-              href="https://almossen.github.io/sama-kids-beta/"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="/kids/"
               className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-fit"
             >
               ادخل عالم سما للأطفال
-              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+              <ArrowLeft className="h-4 w-4" aria-hidden="true" />
             </a>
           </div>
         </section>
