@@ -3,4 +3,4 @@
 - [ ] Publish — user will trigger after review
 - [ ] UI/UX report items — awaiting user selection
 
-- [ ] Add the approved “Sama Kids World” links and home section; verify preview only, no publish
+- [x] Add the approved “Sama Kids World” links and home section; verify preview only, no publish

@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Search } from "lucide-react";
+import { ExternalLink, Search } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
 import samaLogo from "@/assets/sama-logo-white.png";
 
@@ -51,58 +51,67 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
               </div>
             </div>
           </Link>
-          <nav className="flex min-w-0 flex-nowrap items-center justify-end gap-0.5 text-[13px] font-medium whitespace-nowrap lg:gap-1 lg:text-sm">
+          <nav className="flex min-w-0 flex-nowrap items-center justify-end gap-0 text-[11px] font-medium whitespace-nowrap lg:gap-0.5 lg:text-[13px] xl:gap-1 xl:text-sm">
           <Link
             to="/"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeOptions={{ exact: true }}
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             الرئيسية
           </Link>
           <Link
             to="/simplified-guide"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             الدليل المبسّط
           </Link>
           <Link
             to="/listen"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             استمع
           </Link>
           <Link
             to="/family-tools"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             أدوات عملية للأسرة
           </Link>
           <Link
             to="/parent-experiences"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             تجارب أهالي مفيدة
           </Link>
+          <a
+            href="https://almossen.github.io/sama-kids-beta/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1 rounded-full px-1.5 py-2 text-primary transition-colors hover:bg-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring lg:px-2 xl:px-3"
+          >
+            عالم سما للأطفال
+            <ExternalLink className="h-3.5 w-3.5 shrink-0" aria-hidden="true" />
+          </a>
           <Link
             to="/about"
-            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
+            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
             activeProps={{
-              className: "rounded-full px-2 py-2 bg-primary-soft text-primary lg:px-3",
+              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
             }}
           >
             عن المنصة
