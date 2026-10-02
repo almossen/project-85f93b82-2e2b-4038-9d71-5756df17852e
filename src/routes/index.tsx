@@ -12,6 +12,9 @@ import {
   Headphones,
   Siren,
   Wrench,
+  ExternalLink,
+  Sun,
+  Plane,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
@@ -178,6 +181,33 @@ function HomePage() {
                 رسالة للطبيب، أسئلة أول موعد، حقيبة السكري، وروتين ليلي — جاهزة للطباعة.
               </p>
             </Link>
+          </div>
+        </section>
+
+        {/* عالم سما للأطفال */}
+        <section className="mt-10 border-y border-primary/15 bg-primary-soft/45 sm:mt-12">
+          <div className="mx-auto grid max-w-6xl items-center gap-6 px-4 py-9 sm:px-6 sm:py-11 md:grid-cols-[1fr_auto] md:gap-10">
+            <div className="max-w-2xl space-y-3 text-right">
+              <div className="flex items-center gap-2 text-primary" aria-hidden="true">
+                <span className="flex h-10 w-10 items-center justify-center rounded-2xl bg-card shadow-[var(--shadow-card)]">
+                  <Plane className="h-5 w-5 -rotate-12" />
+                </span>
+                <Sun className="h-5 w-5 text-warning" />
+              </div>
+              <h2 className="text-2xl font-bold sm:text-3xl">عالم سما للأطفال</h2>
+              <p className="max-w-xl leading-loose text-muted-foreground">
+                منصة مخصصة للأطفال للتعلّم بطريقة قريبة منهم، ضمن عالم لطيف يناسب فضولهم.
+              </p>
+            </div>
+            <a
+              href="https://almossen.github.io/sama-kids-beta/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex min-h-12 w-full items-center justify-center gap-2 rounded-full bg-primary px-6 py-3 text-sm font-semibold text-primary-foreground shadow-[var(--shadow-card)] transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-fit"
+            >
+              ادخل عالم سما للأطفال
+              <ExternalLink className="h-4 w-4" aria-hidden="true" />
+            </a>
           </div>
         </section>
 
