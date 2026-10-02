@@ -12,7 +12,6 @@ import {
   Library,
   Headphones,
   ShieldCheck,
-  ExternalLink,
   Sparkles,
 } from "lucide-react";
 import { GlobalSearch } from "@/components/sama/GlobalSearch";
@@ -32,7 +31,7 @@ const linkActive =
 
 const moreLinks = [
   {
-    href: "https://almossen.github.io/sama-kids-beta/",
+    href: "/kids/",
     label: "عالم سما للأطفال",
     icon: Sparkles,
   },
@@ -118,14 +117,11 @@ export function MobileBottomNav() {
                     {"href" in l ? (
                       <a
                         href={l.href}
-                        target="_blank"
-                        rel="noopener noreferrer"
                         onClick={() => setMoreOpen(false)}
                         className="flex min-h-11 items-center gap-3 rounded-xl px-3 py-3 text-sm font-semibold text-primary hover:bg-primary-soft focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
                       >
                         <l.icon className="h-4.5 w-4.5 shrink-0" aria-hidden="true" />
                         <span>{l.label}</span>
-                        <ExternalLink className="me-auto h-4 w-4 shrink-0" aria-hidden="true" />
                       </a>
                     ) : (
                       <Link

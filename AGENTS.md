@@ -2,4 +2,4 @@
 
 - One Sama logo everywhere (user-approved global scope): `src/assets/sama-logo-white.png` is the white-background `SiteHeader` default, print-sheet logo, and source for favicon/app icons/OG card; the original black-background pointer and old `sama-logo-icon` pointer are unused backups kept so older deployments still resolve.
 - Guide images with baked-in old branding are covered at render time by `GuideSectionHero` brand overlays (boxes in native-pixel percentages in `guideSectionHeroes[].brandBox`), never by editing the illustration pixels.
-- The children’s experience remains an external site linked from shared navigation and the home page, keeping the main Sama project focused on families.
+- The children’s experience is the source-preserved static package under `public/kids`; `/kids` redirects to its `index.html` so relative HTML navigation stays inside that package.
