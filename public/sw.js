@@ -8,13 +8,13 @@
  *  - ملفات الصوت (mp3/wav): stale-while-revalidate — تعمل دون اتصال،
  *    وتتحدث في الخلفية حتى لا يبقى تسجيل قديم بعد استبدال الملفات
  *    على نفس المسار. لا precache لها: 46 ملفًا ≈ 37MB لا تُحمَّل مسبقًا.
- *  - الأصول ذات الأسماء الثابتة (favicon, icon-512, og-image, manifest):
+ *  - الأصول ذات الأسماء الثابتة (favicon, icon-512, social-preview, manifest):
  *    stale-while-revalidate حتى لا تبقى قديمة بعد الإصدارات.
  *
  * عند استبدال أي صوت أو أصل ثابت: ارفع رقم النسخة أدناه.
  * حذف النسخ القديمة يتم في حدث activate.
  */
-const CACHE_NAME = "sama-cache-v5";
+const CACHE_NAME = "sama-cache-v6";
 const CRITICAL_PAGES = ["/", "/what-to-do-now", "/simplified-guide"];
 
 // أصول بأسماء ثابتة قد تتغير بين الإصدارات
@@ -24,7 +24,7 @@ const MUTABLE_NAMED_ASSETS = [
   "/icon-192.png",
   "/apple-touch-icon.png",
   "/favicon-32.png",
-  "/og-image.png",
+  "/sama-social-preview.jpg",
   "/manifest.json",
 ];
 

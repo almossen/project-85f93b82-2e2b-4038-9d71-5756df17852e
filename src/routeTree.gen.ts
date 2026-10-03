@@ -9,61 +9,21 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as IndexRouteImport } from './routes/index'
-import { Route as AboutRouteImport } from './routes/about'
-import { Route as FamilyToolsRouteImport } from './routes/family-tools'
-import { Route as KidsRouteImport } from './routes/kids'
-import { Route as ListenRouteImport } from './routes/listen'
-import { Route as ParentExperiencesRouteImport } from './routes/parent-experiences'
-import { Route as PrivacyRouteImport } from './routes/privacy'
-import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
-import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
-import { Route as SourcesRouteImport } from './routes/sources'
 import { Route as WhatToDoNowRouteImport } from './routes/what-to-do-now'
+import { Route as SourcesRouteImport } from './routes/sources'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
+import { Route as SimplifiedGuideRouteImport } from './routes/simplified-guide'
+import { Route as PrivacyRouteImport } from './routes/privacy'
+import { Route as ParentExperiencesRouteImport } from './routes/parent-experiences'
+import { Route as ListenRouteImport } from './routes/listen'
+import { Route as KidsRouteImport } from './routes/kids'
+import { Route as FamilyToolsRouteImport } from './routes/family-tools'
+import { Route as AboutRouteImport } from './routes/about'
+import { Route as IndexRouteImport } from './routes/index'
 
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const AboutRoute = AboutRouteImport.update({
-  id: '/about',
-  path: '/about',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const FamilyToolsRoute = FamilyToolsRouteImport.update({
-  id: '/family-tools',
-  path: '/family-tools',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const KidsRoute = KidsRouteImport.update({
-  id: '/kids',
-  path: '/kids',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ListenRoute = ListenRouteImport.update({
-  id: '/listen',
-  path: '/listen',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const ParentExperiencesRoute = ParentExperiencesRouteImport.update({
-  id: '/parent-experiences',
-  path: '/parent-experiences',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const PrivacyRoute = PrivacyRouteImport.update({
-  id: '/privacy',
-  path: '/privacy',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SimplifiedGuideRoute = SimplifiedGuideRouteImport.update({
-  id: '/simplified-guide',
-  path: '/simplified-guide',
-  getParentRoute: () => rootRouteImport,
-} as any)
-const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
-  id: '/sitemap.xml',
-  path: '/sitemap.xml',
+const WhatToDoNowRoute = WhatToDoNowRouteImport.update({
+  id: '/what-to-do-now',
+  path: '/what-to-do-now',
   getParentRoute: () => rootRouteImport,
 } as any)
 const SourcesRoute = SourcesRouteImport.update({
@@ -71,9 +31,49 @@ const SourcesRoute = SourcesRouteImport.update({
   path: '/sources',
   getParentRoute: () => rootRouteImport,
 } as any)
-const WhatToDoNowRoute = WhatToDoNowRouteImport.update({
-  id: '/what-to-do-now',
-  path: '/what-to-do-now',
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SimplifiedGuideRoute = SimplifiedGuideRouteImport.update({
+  id: '/simplified-guide',
+  path: '/simplified-guide',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ParentExperiencesRoute = ParentExperiencesRouteImport.update({
+  id: '/parent-experiences',
+  path: '/parent-experiences',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ListenRoute = ListenRouteImport.update({
+  id: '/listen',
+  path: '/listen',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const KidsRoute = KidsRouteImport.update({
+  id: '/kids',
+  path: '/kids',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FamilyToolsRoute = FamilyToolsRouteImport.update({
+  id: '/family-tools',
+  path: '/family-tools',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const IndexRoute = IndexRouteImport.update({
+  id: '/',
+  path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -175,67 +175,11 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/about': {
-      id: '/about'
-      path: '/about'
-      fullPath: '/about'
-      preLoaderRoute: typeof AboutRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/family-tools': {
-      id: '/family-tools'
-      path: '/family-tools'
-      fullPath: '/family-tools'
-      preLoaderRoute: typeof FamilyToolsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/kids': {
-      id: '/kids'
-      path: '/kids'
-      fullPath: '/kids'
-      preLoaderRoute: typeof KidsRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/listen': {
-      id: '/listen'
-      path: '/listen'
-      fullPath: '/listen'
-      preLoaderRoute: typeof ListenRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/parent-experiences': {
-      id: '/parent-experiences'
-      path: '/parent-experiences'
-      fullPath: '/parent-experiences'
-      preLoaderRoute: typeof ParentExperiencesRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/privacy': {
-      id: '/privacy'
-      path: '/privacy'
-      fullPath: '/privacy'
-      preLoaderRoute: typeof PrivacyRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/simplified-guide': {
-      id: '/simplified-guide'
-      path: '/simplified-guide'
-      fullPath: '/simplified-guide'
-      preLoaderRoute: typeof SimplifiedGuideRouteImport
-      parentRoute: typeof rootRouteImport
-    }
-    '/sitemap.xml': {
-      id: '/sitemap.xml'
-      path: '/sitemap.xml'
-      fullPath: '/sitemap.xml'
-      preLoaderRoute: typeof SitemapDotxmlRouteImport
+    '/what-to-do-now': {
+      id: '/what-to-do-now'
+      path: '/what-to-do-now'
+      fullPath: '/what-to-do-now'
+      preLoaderRoute: typeof WhatToDoNowRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/sources': {
@@ -245,11 +189,67 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof SourcesRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/what-to-do-now': {
-      id: '/what-to-do-now'
-      path: '/what-to-do-now'
-      fullPath: '/what-to-do-now'
-      preLoaderRoute: typeof WhatToDoNowRouteImport
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/simplified-guide': {
+      id: '/simplified-guide'
+      path: '/simplified-guide'
+      fullPath: '/simplified-guide'
+      preLoaderRoute: typeof SimplifiedGuideRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/parent-experiences': {
+      id: '/parent-experiences'
+      path: '/parent-experiences'
+      fullPath: '/parent-experiences'
+      preLoaderRoute: typeof ParentExperiencesRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/listen': {
+      id: '/listen'
+      path: '/listen'
+      fullPath: '/listen'
+      preLoaderRoute: typeof ListenRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/kids': {
+      id: '/kids'
+      path: '/kids'
+      fullPath: '/kids'
+      preLoaderRoute: typeof KidsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/family-tools': {
+      id: '/family-tools'
+      path: '/family-tools'
+      fullPath: '/family-tools'
+      preLoaderRoute: typeof FamilyToolsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/': {
+      id: '/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
   }
