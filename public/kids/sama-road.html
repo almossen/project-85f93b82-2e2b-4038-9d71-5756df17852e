@@ -206,7 +206,7 @@ canvas{object-fit:contain}
   function loadBest(){try{return Number(localStorage.getItem(key()))||0}catch(e){return 0}}
   function saveBest(){try{localStorage.setItem(key(),String(state.best));state.lastSaved=state.best}catch(e){}}
   function setMode(mode){if(state.running)return;state.mode=mode;$('calmMode').setAttribute('aria-pressed',String(mode==='calm'));$('challengeMode').setAttribute('aria-pressed',String(mode==='challenge'))}
-  function setSound(on){state.sound=on;$('soundBtn').setAttribute('aria-pressed',String(on));$('soundBtn').textContent=on?'<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> الصوت':'🔇 الصوت';if(!on){stopQuizAudio();if(state.quizAnswered){$('quizContinue').disabled=false;$('quizContinue').textContent='أكمل الطريق ←'}if('speechSynthesis'in window)speechSynthesis.cancel()}else if(state.quiz)playQuizAudio(state.quizAnswered?$('quizFeedback').classList.contains('good')?'correct':'wrong':'prompt');try{localStorage.setItem('samaRoadSound',on?'on':'off')}catch(e){}}
+  function setSound(on){state.sound=on;$('soundBtn').setAttribute('aria-pressed',String(on));$('soundBtn').innerHTML=on?'<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> الصوت':'🔇 الصوت';if(!on){stopQuizAudio();if(state.quizAnswered){$('quizContinue').disabled=false;$('quizContinue').textContent='أكمل الطريق ←'}if('speechSynthesis'in window)speechSynthesis.cancel()}else if(state.quiz)playQuizAudio(state.quizAnswered?$('quizFeedback').classList.contains('good')?'correct':'wrong':'prompt');try{localStorage.setItem('samaRoadSound',on?'on':'off')}catch(e){}}
   function speak(text){
     if(!state.sound)return false;
     if(!('speechSynthesis'in window))return false;
@@ -278,7 +278,7 @@ canvas{object-fit:contain}
       const button=$('quizOption'+i);button.disabled=false;button.className='quizOption';
     });
     $('quizFeedback').textContent='';$('quizFeedback').className='quizFeedback';$('quizContinue').hidden=true;
-    $('quizReplay').textContent='<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> استمع إلى السؤال';
+    $('quizReplay').innerHTML='<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> استمع إلى السؤال';
     $('quizOverlay').hidden=false;document.querySelector('.shell').inert=true;$('quizOption0').focus();playQuizAudio('prompt');
   }
   function chooseQuiz(index){
@@ -295,7 +295,7 @@ canvas{object-fit:contain}
     $('quizFeedback').textContent=correct?'أحسنت! ١٠٠ نقطة. '+state.currentQuiz.explain:
       'لنجرب ونتعلم. الإجابة الصحيحة: '+rightChoice+'. '+state.currentQuiz.explain;
     $('quizFeedback').className='quizFeedback '+(correct?'good':'warn');
-    $('quizContinue').hidden=false;$('quizContinue').disabled=state.sound;$('quizContinue').textContent=state.sound?'استمع ثم أكمل ←':'أكمل الطريق ←';$('quizReplay').textContent='<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> استمع إلى التوضيح';updateHud();playQuizAudio(correct?'correct':'wrong');
+    $('quizContinue').hidden=false;$('quizContinue').disabled=state.sound;$('quizContinue').textContent=state.sound?'استمع ثم أكمل ←':'أكمل الطريق ←';$('quizReplay').innerHTML='<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> استمع إلى التوضيح';updateHud();playQuizAudio(correct?'correct':'wrong');
     if(!state.sound)$('quizContinue').focus();
   }
   function continueQuiz(){
