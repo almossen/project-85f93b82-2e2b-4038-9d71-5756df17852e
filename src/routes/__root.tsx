@@ -90,9 +90,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { name: "apple-mobile-web-app-title", content: "سما" },
       { name: "twitter:title", content: "سما — رحلة التعايش مع السكري من النوع الأول" },
       { name: "twitter:description", content: "منصة توعوية لأهالي الأطفال المصابين حديثاً بالسكري من النوع الأول — محتوى مبسط، علمي، ومطمئن." },
-      // صورة المشاركة الرسمية (1200×630)
-      { property: "og:image", content: "https://t1d-ar.com/og-image.png?v=3" },
-      { name: "twitter:image", content: "https://t1d-ar.com/og-image.png?v=3" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },

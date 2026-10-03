@@ -28,26 +28,29 @@ import kidsFeatureAsset from "@/assets/sama-kids-home-feature.png.asset.json";
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "سما — رحلة التعايش مع السكري من النوع الأول" },
+      { title: "منصة سما – رحلة التعايش مع السكري من النوع الأول" },
       {
         name: "description",
         content:
-          "منصة سما: محتوى عربي توعوي مبسط لأهالي الأطفال المصابين حديثاً بالسكري من النوع الأول — من اليوم الأول للتشخيص حتى التمكّن بثقة وطمأنينة.",
+          "منصة عربية توعوية تفاعلية للأهل والأطفال، تساعد الأسر على فهم السكري من النوع الأول والتعايش معه بخطوات بسيطة وواضحة.",
       },
-      { property: "og:title", content: "سما — رحلة التعايش مع السكري من النوع الأول" },
+      { property: "og:title", content: "منصة سما – رحلة التعايش مع السكري من النوع الأول" },
       {
         property: "og:description",
         content:
-          "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بالسكري من النوع الأول — محتوى مبسط، علمي، ومطمئن.",
+          "منصة عربية توعوية تفاعلية للأهل والأطفال، تساعد الأسر على فهم السكري من النوع الأول والتعايش معه بخطوات بسيطة وواضحة.",
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://t1d-ar.com/" },
+      { property: "og:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=1" },
       { name: "twitter:card", content: "summary_large_image" },
-      { name: "twitter:title", content: "سما — رحلة التعايش مع السكري من النوع الأول" },
+      { name: "twitter:title", content: "منصة سما – رحلة التعايش مع السكري من النوع الأول" },
       {
         name: "twitter:description",
-        content: "منصة عربية توعوية لأسر الأطفال المشخصين حديثاً بالسكري من النوع الأول.",
+        content:
+          "منصة عربية توعوية تفاعلية للأهل والأطفال، تساعد الأسر على فهم السكري من النوع الأول والتعايش معه بخطوات بسيطة وواضحة.",
       },
+      { name: "twitter:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=1" },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/" }],
   }),
