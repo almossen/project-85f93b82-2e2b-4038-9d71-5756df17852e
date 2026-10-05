@@ -73,6 +73,11 @@ function ErrorComponent({ error, reset }: { error: Error; reset: () => void }) {
   );
 }
 
+// يتوقع TanStack Start مكوّن خطأ بنمط LazyExoticComponent
+const ErrorRouteComponent = lazy(() =>
+  Promise.resolve({ default: ErrorComponent })
+);
+
 export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()({
   head: () => ({
     meta: [
@@ -107,11 +112,6 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorRouteComponent,
 });
-
-// يتوقع TanStack Start مكوّن خطأ بنمط LazyExoticComponent
-const ErrorRouteComponent = lazy(() =>
-  Promise.resolve(ErrorComponent)
-);
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
