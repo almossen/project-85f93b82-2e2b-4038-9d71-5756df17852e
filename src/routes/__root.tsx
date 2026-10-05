@@ -105,7 +105,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   shellComponent: RootShell,
   component: RootComponent,
   notFoundComponent: NotFoundComponent,
-  errorComponent: ErrorComponent,
+  errorComponent: ErrorRouteComponent,
 });
 
 // يتوقع TanStack Start مكوّن خطأ بنمط LazyExoticComponent
