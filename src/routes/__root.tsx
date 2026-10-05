@@ -1,5 +1,5 @@
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { useEffect } from "react";
+import { lazy, useEffect } from "react";
 import {
   Outlet,
   Link,
@@ -107,6 +107,11 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
   notFoundComponent: NotFoundComponent,
   errorComponent: ErrorComponent,
 });
+
+// يتوقع TanStack Start مكوّن خطأ بنمط LazyExoticComponent
+const ErrorRouteComponent = lazy(() =>
+  Promise.resolve(ErrorComponent)
+);
 
 function RootShell({ children }: { children: React.ReactNode }) {
   return (
