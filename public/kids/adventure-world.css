@@ -136,6 +136,10 @@ body { background: var(--world-paper); }
 .stage .content h1, .stage .content h2 { font-size: 32px; }
 .stage .story { font-size: 20px; }
 .stage .content p { line-height: 1.8; }
+/* Keep the legacy reading-mode label contained without changing its script. */
+#audioModeBtn[aria-pressed="true"] { font-size: 0 !important; }
+#audioModeBtn[aria-pressed="true"]::after { content: 'استمع'; font-size: 14px; }
+#controls.storyControls .storyUtility { min-width: 0; flex-wrap: wrap; }
 @media(min-width:901px) and (min-height:650px) {
   .stage:not([hidden]) { height: auto; min-height: 0; }
   .stage .step, .stage .step.active, .stage .visual { height: auto; }
@@ -183,6 +187,7 @@ body { background: var(--world-paper); }
   .stage .content h1, .stage .content h2 { font-size: 27px; }
   .stage .story { font-size: 18px; }
   .storyUtility > a.control .utilityText { display: inline !important; font-size: 12px; }
+  #controls.storyControls { max-width: calc(100% - 24px); }
 }
 @media(prefers-reduced-motion:reduce) {
   html { scroll-behavior: auto; }
