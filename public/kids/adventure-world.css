@@ -193,3 +193,98 @@ body { background: var(--world-paper); }
   html { scroll-behavior: auto; }
   *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
 }
+
+/* Homepage-only cascade boundary: outrank every legacy card/media rule. */
+#homeStage .homeIntro {
+  display: block !important; min-height: 550px !important;
+  padding: 64px 48px !important; border-radius: 28px !important;
+  position: relative; isolation: isolate; overflow: hidden;
+}
+#homeStage .homeIntro .homeCopy { position: relative; z-index: 3; }
+#homeStage .homeIntro .homeHero {
+  position: absolute !important; inset: 0 !important; width: 100% !important;
+  height: 100% !important; object-fit: cover !important; object-position: center 35%;
+  border: 0 !important; border-radius: 0 !important;
+}
+#homeStage .portalStart {
+  display: inline-flex !important; min-height: 64px !important; min-width: 260px;
+  padding: 16px 26px !important; border-radius: 18px !important;
+  background: var(--world-purple) !important; color: var(--world-surface) !important;
+  font-size: 21px !important; font-weight: 800; text-decoration: none !important;
+}
+#homeStage .portalStart:hover { background: var(--world-purple-deep) !important; }
+.portalScenery { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.portalCloud { position: absolute; color: var(--world-surface); font-size: 84px; line-height: 1; opacity: .85; }
+.cloudOne { top: 10px; left: 8%; }
+.cloudTwo { top: 30px; left: 40%; font-size: 54px; }
+.portalStar { position: absolute; color: var(--world-purple); font-size: 32px; }
+.starOne { top: 105px; left: 45%; }
+.starTwo { bottom: 135px; right: 5%; color: var(--world-teal); }
+.portalHill { position: absolute; bottom: -80px; left: -10%; width: 120%; height: 125px; border-radius: 50% 50% 0 0; background: var(--world-mint); border-top: 8px solid var(--world-lilac); }
+#homeStage #adventureMap {
+  display: grid !important; grid-template-columns: minmax(0,1fr) !important;
+  gap: 60px !important; padding: 32px 48px 40px !important;
+  overflow: visible; isolation: isolate;
+}
+#homeStage #adventureMap::before { display: none !important; }
+#homeStage #adventureMap > .adventureGroupHeading {
+  grid-column: 1 !important; width: 100%; margin: 0 !important;
+  padding: 14px 8px; background: var(--world-paper); position: relative; z-index: 2;
+}
+#homeStage #adventureMap > article.adventureCard {
+  grid-column: 1 !important; width: 75% !important; justify-self: start;
+  display: grid !important; grid-template-columns: 84px minmax(0,1fr) !important;
+  gap: 14px 20px !important; padding: 24px !important; min-height: 0 !important;
+  border: 2px solid var(--world-line) !important; border-radius: 28px !important;
+  position: relative; overflow: visible !important; z-index: auto;
+}
+#homeStage #adventureMap > article.adventureCard:nth-of-type(even) { justify-self: end; }
+#homeStage #adventureMap > article.adventureCard::before { display: none !important; }
+#homeStage #adventureMap > article.adventureCard::after {
+  content: ''; position: absolute; top: 100%; right: 18%; width: 64%; height: 62px;
+  border-right: 4px dashed var(--world-purple); border-bottom: 4px dashed var(--world-purple);
+  border-bottom-right-radius: 30px; pointer-events: none;
+}
+#homeStage #adventureMap > article.adventureCard:nth-of-type(even)::after {
+  right: auto; left: 18%; border-right: 0; border-left: 4px dashed var(--world-purple);
+  border-bottom-right-radius: 0; border-bottom-left-radius: 30px;
+}
+#homeStage #adventureMap > article.adventureCard:nth-of-type(4)::after,
+#homeStage #adventureMap > article.adventureCard:last-child::after { display: none; }
+#homeStage #adventureMap .adventureNumber {
+  width: 84px !important; height: 84px !important; border-radius: 50% !important;
+  display: grid; place-content: center; gap: 4px; border: 2px solid var(--world-line);
+}
+#homeStage #adventureMap .stationNumber { font-size: 34px; }
+#homeStage #adventureMap .adventureNumber .uiIcon { width: 20px; height: 20px; margin: auto; }
+#homeStage #adventureMap .startAdventure { grid-column: 1 / -1 !important; border-radius: 16px !important; min-height: 56px !important; }
+@media(max-width:620px) {
+  #homeStage .homeIntro { min-height: 610px !important; padding: 24px 18px 320px !important; }
+  #homeStage .homeIntro .homeHero { inset: auto 0 0 !important; height: 290px !important; object-position: center; }
+  #homeStage .portalStart { min-width: 0; width: 100%; min-height: 58px !important; font-size: 19px !important; }
+  .cloudOne { top: auto; bottom: 235px; left: 5%; font-size: 48px; }
+  .cloudTwo { display: none; }
+  .starOne { top: auto; bottom: 260px; left: 80%; font-size: 24px; }
+  .starTwo { bottom: 20px; right: 8%; }
+  #homeStage #adventureMap { gap: 30px !important; padding: 30px 0 30px 0 !important; }
+  #homeStage #adventureMap::before {
+    display: block !important; content: ''; position: absolute; top: 115px; bottom: 80px;
+    right: 22px; left: auto; border: 0; border-right: 4px dashed var(--world-purple); z-index: 0;
+  }
+  #homeStage #adventureMap > article.adventureCard,
+  #homeStage #adventureMap > article.adventureCard:nth-of-type(even) {
+    width: calc(100% - 48px) !important; justify-self: end;
+    grid-template-columns: 60px minmax(0,1fr) !important; padding: 16px !important;
+    gap: 12px !important; border-radius: 24px !important;
+  }
+  #homeStage #adventureMap > article.adventureCard::after,
+  #homeStage #adventureMap > article.adventureCard:nth-of-type(even)::after {
+    display: block; width: 26px; height: 0; top: 48px; right: -28px; left: auto;
+    border: 0; border-top: 4px dashed var(--world-purple); border-radius: 0;
+  }
+  #homeStage #adventureMap .adventureNumber { width: 60px !important; height: 60px !important; }
+  #homeStage #adventureMap .stationNumber { font-size: 26px; }
+  #homeStage #adventureMap .adventureNumber .uiIcon { width: 16px; height: 16px; }
+  #homeStage #adventureMap .adventureCard h2 { font-size: 20px; }
+  #homeStage #adventureMap .adventureStatus { font-size: 11px; }
+}
