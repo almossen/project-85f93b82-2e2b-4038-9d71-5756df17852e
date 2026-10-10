@@ -182,7 +182,8 @@ body { background: var(--world-paper); }
   .worldEncouragement ul { gap: 12px 18px; }
   .worldEncouragement li { font-size: 17px; }
   .worldEncouragement p { font-size: 16px; }
-  .worldMapReturn { font-size: 13px; padding: 8px 12px; }
+  .worldMapReturn { font-size: 15px; min-height: 48px; padding: 8px 12px; }
+  .platformFooter a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 15px; }
   .home h1, .introCopy h1 { font-size: 30px; }
   .stage .content h1, .stage .content h2 { font-size: 27px; }
   .stage .story { font-size: 18px; }
@@ -272,7 +273,7 @@ body { background: var(--world-paper); }
   }
   #homeStage #adventureMap > article.adventureCard,
   #homeStage #adventureMap > article.adventureCard:nth-of-type(even) {
-    width: calc(100% - 48px) !important; justify-self: end;
+    width: 100% !important; justify-self: stretch; min-width: 0;
     grid-template-columns: 60px minmax(0,1fr) !important; padding: 16px !important;
     gap: 12px !important; border-radius: 24px !important;
   }
@@ -288,5 +289,12 @@ body { background: var(--world-paper); }
   #homeStage #adventureMap .stationNumber { font-size: 26px; }
   #homeStage #adventureMap .adventureNumber .uiIcon { width: 16px; height: 16px; }
   #homeStage #adventureMap .adventureCard h2 { font-size: 20px; }
-  #homeStage #adventureMap .adventureStatus { font-size: 11px; }
+  #homeStage #adventureMap .adventureStatus { font-size: 13px; }
+}
+@media(max-width:360px) {
+  #homeStage #adventureMap > article.adventureCard,
+  #homeStage #adventureMap > article.adventureCard:nth-of-type(even) {
+    grid-template-columns: 50px minmax(0,1fr) !important; column-gap: 10px !important;
+  }
+  #homeStage #adventureMap .adventureNumber { width: 50px !important; height: 50px !important; }
 }

@@ -265,7 +265,8 @@ body { background: var(--world-paper); }
   .worldEncouragement ul { gap: 12px 18px; }
   .worldEncouragement li { font-size: 17px; }
   .worldEncouragement p { font-size: 16px; }
-  .worldMapReturn { font-size: 13px; padding: 8px 12px; }
+  .worldMapReturn { font-size: 15px; min-height: 48px; padding: 8px 12px; }
+  .platformFooter a { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; font-size: 15px; }
   .home h1, .introCopy h1 { font-size: 30px; }
   .stage .content h1, .stage .content h2 { font-size: 27px; }
   .stage .story { font-size: 18px; }
@@ -351,27 +352,35 @@ body { background: var(--world-paper); }
   .starTwo { bottom: 20px; right: 8%; }
   #homeStage #adventureMap { gap: 30px !important; padding: 30px 0 30px 0 !important; }
   #homeStage #adventureMap::before {
-    display: block !important; content: ''; position: absolute; top: 115px; bottom: 80px;
-    right: 22px; left: auto; border: 0; border-right: 4px dashed var(--world-purple); z-index: 0;
+    display: none !important;
   }
   #homeStage #adventureMap > article.adventureCard,
   #homeStage #adventureMap > article.adventureCard:nth-of-type(even) {
-    width: calc(100% - 48px) !important; justify-self: end;
+    width: 100% !important; justify-self: stretch; min-width: 0;
     grid-template-columns: 60px minmax(0,1fr) !important; padding: 16px !important;
     gap: 12px !important; border-radius: 24px !important;
   }
   #homeStage #adventureMap > article.adventureCard::after,
   #homeStage #adventureMap > article.adventureCard:nth-of-type(even)::after {
-    display: block; width: 26px; height: 0; top: 48px; right: -28px; left: auto;
-    border: 0; border-top: 4px dashed var(--world-purple); border-radius: 0;
+    display: none; width: 0; height: 18px; inset: calc(100% + 5px) auto auto 50%;
+    transform: translateX(-50%); border: 0; border-left: 3px dotted var(--world-path); border-radius: 0;
+  }
+  #homeStage #adventureMap > article.adventureCard:has(+ article.adventureCard)::after {
+    display: block;
   }
   #homeStage #adventureMap .adventureNumber { width: 60px !important; height: 60px !important; }
   #homeStage #adventureMap .stationNumber { font-size: 26px; }
   #homeStage #adventureMap .adventureNumber .uiIcon { width: 16px; height: 16px; }
   #homeStage #adventureMap .adventureCard h2 { font-size: 20px; }
-  #homeStage #adventureMap .adventureStatus { font-size: 11px; }
+  #homeStage #adventureMap .adventureStatus { font-size: 13px; }
 }
-</style>
+@media(max-width:360px) {
+  #homeStage #adventureMap > article.adventureCard,
+  #homeStage #adventureMap > article.adventureCard:nth-of-type(even) {
+    grid-template-columns: 50px minmax(0,1fr) !important; column-gap: 10px !important;
+  }
+  #homeStage #adventureMap .adventureNumber { width: 50px !important; height: 50px !important; }
+}</style>
 </head>
 <body><div class="app">
 <div class="notice">تمت مراجعة المحتوى طبيًا من مختص. استمع إلى قصة سما أو اقرأها.</div>
