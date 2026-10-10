@@ -99,6 +99,12 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
             تجارب أهالي مفيدة
           </Link>
           <a
+            href="/teens/"
+            className="hidden lg:inline-flex items-center rounded-full border border-[#decbb2] bg-[#f4eadb] px-2.5 py-1.5 font-semibold text-[#594733] transition-colors hover:bg-[#e9dac4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6a48] xl:px-3"
+          >
+            عالم الشباب السكريين
+          </a>
+          <a
             href="/kids/"
             className="inline-flex items-center gap-1.5 rounded-full border border-kids/40 bg-kids-soft px-2 py-1 font-semibold text-kids-foreground transition-colors hover:border-kids hover:bg-kids hover:text-kids-contrast focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-kids lg:px-2.5 lg:py-1.5 xl:px-3"
           >

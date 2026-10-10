@@ -187,8 +187,44 @@ function HomePage() {
           </div>
         </section>
 
+        {/* عالم الشباب السكريين */}
+        <section className="mx-auto mt-10 max-w-6xl sm:mt-12 px-4 sm:px-6">
+          <div className="overflow-hidden rounded-3xl border border-[#e7d8bd] bg-gradient-to-l from-[#fffaf0] via-[#f7eddb] to-[#e8f5f1] p-5 shadow-[var(--shadow-card)] sm:p-7">
+            <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:gap-7 sm:text-right">
+              <div className="min-w-0 flex-1 space-y-3">
+                <span className="inline-flex items-center gap-2 rounded-full bg-white/75 px-3 py-1.5 text-xs font-semibold text-[#705d3f]">
+                  <GraduationCap className="h-4 w-4" aria-hidden="true" />
+                  مساحة خاصة بالشباب
+                </span>
+                <h2 className="text-2xl font-bold tracking-tight text-[#463d34] sm:text-3xl">
+                  عالم الشباب السكريين
+                </h2>
+                <p className="max-w-2xl text-sm leading-loose text-[#62594e] sm:text-base">
+                  مساحة موجهة للفئة العمرية من ١٢ إلى ١٨ سنة، تقدم إضاءات قصيرة ومسارات تعلم تساعدك على فهم السكري والتعامل معه في يومك.
+                </p>
+                <a
+                  href="/teens/"
+                  className="inline-flex min-h-11 items-center justify-center gap-2 rounded-full bg-[#766b53] px-5 py-2.5 text-sm font-semibold text-white transition-colors duration-200 hover:bg-[#5e543f] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#766b53] focus-visible:ring-offset-2"
+                >
+                  ادخل عالم الشباب السكريين
+                  <ArrowLeft className="h-4 w-4" aria-hidden="true" />
+                </a>
+              </div>
+              <img
+                src="/teens/assets/hero-sensor.webp"
+                alt="شاب يطّلع على قراءة جهاز استشعار السكر"
+                width={480}
+                height={480}
+                loading="lazy"
+                decoding="async"
+                className="h-36 w-full rounded-2xl object-cover shadow-[var(--shadow-card)] sm:h-40 sm:w-44 md:h-44 md:w-52"
+              />
+            </div>
+          </div>
+        </section>
+
         {/* عالم سما للأطفال */}
-        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-10 sm:mt-12">
+        <section className="mx-auto max-w-6xl px-4 sm:px-6 mt-6">
           <div className="rounded-3xl border border-kids/25 bg-kids-soft p-5 sm:p-7 shadow-[var(--shadow-card)]">
             <div className="flex flex-col items-center gap-5 text-center sm:flex-row sm:items-center sm:gap-6 sm:text-right">
               <div className="order-1 sm:order-2 w-full min-w-0 space-y-2.5">

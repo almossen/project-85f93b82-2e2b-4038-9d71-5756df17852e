@@ -31,6 +31,11 @@ const linkActive =
 
 const moreLinks = [
   {
+    href: "/teens/",
+    label: "عالم الشباب السكريين",
+    icon: BookOpen,
+  },
+  {
     href: "/kids/index.html",
     label: "عالم سما للأطفال",
     icon: Sparkles,
