@@ -137,8 +137,8 @@ body { background: var(--world-paper); }
 .stage .story { font-size: 20px; }
 .stage .content p { line-height: 1.8; }
 /* Keep the legacy reading-mode label contained without changing its script. */
-#audioModeBtn[aria-pressed="true"] { font-size: 0 !important; }
-#audioModeBtn[aria-pressed="true"]::after { content: 'استمع'; font-size: 14px; }
+#controls.storyControls #audioModeBtn[aria-label="الانتقال إلى وضع الاستماع"] { font-size: 0 !important; max-width: 100%; }
+#controls.storyControls #audioModeBtn[aria-label="الانتقال إلى وضع الاستماع"]::after { content: 'استمع'; font-size: 14px; }
 #controls.storyControls .storyUtility { min-width: 0; flex-wrap: wrap; }
 @media(min-width:901px) and (min-height:650px) {
   .stage:not([hidden]) { height: auto; min-height: 0; }
