@@ -23,7 +23,7 @@ import heroFamily from "@/assets/sama-family.webp";
 import heroFamily400 from "@/assets/sama-family-400.webp";
 import heroFamily800 from "@/assets/sama-family-800.webp";
 import happyChild from "@/assets/happy-child.webp";
-import kidsFeatureAsset from "@/assets/sama-kids-home-feature.png.asset.json";
+import kidsFeatureImage from "@/assets/sama-kids-home-feature-v2.jpg";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -216,14 +216,13 @@ function HomePage() {
                 </a>
               </div>
               <img
-                src={kidsFeatureAsset.url}
-                alt="رسم لطفلة بحقيبة بنفسجية تبتسم في عالم قصصي من عالم سما للأطفال"
-                width={1536}
-                height={1024}
+                src={kidsFeatureImage}
+                alt="سما تقرأ قصة مصوّرة في عالم سما للأطفال"
+                width={480}
+                height={480}
                 loading="lazy"
                 decoding="async"
                 className="order-2 sm:order-1 h-28 w-28 shrink-0 rounded-2xl object-cover shadow-[var(--shadow-card)] sm:h-36 sm:w-36 md:h-40 md:w-40"
-                style={{ objectPosition: "35% 30%" }}
               />
             </div>
           </div>
