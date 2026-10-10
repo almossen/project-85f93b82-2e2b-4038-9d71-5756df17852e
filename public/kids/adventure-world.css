@@ -124,7 +124,7 @@ body { background: var(--world-paper); }
 .home .hero img, .introArt img { border-radius: 8px; box-shadow: var(--world-shadow); }
 .introArt { background: var(--world-mint); }
 .introArt::before, .introArt::after { display: none; }
-.stage { border-radius: 8px; box-shadow: var(--world-shadow); }
+.stage { border-radius: 8px; box-shadow: var(--world-shadow); align-self: start; }
 .stage .visual { background: var(--world-mint); }
 .stage .visualPanel { box-shadow: none; }
 .home .start, .home .control, .introActions .primary, .introActions .softBtn,
@@ -154,9 +154,9 @@ body { background: var(--world-paper); }
 }
 @media(max-width:620px) {
   .homeStage { width: calc(100% - 24px); }
-  .homeIntro { min-height: 560px; padding: 22px 18px 290px; }
-  .homeIntro::after { background: linear-gradient(to bottom, var(--world-surface) 0%, var(--world-surface) 38%, transparent 64%); }
-  .homeIntro .homeHero { object-position: center bottom; object-fit: cover; }
+  .homeIntro { min-height: 560px; padding: 22px 18px 310px; background: var(--world-surface); }
+  .homeIntro::after { display: none; }
+  .homeIntro .homeHero { inset: auto 0 0; height: 290px; object-position: center; object-fit: cover; }
   .homeCopy { max-width: none; }
   .homeCopy #homeTitle { font-size: 30px; margin: 10px 0; }
   .homeCopy > p { font-size: 17px; line-height: 1.7; }
