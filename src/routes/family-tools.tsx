@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Copy, Download } from "lucide-react";
+import { ArrowRight, Copy, Download, FileText, GraduationCap, Info } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/sama/SiteHeader";
