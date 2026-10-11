@@ -181,7 +181,7 @@ function HomePage() {
               </div>
               <h2 className="font-bold text-lg mb-1">أدوات وقوائم جاهزة</h2>
               <p className="text-sm text-muted-foreground leading-relaxed">
-                رسالة للطبيب، أسئلة أول موعد، حقيبة السكري، وروتين ليلي — جاهزة للطباعة.
+                نماذج جاهزة للطباعة للأصدقاء والمدرسة وأسئلة للطبيب في الموعد الأول
               </p>
             </Link>
           </div>
