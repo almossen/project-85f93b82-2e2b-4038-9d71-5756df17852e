@@ -332,17 +332,15 @@ function HomePage() {
                 البيت والمدرسة.
               </p>
             </header>
-            <div className="space-y-4">
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-                {audience.slice(0, 3).map((a) => (
-                  <AudienceCard key={a.title} a={a} />
-                ))}
-              </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:max-w-[calc((100%-1rem)*2/3)] lg:mx-auto">
-                {audience.slice(3).map((a) => (
-                  <AudienceCard key={a.title} a={a} />
-                ))}
-              </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              {audience.map((a) => (
+                <div
+                  key={a.title}
+                  className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc((100%-2rem)/3)]"
+                >
+                  <AudienceCard a={a} />
+                </div>
+              ))}
             </div>
           </div>
         </section>
