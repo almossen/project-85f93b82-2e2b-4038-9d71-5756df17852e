@@ -1,5 +1,7 @@
 # Project architecture
 
+- Family-tools topic grouping and contextual presentation of `DeepDiveEnrichment` live in the family-tools route; keep the reusable tool component and downloadable originals unchanged to preserve existing functions and printing.
+
 - One Sama logo everywhere (user-approved global scope): `src/assets/sama-logo-white.png` is the white-background `SiteHeader` default, print-sheet logo, and source for favicon/app icons; the original black-background pointer and old `sama-logo-icon` pointer are unused backups kept so older deployments still resolve.
 - The homepage social preview uses the dedicated 1200×630 `public/sama-social-preview.jpg`, keeping share metadata independent from visible page imagery and legacy OG artwork.
 - Guide images with baked-in old branding are covered at render time by `GuideSectionHero` brand overlays (boxes in native-pixel percentages in `guideSectionHeroes[].brandBox`), never by editing the illustration pixels.

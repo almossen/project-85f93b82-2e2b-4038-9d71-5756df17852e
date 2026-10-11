@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Copy, Download, FileText, GraduationCap, Info } from "lucide-react";
+import { ArrowRight, Copy, Download, FileText, GraduationCap, Info, ContactRound, Stethoscope } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/sama/SiteHeader";
@@ -67,16 +67,22 @@ function FamilyToolsPage() {
       </nav>
 
       <header className="space-y-3 text-center">
-        <h1 className="text-3xl sm:text-4xl font-bold tracking-tight">أدوات عملية للأسرة</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold">أدوات عملية للأسرة</h1>
         <p className="text-muted-foreground max-w-[72ch] mx-auto leading-loose">
-          أدوات تستخدمونها وقت الحاجة، لا محتوى تقرؤونه مرة أخرى: قالب رسالة يُنسخ بضغطة، وقائمة
-          أسئلة تُطبع وتُؤخذ إلى الموعد. الدروس التعليمية كاملة في الدليل المبسّط.
+          بطاقات تعرّف الآخرين بالسكري لدى طفلكم، وأدلة تدعم الطالب والطالبة في المدرسة،
+          وقوالب للتواصل مع الفريق الطبي وأسئلة للاستعداد للموعد. الدروس التعليمية كاملة في الدليل المبسّط.
         </p>
       </header>
 
-       <section aria-labelledby="downloads-title" className="space-y-5 print:hidden">
+       <section aria-labelledby="child-cards-title" className="space-y-6 border-y border-primary/20 pb-8 print:hidden"><header className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 bg-primary-soft px-4 py-5 sm:px-6 print:hidden">
+ <ContactRound aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-primary" />
+ <div className="min-w-0 space-y-2">
+ <h2 id="child-cards-title" className="text-2xl font-bold leading-relaxed text-primary">بطاقات التعريف بالسكري لطفلك</h2>
+ <p className="text-sm sm:text-base text-muted-foreground leading-loose">بطاقة بسيطة ومطمئنة لتعريف زملاء طفلكم ومن حوله بالسكري: حمّلوا نسخة جاهزة أو أنشئوا بطاقة خاصة به.</p>
+ </div></header>
+<section aria-labelledby="downloads-title" className="space-y-5 print:hidden">
          <div className="space-y-2">
-           <h2 id="downloads-title" className="text-2xl font-bold">نسخ جاهزة للتحميل</h2>
+           <h3 id="downloads-title" className="text-xl font-bold text-primary">حمّل بطاقة جاهزة</h3>
            <p className="text-muted-foreground leading-loose">
              بطاقات تساعد طفلكم على التعريف بالسكري من النوع الأول لزملائه ومن حوله بطريقة بسيطة ومطمئنة، ويمكن طباعتها أو مشاركتها رقميًا.
            </p>
@@ -89,7 +95,7 @@ function FamilyToolsPage() {
              <article key={version.key} className="flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-[var(--shadow-card)]">
                <img src={`/family-tools/sama-${version.key}-t1d-infographic.png`} alt={version.alt} width={version.width} height={version.height} loading="lazy" className="block h-auto w-full" />
                <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
-                 <h3 className="text-xl font-bold">{version.title}</h3>
+                 <h4 className="text-lg font-bold">{version.title}</h4>
                  <p className="text-sm text-muted-foreground leading-loose">{version.description}</p>
                  <Button asChild className="mt-auto h-auto min-h-12 whitespace-normal py-3 text-base">
                    <a href={`/family-tools/sama-${version.key}-t1d-infographic.png`} download={`sama-${version.key}-t1d-infographic.png`}>
@@ -102,14 +108,64 @@ function FamilyToolsPage() {
          </div>
        </section>
 
-       <section aria-labelledby="teacher-guide-title" className="space-y-5 border-t border-border pt-8 print:hidden">
+       <section aria-labelledby="custom-version-title" className="space-y-5 border-t border-primary/20 pt-8 print:hidden">
          <div className="space-y-2">
-           <h2 id="teacher-guide-title" className="text-2xl font-bold leading-relaxed">دليل المدرسة لدعم الطالب المصاب بالسكري من النوع الأول</h2>
-           <p className="text-muted-foreground leading-loose">
-             دليل عملي جاهز للطباعة يساعد الأسرة على تزويد المدرسة بالمعلومات الأساسية للتعامل الآمن والداعم مع السكري من النوع الأول خلال اليوم الدراسي.
-           </p>
+           <h3 id="custom-version-title" className="text-xl font-bold leading-relaxed text-primary">أنشئ بطاقة خاصة بطفلك</h3>
+           <p className="text-muted-foreground leading-loose">يمكنكم رفع صورة طفلكم مباشرة إلى خدمة ذكاء اصطناعي خارجية، ثم نسخ البرومبت الجاهز وتعبئة بيانات الطفل لإنشاء نسخة خاصة به.</p>
          </div>
-         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+         <ol className="list-decimal space-y-2 ps-6 leading-loose marker:font-bold marker:text-primary">
+           <li>اختر ChatGPT أو Gemini / Nano Banana.</li>
+           <li>ارفع صورة الطفل إلى الخدمة المختارة.</li>
+           <li>انسخ البرومبت المناسب وعدّل الحقول.</li>
+           <li>أنشئ النسخة ثم راجع النص قبل الطباعة أو المشاركة.</li>
+         </ol>
+         <fieldset className="space-y-3">
+           <legend className="font-bold text-lg">بيانات التخصيص</legend>
+           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+             <label className="text-sm font-semibold">اسم الطفل
+               <input className={fieldClass} value={name} onChange={(event) => setName(event.target.value)} placeholder="اكتب الاسم" autoComplete="off" />
+             </label>
+             <label className="text-sm font-semibold">الجنس
+               <select className={fieldClass} value={gender} onChange={(event) => setGender(event.target.value)}><option>ولد</option><option>بنت</option></select>
+             </label>
+             <label className="text-sm font-semibold sm:col-span-2">الهوايات
+               <input className={fieldClass} value={hobbies} onChange={(event) => setHobbies(event.target.value)} placeholder="اكتب الهوايات" autoComplete="off" />
+             </label>
+             <label className="text-sm font-semibold">هل يستخدم CGM؟
+               <select className={fieldClass} value={cgm} onChange={(event) => setCgm(event.target.value)}><option>نعم</option><option>لا</option></select>
+             </label>
+             <label className="text-sm font-semibold">نمط الصورة
+               <select className={fieldClass} value={imageStyle} onChange={(event) => setImageStyle(event.target.value)}><option>كرتونية</option><option>الصورة الأصلية</option></select>
+             </label>
+           </div>
+         </fieldset>
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+           {["ChatGPT", "Gemini / Nano Banana"].map((tool) => (
+             <article key={tool} className="min-w-0 space-y-3 rounded-lg border border-border bg-card p-5">
+               <h4 className="text-lg font-bold"><bdi>{tool}</bdi></h4>
+               <Button onClick={() => copyPrompt(tool)} aria-label={`نسخ البرومبت المخصص لأداة ${tool}`} className="h-auto min-h-12 w-full whitespace-normal py-3 text-base">
+                 <Copy aria-hidden="true" /> نسخ البرومبت
+               </Button>
+             </article>
+           ))}
+         </div>
+         <p role="status" aria-live="polite" aria-atomic="true" className="text-sm font-semibold text-primary">{copyMessage}</p>
+         <div className="space-y-2 border-s-4 border-mint ps-4 text-sm text-muted-foreground leading-loose">
+           <p>عند استخدام هذه الطريقة، تُرفع صورة الطفل مباشرة إلى خدمة الذكاء الاصطناعي التي تختارونها وفق سياسة الخصوصية الخاصة بها، ولا تُرفع الصورة إلى منصة سما.</p>
+           <p>راجِعوا النص العربي قبل الطباعة أو المشاركة؛ فقد تخطئ أدوات الذكاء الاصطناعي أحيانًا في الكلمات أو التفاصيل.</p>
+         </div>
+       </section>
+
+       </section>
+
+<section aria-labelledby="teacher-guide-title" className="space-y-6 border-y border-kids/20 pb-8 print:hidden">
+         <header className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 bg-kids-soft px-4 py-5 sm:px-6 print:hidden">
+ <GraduationCap aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-kids-foreground" />
+ <div className="min-w-0 space-y-2">
+ <h2 id="teacher-guide-title" className="text-2xl font-bold leading-relaxed text-kids-foreground">أدلة المدرسة للمعلم والمعلمة</h2>
+ <p className="text-sm sm:text-base text-muted-foreground leading-loose">دليل المدرسة لدعم الطالب والطالبة المصابين بالسكري من النوع الأول: دليل عملي جاهز للطباعة يساعد الأسرة على تزويد المدرسة بالمعلومات الأساسية للتعامل الآمن والداعم خلال اليوم الدراسي.</p>
+ </div></header>
+<div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
            {[
              {
                key: "boys",
@@ -145,10 +201,10 @@ function FamilyToolsPage() {
              },
            ].map((guide) => (
              <article key={guide.key} className={`flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-[var(--shadow-card)] ${guide.accentClass}`}>
-               <img src={guide.cover} alt={guide.alt} width={guide.coverWidth} height={guide.coverHeight} loading="lazy" className="block h-auto w-full" />
+               <img src={guide.cover} alt={guide.alt} width={guide.coverWidth} height={guide.coverHeight} loading="lazy" className="block h-64 w-full bg-muted/40 object-contain p-3 sm:h-72" />
                <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
-                 <div className="flex items-center justify-between gap-3">
-                   <h3 className="text-xl font-bold">{guide.title}</h3>
+                 <div className="grid min-w-0 grid-cols-[minmax(0,1fr)_auto] items-start gap-2">
+                   <h3 className="min-w-0 text-lg font-bold leading-relaxed">{guide.title}</h3>
                    <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${guide.badgeClass}`}>
                      <GraduationCap aria-hidden="true" className="h-3.5 w-3.5" />
                      {guide.badge}
@@ -168,7 +224,7 @@ function FamilyToolsPage() {
              </article>
            ))}
          </div>
-         <div className="space-y-3 rounded-lg border border-border bg-muted/50 p-5">
+         <div className="space-y-3 border-s-4 border-kids/30 bg-kids-soft/40 p-4 sm:p-5">
            <h3 className="font-bold text-lg">قبل مشاركة الدليل مع المدرسة</h3>
            <ol className="list-decimal space-y-1.5 ps-6 leading-loose marker:font-bold marker:text-primary">
              <li>عبّئوا بطاقة المعلم السريعة بالمعلومات الخاصة بالطالب أو الطالبة.</li>
@@ -182,55 +238,12 @@ function FamilyToolsPage() {
          </div>
        </section>
 
-       <section aria-labelledby="custom-version-title" className="space-y-5 border-t border-border pt-8 print:hidden">
-         <div className="space-y-2">
-           <h2 id="custom-version-title" className="text-2xl font-bold leading-relaxed">أنشئ نسخة خاصة لطفلك باستخدام الذكاء الاصطناعي</h2>
-           <p className="text-muted-foreground leading-loose">يمكنكم رفع صورة طفلكم مباشرة إلى خدمة ذكاء اصطناعي خارجية، ثم نسخ البرومبت الجاهز وتعبئة بيانات الطفل لإنشاء نسخة خاصة به.</p>
-         </div>
-         <ol className="list-decimal space-y-2 ps-6 leading-loose marker:font-bold marker:text-primary">
-           <li>اختر ChatGPT أو Gemini / Nano Banana.</li>
-           <li>ارفع صورة الطفل إلى الخدمة المختارة.</li>
-           <li>انسخ البرومبت المناسب وعدّل الحقول.</li>
-           <li>أنشئ النسخة ثم راجع النص قبل الطباعة أو المشاركة.</li>
-         </ol>
-         <fieldset className="space-y-3">
-           <legend className="font-bold text-lg">بيانات التخصيص</legend>
-           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-             <label className="text-sm font-semibold">اسم الطفل
-               <input className={fieldClass} value={name} onChange={(event) => setName(event.target.value)} placeholder="اكتب الاسم" autoComplete="off" />
-             </label>
-             <label className="text-sm font-semibold">الجنس
-               <select className={fieldClass} value={gender} onChange={(event) => setGender(event.target.value)}><option>ولد</option><option>بنت</option></select>
-             </label>
-             <label className="text-sm font-semibold sm:col-span-2">الهوايات
-               <input className={fieldClass} value={hobbies} onChange={(event) => setHobbies(event.target.value)} placeholder="اكتب الهوايات" autoComplete="off" />
-             </label>
-             <label className="text-sm font-semibold">هل يستخدم CGM؟
-               <select className={fieldClass} value={cgm} onChange={(event) => setCgm(event.target.value)}><option>نعم</option><option>لا</option></select>
-             </label>
-             <label className="text-sm font-semibold">نمط الصورة
-               <select className={fieldClass} value={imageStyle} onChange={(event) => setImageStyle(event.target.value)}><option>كرتونية</option><option>الصورة الأصلية</option></select>
-             </label>
-           </div>
-         </fieldset>
-         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-           {["ChatGPT", "Gemini / Nano Banana"].map((tool) => (
-             <article key={tool} className="min-w-0 space-y-3 rounded-lg border border-border bg-card p-5">
-               <h3 className="text-lg font-bold"><bdi>{tool}</bdi></h3>
-               <Button onClick={() => copyPrompt(tool)} aria-label={`نسخ البرومبت المخصص لأداة ${tool}`} className="h-auto min-h-12 w-full whitespace-normal py-3 text-base">
-                 <Copy aria-hidden="true" /> نسخ البرومبت
-               </Button>
-             </article>
-           ))}
-         </div>
-         <p role="status" aria-live="polite" aria-atomic="true" className="text-sm font-semibold text-primary">{copyMessage}</p>
-         <div className="space-y-2 border-s-4 border-mint ps-4 text-sm text-muted-foreground leading-loose">
-           <p>عند استخدام هذه الطريقة، تُرفع صورة الطفل مباشرة إلى خدمة الذكاء الاصطناعي التي تختارونها وفق سياسة الخصوصية الخاصة بها، ولا تُرفع الصورة إلى منصة سما.</p>
-           <p>راجِعوا النص العربي قبل الطباعة أو المشاركة؛ فقد تخطئ أدوات الذكاء الاصطناعي أحيانًا في الكلمات أو التفاصيل.</p>
-         </div>
-       </section>
-
-       <DeepDiveEnrichment />
+       <section aria-labelledby="medical-team-title" className="space-y-5 border-y border-mint-foreground/20 pb-6 print:border-0"><header className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 bg-mint/30 px-4 py-5 sm:px-6 print:hidden">
+ <Stethoscope aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-mint-foreground" />
+ <div className="min-w-0 space-y-2">
+ <h2 id="medical-team-title" className="text-2xl font-bold leading-relaxed text-mint-foreground">التواصل مع الفريق الطبي والاستعداد للموعد</h2>
+ 
+ </div></header><div className="[&>section]:rounded-none [&>section]:border-0 [&>section]:bg-transparent [&>section]:p-0 [&>section]:shadow-none [&_#deep-dive>header>span]:hidden [&_#deep-dive>header_h2]:hidden"><DeepDiveEnrichment /></div></section>
 
       <AskDoctorReminder />
 
