@@ -328,22 +328,21 @@ function HomePage() {
                 لمن هذه المنصة؟
               </h2>
               <p className="text-sand-foreground/80 leading-loose">
-                موجّهة لكل من يرعى طفلاً مصاباً بالسكري من النوع الأول، بأي مستوى تعليمي وأي خلفية.
+                للأسر والأطفال والشباب المتعايشين مع السكري من النوع الأول، ولكل من يساندهم في
+                البيت والمدرسة.
               </p>
             </header>
-            <div className="grid sm:grid-cols-3 gap-4">
-              {audience.map((a) => (
-                <article
-                  key={a.title}
-                  className="rounded-2xl bg-card border border-border p-5 text-right shadow-[var(--shadow-card)]"
-                >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mint/40 text-mint-foreground mb-3">
-                    <a.icon className="h-5 w-5" strokeWidth={2} />
-                  </div>
-                  <h3 className="font-semibold mb-1">{a.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-loose">{a.text}</p>
-                </article>
-              ))}
+            <div className="space-y-4">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {audience.slice(0, 3).map((a) => (
+                  <AudienceCard key={a.title} a={a} />
+                ))}
+              </div>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 lg:max-w-[calc((100%-1rem)*2/3)] lg:mx-auto">
+                {audience.slice(3).map((a) => (
+                  <AudienceCard key={a.title} a={a} />
+                ))}
+              </div>
             </div>
           </div>
         </section>
