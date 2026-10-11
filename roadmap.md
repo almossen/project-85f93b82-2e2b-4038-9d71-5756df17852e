@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Reorganize family tools into child cards, school guides and medical-team tools; verify mobile/desktop, downloads, clipboard and build
 - [x] Improve kids mobile card readability and touch targets; verify 320px, 390px and 820px without changing content
 - [x] Apply Adventure World to the ten kids pages only; preserve content and verify navigation, audio and screen sizes
 - [x] Global Sama logo replacement with a white background (headers, print sheet, icons, manifest, SW, OG card, guide image overlays)
