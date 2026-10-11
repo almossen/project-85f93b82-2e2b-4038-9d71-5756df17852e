@@ -14,6 +14,7 @@ import {
   Wrench,
   Sun,
   Plane,
+  Gamepad2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
@@ -76,14 +77,44 @@ const whySama = [
 ];
 
 const audience = [
-  { icon: Users, title: "أولياء الأمور", text: "خاصة الأسر التي شُخّص طفلها حديثاً." },
-  { icon: Baby, title: "الأجداد والمرافقون", text: "كل من يرعى الطفل في غياب الوالدين." },
+  {
+    icon: Users,
+    title: "أولياء الأمور",
+    text: "معلومات مبسّطة وأدوات عملية، خاصة بعد تشخيص الطفل حديثًا.",
+  },
+  {
+    icon: Baby,
+    title: "الأجداد والمرافقون",
+    text: "لفهم احتياجات الطفل ومساندته أثناء رعايته.",
+  },
+  {
+    icon: Gamepad2,
+    title: "الأطفال — عالم سما",
+    text: "قصص ومغامرات وألعاب تساعد الطفل على فهم السكري بطريقة تناسب عمره.",
+  },
+  {
+    icon: Compass,
+    title: "الشباب السكريون",
+    text: "مساحة للفئة من ١٢ إلى ١٨ سنة لفهم السكري والتعامل معه في الحياة اليومية.",
+  },
   {
     icon: GraduationCap,
-    title: "المعلمون والمرشدون الصحيون",
-    text: "للتعامل الآمن مع الطفل في المدرسة.",
+    title: "المعلمون والمعلمات والمرشدون الصحيون",
+    text: "أدلة مساندة لدعم الطالب والطالبة في المدرسة.",
   },
 ];
+
+function AudienceCard({ a }: { a: (typeof audience)[number] }) {
+  return (
+    <article className="rounded-2xl bg-card border border-border p-5 text-right shadow-[var(--shadow-card)] h-full">
+      <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mint/40 text-mint-foreground mb-3">
+        <a.icon className="h-5 w-5" strokeWidth={2} />
+      </div>
+      <h3 className="font-semibold mb-1">{a.title}</h3>
+      <p className="text-sm text-muted-foreground leading-loose">{a.text}</p>
+    </article>
+  );
+}
 
 function HomePage() {
   return (
@@ -297,21 +328,18 @@ function HomePage() {
                 لمن هذه المنصة؟
               </h2>
               <p className="text-sand-foreground/80 leading-loose">
-                موجّهة لكل من يرعى طفلاً مصاباً بالسكري من النوع الأول، بأي مستوى تعليمي وأي خلفية.
+                للأسر والأطفال والشباب المتعايشين مع السكري من النوع الأول، ولكل من يساندهم في
+                البيت والمدرسة.
               </p>
             </header>
-            <div className="grid sm:grid-cols-3 gap-4">
+            <div className="flex flex-wrap justify-center gap-4">
               {audience.map((a) => (
-                <article
+                <div
                   key={a.title}
-                  className="rounded-2xl bg-card border border-border p-5 text-right shadow-[var(--shadow-card)]"
+                  className="w-full sm:w-[calc(50%-0.5rem)] lg:w-[calc((100%-2rem)/3)]"
                 >
-                  <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-mint/40 text-mint-foreground mb-3">
-                    <a.icon className="h-5 w-5" strokeWidth={2} />
-                  </div>
-                  <h3 className="font-semibold mb-1">{a.title}</h3>
-                  <p className="text-sm text-muted-foreground leading-loose">{a.text}</p>
-                </article>
+                  <AudienceCard a={a} />
+                </div>
               ))}
             </div>
           </div>
