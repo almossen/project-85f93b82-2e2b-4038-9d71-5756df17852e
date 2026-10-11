@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { ArrowRight, Copy, Download } from "lucide-react";
+import { ArrowRight, Copy, Download, FileText, GraduationCap, Info } from "lucide-react";
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { SiteHeader } from "@/components/sama/SiteHeader";
@@ -11,15 +11,15 @@ export const Route = createFileRoute("/family-tools")({
   head: () => ({
     meta: [
       { title: "أدوات عملية للأسرة — سما" },
-      {
-        name: "description",
-        content:
-          "نسخ جاهزة للتحميل لتعريف زملاء الطفل بالسكري من النوع الأول، وبرومبت لإنشاء نسخة خاصة باستخدام الذكاء الاصطناعي، مع قالب رسالة للفريق الطبي وأسئلة أول موعد.",
-      },
+        {
+          name: "description",
+          content:
+            "نسخ جاهزة للتحميل لتعريف زملاء الطفل بالسكري من النوع الأول، ودليلان مدرسيان للمعلم والمعلمة جاهزان للطباعة، وبرومبت لإنشاء نسخة خاصة باستخدام الذكاء الاصطناعي، مع قالب رسالة للفريق الطبي وأسئلة أول موعد.",
+        },
       { property: "og:title", content: "أدوات عملية للأسرة — سما" },
       {
         property: "og:description",
-        content: "نسخ الأولاد والبنات جاهزة للتحميل، وإنشاء نسخة خاصة لطفلك بالذكاء الاصطناعي، مع أدوات التواصل مع الفريق الطبي وأسئلة الموعد.",
+        content: "نسخ الأولاد والبنات ودليلي المعلم والمعلمة جاهزة للتحميل والطباعة، وإنشاء نسخة خاصة لطفلك بالذكاء الاصطناعي، مع أدوات التواصل مع الفريق الطبي وأسئلة الموعد.",
       },
       { property: "og:type", content: "article" },
       { property: "og:url", content: "https://t1d-ar.com/family-tools" },
@@ -27,7 +27,7 @@ export const Route = createFileRoute("/family-tools")({
       { name: "twitter:title", content: "أدوات عملية للأسرة — سما" },
       {
         name: "twitter:description",
-        content: "نسخ جاهزة للتحميل وإنشاء نسخة خاصة لطفلك بالذكاء الاصطناعي، مع أدوات التواصل مع الفريق الطبي وأسئلة الموعد.",
+        content: "نسخ جاهزة للتحميل ودليلان مدرسيان للطباعة وإنشاء نسخة خاصة لطفلك بالذكاء الاصطناعي، مع أدوات التواصل مع الفريق الطبي وأسئلة الموعد.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/family-tools" }],
@@ -99,6 +99,86 @@ function FamilyToolsPage() {
                </div>
              </article>
            ))}
+         </div>
+       </section>
+
+       <section aria-labelledby="teacher-guide-title" className="space-y-5 border-t border-border pt-8 print:hidden">
+         <div className="space-y-2">
+           <h2 id="teacher-guide-title" className="text-2xl font-bold leading-relaxed">دليل المدرسة لدعم الطالب المصاب بالسكري من النوع الأول</h2>
+           <p className="text-muted-foreground leading-loose">
+             دليل عملي جاهز للطباعة يساعد الأسرة على تزويد المدرسة بالمعلومات الأساسية للتعامل الآمن والداعم مع السكري من النوع الأول خلال اليوم الدراسي.
+           </p>
+         </div>
+         <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+           {[
+             {
+               key: "boys",
+               title: "دليل المعلم — مدارس الأولاد",
+               badge: "نسخة الأولاد",
+               description: "مرجع مبسّط يساعد المعلم والممرض المدرسي والموظف المدرّب على دعم الطالب، والتعامل مع الحساس، وانخفاض وارتفاع سكر الدم، والرياضة، والرحلات والحالات الطارئة.",
+               meta: "PDF · 12 صفحة · A4 · قابل للطباعة · 1.7 MB",
+               pdf: "/family-tools/sama-teacher-guide-boys.pdf",
+               downloadName: "sama-teacher-guide-boys.pdf",
+               cover: "/family-tools/sama-teacher-guide-boys-cover.png",
+               coverWidth: 1075,
+               coverHeight: 1521,
+               alt: "غلاف دليل المعلم لدعم الطالب المصاب بالسكري من النوع الأول في مدارس الأولاد",
+               accentClass: "border-t-4 border-primary",
+               badgeClass: "bg-primary-soft text-primary",
+               ariaLabel: "تحميل دليل مدارس الأولاد",
+             },
+             {
+               key: "girls",
+               title: "دليل المعلمة — مدارس البنات",
+               badge: "نسخة البنات",
+               description: "مرجع مبسّط يساعد المعلمة والممرضة المدرسية والموظفة المدرّبة على دعم الطالبة، والتعامل مع الحساس، وانخفاض وارتفاع سكر الدم، والرياضة، والرحلات والحالات الطارئة.",
+               meta: "PDF · 12 صفحة · A4 · قابل للطباعة · 2.9 MB",
+               pdf: "/family-tools/sama-teacher-guide-girls.pdf",
+               downloadName: "sama-teacher-guide-girls.pdf",
+               cover: "/family-tools/sama-teacher-guide-girls-cover.png",
+               coverWidth: 1034,
+               coverHeight: 1462,
+               alt: "غلاف دليل المعلمة لدعم الطالبة المصابة بالسكري من النوع الأول في مدارس البنات",
+               accentClass: "border-t-4 border-kids",
+               badgeClass: "bg-kids-soft text-kids-foreground",
+               ariaLabel: "تحميل دليل مدارس البنات",
+             },
+           ].map((guide) => (
+             <article key={guide.key} className={`flex min-w-0 flex-col overflow-hidden rounded-lg border border-border bg-card shadow-[var(--shadow-card)] ${guide.accentClass}`}>
+               <img src={guide.cover} alt={guide.alt} width={guide.coverWidth} height={guide.coverHeight} loading="lazy" className="block h-auto w-full" />
+               <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
+                 <div className="flex items-center justify-between gap-3">
+                   <h3 className="text-xl font-bold">{guide.title}</h3>
+                   <span className={`inline-flex shrink-0 items-center gap-1.5 rounded-full px-3 py-1 text-xs font-semibold ${guide.badgeClass}`}>
+                     <GraduationCap aria-hidden="true" className="h-3.5 w-3.5" />
+                     {guide.badge}
+                   </span>
+                 </div>
+                 <p className="text-sm text-muted-foreground leading-loose">{guide.description}</p>
+                 <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
+                   <FileText aria-hidden="true" className="h-4 w-4" />
+                   {guide.meta}
+                 </p>
+                 <Button asChild aria-label={guide.ariaLabel} className="mt-auto h-auto min-h-12 whitespace-normal py-3 text-base">
+                   <a href={guide.pdf} download={guide.downloadName}>
+                     <Download aria-hidden="true" /> {guide.ariaLabel}
+                   </a>
+                 </Button>
+               </div>
+             </article>
+           ))}
+         </div>
+         <div className="space-y-3 rounded-lg border border-border bg-muted/50 p-5">
+           <h3 className="font-bold text-lg">قبل مشاركة الدليل مع المدرسة</h3>
+           <ol className="list-decimal space-y-1.5 ps-6 leading-loose marker:font-bold marker:text-primary">
+             <li>عبّئوا بطاقة المعلم السريعة بالمعلومات الخاصة بالطالب أو الطالبة.</li>
+             <li>شاركوا نسخة مع إدارة المدرسة والمعلم أو المعلمة والممرض أو الممرضة المدرسية.</li>
+             <li>حدّثوا المعلومات عند تغير خطة الرعاية أو أرقام التواصل أو تعليمات الفريق الطبي.</li>
+           </ol>
+           <p className="flex items-start gap-2 text-sm font-semibold text-foreground leading-loose">
+             <Info aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-primary" />
+             هذا الدليل مادة تثقيفية مساندة، ولا يستبدل خطة الرعاية الفردية للطالب أو الطالبة، أو تعليمات الفريق الطبي، أو سياسات المدرسة المعتمدة.
+           </p>
          </div>
        </section>
 
