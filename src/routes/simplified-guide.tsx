@@ -4,6 +4,7 @@ import {
   AlertTriangle,
   BookOpen,
   CheckCircle2,
+  Download,
   ChevronDown,
   ChevronLeft,
   ChevronRight,
@@ -223,20 +224,6 @@ function SectionCard({
       ? `${lessonOrdinal} من ${lessonTotal}`
       : (lessonOrdinal ?? "الدرس");
 
-  const handleSectionPrint = () => {
-    if (typeof window === "undefined") return;
-    const el = document.getElementById(printScopeId);
-    if (!el) return window.print();
-    const win = window.open("", "_blank", "width=800,height=900");
-    if (!win) return;
-    win.document.write(
-      `<!doctype html><html dir="rtl" lang="ar"><head><meta charset="utf-8"><title>${section.title}</title><style>body{font-family:system-ui,Tahoma,Arial;padding:24px;line-height:1.9;color:#111}h1{font-size:22px;margin:0 0 12px}h2{font-size:16px;margin:16px 0 6px}ul{padding-inline-start:20px}li{margin:4px 0}.muted{color:#555;font-size:12px}</style></head><body>${el.innerHTML}<p class="muted">— من منصة سما — للاسترشاد فقط، لا تغني عن تعليمات الطبيب.</p></body></html>`,
-    );
-    win.document.close();
-    win.focus();
-    setTimeout(() => win.print(), 250);
-  };
-
   return (
     <article
       id={section.id}
@@ -300,6 +287,29 @@ function SectionCard({
           )}
         </div>
 
+        {section.id === "diabetes-bag" && (
+          <figure className="flex min-w-0 flex-col items-center gap-5 border-y border-primary/20 bg-primary-soft/40 px-3 py-5 sm:flex-row sm:items-center sm:px-5 print:hidden">
+            <img
+              src="/family-tools/sama-diabetes-bag-checklist.png"
+              alt="قائمة حقيبة السكري المصوّرة، مع خانات للتأشير على مستلزمات القياس والإنسولين والغذاء والتواصل"
+              width={768}
+              height={1086}
+              loading="lazy"
+              className="block h-auto w-full max-w-[260px] shrink-0 rounded-lg border border-border"
+            />
+            <figcaption className="min-w-0 w-full space-y-3 text-center sm:text-start">
+              <h3 className="text-lg sm:text-xl font-bold text-primary">حقيبة السكري — جاهزة لكل يوم</h3>
+              <p className="text-sm sm:text-base leading-loose text-muted-foreground">قائمة مصوّرة قابلة للطباعة والتأشير.</p>
+              <Button asChild className="h-auto min-h-12 max-w-full gap-2 whitespace-normal px-4 py-3 text-sm leading-relaxed">
+                <a href="/family-tools/sama-diabetes-bag-checklist.pdf" download="sama-diabetes-bag-checklist.pdf">
+                  <Download aria-hidden="true" className="h-4 w-4 shrink-0" />
+                  تحميل قائمة حقيبة السكري — PDF
+                </a>
+              </Button>
+            </figcaption>
+          </figure>
+        )}
+
         {section.alert && (
           <div className="border-s-4 border-warning/60 bg-warning/10 rounded-e-xl ps-4 pe-3 py-3 flex gap-3 items-start">
             <AlertTriangle className="h-5 w-5 shrink-0 text-warning-foreground mt-0.5" />
@@ -339,17 +349,6 @@ function SectionCard({
                 الانتقال إلى دليل المعلم والمعلمة
               </Link>
             </Button>
-          )}
-
-          {section.id === "diabetes-bag" && (
-            <button
-              type="button"
-              onClick={handleSectionPrint}
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
-            >
-              <Printer className="h-4 w-4" />
-              طباعة قائمة الحقيبة
-            </button>
           )}
 
           {section.relatedEmergencyScenario && (
