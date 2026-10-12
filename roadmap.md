@@ -1,4 +1,5 @@
 # Roadmap
+- [ ] Add the approved school lesson block and direct school-guide link; preserve the communication block and verify mobile/tablet, both reading modes and build.
 - [x] Reorganize family tools into child cards, school guides and medical-team tools; verified 390/1280, exact-original downloads, clipboard, scoped printing and build
 - [x] Improve kids mobile card readability and touch targets; verify 320px, 390px and 820px without changing content
 - [x] Apply Adventure World to the ten kids pages only; preserve content and verify navigation, audio and screen sizes

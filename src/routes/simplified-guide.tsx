@@ -30,6 +30,7 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 import { SiteHeader } from "@/components/sama/SiteHeader";
+import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { GuideSectionEnrichment } from "@/components/sama/GuideSectionEnrichment";
 
@@ -167,14 +168,14 @@ const lessonOrdinals = [
  * محددة داخل الفقرة إلى رابط داخلي. تُستخدم حاليًا للربط بأدوات الأسرة.
  */
 function ClosingBlock({ closing }: { closing: NonNullable<GuideSection["closing"]> }) {
-  const { heading, text, linkText, linkTo } = closing;
+  const { heading, text, linkText, linkTo, linkHash } = closing;
   let body: ReactNode = text;
   if (linkText && linkTo && text.includes(linkText)) {
     const [before, ...rest] = text.split(linkText);
     body = (
       <>
         {before}
-        <Link to={linkTo} className="text-primary font-semibold underline underline-offset-4">
+        <Link to={linkTo} hash={linkHash} className="text-primary font-semibold underline underline-offset-4">
           {linkText}
         </Link>
         {rest.join(linkText)}
@@ -273,13 +274,16 @@ function SectionCard({
           <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
           <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
             {paragraphs.map((p, i) => (
-              <p key={i} className="whitespace-pre-line">
-                {p}
-              </p>
+              <div key={i} className="space-y-3.5">
+                <p className="whitespace-pre-line">{p}</p>
+                {section.closing?.afterParagraph === i + 1 && (
+                  <ClosingBlock closing={section.closing} />
+                )}
+              </div>
             ))}
           </div>
 
-          {section.closing && <ClosingBlock closing={section.closing} />}
+          {section.closing && !section.closing.afterParagraph && <ClosingBlock closing={section.closing} />}
 
           {section.bullets && section.bullets.length > 0 && (
             <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 divide-y divide-border/60 sm:divide-y-0">
@@ -326,14 +330,15 @@ function SectionCard({
           )}
 
           {section.id === "school" && (
-            <button
-              type="button"
-              onClick={handleSectionPrint}
-              className="inline-flex items-center gap-2 rounded-full bg-primary text-primary-foreground px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-primary/90 transition-colors"
+            <Button
+              asChild
+              className="h-auto min-h-11 max-w-full gap-2 rounded-full px-4 py-2.5 text-sm font-semibold whitespace-normal"
             >
-              <Printer className="h-4 w-4" />
-              طباعة خطة المدرسة
-            </button>
+              <Link to="/family-tools" hash="teacher-guide-title">
+                <BookOpen className="h-4 w-4 shrink-0" />
+                الانتقال إلى دليل المعلم والمعلمة
+              </Link>
+            </Button>
           )}
 
           {section.id === "diabetes-bag" && (
