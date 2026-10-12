@@ -299,7 +299,7 @@ function SectionCard({
             />
             <figcaption className="min-w-0 w-full space-y-3 text-center sm:text-start">
               <h3 className="text-lg sm:text-xl font-bold text-primary">حقيبة السكري — جاهزة لكل يوم</h3>
-              <p className="text-sm sm:text-base leading-loose text-muted-foreground">قائمة مصوّرة قابلة للطباعة والتأشير.</p>
+              <p className="text-sm sm:text-base leading-loose text-muted-foreground">قائمة مصوّرة قابلة للطباعة والتأشير</p>
               <Button asChild className="h-auto min-h-12 max-w-full gap-2 whitespace-normal px-4 py-3 text-sm leading-relaxed">
                 <a href="/family-tools/sama-diabetes-bag-checklist.pdf" download="sama-diabetes-bag-checklist.pdf">
                   <Download aria-hidden="true" className="h-4 w-4 shrink-0" />
