@@ -558,7 +558,7 @@ body { background: var(--world-paper); }
   function playRecorded(id){if(!state.sound)return;const a=$(id);a.currentTime=0;a.play().catch(()=>{})}
   function setSound(on){
     state.sound=on;$('soundBtn').setAttribute('aria-pressed',String(on));
-    $('soundBtn').textContent=on?'<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> الصوت':'🔇 الصوت';
+    $('soundBtn').innerHTML=on?'<svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> الصوت':'🔇 الصوت';
     if(!on)stopNarration();
     try{localStorage.setItem('samaMode',on?'audio':'read')}catch(e){}
   }
