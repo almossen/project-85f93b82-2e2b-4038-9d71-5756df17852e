@@ -1,5 +1,5 @@
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
 import {
   AlertTriangle,
   BookOpen,
@@ -162,6 +162,35 @@ const lessonOrdinals = [
   "الدرس العاشر",
 ];
 
+/**
+ * عنوان فرعي وفقرة ختامية تُضاف بعد آخر فقرة في الدرس، مع تحويل عبارة
+ * محددة داخل الفقرة إلى رابط داخلي. تُستخدم حاليًا للربط بأدوات الأسرة.
+ */
+function ClosingBlock({ closing }: { closing: NonNullable<GuideSection["closing"]> }) {
+  const { heading, text, linkText, linkTo } = closing;
+  let body: ReactNode = text;
+  if (linkText && linkTo && text.includes(linkText)) {
+    const [before, ...rest] = text.split(linkText);
+    body = (
+      <>
+        {before}
+        <Link to={linkTo} className="text-primary font-semibold underline underline-offset-4">
+          {linkText}
+        </Link>
+        {rest.join(linkText)}
+      </>
+    );
+  }
+  return (
+    <div className="pt-1 space-y-2.5">
+      <h3 className="text-lg sm:text-xl font-bold text-foreground">{heading}</h3>
+      <p className="whitespace-pre-line text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
+        {body}
+      </p>
+    </div>
+  );
+}
+
 function SectionCard({
   section,
   index,
@@ -249,6 +278,8 @@ function SectionCard({
               </p>
             ))}
           </div>
+
+          {section.closing && <ClosingBlock closing={section.closing} />}
 
           {section.bullets && section.bullets.length > 0 && (
             <ul className="mt-4 grid sm:grid-cols-2 gap-x-6 divide-y divide-border/60 sm:divide-y-0">
