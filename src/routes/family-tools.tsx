@@ -69,12 +69,49 @@ function FamilyToolsPage() {
       <header className="space-y-3 text-center">
         <h1 className="text-3xl sm:text-4xl font-bold">أدوات عملية للأسرة</h1>
         <p className="text-base text-muted-foreground max-w-[72ch] mx-auto leading-loose">
-          جمعنا لكم هنا أدوات بسيطة تساعدكم في يومكم مع السكري من النوع الأول: بطاقات جاهزة لتعريف
-          الآخرين بحالة طفلكم، وخيار لإنشاء بطاقة خاصة به، وأدلة للمعلم والمعلمة، وقوالب للتواصل مع
-          الفريق الطبي وأسئلة للاستعداد للموعد. اختاروا ما يناسب احتياجكم، وحمّلوا المواد المتاحة
-          للطباعة أو المشاركة.
+          جمعنا لكم هنا أدوات بسيطة تساعدكم في يومكم مع السكري من النوع الأول: سجل لقراءات السكر
+          المرتبطة بالوجبات، وبطاقات لتعريف الآخرين بحالة طفلكم، وأدلة للمعلم والمعلمة، وقوالب للتواصل
+          مع الفريق الطبي والاستعداد للموعد. اختاروا ما يناسب احتياجكم، وحمّلوا المواد المتاحة للطباعة
+          أو المشاركة.
         </p>
       </header>
+
+      <section aria-labelledby="meal-log-title" className="space-y-5 border-y border-primary/20 pb-8 print:hidden">
+        <header className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 bg-primary-soft px-4 py-5 sm:px-6">
+          <FileText aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-primary" />
+          <div className="min-w-0 space-y-2">
+            <h2 id="meal-log-title" className="text-2xl font-bold leading-relaxed text-primary">
+              سجل متابعة قراءة السكر للوجبات
+            </h2>
+            <p className="text-sm leading-loose text-muted-foreground sm:text-base">
+              سجل قابل للطباعة يضم أربع صفحات، صفحة لكل أسبوع. دوّنوا فيه اليوم والتاريخ وقراءات السكر
+              المرتبطة بالوجبات، مع مساحة للملاحظات، لتبقى القراءات مرتبة ويسهل الرجوع إليها عند
+              الحاجة، ولإحضاره معكم للموعد الأول.
+            </p>
+          </div>
+        </header>
+        <div className="flex flex-col gap-5 rounded-lg border border-border bg-card p-4 shadow-[var(--shadow-card)] sm:flex-row sm:items-center sm:p-5">
+          <img
+            src="/family-tools/sama-meal-glucose-log-preview.png"
+            alt="معاينة الصفحة الأولى من سجل متابعة قراءة السكر للوجبات"
+            width={595}
+            height={842}
+            loading="lazy"
+            className="mx-auto h-52 w-auto rounded-md border border-border object-contain sm:mx-0"
+          />
+          <div className="flex flex-1 flex-col items-start gap-4">
+            <p className="inline-flex items-center gap-2 text-sm font-semibold text-muted-foreground">
+              <FileText aria-hidden="true" className="h-4 w-4" />
+              PDF · ٤ صفحات · A4 · قابل للطباعة
+            </p>
+            <Button asChild className="h-auto min-h-12 whitespace-normal py-3 text-base">
+              <a href="/family-tools/sama-meal-glucose-log.pdf" download="sama-meal-glucose-log.pdf">
+                <Download aria-hidden="true" /> تحميل السجل PDF
+              </a>
+            </Button>
+          </div>
+        </div>
+      </section>
 
        <section aria-labelledby="child-cards-title" className="space-y-6 border-y border-primary/20 pb-8 print:hidden"><header className="grid grid-cols-[auto_minmax(0,1fr)] items-start gap-3 bg-primary-soft px-4 py-5 sm:px-6 print:hidden">
  <ContactRound aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-primary" />
@@ -268,3 +305,4 @@ function FamilyToolsPage() {
     </div>
   );
 }
+
