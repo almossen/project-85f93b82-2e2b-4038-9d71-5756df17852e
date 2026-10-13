@@ -14,6 +14,7 @@ let initialized = false;
 
 export function initAnalytics() {
   if (typeof window === "undefined" || initialized) return;
+  if (!/^(www\\.)?t1d-ar\\.com$/.test(window.location.hostname)) return;
   if (document.getElementById("ga-gtag-script")) {
     initialized = true;
     return;
