@@ -43,7 +43,7 @@ export const Route = createFileRoute("/")({
       },
       { property: "og:type", content: "website" },
       { property: "og:url", content: "https://t1d-ar.com/" },
-      { property: "og:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=1" },
+      { property: "og:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=2" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:title", content: "منصة سما – رحلة التعايش مع السكري من النوع الأول" },
       {
@@ -51,7 +51,7 @@ export const Route = createFileRoute("/")({
         content:
           "منصة عربية توعوية تفاعلية للأهل والأطفال، تساعد الأسر على فهم السكري من النوع الأول والتعايش معه بخطوات بسيطة وواضحة.",
       },
-      { name: "twitter:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=1" },
+      { name: "twitter:image", content: "https://t1d-ar.com/sama-social-preview.jpg?v=2" },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/" }],
   }),
