@@ -27,9 +27,9 @@ export function initAnalytics() {
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
-  const gtag = (...args: unknown[]) => {
-    window.dataLayer!.push(args);
-  };
+  function gtag(..._args: unknown[]) {
+    window.dataLayer!.push(arguments);
+  }
   window.gtag = gtag;
 
   gtag("js", new Date());
@@ -40,6 +40,7 @@ export function initAnalytics() {
 export function trackPageView(path: string) {
   if (typeof window === "undefined" || !window.gtag) return;
   window.gtag("event", "page_view", {
+    send_to: GA_MEASUREMENT_ID,
     page_path: path,
     page_location: window.location.origin + path,
     page_title: document.title,
