@@ -8,7 +8,7 @@ export function SiteFooter() {
         <p className="mx-auto max-w-[80ch] text-center text-sm font-medium text-foreground">
           منصة سما — محتوى توعوي لأهالي الأطفال المصابين بالسكري من النوع الأول
         </p>
-        <MedicalReview variant="line" />
+        <MedicalReview variant="line" revisionDate="2026-10-24" />
         <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
           <Link
             to="/about"

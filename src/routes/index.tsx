@@ -300,7 +300,7 @@ function HomePage() {
             </p>
           </header>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            <MedicalReview variant="card" />
+            <MedicalReview variant="card" revisionDate="2026-10-24" />
             {whySama.map((w) => (
               <article
                 key={w.title}

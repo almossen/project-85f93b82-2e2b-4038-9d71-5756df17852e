@@ -11,4 +11,12 @@ describe("medical review snapshot", () => {
     assert.equal(isMedicallyReviewedRevision("2026-10-25"), false);
     assert.equal(isMedicallyReviewedRevision("2027-01-01"), false);
   });
+  test("missing snapshot declarations cannot inherit attribution", () => {
+    assert.equal(isMedicallyReviewedRevision(), false);
+    assert.equal(isMedicallyReviewedRevision(""), false);
+  });
+  test("only the explicitly reviewed snapshot qualifies", () => {
+    assert.equal(isMedicallyReviewedRevision("2026-10-23"), false);
+    assert.equal(isMedicallyReviewedRevision("2026-02-30"), false);
+  });
 });
