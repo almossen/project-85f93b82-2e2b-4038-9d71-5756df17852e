@@ -113,7 +113,7 @@ function MedicalAlert() {
           <span className="font-bold text-destructive">تنويه: </span>
           محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
           الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي{" "}
-          <a href="tel:997" className="font-bold text-destructive underline py-2.5">
+          <a href="tel:997" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 font-bold text-destructive underline">
             997
           </a>{" "}
           أو توجه لأقرب طوارئ.
