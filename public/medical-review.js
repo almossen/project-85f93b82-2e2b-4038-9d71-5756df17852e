@@ -6,7 +6,7 @@
     const response = await fetch('/medical-review.json', { cache: 'no-cache' });
     if (!response.ok) return;
     const review = await response.json();
-    if (review.reviewedOn !== '2026-10-24' || !['heading', 'displayDate', 'reviewer', 'specialty', 'disclaimer'].every(key => typeof review[key] === 'string' && review[key].trim())) return;
+    if (!['heading', 'displayDate', 'reviewer', 'specialty', 'disclaimer'].every(key => typeof review[key] === 'string' && review[key].trim())) return;
     for (const host of hosts) {
       if (host.getAttribute('data-reviewed-revision') !== review.reviewedOn) continue;
       const title = document.createElement('strong');
