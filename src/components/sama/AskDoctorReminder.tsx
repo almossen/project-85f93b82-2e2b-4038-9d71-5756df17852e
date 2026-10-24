@@ -13,7 +13,7 @@ export function AskDoctorReminder() {
         </p>
         <p className="text-sm text-sand-foreground/90 leading-loose">
           للاستشارات الطبية يمكنكم التواصل مع خط وزارة الصحة{" "}
-          <a href="tel:937" className="font-bold underline inline-flex items-center gap-1">
+          <a href="tel:937" className="inline-flex min-h-11 min-w-11 items-center gap-1 rounded-full px-3 font-bold underline">
             <Phone className="h-3.5 w-3.5" strokeWidth={2.4} />
             937
           </a>{" "}

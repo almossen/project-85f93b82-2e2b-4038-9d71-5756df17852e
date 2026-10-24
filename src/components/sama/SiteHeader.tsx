@@ -53,12 +53,12 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
             />
             <div className="leading-tight">
               <div className="text-base font-bold tracking-tight lg:text-lg">سما</div>
-              <div className="hidden text-sm text-muted-foreground -mt-0.5 lg:block">
+              <div className="hidden text-sm text-muted-foreground -mt-0.5 xl:block">
                 رحلة التعايش
               </div>
             </div>
           </Link>
-          <nav className="flex min-w-0 flex-nowrap whitespace-nowrap items-center justify-end gap-x-1 text-sm xl:text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
+          <nav className="ms-3 flex min-w-0 flex-nowrap whitespace-nowrap items-center justify-end gap-x-0.5 xl:gap-x-1 text-sm xl:text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
           <Link
             to="/"
             className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"

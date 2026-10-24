@@ -1063,7 +1063,7 @@ function SimplifiedGuidePage() {
               <span className="text-sm font-semibold text-muted-foreground whitespace-nowrap tabular-nums">
                 الدرس {effLessonIdx! + 1} / {chapterSections.length}
                 {globalLessonIndex && (
-                  <span className="ms-2 text-muted-foreground/70">
+                  <span className="ms-2 text-muted-foreground">
                     ({globalLessonIndex}/{guideSections.length})
                   </span>
                 )}
