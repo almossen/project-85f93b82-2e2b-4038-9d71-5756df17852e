@@ -323,7 +323,7 @@ function ParentExperiencesPage() {
               href="https://customtypeone.com"
               target="_blank"
               rel="noopener noreferrer"
-              className="font-semibold text-primary underline-offset-4 hover:underline"
+              className="font-semibold text-primary underline-offset-4 hover:underline py-2.5"
             >
               الموقع الرسمي
             </a>{" "}

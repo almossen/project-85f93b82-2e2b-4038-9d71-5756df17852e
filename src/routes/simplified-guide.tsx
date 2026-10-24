@@ -176,7 +176,7 @@ function ClosingBlock({ closing }: { closing: NonNullable<GuideSection["closing"
   return (
     <div className="pt-1 space-y-2.5">
       <h3 className="text-lg sm:text-xl font-bold text-foreground">{heading}</h3>
-      <p className="whitespace-pre-line text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
+      <p className="whitespace-pre-line text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch] md:max-w-[68ch] md:mx-auto">
         {body}
       </p>
     </div>
@@ -249,7 +249,7 @@ function SectionCard({
               وتكرار H1 لكل درس كان يكسر التسلسل الدلالي. */}
           <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
           <MedicalReview className="mb-5" revisionDate={section.reviewedRevisionDate ?? ""} />
-          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
+          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch] md:max-w-[68ch] md:mx-auto">
             {paragraphs.map((p, i) => (
               <div key={i} className="space-y-3.5">
                 <p className="whitespace-pre-line">{p}</p>
@@ -1087,7 +1087,7 @@ function SimplifiedGuidePage() {
                 type="button"
                 onClick={goToPrevLesson}
                 disabled={isFirstLessonOverall}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <ChevronRight className="h-4 w-4" />
                 الدرس السابق
@@ -1102,7 +1102,7 @@ function SimplifiedGuidePage() {
                     type="button"
                     onClick={goToNextLesson}
                     disabled={isLastLessonOverall}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
                       isChapterJump
                         ? "bg-success text-success-foreground hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25"
                         : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -1213,7 +1213,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={handlePrint}
-                className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
+                className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
               >
                 <Printer className="h-4 w-4" />
                 طباعة الملخص

@@ -58,7 +58,7 @@ function AboutPage() {
       <SiteHeader />
       <main className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-8 sm:py-14 space-y-10">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground transition-colors">
+          <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">
             الرئيسية
           </Link>
           <span>/</span>
