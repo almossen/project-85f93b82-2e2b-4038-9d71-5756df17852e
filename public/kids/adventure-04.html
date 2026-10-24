@@ -422,7 +422,19 @@ body { background: var(--world-paper); }
     grid-template-columns: 50px minmax(0,1fr) !important; column-gap: 10px !important;
   }
   #homeStage #adventureMap .adventureNumber { width: 50px !important; height: 50px !important; }
-}</style>
+}
+
+/* المراجعة الطبية في تذييل عالم الأطفال: تبقى في أسفل الصفحة وواضحة على أي خلفية. */
+.samaWorldFooter { align-self: end; }
+.samaWorldFooter .sama-medical-review,
+.platformFooter .sama-medical-review {
+  background: var(--world-surface, #fff);
+  border-color: var(--world-line, #d9ceec);
+  color: var(--world-ink, #302550);
+}
+.samaWorldFooter .sama-medical-review a,
+.platformFooter .sama-medical-review a { color: var(--world-purple-deep, #50388e); }
+</style>
 <script defer src="/sama-analytics.js"></script>
 <link rel="stylesheet" href="/medical-review.css">
 <script defer src="/medical-review.js"></script>
