@@ -478,7 +478,7 @@ function ListenPage() {
           className="mx-auto w-full max-w-3xl rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/70 to-mint/15 p-4 sm:p-6 space-y-4"
         >
           <div className="space-y-1">
-            <div className="flex items-center gap-2 flex-wrap text-xs font-semibold text-primary">
+            <div className="flex items-center gap-2 flex-wrap text-sm font-semibold text-primary">
               <span className="inline-flex items-center gap-1 rounded-full bg-primary/15 px-2.5 py-1">
                 <Volume2 className="h-3 w-3" />
                 {nowPlayingLabel}
@@ -491,7 +491,7 @@ function ListenPage() {
           </div>
 
           {sideActive && (
-            <p className="text-xs text-muted-foreground">
+            <p className="text-sm text-muted-foreground">
               هذا المقطع خارج ترتيب الرحلة، ولن ينتقل تلقائيًا إلى غيره. موضعكم في الرحلة محفوظ.
             </p>
           )}
@@ -508,7 +508,7 @@ function ListenPage() {
                   onClick={() =>
                     sideActive && side ? playSide(side.track) : selectMain(mainIndex, true)
                   }
-                  className="rounded-full bg-destructive text-destructive-foreground px-4 py-2 min-h-11 text-xs font-bold"
+                  className="rounded-full bg-destructive text-destructive-foreground px-4 py-2 min-h-11 text-sm font-bold"
                 >
                   إعادة المحاولة
                 </button>
@@ -516,7 +516,7 @@ function ListenPage() {
                   <button
                     type="button"
                     onClick={() => goNext(false)}
-                    className="rounded-full border border-border bg-card px-4 py-2 min-h-11 text-xs font-bold text-foreground"
+                    className="rounded-full border border-border bg-card px-4 py-2 min-h-11 text-sm font-bold text-foreground"
                   >
                     اختيار درس آخر
                   </button>
@@ -534,7 +534,7 @@ function ListenPage() {
           <div className="space-y-2">
             {/* الغلاف يمنح منطقة لمس ~44px بينما يبقى الـrail المرئي رفيعًا (h-2).
                 touch-none تمنع تمرير الصفحة أثناء السحب بالإصبع. */}
-            <div className="flex min-h-11 items-center py-4 -my-4">
+            <div className="flex h-11 items-center">
               <input
                 type="range"
                 min={0}
@@ -544,10 +544,10 @@ function ListenPage() {
                 onChange={onSeek}
                 aria-label="شريط تقدم المقطع"
                 disabled={!duration}
-                className="w-full h-2 accent-primary cursor-pointer touch-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
+                className="audio-progress w-full h-11 cursor-pointer touch-none disabled:opacity-50 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2"
               />
             </div>
-            <div className="flex justify-between text-xs font-medium text-muted-foreground tabular-nums">
+            <div className="flex justify-between text-sm font-medium text-muted-foreground tabular-nums">
               <span>{fmt(current)}</span>
               <span>{fmt(duration)}</span>
             </div>
@@ -586,7 +586,7 @@ function ListenPage() {
             </button>
           </div>
 
-          {loading && <p className="text-center text-xs text-muted-foreground">جاري التحميل…</p>}
+          {loading && <p className="text-center text-sm text-muted-foreground">جاري التحميل…</p>}
 
           {finished && (
             <div className="rounded-2xl border border-success/30 bg-success/[0.08] p-4 text-center space-y-2">
@@ -621,7 +621,7 @@ function ListenPage() {
             }`}
           >
             <span
-              className={`text-xs font-bold shrink-0 ${!sideActive && isIntro ? "text-primary" : "text-muted-foreground"}`}
+              className={`text-sm font-bold shrink-0 ${!sideActive && isIntro ? "text-primary" : "text-muted-foreground"}`}
             >
               مقدمة
             </span>
@@ -631,7 +631,7 @@ function ListenPage() {
               {mainPlaylist[0].title}
             </span>
             {!sideActive && isIntro && (
-              <span className="text-[11px] font-semibold text-primary shrink-0">
+              <span className="text-sm font-semibold text-primary shrink-0">
                 {playing ? "قيد التشغيل" : "المقطع الحالي"}
               </span>
             )}
@@ -658,7 +658,7 @@ function ListenPage() {
                           }`}
                         >
                           <span
-                            className={`text-xs font-bold tabular-nums shrink-0 ${isCurrent ? "text-primary" : "text-muted-foreground"}`}
+                            className={`text-sm font-bold tabular-nums shrink-0 ${isCurrent ? "text-primary" : "text-muted-foreground"}`}
                           >
                             {pad2(l.lessonIndex)}
                           </span>
@@ -667,7 +667,7 @@ function ListenPage() {
                           >
                             {l.title}
                           </span>
-                          <span className="text-[11px] font-semibold shrink-0">
+                          <span className="text-sm font-semibold shrink-0">
                             {isCurrent ? (
                               <span className="text-primary">
                                 {playing ? "قيد التشغيل" : "الدرس الحالي"}
@@ -774,7 +774,7 @@ function ListenPage() {
               );
             })}
           </ul>
-          <p className="rounded-2xl border border-border bg-muted/40 p-3 text-xs text-muted-foreground leading-loose flex gap-2">
+          <p className="rounded-2xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground leading-loose flex gap-2">
             <Info className="h-4 w-4 shrink-0 text-primary mt-0.5" />
             <span>
               تجارب المنتجات قد تتغير مع الوقت. المعلومات الواردة في هذين المقطعين مؤرّخة، والأسعار
