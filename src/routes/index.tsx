@@ -116,7 +116,7 @@ function HomePage() {
     <div className="min-h-screen flex flex-col bg-background">
       <DisclaimerBanner />
       <SiteHeader showMobileBrand />
-      <main className="flex-1">
+      <main id="main" className="flex-1">
         {/* Hero */}
         <section className="relative overflow-hidden">
           <div

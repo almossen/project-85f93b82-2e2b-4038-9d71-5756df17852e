@@ -222,7 +222,7 @@ function ParentExperiencesPage() {
   return (
     <div className="min-h-screen flex flex-col bg-background">
       <SiteHeader />
-      <main className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-6 sm:py-12 space-y-10">
+      <main id="main" className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-6 sm:py-12 space-y-10">
         {/* عنصر الصوت الوحيد في الصفحة */}
         <audio ref={audioRef} preload="none" className="hidden" />
         <nav className="text-sm text-muted-foreground flex items-center gap-2 print:hidden">
