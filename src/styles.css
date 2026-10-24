@@ -35,6 +35,11 @@
   --color-kids-soft: var(--kids-soft);
   --color-kids-foreground: var(--kids-foreground);
   --color-kids-contrast: var(--kids-contrast);
+  --color-teens-border: var(--teens-border);
+  --color-teens-soft: var(--teens-soft);
+  --color-teens-foreground: var(--teens-foreground);
+  --color-teens-hover: var(--teens-hover);
+  --color-teens-ring: var(--teens-ring);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
   --color-success: var(--success);
@@ -79,6 +84,11 @@
   --kids-soft: oklch(0.95 0.025 300);
   --kids-foreground: oklch(0.40 0.10 300);
   --kids-contrast: oklch(0.99 0.005 300);
+  --teens-border: #decbb2;
+  --teens-soft: #f4eadb;
+  --teens-foreground: #594733;
+  --teens-hover: #e9dac4;
+  --teens-ring: #8b6a48;
 
   --secondary: oklch(0.96 0.012 235);
   --secondary-foreground: oklch(0.30 0.06 240);
@@ -190,6 +200,13 @@
   }
 
 }
+
+/* Audio range: the input itself, not its wrapper, owns the touch target. */
+.audio-progress { appearance: none; background: transparent; }
+.audio-progress::-webkit-slider-runnable-track { height: 4px; border-radius: 999px; background: var(--primary); }
+.audio-progress::-moz-range-track { height: 4px; border-radius: 999px; background: var(--primary); }
+.audio-progress::-webkit-slider-thumb { appearance: none; width: 20px; height: 20px; margin-top: -8px; border-radius: 50%; background: var(--primary); border: 2px solid var(--primary-foreground); }
+.audio-progress::-moz-range-thumb { width: 20px; height: 20px; box-sizing: border-box; border-radius: 50%; background: var(--primary); border: 2px solid var(--primary-foreground); }
 
 /* ===== نموذج A4 للطباعة (ورقة أسئلة الموعد) ===== */
 .sama-print-sheet {
