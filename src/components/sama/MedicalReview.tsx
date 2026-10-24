@@ -25,7 +25,7 @@ export function MedicalReview({ variant = "badge", className = "", revisionDate 
       </div>
       <p className={`${detailed ? "text-base" : "text-sm"} leading-loose text-muted-foreground ${line ? "text-center" : "text-right"}`}>{review.scope}</p>
       {detailed && <p className="max-w-[80ch] text-base leading-loose text-muted-foreground">{review.scopeDetail}</p>}
-      <p className="text-sm leading-loose text-muted-foreground">{review.futureChanges}</p>
+      <p className={`text-sm leading-loose text-muted-foreground ${line ? "text-center" : "text-right"}`}>{review.futureChanges}</p>
       <p className={`text-sm leading-loose text-muted-foreground ${line ? "text-center" : "text-right"}`}>{review.disclaimer}</p>
     </div>
   );
