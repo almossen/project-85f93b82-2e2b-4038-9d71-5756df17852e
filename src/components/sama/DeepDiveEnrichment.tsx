@@ -343,7 +343,7 @@ export function DeepDiveEnrichment() {
         ))}
       </Accordion>
 
-      <p className="text-xs text-muted-foreground leading-loose border-t border-border/60 pt-3">
+      <p className="text-xs text-muted-foreground leading-loose border-t border-border/60 pt-3 max-sm:text-base max-sm:leading-7">
         هذه الأدوات للتثقيف والدعم، ولا تغني عن مراجعة الطبيب أو فريق السكري. تختلف الخطط من طفل
         لآخر حسب العمر والوزن ونوع الإنسولين والقراءات والنشاط والحالة الصحية.
       </p>
