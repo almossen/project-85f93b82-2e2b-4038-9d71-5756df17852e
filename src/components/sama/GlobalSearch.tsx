@@ -110,7 +110,7 @@ export function GlobalSearch({
     >
       <DialogTrigger asChild>{trigger}</DialogTrigger>
       <DialogContent className="max-w-lg p-0 gap-0 overflow-hidden">
-        <DialogHeader className="p-4 pb-3 border-b border-border text-right">
+        <DialogHeader className="p-4 pb-3 pe-16 border-b border-border text-right">
           <DialogTitle className="text-base">البحث في المنصة</DialogTitle>
           <DialogDescription className="sr-only">
             ابحث في دروس منصة سما والحالات الطارئة والصفحات.
