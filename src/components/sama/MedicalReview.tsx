@@ -18,7 +18,7 @@ export function MedicalReview({ variant = "badge", className = "", revisionDate 
   if (line) {
     return (
       <div data-medical-review="line" className={`mx-auto max-w-[85ch] text-center text-sm leading-loose text-muted-foreground ${className}`}>
-        <p className="text-center">مراجعة محتوى المنصة كما كان في <time dateTime={revisionDate}>{review.displayDate}</time>: {review.reviewer} — {review.specialty}.</p>
+        <p className="text-center">تمت مراجعة محتوى المنصة في أكتوبر 2026:  بواسطة د. محسن المغربي — استشاري الغدد الصماء وسكري الأطفال واليافعين.</p>
         <Link to="/about" className="inline-flex min-h-11 items-center font-semibold text-primary underline underline-offset-4">تفاصيل المراجعة</Link>
       </div>
     );
