@@ -29,15 +29,15 @@ export function MedicalReview({ variant = "badge", className = "", revisionDate 
         <ShieldCheck aria-hidden="true" className="mt-1 h-5 w-5 shrink-0 text-primary" />
         <div className="min-w-0 space-y-1">
           {card ? <h3 className="font-semibold">{review.heading}</h3> : detailed ? <h2 className="text-xl sm:text-2xl font-bold">{review.heading}</h2> : <span className="inline-block rounded-full bg-mint/30 px-3 py-1 text-sm font-semibold text-mint-foreground">{review.heading} · <time dateTime={review.reviewedOn}>{review.displayDate}</time></span>}
-          <p className="text-sm font-semibold text-foreground text-right">{review.reviewer} — {review.specialty}</p>
+          <p className="text-sm font-semibold text-foreground text-right max-sm:text-base max-sm:leading-7">{review.reviewer} — {review.specialty}</p>
         </div>
       </div>
-      {(card || detailed) && <p className="text-sm leading-loose text-muted-foreground text-right"><time dateTime={revisionDate}>{review.displayDate}</time></p>}
+      {(card || detailed) && <p className="text-sm leading-loose text-muted-foreground text-right max-sm:text-base max-sm:leading-7"><time dateTime={revisionDate}>{review.displayDate}</time></p>}
       {detailed ? <>
         <p className="text-base leading-loose text-muted-foreground">{review.scope}</p>
         <p className="max-w-[80ch] text-base leading-loose text-muted-foreground">{review.scopeDetail}</p>
-        <p className="text-sm leading-loose text-muted-foreground">{review.futureChanges}</p>
-        <p className="text-sm leading-loose text-muted-foreground">{review.disclaimer}</p>
+        <p className="text-sm leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">{review.futureChanges}</p>
+        <p className="text-sm leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">{review.disclaimer}</p>
       </> : <Link to="/about" className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4">تفاصيل المراجعة</Link>}
     </div>
   );
