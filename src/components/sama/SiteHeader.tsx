@@ -61,46 +61,46 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
           <nav className="flex min-w-0 flex-nowrap whitespace-nowrap items-center justify-end gap-x-1 text-sm xl:text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
           <Link
             to="/"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeOptions={{ exact: true }}
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             الرئيسية
           </Link>
           <Link
             to="/simplified-guide"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             الدليل المبسّط
           </Link>
           <Link
             to="/listen"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             استمع
           </Link>
           <Link
             to="/family-tools"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             أدوات عملية للأسرة
           </Link>
           <Link
             to="/parent-experiences"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             تجارب أهالي مفيدة
@@ -120,9 +120,9 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
           </a>
           <Link
             to="/about"
-            className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
+            className="rounded-full px-2 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground xl:px-3"
             activeProps={{
-              className: "rounded-full px-1.5 py-2 bg-primary-soft text-primary lg:px-2 xl:px-3",
+              className: "rounded-full px-2 py-2 bg-primary-soft text-primary xl:px-3",
             }}
           >
             عن المنصة
@@ -135,7 +135,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
                 className="inline-flex items-center gap-2 rounded-full border border-border px-2.5 py-2 min-h-11 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-3"
               >
                 <Search className="h-4 w-4 shrink-0" />
-                <span className="hidden lg:inline">بحث</span>
+                <span className="hidden xl:inline">بحث</span>
               </button>
             }
           />
