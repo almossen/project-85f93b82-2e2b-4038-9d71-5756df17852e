@@ -131,7 +131,7 @@ function AboutPage() {
 
         <section className="rounded-2xl border border-warning/40 bg-warning/10 p-5 space-y-3">
           <h2 className="font-bold text-warning-foreground">تنويه طبي وأرقام الطوارئ</h2>
-          <p className="text-sm sm:text-base leading-loose text-warning-foreground">
+          <p className="text-sm sm:text-base leading-loose text-warning-foreground max-sm:text-base max-sm:leading-7">
             هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج
             تختلف من طفل لآخر. في الحالات الطارئة اتصل بالهلال الأحمر السعودي أو توجه لأقرب
             طوارئ.

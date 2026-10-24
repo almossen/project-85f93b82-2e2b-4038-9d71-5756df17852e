@@ -273,7 +273,7 @@ function FamilyToolsPage() {
              <li>شاركوا نسخة مع إدارة المدرسة والمعلم أو المعلمة والممرض أو الممرضة المدرسية.</li>
              <li>حدّثوا المعلومات عند تغير خطة الرعاية أو أرقام التواصل أو تعليمات الفريق الطبي.</li>
            </ol>
-           <p className="flex items-start gap-2 text-sm font-semibold text-foreground leading-loose">
+           <p className="flex items-start gap-2 text-sm font-semibold text-foreground leading-loose max-sm:text-base max-sm:leading-7">
              <Info aria-hidden="true" className="mt-1 h-4 w-4 shrink-0 text-primary" />
              هذا الدليل مادة تثقيفية مساندة، ولا يستبدل خطة الرعاية الفردية للطالب أو الطالبة، أو تعليمات الفريق الطبي، أو سياسات المدرسة المعتمدة.
            </p>
