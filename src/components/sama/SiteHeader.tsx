@@ -58,7 +58,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
               </div>
             </div>
           </Link>
-          <nav className="flex min-w-0 flex-wrap items-center justify-end gap-x-1 gap-y-1 text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
+          <nav className="flex min-w-0 flex-nowrap whitespace-nowrap items-center justify-end gap-x-1 text-sm xl:text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
           <Link
             to="/"
             className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
