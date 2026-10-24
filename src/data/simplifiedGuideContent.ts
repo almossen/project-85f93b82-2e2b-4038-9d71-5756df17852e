@@ -34,6 +34,8 @@ export interface GuideSection {
   };
   medicalSensitivity: MedicalSensitivity;
   reviewStatus: ReviewStatus;
+  /** Explicit reviewed snapshot; omit for new/unreviewed content. */
+  reviewedRevisionDate?: string;
 }
 
 const HERO_BASE = "/images/simplified-guide";
