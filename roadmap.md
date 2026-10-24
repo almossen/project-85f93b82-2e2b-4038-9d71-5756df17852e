@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Remove the fixed date guard from the static review adapter so attribution follows medical-review.json; verified real, updated and undeclared-revision cases at 390px keep the details link, four rule tests and build OK, not published.
 - [x] Correct explicit reviewed-snapshot attribution, including per-lesson and static-page declarations; shorten displays, preserve dated About scope and general disclaimer; four rule tests, mobile/tablet, links, continuous reading and print checks passed; build OK, not published.
 - [x] Centralize the dated medical review; add home/about/footer, educational lessons and all 26 static kids/teens pages; verified 114 displays at 390/820/1280, continuous reading, print-visible review, story/navigation, two date-rule tests and build OK; not published.
 - [x] Update only the family-tools intro paragraph to the approved wording; verified single occurrence, 390/768/820/1024/1280, no horizontal scroll, build OK
