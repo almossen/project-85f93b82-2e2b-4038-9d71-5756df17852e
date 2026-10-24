@@ -13,12 +13,12 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
 
   return (
     <>
-      {showMobileBrand && (
-        <header className="border-b border-border/60 bg-background md:hidden">
+      <header className={`${showMobileBrand ? "" : "hidden md:block"} border-b border-border/60 bg-background lg:hidden`}>
+        <div className="mx-auto flex h-16 max-w-6xl items-center justify-between gap-3 px-4">
           <Link
             to="/"
             aria-label="سما — الصفحة الرئيسية"
-            className="mx-auto flex h-16 max-w-6xl items-center gap-3 px-4"
+            className="flex min-w-0 items-center gap-3"
           >
             <img
               src={logoSrc}
@@ -32,10 +32,17 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
               <div className="text-xs text-muted-foreground">رحلة التعايش</div>
             </div>
           </Link>
+          <GlobalSearch
+            trigger={
+              <button type="button" aria-label="بحث في المنصة" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full border border-border text-muted-foreground hover:bg-muted focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring">
+                <Search className="h-5 w-5" />
+              </button>
+            }
+          />
+        </div>
         </header>
-      )}
-      <header className="hidden md:block sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-md pt-[env(safe-area-inset-top)]">
-        <div className={`mx-auto flex max-w-6xl items-center justify-between px-4 sm:px-6 h-20`}>
+      <header className="hidden lg:block sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur-md pt-[env(safe-area-inset-top)]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 sm:px-6 min-h-20 py-2">
           <Link to="/" className="flex shrink-0 items-center gap-2 group lg:gap-2.5">
             <img
               src={logoSrc}
@@ -51,7 +58,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
               </div>
             </div>
           </Link>
-          <nav className="flex min-w-0 flex-nowrap items-center justify-end gap-0 text-[11px] font-medium whitespace-nowrap lg:gap-0.5 lg:text-[13px] xl:gap-1 xl:text-sm">
+          <nav className="flex min-w-0 flex-wrap items-center justify-end gap-x-1 gap-y-1 text-[15px] font-medium [&>a]:inline-flex [&>a]:items-center [&>a]:min-h-11">
           <Link
             to="/"
             className="rounded-full px-1.5 py-2 text-muted-foreground transition-colors hover:bg-muted hover:text-foreground lg:px-2 xl:px-3"
@@ -100,7 +107,7 @@ export function SiteHeader({ logoOverride, showMobileBrand = false }: SiteHeader
           </Link>
           <a
             href="/teens/"
-            className="hidden lg:inline-flex items-center rounded-full border border-[#decbb2] bg-[#f4eadb] px-2.5 py-1.5 font-semibold text-[#594733] transition-colors hover:bg-[#e9dac4] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#8b6a48] xl:px-3"
+            className="inline-flex items-center rounded-full border border-teens-border bg-teens-soft px-2.5 py-1.5 font-semibold text-teens-foreground transition-colors hover:bg-teens-hover focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-teens-ring xl:px-3"
           >
             عالم الشباب السكريين
           </a>
