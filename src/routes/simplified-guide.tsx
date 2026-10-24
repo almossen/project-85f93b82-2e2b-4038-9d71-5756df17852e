@@ -572,7 +572,7 @@ function SimplifiedGuidePage() {
         <SiteHeader />
       </div>
 
-      <main className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
+      <main id="main" className={`mx-auto max-w-5xl px-4 sm:px-6 py-8 sm:py-12 space-y-10 ${scaleClass}`}>
         {/* العنوان الدلالي الوحيد للصفحة. مخفي بصريًا لأن الهوية الحالية
             تعتمد على بطاقة الترحيب، لكنه ضروري لتسلسل H1 → H2 → H3. */}
         <h1 className="sr-only">الدليل المبسّط لأهالي الأطفال المصابين بالسكري من النوع الأول</h1>
