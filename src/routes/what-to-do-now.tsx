@@ -296,7 +296,7 @@ function EmergencyGuidePage() {
                         {style.label}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-loose">
+                    <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
                       {s.shortDescription}
                     </p>
                     <span className="inline-block text-sm font-semibold text-primary mt-1 group-hover:underline">

@@ -37,7 +37,7 @@ export function ReassuranceSection() {
               <it.icon className="h-5 w-5" strokeWidth={2} />
             </div>
             <h3 className="font-semibold text-lg mb-2">{it.title}</h3>
-            <p className="text-sm text-muted-foreground leading-loose">{it.text}</p>
+            <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{it.text}</p>
           </article>
         ))}
       </div>

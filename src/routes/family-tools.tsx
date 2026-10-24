@@ -86,7 +86,7 @@ function FamilyToolsPage() {
             <h2 id="meal-log-title" className="text-2xl font-bold leading-relaxed text-primary">
               سجل متابعة قراءة السكر للوجبات
             </h2>
-            <p className="text-sm leading-loose text-muted-foreground sm:text-base">
+            <p className="text-sm leading-loose text-muted-foreground sm:text-base max-sm:text-base max-sm:leading-7">
               سجل قابل للطباعة يضم أربع صفحات، صفحة لكل أسبوع. دوّنوا فيه اليوم والتاريخ وقراءات السكر
               المرتبطة بالوجبات، مع مساحة للملاحظات، لتبقى القراءات مرتبة ويسهل الرجوع إليها عند
               الحاجة، ولإحضاره معكم للموعد الأول.
@@ -120,7 +120,7 @@ function FamilyToolsPage() {
  <ContactRound aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-primary" />
  <div className="min-w-0 space-y-2">
  <h2 id="child-cards-title" className="text-2xl font-bold leading-relaxed text-primary">بطاقات التعريف بالسكري لطفلك</h2>
- <p className="text-sm sm:text-base text-muted-foreground leading-loose">بطاقة بسيطة ومطمئنة لتعريف زملاء طفلكم ومن حوله بالسكري: حمّلوا نسخة جاهزة أو أنشئوا بطاقة خاصة به.</p>
+ <p className="text-sm sm:text-base text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">بطاقة بسيطة ومطمئنة لتعريف زملاء طفلكم ومن حوله بالسكري: حمّلوا نسخة جاهزة أو أنشئوا بطاقة خاصة به.</p>
  </div></header>
 <section aria-labelledby="downloads-title" className="space-y-5 print:hidden">
          <div className="space-y-2">
@@ -138,7 +138,7 @@ function FamilyToolsPage() {
                <img src={`/family-tools/sama-${version.key}-t1d-infographic.png`} alt={version.alt} width={version.width} height={version.height} loading="lazy" className="block h-auto w-full" />
                <div className="flex flex-1 flex-col gap-3 p-4 sm:p-5">
                  <h4 className="text-lg font-bold">{version.title}</h4>
-                 <p className="text-sm text-muted-foreground leading-loose">{version.description}</p>
+                 <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{version.description}</p>
                  <Button asChild className="mt-auto h-auto min-h-12 whitespace-normal py-3 text-base">
                    <a href={`/family-tools/sama-${version.key}-t1d-infographic.png`} download={`sama-${version.key}-t1d-infographic.png`}>
                      <Download aria-hidden="true" /> تحميل {version.title}
@@ -205,7 +205,7 @@ function FamilyToolsPage() {
  <GraduationCap aria-hidden="true" className="mt-1 h-7 w-7 shrink-0 text-kids-foreground" />
  <div className="min-w-0 space-y-2">
  <h2 id="teacher-guide-title" className="text-2xl font-bold leading-relaxed text-kids-foreground">أدلة المدرسة للمعلم والمعلمة</h2>
- <p className="text-sm sm:text-base text-muted-foreground leading-loose">دليل المدرسة لدعم الطالب والطالبة المصابين بالسكري من النوع الأول: دليل عملي جاهز للطباعة يساعد الأسرة على تزويد المدرسة بالمعلومات الأساسية للتعامل الآمن والداعم خلال اليوم الدراسي.</p>
+ <p className="text-sm sm:text-base text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">دليل المدرسة لدعم الطالب والطالبة المصابين بالسكري من النوع الأول: دليل عملي جاهز للطباعة يساعد الأسرة على تزويد المدرسة بالمعلومات الأساسية للتعامل الآمن والداعم خلال اليوم الدراسي.</p>
  </div></header>
 <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
            {[
@@ -252,7 +252,7 @@ function FamilyToolsPage() {
                      {guide.badge}
                    </span>
                  </div>
-                 <p className="text-sm text-muted-foreground leading-loose">{guide.description}</p>
+                 <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{guide.description}</p>
                  <p className="inline-flex items-center gap-1.5 text-xs font-semibold text-muted-foreground">
                    <FileText aria-hidden="true" className="h-4 w-4" />
                    {guide.meta}

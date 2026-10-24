@@ -341,7 +341,7 @@ function ParentExperiencesPage() {
                 </span>
                 <div>
                   <div className="font-semibold">{f.title}</div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">{f.body}</p>
                 </div>
               </div>
             ))}
@@ -359,7 +359,7 @@ function ParentExperiencesPage() {
             {devices.map((d) => (
               <div key={d.name} className="rounded-2xl border border-border bg-card p-4 space-y-1">
                 <div className="font-semibold">{d.name}</div>
-                <p className="text-sm text-muted-foreground">{d.detail}</p>
+                <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">{d.detail}</p>
                 <span className="inline-block rounded-full bg-success/10 px-2.5 py-1 text-sm font-medium text-success">
                   {d.tag}
                 </span>
@@ -398,12 +398,12 @@ function ParentExperiencesPage() {
                 </span>
                 <div>
                   <div className="font-semibold text-sm">{t}</div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{d}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">{d}</p>
                 </div>
               </li>
             ))}
           </ol>
-          <p className="rounded-2xl bg-muted/60 border-r-4 border-primary p-4 text-sm leading-loose text-muted-foreground">
+          <p className="rounded-2xl bg-muted/60 border-r-4 border-primary p-4 text-sm leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">
             <Info className="inline h-4 w-4 text-primary ml-1" />
             {active.tip}
           </p>
@@ -504,7 +504,7 @@ function ParentExperiencesPage() {
                 </span>
                 <div>
                   <div className="font-semibold">{f.title}</div>
-                  <p className="text-sm text-muted-foreground leading-relaxed">{f.body}</p>
+                  <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">{f.body}</p>
                 </div>
               </div>
             ))}
@@ -573,7 +573,7 @@ function ParentExperiencesPage() {
               مشاهدة المنتج الذي استخدمناه على Amazon
               <ExternalLink className="h-4 w-4" />
             </a>
-            <p className="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto">
+            <p className="text-sm text-muted-foreground leading-relaxed max-w-md mx-auto max-sm:text-base max-sm:leading-7">
               الرابط للمساعدة في الوصول إلى نفس المنتج الذي جُرّب فقط. منصة سما لا تحصل على أي عمولة
               من الشراء.
             </p>

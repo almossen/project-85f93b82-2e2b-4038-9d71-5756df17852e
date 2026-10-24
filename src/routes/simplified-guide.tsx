@@ -289,7 +289,7 @@ function SectionCard({
             />
             <figcaption className="min-w-0 w-full space-y-3 text-center sm:text-start">
               <h3 className="text-lg sm:text-xl font-bold text-primary">حقيبة السكري — جاهزة لكل يوم</h3>
-              <p className="text-sm sm:text-base leading-loose text-muted-foreground">قائمة مصوّرة قابلة للطباعة والتأشير</p>
+              <p className="text-sm sm:text-base leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">قائمة مصوّرة قابلة للطباعة والتأشير</p>
               <Button asChild className="h-auto min-h-12 max-w-full gap-2 whitespace-normal px-4 py-3 text-sm leading-relaxed">
                 <a href="/family-tools/sama-diabetes-bag-checklist.pdf" download="sama-diabetes-bag-checklist.pdf">
                   <Download aria-hidden="true" className="h-4 w-4 shrink-0" />
@@ -378,7 +378,7 @@ function TrueFalseSection() {
     <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
       <header className="space-y-1">
         <h3 className="text-2xl sm:text-3xl font-bold">صح أم خطأ؟</h3>
-        <p className="text-sm text-muted-foreground">مفاهيم شائعة عن الإنسولين — نُصحّحها بهدوء.</p>
+        <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">مفاهيم شائعة عن الإنسولين — نُصحّحها بهدوء.</p>
       </header>
       <ul className="space-y-3">
         {items.map((it) => (
@@ -391,7 +391,7 @@ function TrueFalseSection() {
               )}
               <div className="space-y-1">
                 <p className="font-semibold text-sm sm:text-base">{it.t}</p>
-                <p className="text-sm text-muted-foreground leading-loose">{it.why}</p>
+                <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{it.why}</p>
               </div>
             </div>
           </li>
@@ -1001,7 +1001,7 @@ function SimplifiedGuidePage() {
               <h2 className="text-xl sm:text-2xl font-bold">
                 دروس هذا الفصل ({chapterSections.length})
               </h2>
-              <p className="text-sm text-muted-foreground">اختر درسًا لتفتحه في عرض مركّز.</p>
+              <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">اختر درسًا لتفتحه في عرض مركّز.</p>
             </header>
             <ol className="grid gap-2.5 sm:grid-cols-2">
               {chapterSections.map((s, i) => {
@@ -1160,7 +1160,7 @@ function SimplifiedGuidePage() {
           <>
             <div className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/60 to-mint/20 p-6 sm:p-8 text-center space-y-3">
               <h2 className="text-xl sm:text-2xl font-bold">هل تريدون أدوات عملية جاهزة؟</h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto max-sm:text-base max-sm:leading-7">
                 قوالب رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي — كلها في صفحة واحدة
                 جاهزة للنسخ والطباعة.
               </p>
