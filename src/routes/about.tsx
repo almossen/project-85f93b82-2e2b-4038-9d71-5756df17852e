@@ -2,6 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { BookOpen, HeartHandshake, Mail, Phone, ShieldCheck, Sparkles } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { SiteFooter } from "@/components/sama/SiteFooter";
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { Sources } from "@/components/sama/Sources";
 
 export const Route = createFileRoute("/about")({
@@ -72,6 +73,10 @@ function AboutPage() {
             البيت والمدرسة.
           </p>
         </header>
+
+        <section aria-label="المراجع الطبي ونطاق المراجعة" className="border-y border-border py-6">
+          <MedicalReview variant="detail" />
+        </section>
 
         <section className="grid gap-4 sm:grid-cols-3">
           {pillars.map((p) => (

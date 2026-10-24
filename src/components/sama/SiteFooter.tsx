@@ -1,4 +1,5 @@
 import { Link } from "@tanstack/react-router";
+import { MedicalReview } from "./MedicalReview";
 
 export function SiteFooter() {
   return (
@@ -7,9 +8,7 @@ export function SiteFooter() {
         <p className="mx-auto max-w-[80ch] text-center text-sm font-medium text-foreground">
           منصة سما — محتوى توعوي لأهالي الأطفال المصابين بالسكري من النوع الأول
         </p>
-        <p className="mx-auto max-w-[80ch] text-center text-xs text-muted-foreground">
-          محتوى تثقيفي تمت مراجعته طبيًا، ويستمر تحديثه وتحسينه عند الحاجة.
-        </p>
+        <MedicalReview variant="line" />
         <div className="flex flex-wrap items-center justify-center gap-3 print:hidden">
           <Link
             to="/about"
@@ -28,7 +27,7 @@ export function SiteFooter() {
           </Link>
         </div>
         <p className="mx-auto max-w-[80ch] text-center text-sm text-muted-foreground/80">
-          آخر تحديث للمنصة: أغسطس ٢٠٢٦ — هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
+          هذا المحتوى لا يغني عن استشارة الفريق الطبي المعالج.
         </p>
       </div>
     </footer>

@@ -1,3 +1,4 @@
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import {
@@ -428,6 +429,8 @@ function ListenPage() {
       <main className="flex-1 mx-auto w-full max-w-5xl px-4 sm:px-6 py-6 sm:py-12 space-y-10">
         {/* عنصر الصوت الوحيد في الصفحة */}
         <audio ref={audioRef} preload="metadata" />
+
+        <MedicalReview />
 
         {/* Hero */}
         <header className="space-y-3 text-center sm:text-right">

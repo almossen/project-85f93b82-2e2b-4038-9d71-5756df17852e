@@ -21,6 +21,7 @@ export const Route = createFileRoute("/teens")({
         content: "عالم الشباب السكريين مساحة موجهة للفئة العمرية من ١٢ إلى ١٨ سنة لفهم السكري من النوع الأول خطوة بخطوة.",
       },
       { property: "og:title", content: "عالم الشباب السكريين — سما" },
+      { property: "og:description", content: "مسار سما للشباب من ١٢ إلى ١٨ سنة لفهم السكري من النوع الأول والتعايش معه." },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary" },
     ],

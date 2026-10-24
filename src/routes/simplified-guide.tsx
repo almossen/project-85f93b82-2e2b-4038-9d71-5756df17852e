@@ -18,7 +18,6 @@ import {
   Settings2,
   Siren,
   Sparkles,
-  ShieldCheck,
   Search as SearchIcon,
 } from "lucide-react";
 
@@ -30,6 +29,7 @@ import {
   DropdownMenuSeparator,
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { SiteHeader } from "@/components/sama/SiteHeader";
 import { Button } from "@/components/ui/button";
 import { SiteFooter } from "@/components/sama/SiteFooter";
@@ -109,16 +109,6 @@ function MedicalDisclaimer() {
         </p>
       </div>
     </details>
-  );
-}
-
-function ReviewBadge({ status }: { status: GuideSection["reviewStatus"] }) {
-  if (status !== "approved") return null;
-  return (
-    <span className="inline-flex items-center gap-1.5 rounded-full bg-mint/30 text-mint-foreground px-2.5 py-1 text-sm font-semibold print:hidden">
-      <ShieldCheck className="h-3 w-3" />
-      تمت مراجعته طبيًا
-    </span>
   );
 }
 
@@ -246,7 +236,6 @@ function SectionCard({
           )}
           <div className="flex items-center justify-between gap-3 flex-wrap">
             <h2 className="text-2xl sm:text-3xl font-bold text-foreground">{section.title}</h2>
-            <ReviewBadge status={section.reviewStatus} />
           </div>
           {section.subtitle && (
             <p className="text-base text-muted-foreground">{section.subtitle}</p>
@@ -259,6 +248,7 @@ function SectionCard({
           {/* عنوان نسخة الطباعة: <p> لا <h1> — الصفحة تحتوي H1 واحدًا في أعلى main،
               وتكرار H1 لكل درس كان يكسر التسلسل الدلالي. */}
           <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
+          <MedicalReview className="mb-5" />
           <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
             {paragraphs.map((p, i) => (
               <div key={i} className="space-y-3.5">
