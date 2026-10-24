@@ -785,7 +785,7 @@ function ListenPage() {
 
         <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">
           تفضّلون القراءة؟{" "}
-          <Link to="/simplified-guide" className="text-primary font-semibold underline">
+          <Link to="/simplified-guide" className="inline-flex min-h-11 items-center text-primary font-semibold underline">
             افتحوا الدليل المبسّط
           </Link>
         </p>

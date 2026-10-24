@@ -9,7 +9,7 @@ export function DisclaimerBanner() {
         <p className="flex-1 min-w-[200px] max-w-[80ch]">
           <span className="font-semibold">تنويه:</span> هذا المحتوى تثقيفي وداعم، تمت مراجعته طبيًا،
           ولا يغني عن متابعة الطبيب أو فريق السكري.{" "}
-          <Link to="/about" className="font-semibold underline py-2.5">
+          <Link to="/about" className="inline-flex min-h-11 items-center font-semibold underline">
             عن المنصة والمصادر وأرقام الطوارئ
           </Link>
         </p>
