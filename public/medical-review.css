@@ -1,0 +1,23 @@
+.sama-medical-review {
+  box-sizing: border-box;
+  direction: rtl;
+  position: relative;
+  max-width: 75ch;
+  margin: 1rem auto;
+  padding: .75rem 1rem;
+  color: var(--foreground, var(--ink));
+  background: var(--primary-soft, var(--lavender));
+  border: 1px solid var(--border, var(--line));
+  border-radius: 8px;
+  font-family: "IBM Plex Sans Arabic", sans-serif;
+  font-size: 14px;
+  line-height: 1.9;
+  text-align: right;
+  overflow-wrap: anywhere;
+  width: calc(100% - 2rem);
+}
+.sama-medical-review p { margin: .25rem 0; font-size: inherit; line-height: inherit; }
+.sama-medical-review strong { font-size: inherit; }
+@media print {
+  .sama-medical-review { display: block !important; break-inside: avoid; width: 100%; margin: .5rem 0; padding: .5rem; background: none; color: var(--foreground, var(--ink)); font-size: 10pt; }
+}
