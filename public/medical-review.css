@@ -22,3 +22,13 @@
 @media print {
   .sama-medical-review { display: block !important; break-inside: avoid; width: 100%; margin: .5rem 0; padding: .5rem; background: none; color: var(--foreground, var(--ink)); font-size: 10pt; }
 }
+/* داخل تذييل صفحات الشباب: خلفية فاتحة تُبقي النص واضحًا على التدرّج الدافئ. */
+.footer .sama-medical-review {
+  background: rgba(255,255,255,.62);
+  border-color: rgba(89,65,43,.22);
+  color: #3b3025;
+}
+.footer .sama-medical-review a { color: var(--primary, #765337); }
+
+/* نسخة للطباعة فقط: التذييل مخفي في الطباعة، فتبقى نسبة المراجعة ظاهرة في المخرج المطبوع. */
+.sama-medical-review--print { display: none; }
