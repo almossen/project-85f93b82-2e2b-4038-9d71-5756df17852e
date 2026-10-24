@@ -1,3 +1,4 @@
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { useEffect, useMemo, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import {
@@ -249,6 +250,8 @@ function EmergencyGuidePage() {
       </header>
 
       <main className="mx-auto max-w-5xl px-4 sm:px-6 py-6 sm:py-10 space-y-6">
+        <MedicalReview />
+
         {/* Hero */}
         <section className="space-y-3 text-center">
           <div className="inline-flex items-center gap-2 rounded-full bg-destructive/10 text-destructive px-3 py-1 text-xs font-semibold">

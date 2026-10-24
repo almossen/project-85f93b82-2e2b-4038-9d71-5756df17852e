@@ -1,3 +1,4 @@
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
@@ -231,6 +232,8 @@ function ParentExperiencesPage() {
           <ArrowRight className="h-3.5 w-3.5 rotate-180" />
           <span className="text-foreground">تجارب أهالي مفيدة</span>
         </nav>
+
+        <MedicalReview />
 
         <header className="space-y-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1 text-sm font-semibold text-primary">

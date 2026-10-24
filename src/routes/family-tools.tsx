@@ -1,3 +1,4 @@
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { ArrowRight, Copy, Download, FileText, GraduationCap, Info, ContactRound, Stethoscope } from "lucide-react";
 import { useState } from "react";
@@ -65,6 +66,8 @@ function FamilyToolsPage() {
         <ArrowRight className="h-3.5 w-3.5 rotate-180" />
         <span className="text-foreground">أدوات عملية للأسرة</span>
       </nav>
+
+        <MedicalReview />
 
       <header className="space-y-3 text-center">
         <h1 className="text-3xl sm:text-4xl font-bold">أدوات عملية للأسرة</h1>

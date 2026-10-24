@@ -6,7 +6,6 @@ import {
   Users,
   GraduationCap,
   Baby,
-  Stethoscope,
   Languages,
   Compass,
   Headphones,
@@ -17,6 +16,7 @@ import {
   Gamepad2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
+import { MedicalReview } from "@/components/sama/MedicalReview";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
@@ -63,11 +63,6 @@ const whySama = [
     icon: Languages,
     title: "بلغة عربية مبسّطة",
     text: "محتوى مكتوب بلغة قريبة من الأسرة، بعيدًا عن المصطلحات الطبية المعقّدة.",
-  },
-  {
-    icon: Stethoscope,
-    title: "تمت مراجعته طبيًا",
-    text: "محتوى تثقيفي تمت مراجعته من مختص، ويستمر تحديثه وتحسينه عند الحاجة.",
   },
   {
     icon: Sparkles,
@@ -305,6 +300,7 @@ function HomePage() {
             </p>
           </header>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
+            <MedicalReview variant="card" />
             {whySama.map((w) => (
               <article
                 key={w.title}
