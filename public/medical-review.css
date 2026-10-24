@@ -18,6 +18,7 @@
 }
 .sama-medical-review p { margin: .25rem 0; font-size: inherit; line-height: inherit; }
 .sama-medical-review strong { font-size: inherit; }
+.sama-medical-review a { display: inline-flex; align-items: center; min-height: 44px; text-decoration: underline; text-underline-offset: 4px; }
 @media print {
   .sama-medical-review { display: block !important; break-inside: avoid; width: 100%; margin: .5rem 0; padding: .5rem; background: none; color: var(--foreground, var(--ink)); font-size: 10pt; }
 }

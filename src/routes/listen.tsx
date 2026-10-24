@@ -430,7 +430,7 @@ function ListenPage() {
         {/* عنصر الصوت الوحيد في الصفحة */}
         <audio ref={audioRef} preload="metadata" />
 
-        <MedicalReview />
+        <MedicalReview revisionDate="2026-10-24" />
 
         {/* Hero */}
         <header className="space-y-3 text-center sm:text-right">

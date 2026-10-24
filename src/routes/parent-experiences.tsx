@@ -233,7 +233,7 @@ function ParentExperiencesPage() {
           <span className="text-foreground">تجارب أهالي مفيدة</span>
         </nav>
 
-        <MedicalReview />
+        <MedicalReview revisionDate="2026-10-24" />
 
         <header className="space-y-3 text-center">
           <span className="inline-flex items-center gap-2 rounded-full bg-primary-soft px-3 py-1 text-sm font-semibold text-primary">

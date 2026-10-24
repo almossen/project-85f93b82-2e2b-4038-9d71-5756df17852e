@@ -75,7 +75,7 @@ function AboutPage() {
         </header>
 
         <section aria-label="المراجع الطبي ونطاق المراجعة" className="border-y border-border py-6">
-          <MedicalReview variant="detail" />
+          <MedicalReview variant="detail" revisionDate="2026-10-24" />
         </section>
 
         <section className="grid gap-4 sm:grid-cols-3">

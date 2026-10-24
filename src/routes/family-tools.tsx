@@ -67,7 +67,7 @@ function FamilyToolsPage() {
         <span className="text-foreground">أدوات عملية للأسرة</span>
       </nav>
 
-        <MedicalReview />
+        <MedicalReview revisionDate="2026-10-24" />
 
       <header className="space-y-3 text-center">
         <h1 className="text-3xl sm:text-4xl font-bold">أدوات عملية للأسرة</h1>

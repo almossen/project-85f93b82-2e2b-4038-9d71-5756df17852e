@@ -248,7 +248,7 @@ function SectionCard({
           {/* عنوان نسخة الطباعة: <p> لا <h1> — الصفحة تحتوي H1 واحدًا في أعلى main،
               وتكرار H1 لكل درس كان يكسر التسلسل الدلالي. */}
           <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
-          <MedicalReview className="mb-5" />
+          <MedicalReview className="mb-5" revisionDate={section.reviewedRevisionDate ?? ""} />
           <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
             {paragraphs.map((p, i) => (
               <div key={i} className="space-y-3.5">
