@@ -312,7 +312,7 @@ body { background: var(--world-paper); }
   font-size: 21px !important; font-weight: 800; text-decoration: none !important;
 }
 #homeStage .portalStart:hover { background: var(--world-purple-deep) !important; }
-.portalScenery { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; }
+.portalScenery { position: absolute; inset: 0; z-index: 2; pointer-events: none; overflow: hidden; overflow-x: clip; }
 .portalCloud { position: absolute; color: var(--world-surface); font-size: 84px; line-height: 1; opacity: .85; }
 .cloudOne { top: 10px; left: 8%; }
 .cloudTwo { top: 30px; left: 40%; font-size: 54px; }
@@ -407,6 +407,7 @@ body { background: var(--world-paper); }
 }
 .samaWorldFooter .sama-medical-review a,
 .platformFooter .sama-medical-review a { color: var(--world-purple-deep, #50388e); }
+
 </style>
 <script defer src="/sama-analytics.js"></script>
 <link rel="stylesheet" href="/medical-review.css">

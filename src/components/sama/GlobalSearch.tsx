@@ -122,6 +122,7 @@ export function GlobalSearch({
             <input
               autoFocus
               type="search"
+              enterKeyHint="search"
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="ابحث في الدروس والحالات والصفحات…"

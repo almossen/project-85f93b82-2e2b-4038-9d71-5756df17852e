@@ -21,3 +21,4 @@
 - [x] Center the three footer text lines site-wide; verified text-align center and screenshots at 390/768/1280, no horizontal scroll, build OK
 - [x] Move the medical review block from the top of the teens pages into their footer, with a print-only copy so printing keeps the attribution; verified screen and print output at 390/820/1280
 - [x] Move the medical review block into the footer of all ten kids pages; verified screen and print output at 390/820/1280, no publish
+- [x] Design-only pass: hero CTA pair (full-width on mobile), focus-visible skip-to-#main link on all routes, prefers-reduced-motion rule in app CSS (kids already had it), portalScenery overflow-x clip synced to all ten kids pages, enterkeyhint=search on global search; blue-on-soft-blue contrast measured 10.75:1 (no change needed); verified 390/1280, build OK, not published.
