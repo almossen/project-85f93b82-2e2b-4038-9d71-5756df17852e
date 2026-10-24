@@ -58,7 +58,7 @@ function AboutPage() {
       <SiteHeader />
       <main className="flex-1 mx-auto max-w-5xl w-full px-4 sm:px-6 py-8 sm:py-14 space-y-10">
         <div className="flex items-center gap-2 text-sm text-muted-foreground">
-          <Link to="/" className="hover:text-foreground transition-colors">
+          <Link to="/" className="inline-flex items-center min-h-11 px-1 hover:text-foreground transition-colors">
             الرئيسية
           </Link>
           <span>/</span>
@@ -83,14 +83,14 @@ function AboutPage() {
             <div key={p.title} className="rounded-2xl border border-border bg-card p-5 space-y-2">
               <p.icon className="h-5 w-5 text-primary" strokeWidth={2.2} />
               <h2 className="font-bold">{p.title}</h2>
-              <p className="text-sm leading-loose text-muted-foreground">{p.text}</p>
+              <p className="text-sm leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">{p.text}</p>
             </div>
           ))}
         </section>
 
         <section className="rounded-2xl border border-border bg-card p-5 sm:p-7 space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold tracking-tight">تنويه مهم</h2>
-          <div className="space-y-3 text-sm sm:text-base leading-loose text-muted-foreground">
+          <div className="space-y-3 text-sm sm:text-base leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">
             <p>
               منصة <strong className="text-foreground">سما</strong> هي اجتهاد شخصي من ولي أمر
               لطفلة مصابة بالسكري من النوع الأول، أُنشئت بهدف مشاركة المعرفة والخبرة وتسهيل
@@ -131,7 +131,7 @@ function AboutPage() {
 
         <section className="rounded-2xl border border-warning/40 bg-warning/10 p-5 space-y-3">
           <h2 className="font-bold text-warning-foreground">تنويه طبي وأرقام الطوارئ</h2>
-          <p className="text-sm sm:text-base leading-loose text-warning-foreground">
+          <p className="text-sm sm:text-base leading-loose text-warning-foreground max-sm:text-base max-sm:leading-7">
             هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج
             تختلف من طفل لآخر. في الحالات الطارئة اتصل بالهلال الأحمر السعودي أو توجه لأقرب
             طوارئ.

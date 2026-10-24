@@ -102,7 +102,7 @@ function MedicalDisclaimer() {
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
           هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف
           من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
-          <a href="tel:997" className="font-bold underline">
+          <a href="tel:997" className="font-bold underline py-2.5">
             997
           </a>{" "}
           أو توجه لأقرب طوارئ.
@@ -176,7 +176,7 @@ function ClosingBlock({ closing }: { closing: NonNullable<GuideSection["closing"
   return (
     <div className="pt-1 space-y-2.5">
       <h3 className="text-lg sm:text-xl font-bold text-foreground">{heading}</h3>
-      <p className="whitespace-pre-line text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
+      <p className="whitespace-pre-line text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch] md:max-w-[68ch] md:mx-auto">
         {body}
       </p>
     </div>
@@ -249,7 +249,7 @@ function SectionCard({
               وتكرار H1 لكل درس كان يكسر التسلسل الدلالي. */}
           <p className="hidden print:block text-2xl font-bold text-foreground">{section.title}</p>
           <MedicalReview className="mb-5" revisionDate={section.reviewedRevisionDate ?? ""} />
-          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch]">
+          <div className="space-y-3.5 text-base sm:text-[17px] leading-loose text-foreground/90 w-full max-w-[82ch] md:max-w-[68ch] md:mx-auto">
             {paragraphs.map((p, i) => (
               <div key={i} className="space-y-3.5">
                 <p className="whitespace-pre-line">{p}</p>
@@ -289,7 +289,7 @@ function SectionCard({
             />
             <figcaption className="min-w-0 w-full space-y-3 text-center sm:text-start">
               <h3 className="text-lg sm:text-xl font-bold text-primary">حقيبة السكري — جاهزة لكل يوم</h3>
-              <p className="text-sm sm:text-base leading-loose text-muted-foreground">قائمة مصوّرة قابلة للطباعة والتأشير</p>
+              <p className="text-sm sm:text-base leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">قائمة مصوّرة قابلة للطباعة والتأشير</p>
               <Button asChild className="h-auto min-h-12 max-w-full gap-2 whitespace-normal px-4 py-3 text-sm leading-relaxed">
                 <a href="/family-tools/sama-diabetes-bag-checklist.pdf" download="sama-diabetes-bag-checklist.pdf">
                   <Download aria-hidden="true" className="h-4 w-4 shrink-0" />
@@ -378,7 +378,7 @@ function TrueFalseSection() {
     <section className="rounded-3xl border border-border bg-card p-6 sm:p-8 space-y-4 shadow-[var(--shadow-card)] print:break-inside-avoid">
       <header className="space-y-1">
         <h3 className="text-2xl sm:text-3xl font-bold">صح أم خطأ؟</h3>
-        <p className="text-sm text-muted-foreground">مفاهيم شائعة عن الإنسولين — نُصحّحها بهدوء.</p>
+        <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">مفاهيم شائعة عن الإنسولين — نُصحّحها بهدوء.</p>
       </header>
       <ul className="space-y-3">
         {items.map((it) => (
@@ -391,7 +391,7 @@ function TrueFalseSection() {
               )}
               <div className="space-y-1">
                 <p className="font-semibold text-sm sm:text-base">{it.t}</p>
-                <p className="text-sm text-muted-foreground leading-loose">{it.why}</p>
+                <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{it.why}</p>
               </div>
             </div>
           </li>
@@ -1001,7 +1001,7 @@ function SimplifiedGuidePage() {
               <h2 className="text-xl sm:text-2xl font-bold">
                 دروس هذا الفصل ({chapterSections.length})
               </h2>
-              <p className="text-sm text-muted-foreground">اختر درسًا لتفتحه في عرض مركّز.</p>
+              <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">اختر درسًا لتفتحه في عرض مركّز.</p>
             </header>
             <ol className="grid gap-2.5 sm:grid-cols-2">
               {chapterSections.map((s, i) => {
@@ -1087,7 +1087,7 @@ function SimplifiedGuidePage() {
                 type="button"
                 onClick={goToPrevLesson}
                 disabled={isFirstLessonOverall}
-                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+                className="inline-flex items-center gap-2 rounded-full border border-border bg-card px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <ChevronRight className="h-4 w-4" />
                 الدرس السابق
@@ -1102,7 +1102,7 @@ function SimplifiedGuidePage() {
                     type="button"
                     onClick={goToNextLesson}
                     disabled={isLastLessonOverall}
-                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
+                    className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
                       isChapterJump
                         ? "bg-success text-success-foreground hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25"
                         : "bg-primary text-primary-foreground hover:bg-primary/90"
@@ -1160,7 +1160,7 @@ function SimplifiedGuidePage() {
           <>
             <div className="rounded-3xl border border-primary/25 bg-gradient-to-br from-primary-soft/60 to-mint/20 p-6 sm:p-8 text-center space-y-3">
               <h2 className="text-xl sm:text-2xl font-bold">هل تريدون أدوات عملية جاهزة؟</h2>
-              <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto">
+              <p className="text-sm sm:text-base text-muted-foreground leading-loose max-w-2xl mx-auto max-sm:text-base max-sm:leading-7">
                 قوالب رسالة للطبيب، أسئلة أول موعد، دفتر ملاحظات، وروتين ليلي — كلها في صفحة واحدة
                 جاهزة للنسخ والطباعة.
               </p>
@@ -1213,7 +1213,7 @@ function SimplifiedGuidePage() {
               <button
                 type="button"
                 onClick={handlePrint}
-                className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
+                className="inline-flex items-center gap-2 rounded-full bg-card border border-border px-4 py-2.5 min-h-11 text-sm font-semibold hover:bg-muted transition-colors print:hidden"
               >
                 <Printer className="h-4 w-4" />
                 طباعة الملخص

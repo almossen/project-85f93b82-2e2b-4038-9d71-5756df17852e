@@ -1,5 +1,7 @@
 # Project architecture
 
+- Shared DialogHeader/SheetHeader reserve right-side space for the close control's touch target, because that control is pinned to the physical right in this RTL layout; keep the reservation when adding or restyling dialog headers so headings never sit under it.
+
 - Family-tools topic grouping and contextual presentation of `DeepDiveEnrichment` live in the family-tools route; keep the reusable tool component and downloadable originals unchanged to preserve existing functions and printing.
 
 - One Sama logo everywhere (user-approved global scope): `src/assets/sama-logo-white.png` is the white-background `SiteHeader` default, print-sheet logo, and source for favicon/app icons; the original black-background pointer and old `sama-logo-icon` pointer are unused backups kept so older deployments still resolve.

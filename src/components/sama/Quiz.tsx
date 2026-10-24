@@ -90,7 +90,7 @@ export function Quiz() {
               })}
             </div>
             {submitted && (
-              <p className="mt-3 text-sm text-muted-foreground leading-loose bg-muted/50 rounded-xl p-3">
+              <p className="mt-3 text-sm text-muted-foreground leading-loose bg-muted/50 rounded-xl p-3 max-sm:text-base max-sm:leading-7">
                 <strong className="text-foreground">
                   {answers[i] === q.correct ? "أحسنت — " : "لا بأس، راجع المعلومة بهدوء: "}
                 </strong>

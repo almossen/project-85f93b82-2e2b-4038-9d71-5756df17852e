@@ -64,7 +64,7 @@ function BrandChip({ brand }: { brand: Brand }) {
         <div className="rounded-2xl overflow-hidden border border-border bg-muted/30">
           <img src={brand.img} alt={`قلم ${brand.ar}`} loading="lazy" className="w-full h-auto object-contain" />
         </div>
-        <p className="text-sm text-muted-foreground text-right leading-loose">
+        <p className="text-sm text-muted-foreground text-right leading-loose max-sm:text-base max-sm:leading-7">
           الصورة توضيحية فقط. اختيار النوع قرار طبي.
         </p>
       </DialogContent>
@@ -94,7 +94,7 @@ function BrandPanel({ tone, image, alt }: { tone: "mint" | "sand"; image: string
           </div>
         </DialogContent>
       </Dialog>
-      <p className="text-sm text-muted-foreground leading-loose text-center">
+      <p className="text-sm text-muted-foreground leading-loose text-center max-sm:text-base max-sm:leading-7">
         الأسماء للتعريف فقط. اختيار النوع والجرعة قرار طبي يتخذه فريق السكري المعالج لطفلك.
       </p>
     </div>
@@ -179,7 +179,7 @@ function InjectionVideo() {
           allowFullScreen
         />
       </div>
-      <p className="text-sm text-muted-foreground leading-loose">
+      <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
         الفيديو للتوعية فقط — اطلب من فريقك الطبي جلسة تدريب عملية.
       </p>
     </div>

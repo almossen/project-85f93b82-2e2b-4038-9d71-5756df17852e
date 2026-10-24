@@ -491,7 +491,7 @@ function ListenPage() {
           </div>
 
           {sideActive && (
-            <p className="text-sm text-muted-foreground">
+            <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">
               هذا المقطع خارج ترتيب الرحلة، ولن ينتقل تلقائيًا إلى غيره. موضعكم في الرحلة محفوظ.
             </p>
           )}
@@ -698,7 +698,7 @@ function ListenPage() {
               <Siren className="h-4.5 w-4.5 text-destructive" />
               ماذا أفعل الآن؟ — استمع
             </h2>
-            <p className="text-sm text-muted-foreground leading-loose">
+            <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
               مقاطع قصيرة لكل حالة، تبدأ مباشرة بالخطوات. لا تنتقل تلقائيًا إلى غيرها، ولا تدخل ضمن
               تقدّم الرحلة.
             </p>
@@ -744,7 +744,7 @@ function ListenPage() {
               <Users className="h-4.5 w-4.5 text-primary" />
               تجارب الأهالي — استمع
             </h2>
-            <p className="text-sm text-muted-foreground leading-loose">
+            <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
               تجارب شخصية خارج المنهج الأساسي، لا تنتقل تلقائيًا ولا تدخل ضمن تقدّم الرحلة.
             </p>
           </div>
@@ -774,7 +774,7 @@ function ListenPage() {
               );
             })}
           </ul>
-          <p className="rounded-2xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground leading-loose flex gap-2">
+          <p className="rounded-2xl border border-border bg-muted/40 p-3 text-sm text-muted-foreground leading-loose flex gap-2 max-sm:text-base max-sm:leading-7">
             <Info className="h-4 w-4 shrink-0 text-primary mt-0.5" />
             <span>
               تجارب المنتجات قد تتغير مع الوقت. المعلومات الواردة في هذين المقطعين مؤرّخة، والأسعار
@@ -783,7 +783,7 @@ function ListenPage() {
           </p>
         </section>
 
-        <p className="text-sm text-muted-foreground">
+        <p className="text-sm text-muted-foreground max-sm:text-base max-sm:leading-7">
           تفضّلون القراءة؟{" "}
           <Link to="/simplified-guide" className="text-primary font-semibold underline">
             افتحوا الدليل المبسّط

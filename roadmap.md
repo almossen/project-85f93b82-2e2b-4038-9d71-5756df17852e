@@ -1,4 +1,5 @@
 # Roadmap
+- [x] Design-only mobile typography, guide prose width, 44px close controls and touch targets; verified card text 16px/28px at 390, 68ch centered guide text at 820/1280, dialog titles clear of the close control, no horizontal scroll, build OK; not published.
 - [x] Apply layout-only navigation breakpoints, desktop header sizing, kids image extraction and audio-player touch/text sizing; verified six widths 390–1280, compact search, real audio playback/seek/pause, all ten kids pages and both games, 62 separate WebP assets capped at 1200px, unchanged visible text/story/audio, four medical rule tests and build OK; not published.
 - [x] Remove the fixed date guard from the static review adapter so attribution follows medical-review.json; verified real, updated and undeclared-revision cases at 390px keep the details link, four rule tests and build OK, not published.
 - [x] Correct explicit reviewed-snapshot attribution, including per-lesson and static-page declarations; shorten displays, preserve dated About scope and general disclaimer; four rule tests, mobile/tablet, links, continuous reading and print checks passed; build OK, not published.

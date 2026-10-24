@@ -106,7 +106,7 @@ function AudienceCard({ a }: { a: (typeof audience)[number] }) {
         <a.icon className="h-5 w-5" strokeWidth={2} />
       </div>
       <h3 className="font-semibold mb-1">{a.title}</h3>
-      <p className="text-sm text-muted-foreground leading-loose">{a.text}</p>
+      <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{a.text}</p>
     </article>
   );
 }
@@ -167,7 +167,7 @@ function HomePage() {
                 <Compass className="h-6 w-6" strokeWidth={2} />
               </div>
               <h2 className="font-bold text-lg mb-1">شُخّص طفلكم حديثًا؟</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">
                 ابدؤوا من الفصل الأول — نأخذكم خطوة بخطوة من اليوم الأول.
               </p>
             </Link>
@@ -180,7 +180,7 @@ function HomePage() {
                 <Siren className="h-6 w-6" strokeWidth={2.2} />
               </div>
               <h2 className="font-bold text-lg mb-1 text-destructive">عندكم موقف الآن؟</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">
                 خطوات سريعة وواضحة للهبوط والارتفاع والكيتونات ومتى تطلبون المساعدة.
               </p>
             </Link>
@@ -193,7 +193,7 @@ function HomePage() {
                 <Headphones className="h-6 w-6" strokeWidth={2} />
               </div>
               <h2 className="font-bold text-lg mb-1">استمع إلى سما</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">
                 استمعوا إلى الدروس بالترتيب أثناء القيادة أو المشي أو في أي وقت.
               </p>
             </Link>
@@ -206,7 +206,7 @@ function HomePage() {
                 <Wrench className="h-6 w-6" strokeWidth={2} />
               </div>
               <h2 className="font-bold text-lg mb-1">أدوات وقوائم جاهزة</h2>
-              <p className="text-sm text-muted-foreground leading-relaxed">
+              <p className="text-sm text-muted-foreground leading-relaxed max-sm:text-base max-sm:leading-7">
                 نماذج جاهزة للطباعة للأصدقاء والمدرسة وأسئلة للطبيب في الموعد الأول
               </p>
             </Link>
@@ -225,7 +225,7 @@ function HomePage() {
                 <h2 className="text-2xl font-bold tracking-tight text-[#463d34] sm:text-3xl">
                   عالم الشباب السكريين
                 </h2>
-                <p className="max-w-2xl text-sm leading-loose text-[#62594e] sm:text-base">
+                <p className="max-w-2xl text-sm leading-loose text-[#62594e] sm:text-base max-sm:text-base max-sm:leading-7">
                   مساحة موجهة للفئة العمرية من ١٢ إلى ١٨ سنة، تقدم إضاءات قصيرة ومسارات تعلم تساعدك على فهم السكري والتعامل معه في يومك.
                 </p>
                 <a
@@ -266,7 +266,7 @@ function HomePage() {
                     عالم سما للأطفال
                   </h2>
                 </div>
-                <p className="text-sm leading-loose text-muted-foreground sm:text-base">
+                <p className="text-sm leading-loose text-muted-foreground sm:text-base max-sm:text-base max-sm:leading-7">
                   منصة مخصصة للأطفال للتعلّم بطريقة قريبة منهم، ضمن عالم لطيف يناسب فضولهم.
                 </p>
                 <a
@@ -310,7 +310,7 @@ function HomePage() {
                   <w.icon className="h-5 w-5" strokeWidth={2} />
                 </div>
                 <h3 className="font-semibold mb-2">{w.title}</h3>
-                <p className="text-sm text-muted-foreground leading-loose">{w.text}</p>
+                <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{w.text}</p>
               </article>
             ))}
           </div>

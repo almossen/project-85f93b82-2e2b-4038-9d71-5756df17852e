@@ -314,7 +314,7 @@ export function DeepDiveEnrichment() {
         </span>
         <div className="space-y-1">
           <h2 className="text-2xl sm:text-3xl font-bold leading-tight">قوالب تُنسخ وقوائم تُطبع</h2>
-          <p className="text-sm sm:text-base text-muted-foreground leading-loose">
+          <p className="text-sm sm:text-base text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
             أداتان تستخدمونهما وقت الحاجة: رسالة جاهزة للفريق الطبي، وقائمة أسئلة لأول موعد. الشرح
             التعليمي كاملًا موجود في دروس الدليل المبسّط.
           </p>
@@ -343,7 +343,7 @@ export function DeepDiveEnrichment() {
         ))}
       </Accordion>
 
-      <p className="text-xs text-muted-foreground leading-loose border-t border-border/60 pt-3">
+      <p className="text-xs text-muted-foreground leading-loose border-t border-border/60 pt-3 max-sm:text-base max-sm:leading-7">
         هذه الأدوات للتثقيف والدعم، ولا تغني عن مراجعة الطبيب أو فريق السكري. تختلف الخطط من طفل
         لآخر حسب العمر والوزن ونوع الإنسولين والقراءات والنشاط والحالة الصحية.
       </p>

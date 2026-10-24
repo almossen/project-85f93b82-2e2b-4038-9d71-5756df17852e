@@ -113,7 +113,7 @@ function MedicalAlert() {
           <span className="font-bold text-destructive">تنويه: </span>
           محتوى تثقيفي تمت مراجعته طبيًا، ولا يغني عن تعليمات الفريق الطبي المعالج. في
           الحالات الطارئة أو عند الشك، اتصل بالهلال الأحمر السعودي{" "}
-          <a href="tel:997" className="font-bold text-destructive underline">
+          <a href="tel:997" className="font-bold text-destructive underline py-2.5">
             997
           </a>{" "}
           أو توجه لأقرب طوارئ.
@@ -296,7 +296,7 @@ function EmergencyGuidePage() {
                         {style.label}
                       </span>
                     </div>
-                    <p className="text-sm text-muted-foreground leading-loose">
+                    <p className="text-sm text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">
                       {s.shortDescription}
                     </p>
                     <span className="inline-block text-sm font-semibold text-primary mt-1 group-hover:underline">

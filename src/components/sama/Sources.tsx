@@ -26,7 +26,7 @@ export function Sources() {
                   {s.region}
                 </span>
               </div>
-              <p className="text-xs text-muted-foreground leading-loose">{s.detail}</p>
+              <p className="text-xs text-muted-foreground leading-loose max-sm:text-base max-sm:leading-7">{s.detail}</p>
             </div>
             <ExternalLink className="h-4 w-4 text-muted-foreground shrink-0 mt-1 group-hover:text-primary transition-colors" />
           </a>
