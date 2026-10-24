@@ -92,7 +92,7 @@ export const Route = createFileRoute("/simplified-guide")({
 
 function MedicalDisclaimer() {
   return (
-    <details className="rounded-2xl border border-warning/40 bg-warning/10 px-4 py-3 print:break-inside-avoid group">
+    <details className="rounded-2xl border border-warning/40 bg-warning/10 px-4 py-3 print:break-inside-avoid group md:max-w-[68ch] md:mx-auto">
       <summary className="flex items-center gap-2 cursor-pointer list-none text-sm font-semibold text-warning-foreground min-h-11">
         <AlertTriangle className="h-4 w-4 shrink-0" />
         تنويه طبي — محتوى تثقيفي تمت مراجعته طبيًا (اضغط للتفاصيل)
@@ -102,7 +102,7 @@ function MedicalDisclaimer() {
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
           هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف
           من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
-          <a href="tel:997" className="font-bold underline py-2.5">
+          <a href="tel:997" className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full px-3 font-bold underline">
             997
           </a>{" "}
           أو توجه لأقرب طوارئ.
@@ -1104,7 +1104,7 @@ function SimplifiedGuidePage() {
                     disabled={isLastLessonOverall}
                     className={`inline-flex items-center gap-2 rounded-full px-4 py-2.5 min-h-11 text-sm font-semibold transition-colors disabled:opacity-40 disabled:cursor-not-allowed ${
                       isChapterJump
-                        ? "bg-success text-success-foreground hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25"
+                        ? "bg-success-strong text-success-foreground hover:bg-success-strong/90 shadow-[var(--shadow-card)] ring-2 ring-success-strong/25"
                         : "bg-primary text-primary-foreground hover:bg-primary/90"
                     }`}
                   >
@@ -1186,14 +1186,14 @@ function SimplifiedGuidePage() {
               <ChevronRight className="h-4 w-4" />
               الفصل السابق
             </button>
-            <span className="text-xs text-muted-foreground">
+            <span className="text-xs text-foreground/90">
               {chapterIdx + 1} / {chapters.length}
             </span>
             <button
               type="button"
               onClick={() => goToChapter(Math.min(chapters.length - 1, chapterIdx + 1))}
               disabled={chapterIdx === chapters.length - 1}
-              className="inline-flex items-center gap-2 rounded-full bg-success text-success-foreground px-5 py-2.5 text-sm font-semibold hover:bg-success/90 shadow-[var(--shadow-card)] ring-2 ring-success/25 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
+              className="inline-flex items-center gap-2 rounded-full bg-success-strong text-success-foreground px-5 py-2.5 text-sm font-semibold hover:bg-success-strong/90 shadow-[var(--shadow-card)] ring-2 ring-success-strong/25 transition-colors disabled:opacity-40 disabled:cursor-not-allowed"
             >
               <BookOpen className="h-4 w-4" />
               الفصل التالي
