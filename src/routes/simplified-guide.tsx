@@ -102,7 +102,7 @@ function MedicalDisclaimer() {
         <p className="text-sm sm:text-base leading-loose text-warning-foreground">
           هذا المحتوى تثقيفي وداعم، ولا يغني عن متابعة الطبيب أو فريق السكري؛ لأن خطة العلاج تختلف
           من طفل لآخر. في الحالات الطارئة، اتصل بالهلال الأحمر السعودي{" "}
-          <a href="tel:997" className="font-bold underline">
+          <a href="tel:997" className="font-bold underline py-2.5">
             997
           </a>{" "}
           أو توجه لأقرب طوارئ.
