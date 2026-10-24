@@ -18,3 +18,4 @@
 - [x] Replace homepage social sharing metadata with the new Sama-only 1200×630 preview; remove legacy social image references
 - [x] Center the three footer text lines site-wide; verified text-align center and screenshots at 390/768/1280, no horizontal scroll, build OK
 - [x] Move the medical review block from the top of the teens pages into their footer, with a print-only copy so printing keeps the attribution; verified screen and print output at 390/820/1280
+- [x] Move the medical review block into the footer of all ten kids pages; verified screen and print output at 390/820/1280, no publish

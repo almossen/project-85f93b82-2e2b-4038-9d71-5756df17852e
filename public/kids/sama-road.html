@@ -399,12 +399,24 @@ body { background: var(--world-paper); }
     grid-template-columns: 50px minmax(0,1fr) !important; column-gap: 10px !important;
   }
   #homeStage #adventureMap .adventureNumber { width: 50px !important; height: 50px !important; }
-}</style>
+}
+
+/* المراجعة الطبية في تذييل عالم الأطفال: تبقى في أسفل الصفحة وواضحة على أي خلفية. */
+.samaWorldFooter { align-self: end; }
+.samaWorldFooter .sama-medical-review,
+.platformFooter .sama-medical-review {
+  background: var(--world-surface, #fff);
+  border-color: var(--world-line, #d9ceec);
+  color: var(--world-ink, #302550);
+}
+.samaWorldFooter .sama-medical-review a,
+.platformFooter .sama-medical-review a { color: var(--world-purple-deep, #50388e); }
+</style>
 <script defer src="/sama-analytics.js"></script>
 <link rel="stylesheet" href="/medical-review.css">
 <script defer src="/medical-review.js"></script>
 </head>
-<body><aside class="sama-medical-review" data-sama-medical-review data-reviewed-revision="2026-10-24" aria-label="المراجعة الطبية">المحتوى تثقيفي ولا يغني عن استشارة الطبيب. <a href="/about">تفاصيل المراجعة الطبية ونطاقها</a></aside>
+<body>
 <div class="shell">
   <header class="topbar"><a class="brand" href="index.html#adventureMap"><img class="brandmark brandLogo" src="sama-logo-kids-purple.png" alt="شعار سما الرسمي البنفسجي"> عالم سما</a><a class="homeLink" href="index.html#adventureMap"><svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="m3 11 9-7 9 7"/><path d="M5 10v10h14V10M9 20v-6h6v6"/></svg> خريطة المغامرات</a></header>
   <main>
@@ -430,6 +442,8 @@ body { background: var(--world-paper); }
       <p class="safety">العوائق للعب فقط. إذا احتجت مساعدة في الواقع، أخبر شخصًا بالغًا تثق به.</p>
     </section>
   </main>
+
+<footer class="samaWorldFooter" aria-label="معلومات عن منصة سما"><aside class="sama-medical-review" data-sama-medical-review data-reviewed-revision="2026-10-24" aria-label="المراجعة الطبية">المحتوى تثقيفي ولا يغني عن استشارة الطبيب. <a href="/about">تفاصيل المراجعة الطبية ونطاقها</a></aside></footer>
 </div>
 <div class="overlay" id="pauseOverlay" hidden><div class="dialog" role="dialog" aria-modal="true" aria-labelledby="pauseTitle"><div class="dialogIcon">⏸</div><h2 id="pauseTitle">استراحة صغيرة</h2><p>جولتك تنتظرك هنا.</p><div class="dialogActions"><button class="primary" id="resumeBtn" type="button">أكمل اللعب ←</button><button class="softBtn" id="pauseEndBtn" type="button">إنهاء الجولة</button></div></div></div>
 <div class="overlay" id="quizOverlay" hidden><div class="dialog quizDialog" role="dialog" aria-modal="true" aria-labelledby="quizQuestion"><span class="quizBadge" id="quizDistance">سؤال الطريق</span><h2 id="quizQuestion">ماذا تعلمنا مع سما؟</h2><button class="quizReplay" id="quizReplay" type="button" aria-label="استمع إلى سؤال سما"><svg class="uiIcon" viewBox="0 0 24 24" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z"/><path d="M15 9a4 4 0 0 1 0 6M18 6a8 8 0 0 1 0 12"/></svg> استمع</button><div class="quizOptions" role="group" aria-label="اختر إجابة"><button class="quizOption" id="quizOption0" type="button"><span class="quizIcon" id="quizIcon0" aria-hidden="true"></span><span class="quizNumber" aria-hidden="true">١</span><span id="quizText0"></span></button><button class="quizOption" id="quizOption1" type="button"><span class="quizIcon" id="quizIcon1" aria-hidden="true"></span><span class="quizNumber" aria-hidden="true">٢</span><span id="quizText1"></span></button></div><div class="quizFeedback" id="quizFeedback" aria-live="polite"></div><button class="primary" id="quizContinue" type="button" hidden>أكمل الطريق ←</button></div></div>
