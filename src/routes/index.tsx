@@ -141,6 +141,20 @@ function HomePage() {
                 المدرسة والطوارئ — بهدوء ووضوح، خطوة بخطوة، دون أن تكون بديلًا عن طبيبكم أو فريق
                 السكري.
               </div>
+              <div className="flex flex-col sm:flex-row gap-3">
+                <Link
+                  to="/simplified-guide"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl bg-primary px-6 py-3 min-h-11 text-sm font-bold text-primary-foreground hover:bg-primary/90 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  ابدأوا من اليوم الأول
+                </Link>
+                <Link
+                  to="/what-to-do-now"
+                  className="inline-flex w-full sm:w-auto items-center justify-center gap-2 rounded-2xl border border-destructive/40 bg-card px-6 py-3 min-h-11 text-sm font-bold text-destructive hover:bg-destructive/5 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
+                >
+                  عندكم موقف الآن؟
+                </Link>
+              </div>
             </div>
             <div className="relative">
               <img

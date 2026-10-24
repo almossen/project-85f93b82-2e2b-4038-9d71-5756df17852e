@@ -156,6 +156,12 @@ function RootComponent() {
 
   return (
     <QueryClientProvider client={queryClient}>
+      <a
+        href="#main"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:start-3 focus:z-[100] focus:inline-flex focus:items-center focus:rounded-xl focus:bg-primary focus:px-4 focus:py-2.5 focus:min-h-11 focus:text-sm focus:font-bold focus:text-primary-foreground focus:shadow-[var(--shadow-soft)]"
+      >
+        تخطَّ إلى المحتوى
+      </a>
       <div className="pt-[env(safe-area-inset-top)] lg:pt-0 pb-[calc(env(safe-area-inset-bottom)+5rem)] lg:pb-20">
         <Outlet />
       </div>
