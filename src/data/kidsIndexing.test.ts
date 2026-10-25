@@ -52,7 +52,9 @@ describe("kids public indexing boundaries", () => {
 
   it("provides static contextual anchors to previous, next and index pages", () => {
     for (const { name, html } of pages) {
-      const nav = html.match(/<nav aria-label="روابط مغامرات عالم سما" data-kids-context-links>([\s\S]*?)<\/nav>/)?.[1];
+      const nav = html.match(
+        /<nav aria-label="روابط مغامرات عالم سما" data-kids-context-links>([\s\S]*?)<\/nav>/,
+      )?.[1];
       assert.ok(nav, name);
       assert.ok(nav.includes('href="index.html#adventureMap"'), name);
       assert.doesNotMatch(nav, /onclick|hidden|disabled/i);
