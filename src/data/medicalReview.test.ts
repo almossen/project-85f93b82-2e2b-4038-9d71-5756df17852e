@@ -19,4 +19,8 @@ describe("medical review snapshot", () => {
     assert.equal(isMedicallyReviewedRevision("2026-10-23"), false);
     assert.equal(isMedicallyReviewedRevision("2026-02-30"), false);
   });
+  test("both reviewers are listed and only the comprehensive review is dated", () => {
+    assert.deepEqual(medicalReview.reviewers.map((r) => r.name), ["د. محسن المغربي", "د. أحمد حمدي كحيل"]);
+    assert.equal(medicalReview.reviewers.some((r) => "reviewedOn" in r), false);
+  });
 });
