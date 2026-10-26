@@ -12,7 +12,7 @@ export const Route = createFileRoute("/about")({
       {
         name: "description",
         content:
-          "من نحن، وهدف منصة سما التثقيفية لأسر أطفال السكري من النوع الأول، مع المصادر الطبية المعتمدة وأرقام الطوارئ.",
+          "من نحن، وهدف منصة سما التثقيفية لأسر أطفال السكري من النوع الأول، مع المصادر الطبية الموثوقة وأرقام الطوارئ.",
       },
       { property: "og:title", content: "عن منصة سما وهدفها والمصادر" },
       {
@@ -26,7 +26,7 @@ export const Route = createFileRoute("/about")({
       { name: "twitter:title", content: "عن منصة سما وهدفها والمصادر" },
       {
         name: "twitter:description",
-        content: "فلسفة المنصة، التنويه الطبي، أرقام الطوارئ، والمراجع الطبية المعتمدة.",
+        content: "فلسفة المنصة، التنويه الطبي، أرقام الطوارئ، والمصادر الطبية الموثوقة.",
       },
     ],
     links: [{ rel: "canonical", href: "https://t1d-ar.com/about" }],
@@ -74,7 +74,7 @@ function AboutPage() {
           </p>
         </header>
 
-        <section aria-label="المراجع الطبي ونطاق المراجعة" className="border-y border-border py-6">
+        <section id="medical-review" aria-label="المراجعة الطبية لمنصة سما" className="scroll-mt-24 border-y border-border py-6">
           <MedicalReview variant="detail" revisionDate="2026-10-24" />
         </section>
 
