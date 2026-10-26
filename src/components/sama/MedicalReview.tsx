@@ -39,8 +39,6 @@ export function MedicalReview({ variant = "badge", className = "", revisionDate 
             </li>
           ))}
         </ul>
-        <p className="text-base leading-loose text-muted-foreground">{review.datedReview}</p>
-        <p className="text-sm leading-loose text-muted-foreground max-sm:text-base max-sm:leading-7">{review.futureChanges}</p>
         <p className="text-sm font-semibold leading-loose text-foreground max-sm:text-base max-sm:leading-7">{review.disclaimer}</p>
       </div>
     );
