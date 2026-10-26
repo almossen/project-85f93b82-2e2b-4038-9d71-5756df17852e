@@ -16,7 +16,7 @@ import {
   Gamepad2,
 } from "lucide-react";
 import { SiteHeader } from "@/components/sama/SiteHeader";
-import { MedicalReview } from "@/components/sama/MedicalReview";
+import { medicalReview } from "@/data/medicalReview";
 import { SiteFooter } from "@/components/sama/SiteFooter";
 import { DisclaimerBanner } from "@/components/sama/DisclaimerBanner";
 import { ReassuranceSection } from "@/components/sama/ReassuranceSection";
@@ -314,7 +314,15 @@ function HomePage() {
             </p>
           </header>
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-4 max-w-4xl mx-auto">
-            <MedicalReview variant="card" revisionDate="2026-10-24" />
+            <article className="rounded-2xl border border-border bg-card p-5 shadow-[var(--shadow-card)] hover:shadow-[var(--shadow-soft)] transition-shadow text-right">
+              <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-primary-soft text-primary mb-4">
+                <ShieldCheck className="h-5 w-5" strokeWidth={2} aria-hidden="true" />
+              </div>
+              <h3 className="font-semibold mb-2">{medicalReview.homeStatement}</h3>
+              <Link to="/about" hash={medicalReview.anchor} className="inline-flex min-h-11 items-center text-sm font-semibold text-primary underline underline-offset-4">
+                {medicalReview.linkLabel}
+              </Link>
+            </article>
             {whySama.map((w) => (
               <article
                 key={w.title}
