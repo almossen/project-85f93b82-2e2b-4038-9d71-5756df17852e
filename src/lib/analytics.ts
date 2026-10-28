@@ -10,11 +10,13 @@ declare global {
   }
 }
 
+export const GA_HOST_PATTERN = /^(www\.)?t1d-ar\.com$/;
+
 let initialized = false;
 
 export function initAnalytics() {
   if (typeof window === "undefined" || initialized) return;
-  if (!/^(www\\.)?t1d-ar\\.com$/.test(window.location.hostname)) return;
+  if (!GA_HOST_PATTERN.test(window.location.hostname)) return;
   if (document.getElementById("ga-gtag-script")) {
     initialized = true;
     return;
