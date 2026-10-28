@@ -1,4 +1,4 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from "bun:test";
 import { GA_HOST_PATTERN, GA_MEASUREMENT_ID } from "./analytics";
 
 describe("GA4 host check", () => {
